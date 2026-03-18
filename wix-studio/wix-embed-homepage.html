@@ -78,7 +78,7 @@
      SECTION 1 — HERO
   ══════════════════════════════════════ */
   .hero {
-    min-height: 100vh;
+    min-height: 820px;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     text-align: center;
@@ -710,12 +710,10 @@
     const h = document.documentElement.scrollHeight;
     window.parent.postMessage({ type: 'shivoham-height', height: h }, '*');
   }
-  // Send on load and whenever fonts/images settle
   window.addEventListener('load', sendHeight);
   document.fonts.ready.then(sendHeight);
-  // Also poll briefly to catch any layout shifts
   let checks = 0;
-  const poll = setInterval(() => { sendHeight(); if (++checks > 10) clearInterval(poll); }, 300);
+  const poll = setInterval(() => { sendHeight(); if (++checks > 20) clearInterval(poll); }, 500);
 </script>
 
 </body>

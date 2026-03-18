@@ -1,0 +1,425 @@
+/* ═══════════════════════════════════════════════════════════════
+   SHIVOHAMPATH · WIX STUDIO GLOBAL CSS
+   Paste this entire file into: Dev Mode → CSS → global.css
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── GOOGLE FONTS ─────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap');
+
+/* ── DESIGN TOKENS ────────────────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --bg-primary:    #0a0a0f;
+  --bg-secondary:  #0f0a1a;
+  --bg-card:       #131020;
+  --bg-raised:     #1a1525;
+
+  /* Gold */
+  --gold:          #C9A84C;
+  --gold-hover:    #a8893a;
+  --gold-dim:      rgba(201, 168, 76, 0.60);
+  --gold-faint:    rgba(201, 168, 76, 0.12);
+  --gold-border:   rgba(201, 168, 76, 0.25);
+
+  /* Text */
+  --text-primary:   #e8e0d0;
+  --text-secondary: rgba(232, 224, 208, 0.65);
+  --text-tertiary:  rgba(232, 224, 208, 0.35);
+  --text-hint:      rgba(232, 224, 208, 0.20);
+
+  /* Lines */
+  --line-subtle:   rgba(232, 224, 208, 0.07);
+  --line-medium:   rgba(232, 224, 208, 0.13);
+
+  /* Topic Accents */
+  --purple:  #8B6FBF;
+  --rust:    #BF6F6F;
+  --sage:    #4CAF7D;
+  --steel:   #6F9FBF;
+  --bronze:  #C9A87C;
+}
+
+/* ── BASE / BODY ──────────────────────────────────────────────── */
+body {
+  background-color: var(--bg-primary) !important;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% 0%,   rgba(139, 111, 191, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 0%   60%,  rgba(201, 168,  76, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 80%,  rgba(191, 111, 111, 0.03) 0%, transparent 60%),
+    linear-gradient(180deg, #0a0a0f 0%, #0f0a1a 50%, #0a0a0f 100%) !important;
+  color: var(--text-primary) !important;
+  font-family: 'EB Garamond', Georgia, serif !important;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+/* ── TYPOGRAPHY ───────────────────────────────────────────────── */
+
+/* All headings */
+h1, h2, h3, h4, h5, h6,
+[class*="font_0"],
+[class*="font_2"],
+[class*="font_3"],
+[class*="font_4"],
+[class*="font_5"] {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  color: var(--text-primary) !important;
+  font-weight: 300 !important;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Body text */
+p, li, span, div,
+[class*="font_7"],
+[class*="font_8"],
+[class*="font_9"] {
+  font-family: 'EB Garamond', Georgia, serif !important;
+  color: var(--text-secondary);
+}
+
+/* ── UTILITY CLASSES ──────────────────────────────────────────── */
+/* Apply these via the class field in Wix Studio element inspector */
+
+/* Eyebrow labels — spaced caps in gold */
+.eyebrow {
+  font-family: 'Cinzel', serif !important;
+  font-size: 10px !important;
+  letter-spacing: 4px !important;
+  color: var(--gold) !important;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 14px;
+}
+
+/* Pull quotes / italics */
+.pullquote {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-size: clamp(26px, 3.5vw, 42px) !important;
+  font-weight: 300 !important;
+  color: var(--text-primary) !important;
+  line-height: 1.35;
+}
+
+/* Gold accent text — for italic highlights inside headings */
+.gold-text {
+  color: var(--gold) !important;
+  font-style: italic;
+}
+
+/* Hero pill tag */
+.hero-tag {
+  display: inline-block;
+  font-family: 'Cinzel', serif !important;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  border: 1px solid var(--gold-border);
+  padding: 6px 18px;
+}
+
+/* Cinzel label (nav items, category labels, stat labels) */
+.label-cinzel {
+  font-family: 'Cinzel', serif !important;
+  font-size: 10px !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase;
+}
+
+/* Stat numbers */
+.stat-number {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 36px !important;
+  font-weight: 300 !important;
+  color: var(--gold) !important;
+  line-height: 1;
+}
+
+/* Gold horizontal rule */
+.gold-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+  border: none;
+  margin: 18px 0;
+}
+
+/* ── BUTTONS ──────────────────────────────────────────────────── */
+
+/* Primary button — gold fill */
+.btn-primary,
+[class*="StylableButton"]:not([class*="ghost"]) {
+  font-family: 'Cinzel', serif !important;
+  font-size: 11px !important;
+  letter-spacing: 2.5px !important;
+  background: var(--gold) !important;
+  color: var(--bg-primary) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 14px 36px !important;
+  transition: background 0.2s ease !important;
+  text-transform: uppercase;
+}
+.btn-primary:hover {
+  background: var(--gold-hover) !important;
+}
+
+/* Ghost button — transparent with gold border */
+.btn-ghost {
+  font-family: 'Cinzel', serif !important;
+  font-size: 11px !important;
+  letter-spacing: 2.5px !important;
+  background: transparent !important;
+  color: var(--gold) !important;
+  border: 1px solid var(--gold-border) !important;
+  border-radius: 0 !important;
+  padding: 13px 36px !important;
+  transition: background 0.2s ease !important;
+  text-transform: uppercase;
+}
+.btn-ghost:hover {
+  background: var(--gold-faint) !important;
+}
+
+/* ── CARDS ────────────────────────────────────────────────────── */
+
+/* Service cards */
+.service-card {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--line-subtle) !important;
+  border-radius: 0 !important;
+  transition: border-color 0.3s, background 0.3s !important;
+}
+.service-card:hover {
+  border-color: var(--gold-border) !important;
+  background: var(--bg-raised) !important;
+}
+
+/* Featured / highlighted card */
+.service-card-featured {
+  background: var(--bg-raised) !important;
+  border: 1px solid var(--gold-border) !important;
+  border-radius: 0 !important;
+}
+
+/* Testimonial cards */
+.testimonial-card {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--line-subtle) !important;
+  border-radius: 0 !important;
+  padding: 32px 28px;
+}
+
+/* Blog cards */
+.blog-card {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--line-subtle) !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+  transition: border-color 0.2s !important;
+}
+.blog-card:hover {
+  border-color: var(--gold-border) !important;
+}
+
+/* ── NAVIGATION ───────────────────────────────────────────────── */
+header,
+[id="SITE_HEADER"],
+[data-testid="mesh-container-content"] header {
+  background: rgba(10, 10, 15, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid var(--gold-border) !important;
+}
+
+/* Nav links */
+nav a,
+[id="SITE_HEADER"] a {
+  font-family: 'EB Garamond', serif !important;
+  font-size: 14px !important;
+  letter-spacing: 1px !important;
+  color: var(--text-secondary) !important;
+  text-decoration: none !important;
+  transition: color 0.2s !important;
+}
+nav a:hover,
+[id="SITE_HEADER"] a:hover {
+  color: var(--gold) !important;
+}
+
+/* ── FOOTER ───────────────────────────────────────────────────── */
+footer,
+[id="SITE_FOOTER"] {
+  background: var(--bg-primary) !important;
+  border-top: 1px solid var(--line-subtle) !important;
+}
+
+footer h4,
+[id="SITE_FOOTER"] h4 {
+  font-family: 'Cinzel', serif !important;
+  font-size: 10px !important;
+  letter-spacing: 2.5px !important;
+  color: var(--gold) !important;
+  text-transform: uppercase;
+}
+
+footer a,
+footer p,
+[id="SITE_FOOTER"] a,
+[id="SITE_FOOTER"] p {
+  font-size: 14px !important;
+  color: var(--text-tertiary) !important;
+}
+
+footer a:hover,
+[id="SITE_FOOTER"] a:hover {
+  color: var(--text-secondary) !important;
+}
+
+/* ── DIVIDERS & LINES ─────────────────────────────────────────── */
+hr {
+  border: none !important;
+  border-top: 1px solid var(--gold-border) !important;
+  margin: 24px 0 !important;
+}
+
+.line-subtle {
+  border-color: var(--line-subtle) !important;
+}
+
+/* ── HERO SECTION ─────────────────────────────────────────────── */
+.hero-section {
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 30%, rgba(139, 111, 191, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 70%, rgba(201, 168, 76,  0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 80% 80%, rgba(191, 111, 111, 0.04) 0%, transparent 60%),
+    linear-gradient(180deg, #0a0a0f 0%, #0f0a1a 50%, #0a0a0f 100%) !important;
+}
+
+/* ── QUOTE SECTION ────────────────────────────────────────────── */
+.quote-section {
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201, 168, 76, 0.04) 0%, transparent 70%);
+}
+
+.quote-section blockquote,
+.quote-text {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: clamp(26px, 3.5vw, 42px) !important;
+  font-weight: 300 !important;
+  font-style: italic !important;
+  color: var(--text-primary) !important;
+  line-height: 1.35 !important;
+}
+
+/* ── CTA SECTION ──────────────────────────────────────────────── */
+.cta-section {
+  background:
+    radial-gradient(ellipse 70% 80% at 50% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 10% 50%, rgba(139, 111, 191, 0.04) 0%, transparent 60%),
+    linear-gradient(180deg, transparent, rgba(15, 10, 26, 0.5), transparent) !important;
+  border-top:    1px solid var(--line-subtle) !important;
+  border-bottom: 1px solid var(--line-subtle) !important;
+}
+
+/* ── WISTIA / VIDEO EMBEDS ────────────────────────────────────── */
+.video-container {
+  border: 1px solid var(--gold-border);
+  background: var(--bg-card);
+}
+
+/* ── FORMS ────────────────────────────────────────────────────── */
+input, textarea, select {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--line-medium) !important;
+  border-radius: 0 !important;
+  color: var(--text-primary) !important;
+  font-family: 'EB Garamond', serif !important;
+  font-size: 16px !important;
+  padding: 12px 16px !important;
+  transition: border-color 0.2s !important;
+}
+input:focus, textarea:focus {
+  border-color: var(--gold-border) !important;
+  outline: none !important;
+}
+input::placeholder, textarea::placeholder {
+  color: var(--text-tertiary) !important;
+  font-style: italic;
+}
+
+/* ── LINKS ────────────────────────────────────────────────────── */
+a {
+  color: var(--gold) !important;
+  text-decoration: none !important;
+  transition: color 0.2s !important;
+}
+a:hover {
+  color: var(--gold-hover) !important;
+}
+
+/* ── INSTAGRAM FEED WIDGET ────────────────────────────────────── */
+.instagram-section {
+  border-top: 1px solid var(--line-subtle);
+  padding: 80px 0;
+}
+
+/* ── WISTIA / COURSE VIDEOS ───────────────────────────────────── */
+.course-module {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-left: 2px solid var(--gold);
+  padding: 20px 24px;
+  margin-bottom: 2px;
+  transition: background 0.2s;
+}
+.course-module:hover {
+  background: var(--bg-raised);
+  border-left-color: var(--gold);
+}
+.course-module-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 18px;
+  color: var(--text-primary) !important;
+}
+.course-module-meta {
+  font-family: 'Cinzel', serif !important;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-tertiary) !important;
+  margin-top: 4px;
+}
+
+/* ── BOOKS / STORE CARDS ──────────────────────────────────────── */
+.book-card {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--line-subtle) !important;
+  border-radius: 0 !important;
+  transition: border-color 0.2s, transform 0.2s !important;
+}
+.book-card:hover {
+  border-color: var(--gold-border) !important;
+  transform: translateY(-2px);
+}
+.book-price {
+  font-family: 'Cinzel', serif !important;
+  font-size: 11px !important;
+  letter-spacing: 2px !important;
+  color: var(--gold) !important;
+}
+
+/* ── SCROLLBAR ────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--gold-border); }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+/* ── SELECTION ────────────────────────────────────────────────── */
+::selection {
+  background: var(--gold-faint);
+  color: var(--gold);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   END OF SHIVOHAMPATH GLOBAL CSS
+   ═══════════════════════════════════════════════════════════════ */

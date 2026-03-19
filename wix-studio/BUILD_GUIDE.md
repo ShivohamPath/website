@@ -176,15 +176,36 @@ Go to **Dashboard → Add Apps** and install all of these first:
 
 ### ABOUT PAGE
 
+> **Revamp context:** The About page already exists at shivohampath.com. The goal is to replace its current layout with the new mockup design — section by section. **Do not delete the entire page.** Work through each section below, removing old elements and replacing them with the new design. The nav and footer are site-wide and do not need to be touched here.
+
+---
+
+#### Before You Start
+
+1. Go to **Editor → Pages** and open the **About** page
+2. Scroll through the page and note every existing strip/section
+3. You will either **replace** existing strips in place, or **delete** ones that have no equivalent in the new design
+4. The new page has **7 sections** in this order:
+   - Hero Banner
+   - Intro Split (Portrait + Bio)
+   - Pull Quote
+   - Story (3 numbered blocks)
+   - Lineage Cards (4-up)
+   - Offerings (2×2 grid)
+   - Closing CTA
+5. If the current page has fewer sections, add new strips at the bottom as needed. If it has more, delete the extras after you've replaced what you need.
+
 ---
 
 #### ABOUT — Section 1: Hero Banner
 
-**What it looks like:** Dark full-height banner, centered text, rotating mandala SVG behind it, gold eyebrow line, large heading with italic gold text, thin gold divider, italic subtitle.
+**What it looks like:** Dark 70vh banner, centered text, rotating mandala SVG behind it, gold eyebrow line, large heading with italic gold text, thin gold divider, italic subtitle.
 
-1. Add a new **Strip** — set height to **70vh minimum**
-2. Background: `linear-gradient(180deg, #0a0a0f 0%, #0f0a1a 60%, #0a0a0f 100%)` — set via strip background color `#0f0a1a`
-3. Add a faint radial purple glow overlay: Add → **Shape** → Rectangle, full-width, set fill to a radial gradient from `rgba(139,111,191,0.08)` to transparent. Send to back.
+**If a hero strip already exists:** select it and update it. **If not:** add a new Strip at the top of the page body (below the header).
+
+1. Select the hero strip → set minimum height to **70vh**
+2. Strip background color: `#0f0a1a`; overlay a Shape rectangle with radial gradient `rgba(139,111,191,0.08)` center → transparent, send to back
+3. **Delete any existing image background** in this strip — the hero uses a gradient + SVG only, no photo
 4. Add the rotating mandala SVG:
    - Add → **Embed** → **HTML iFrame**
    - Paste this SVG code:
@@ -209,7 +230,7 @@ Go to **Dashboard → Add Apps** and install all of these first:
    </svg></body></html>
    ```
    - Set embed size to 600×600px, center it, send to back. Set background transparent.
-5. Add a **Container** centered in the strip (max-width 700px):
+5. **Delete all existing text/image elements** inside this strip, then add a **Container** centered (max-width 700px):
 6. Inside the container, add a **Text** element:
    - `VEENA MAHESHWARI · MYSTIC · MISFIT · NO FILTER`
    - Font: Cinzel, 10px, gold `#C9A84C`, letter spacing 4px
@@ -236,11 +257,14 @@ Go to **Dashboard → Add Apps** and install all of these first:
 
 **What it looks like:** Two columns — portrait photo with decorative corner brackets, two floating info boxes, and the intro bio text on the right.
 
-1. Add a new **Strip**, background `#0f0a1a`, top border 1px `rgba(232,224,208,0.07)`
-2. Inside, add a **2-column container** — set column ratio to **1 : 1.1** (left slightly narrower), gap 80px, max-width 1200px centered
-3. **LEFT COLUMN — Portrait:**
+**If an about/bio strip already exists:** clear its contents and rebuild with the layout below. **If not:** add a new strip after the hero.
+
+1. Select or add a strip → background `#0f0a1a`, top border 1px `rgba(232,224,208,0.07)`
+2. **Delete all current content inside this strip**
+3. Add a **2-column container** — column ratio **1 : 1.1** (left narrower), gap 80px, max-width 1200px centered
+4. **LEFT COLUMN — Portrait:**
    a. Add an **Image** element, set to 3:4 aspect ratio (portrait orientation)
-   b. Upload Veena's photo; set **fit: cover**
+   b. Veena's photo is already in the Media Manager (used on homepage). Reuse it; set **fit: cover**
    c. Apply a slight vignette: add a semi-transparent rectangle overlay on top, gradient from transparent (top) to `rgba(10,10,15,0.5)` (bottom)
    d. Add a gold **border** 1px `rgba(201,168,76,0.2)` around the image frame
    e. **Corner brackets** — add 4 small L-shaped decorative lines (or use Box elements, borderless on 2 sides):
@@ -271,7 +295,7 @@ Go to **Dashboard → Add Apps** and install all of these first:
         - **"2.3M"** — same style
         - **"Monthly Reach"** — same label style
 
-4. **RIGHT COLUMN — Intro text:**
+5. **RIGHT COLUMN — Intro text:**
    a. Add small eyebrow label: "THE GUIDE" — Cinzel 10px, gold, letter-spacing 4px
    b. Add **Heading 2**:
       - "Not Your" (plain)
@@ -287,7 +311,7 @@ Go to **Dashboard → Add Apps** and install all of these first:
    e. Add **italic pull line** below divider:
       - "If you have ever whispered His name in the dark — you are home."
       - Font: Cormorant Garamond, 20px italic, color `rgba(232,224,208,0.8)`
-5. Strip padding: 100px top and bottom
+6. Strip padding: 100px top and bottom
 
 ---
 
@@ -295,17 +319,20 @@ Go to **Dashboard → Add Apps** and install all of these first:
 
 **What it looks like:** Full-width dark band, large centered italic quote, gold highlighted words, citation below.
 
-1. Add a new **Strip**, background `#0f0a1a`, top and bottom border 1px `rgba(232,224,208,0.07)`
-2. Add a faint radial gold glow: Add → Shape → Rectangle full-width, radial fill `rgba(201,168,76,0.04)` center → transparent edges. Send to back.
-3. Add a centered **Blockquote / Text** element, max-width 800px:
+**If a quote strip already exists:** update the text and styling. **If not:** add a new strip after the intro split.
+
+1. Select or add a strip → background `#0f0a1a`, top and bottom border 1px `rgba(232,224,208,0.07)`
+2. **Remove any existing decorative elements** that don't match — keep only a Text and a citation
+3. Add a faint radial gold glow: Add → Shape → Rectangle full-width, radial fill `rgba(201,168,76,0.04)` center → transparent edges. Send to back.
+4. Add (or update) a centered **Text** element, max-width 800px:
    - Text: "I live not as someone who worships Shiva from afar — but as someone who knows Him as "
    - "Husband, Lover, and Guru." — this phrase in gold `#C9A84C`, non-italic
    - Font: Cormorant Garamond, weight 300, ~38px italic, color `#e8e0d0`, line-height 1.35
-4. Below it, add citation text:
+5. Below it, add (or update) citation text:
    - "— Veena Maheshwari"
    - Font: Cinzel, 10px, letter-spacing 3px, color `rgba(232,224,208,0.35)`
    - Margin top: 24px
-5. Strip padding: 80px top and bottom
+6. Strip padding: 80px top and bottom
 
 ---
 
@@ -313,9 +340,11 @@ Go to **Dashboard → Add Apps** and install all of these first:
 
 **What it looks like:** Three story entries, each with a large faint number on the left, a short tag label, and the story text on the right. A thin line separates each entry.
 
+**This section almost certainly does not exist on the current page.** Add a new strip after the pull quote.
+
 1. Add a new **Strip**, background `#0a0a0f`
 2. Max-width container: 1200px, centered, padding 80px sides
-3. Create **3 story blocks** (repeat this structure three times):
+3. Create **3 story blocks** inside the container (repeat this structure three times):
 
    **Each story block layout:** 2 columns — left: 200px wide (number + tag), right: remaining width (heading + paragraphs)
 
@@ -344,13 +373,16 @@ Go to **Dashboard → Add Apps** and install all of these first:
 
 **What it looks like:** Dark section with centered header, 4 equal cards in a row, each with a symbol icon, title, and short description. Top gold line appears on hover.
 
-1. Add a new **Strip**, background `#131020`, top and bottom border 1px `rgba(232,224,208,0.07)`
-2. Add centered header block (max-width 1200px):
+**If there is an existing credentials/credentials section:** clear it and rebuild. **If not:** add a new strip after the story section.
+
+1. Select or add a **Strip**, background `#131020`, top and bottom border 1px `rgba(232,224,208,0.07)`
+2. **Delete all old credentials-style content** in this strip
+3. Add centered header block (max-width 1200px):
    - Eyebrow: "THE FOUNDATIONS" — Cinzel 10px, gold, letter-spacing 4px
    - Heading: "The " (plain) + "Paths" (italic gold) + " That Shaped This Work" — Cormorant Garamond ~44px weight 300
    - Gold divider (centered, same as hero)
    - Margin below header: 60px
-3. Add a **4-column container** (equal columns, gap 2px):
+4. Add a **4-column container** (equal columns, gap 2px):
 
    **Card 1 — Kashmiri Shaivism:**
    - Box background `#131020`, border 1px `rgba(232,224,208,0.07)`
@@ -375,7 +407,7 @@ Go to **Dashboard → Add Apps** and install all of these first:
    - Title: "Madhurya Bhakti"
    - Body: "The path of the Divine Beloved…"
 
-4. To add **hover effect** on cards (gold top-line reveal):
+5. To add **hover effect** on cards (gold top-line reveal):
    - Select card → **Interactions** panel → On Hover → change border-top color to gold
    - Or: place a 40px × 1px gold rectangle at the top of each card, set opacity to 0, then in Interactions set it to opacity 100 on hover
 
@@ -385,7 +417,9 @@ Go to **Dashboard → Add Apps** and install all of these first:
 
 **What it looks like:** Left-aligned header, then a 2×2 grid of dark cards. Each card has a small tag, title, description, and a text link arrow. On hover, a vertical gold line appears on the left edge.
 
-1. Add a new **Strip**, background `#0a0a0f`
+**If there's an existing services/offerings section on this page:** clear and rebuild it. **If not:** add a new strip. (Note: if the current About page has no offerings section at all and sends people to a separate Readings page, that's fine — this section is new.)
+
+1. Select or add a **Strip**, background `#0a0a0f`
 2. Max-width container 1200px, centered, padding 100px top/bottom
 
 3. **Header block:**
@@ -431,7 +465,9 @@ Go to **Dashboard → Add Apps** and install all of these first:
 
 **What it looks like:** Full-width, centered, radial gold glow behind the text, small eyebrow, large heading with italic gold, italic subtitle, two buttons side by side.
 
-1. Add a new **Strip**, background `#0a0a0f`, top border 1px `rgba(232,224,208,0.07)`
+**If a CTA strip already exists at the bottom of the page:** update it. **If not:** add one. Also **delete any extra strips below this** — the footer is site-wide and this should be the last section on the page.
+
+1. Select or add a **Strip** at the bottom, background `#0a0a0f`, top border 1px `rgba(232,224,208,0.07)`
 2. Add radial gold glow overlay: Shape → Rectangle full-width, radial gradient `rgba(201,168,76,0.05)` center → transparent. Send to back.
 3. Add centered container (max-width 700px):
 4. Eyebrow: "BEGIN THE WORK" — Cinzel 10px, gold, letter-spacing 4px, margin-bottom 20px
@@ -454,17 +490,21 @@ Go to **Dashboard → Add Apps** and install all of these first:
 
 #### ABOUT — Final Checklist
 
-Before publishing the About page:
+Before republishing the About page:
 
-- [ ] Veena's portrait photo uploaded and cropped correctly (3:4 ratio, face centered)
+- [ ] Old sections that no longer exist in the new design have been deleted
+- [ ] Page has exactly 7 sections in the correct order (Hero → Intro Split → Pull Quote → Story → Lineage → Offerings → CTA)
+- [ ] Veena's portrait photo is the same one already in Media Manager (no re-upload needed)
 - [ ] Stats boxes show correct numbers (99K Seekers, 2.3M Monthly Reach)
 - [ ] Credential box shows correct lineage items
 - [ ] All three story sections have correct text
-- [ ] Mandala SVG embed has transparent background (no white box)
-- [ ] All 4 offering cards link to their correct pages
-- [ ] CTA buttons link to correct destinations (Bookings + Courses)
+- [ ] Mandala SVG embed has transparent background (no white box showing)
+- [ ] All 4 offering cards link to their correct pages (Readings / Courses / Blog / Insiders)
+- [ ] CTA buttons link to correct destinations (Wix Bookings + Courses page)
 - [ ] Hover effects tested on lineage cards and offering cards
-- [ ] Mobile view checked — portrait stacks above text, cards go to single column
+- [ ] Mobile view: portrait stacks above text, 4-card row goes to 2×2, 2×2 grid goes to 1 column
+- [ ] Preview the page before publishing — check it looks right in both desktop and mobile view
+- [ ] Publish
 
 ---
 

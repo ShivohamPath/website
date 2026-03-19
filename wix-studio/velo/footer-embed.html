@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════
+  SHIVOHAMPATH · FOOTER HTML EMBED
+  ═══════════════════════════════════════════════════════════════
+  HOW TO ADD THIS TO YOUR WIX SITE:
+  1. In Wix Studio editor, click the Footer strip
+  2. Add → Embed → HTML iFrame (or "Custom Element")
+  3. Paste the ENTIRE contents of this file
+  4. Set the embed width to 100% and height to auto / ~460px
+  5. Set strip background to #0a0a0f and top border gold
+  ═══════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Footer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ── RESET ─────────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── TOKENS ────────────────────────────────────────────────── */
+  :root {
+    --bg:          #0a0a0f;
+    --gold:        #C9A84C;
+    --gold-hover:  #a8893a;
+    --gold-border: rgba(201, 168, 76, 0.25);
+    --gold-faint:  rgba(201, 168, 76, 0.08);
+    --text-1:      #e8e0d0;
+    --text-2:      rgba(232, 224, 208, 0.55);
+    --text-3:      rgba(232, 224, 208, 0.28);
+    --line:        rgba(232, 224, 208, 0.07);
+  }
+
+  /* ── BASE ──────────────────────────────────────────────────── */
+  html, body {
+    background: var(--bg);
+    color: var(--text-2);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 14px;
+    line-height: 1.7;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* ── WRAPPER ───────────────────────────────────────────────── */
+  .footer {
+    width: 100%;
+    background: var(--bg);
+    border-top: 1px solid var(--gold-border);
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 64px 40px 0;
+  }
+
+  /* ── MAIN GRID ─────────────────────────────────────────────── */
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* ── BRAND COLUMN ──────────────────────────────────────────── */
+  .brand-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .brand-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+    margin: 14px 0;
+  }
+
+  .brand-tagline {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text-2);
+    line-height: 1.65;
+    max-width: 260px;
+    margin-bottom: 28px;
+  }
+
+  /* Social icons */
+  .social-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--gold-border);
+    background: transparent;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    text-decoration: none;
+  }
+  .social-btn:hover {
+    border-color: var(--gold);
+    background: var(--gold-faint);
+  }
+  .social-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--gold);
+    opacity: 0.8;
+  }
+
+  /* ── NAV COLUMNS ───────────────────────────────────────────── */
+  .col-heading {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3.5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0.9;
+  }
+
+  .nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .nav-list a {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 14px;
+    color: var(--text-2);
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .nav-list a:hover {
+    color: var(--text-1);
+  }
+
+  .nav-list .featured-link {
+    color: var(--gold);
+    opacity: 0.85;
+  }
+  .nav-list .featured-link:hover {
+    opacity: 1;
+  }
+
+  /* ── BOTTOM BAR ────────────────────────────────────────────── */
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .copyright {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--text-3);
+    text-transform: uppercase;
+  }
+
+  .bottom-links {
+    display: flex;
+    gap: 24px;
+  }
+  .bottom-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--text-3);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .bottom-links a:hover {
+    color: var(--text-2);
+  }
+
+  /* ── RESPONSIVE ────────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .footer-inner { padding: 48px 24px 0; }
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    .brand-col { grid-column: 1 / -1; }
+    .brand-tagline { max-width: 100%; }
+  }
+
+  @media (max-width: 560px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<footer class="footer">
+  <div class="footer-inner">
+
+    <!-- ── MAIN GRID ─────────────────────────────────────────── -->
+    <div class="footer-grid">
+
+      <!-- Column 1 · Brand -->
+      <div class="brand-col">
+        <div class="brand-logo">Shivoham Path</div>
+        <div class="brand-divider"></div>
+        <p class="brand-tagline">
+          Esoteric astrology for souls who came here<br>with unfinished business.
+        </p>
+
+        <div class="social-row">
+          <!-- Instagram -->
+          <a class="social-btn" href="https://www.instagram.com/shivohampath" target="_blank" title="Instagram" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+
+          <!-- YouTube -->
+          <a class="social-btn" href="https://www.youtube.com/@shivohampath" target="_blank" title="YouTube" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2 · Readings -->
+      <div>
+        <div class="col-heading">Readings</div>
+        <ul class="nav-list">
+          <li><a onclick="nav('/readings#specific-question')">Specific Question</a></li>
+          <li><a onclick="nav('/readings#karmic-knots')" class="featured-link">Karmic Knots ★</a></li>
+          <li><a onclick="nav('/readings#synastry')">Synastry &amp; Kundali Milan</a></li>
+          <li><a onclick="nav('/readings#moksha-path')">Moksha Path Consultation</a></li>
+          <li><a onclick="nav('/readings#madhurya-bhakta')">Madhurya Bhakta Sessions</a></li>
+          <li><a onclick="nav('/readings#shiva-oracle')">Shiva Oracle Reading</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3 · Courses -->
+      <div>
+        <div class="col-heading">Courses</div>
+        <ul class="nav-list">
+          <li><a onclick="nav('/courses#esoteric-astrology')">Esoteric Astrology Course</a></li>
+          <li><a onclick="nav('/courses#spirituality-misfits')">Spirituality for Misfits</a></li>
+          <li><a onclick="nav('/courses#she-who-becomes')">She Who Becomes Him</a></li>
+          <li><a onclick="nav('/courses#live-sessions')">Live Sessions</a></li>
+          <li><a onclick="nav('/books')">Books &amp; PDFs</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4 · Explore -->
+      <div>
+        <div class="col-heading">Explore</div>
+        <ul class="nav-list">
+          <li><a onclick="nav('/')">Home</a></li>
+          <li><a onclick="nav('/about')">About Veena</a></li>
+          <li><a onclick="nav('/blog')">The Archive · Blog</a></li>
+          <li><a onclick="nav('/about#testimonials')">Testimonials</a></li>
+          <li><a onclick="nav('/contact')">Contact</a></li>
+          <li>
+            <a href="https://www.instagram.com/shivohampath" target="_blank" rel="noopener">
+              Instagram ↗
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div><!-- /footer-grid -->
+
+    <!-- ── BOTTOM BAR ──────────────────────────────────────────── -->
+    <div class="footer-bottom">
+      <span class="copyright">
+        © <span id="year"></span> Shivoham Path · Veena Maheshwari · All Rights Reserved
+      </span>
+      <div class="bottom-links">
+        <a onclick="nav('/privacy')">Privacy</a>
+        <a onclick="nav('/terms')">Terms</a>
+        <a onclick="nav('/contact')">Contact</a>
+      </div>
+    </div>
+
+  </div><!-- /footer-inner -->
+</footer>
+
+<script>
+  // ── Dynamic year ─────────────────────────────────────────────
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ── Navigation helper ────────────────────────────────────────
+  // Navigates the parent Wix page (escapes the iframe)
+  function nav(path) {
+    try {
+      // Primary: postMessage to masterPage.js listener
+      window.parent.postMessage({ type: 'footerNav', path: path }, '*');
+    } catch (e) {
+      // Fallback: direct parent navigation
+      window.top.location.href = path;
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -33,6 +33,23 @@ $w.onReady(function () {
   // and link them to your Wix Bookings page in the editor directly.
   // No code needed — link via the editor link panel.
 
+  // ── FOOTER IFRAME NAVIGATION ───────────────────────────────
+  // Listens for postMessage events sent by footer-embed.html
+  // when visitor clicks a footer nav link.
+  //
+  // Give the footer HTML embed element the ID: #footerEmbed
+  // in the editor (optional — message listener works globally).
+  wixWindow.addEventListener('message', (event) => {
+    try {
+      const data = event.data;
+      if (data && data.type === 'footerNav' && data.path) {
+        // Strip leading slash for wixLocation.to()
+        const path = String(data.path).replace(/^\//, '');
+        wixLocation.to(`/${path}`);
+      }
+    } catch (e) { /* ignore malformed messages */ }
+  });
+
   console.log('ShivohamPath · Site loaded · Path:', currentPath);
 });
 

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:wght@400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0a0a0f;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section {
+    padding: 100px 40px;
+    font-family: 'EB Garamond', Georgia, serif;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    margin-bottom: 60px;
+  }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 48px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.1;
+  }
+
+  .heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: #131020;
+    border: 1px solid rgba(232,224,208,0.07);
+    padding: 40px 36px;
+    position: relative;
+    transition: background 0.3s, border-color 0.3s;
+    cursor: default;
+    overflow: hidden;
+  }
+
+  .card:hover {
+    background: #1a1525;
+    border-color: rgba(201,168,76,0.2);
+  }
+
+  /* Gold left edge line on hover */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: #C9A84C;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .card:hover::before {
+    opacity: 1;
+  }
+
+  .card-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: #e8e0d0;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .card-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    color: rgba(232,224,208,0.65);
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+
+  .card-link {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: rgba(232,224,208,0.35);
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.25s;
+  }
+
+  .card-link:hover {
+    color: #C9A84C;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    .section {
+      padding: 60px 20px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="section">
+
+  <div class="header">
+    <span class="eyebrow">THIS IS MY OFFERING</span>
+    <h2 class="heading">How I <em>Walk With You</em></h2>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <span class="card-tag">KARMIC ASTROLOGY</span>
+      <h3 class="card-title">Astrology for the Soul</h3>
+      <p class="card-body">Go beyond predictions. I read the D1, D9, and D60 together — the natal chart, the soul chart, and the dharma chart — to show you the karmic architecture beneath this lifetime.</p>
+      <a class="card-link" href="#">View All Readings →</a>
+    </div>
+
+    <div class="card">
+      <span class="card-tag">COURSE · LIVE JOURNEY</span>
+      <h3 class="card-title">She Who Becomes Him</h3>
+      <p class="card-body">A four-week journey for women who know Shiv as Beloved. Not as concept, but as lived experience — the one who has been the undertow beneath every longing, every love, every loss.</p>
+      <a class="card-link" href="#">Enter the Course →</a>
+    </div>
+
+    <div class="card">
+      <span class="card-tag">WRITING &amp; WISDOM</span>
+      <h3 class="card-title">The Blog — From the Archive</h3>
+      <p class="card-body">Essays on karma, mythology, Jyotish, and the esoteric path. Written for souls who sense there is more beneath the surface — and are ready to go there.</p>
+      <a class="card-link" href="#">Read the Archive →</a>
+    </div>
+
+    <div class="card">
+      <span class="card-tag">INNER CIRCLE</span>
+      <h3 class="card-title">Shivohampath Insiders</h3>
+      <p class="card-body">The private space where the real conversations happen. Deeper transmissions, live Q&amp;As, and a community of seekers walking the same fire — together.</p>
+      <a class="card-link" href="#">Join the Circle →</a>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

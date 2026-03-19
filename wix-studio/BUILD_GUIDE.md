@@ -176,13 +176,295 @@ Go to **Dashboard → Add Apps** and install all of these first:
 
 ### ABOUT PAGE
 
-**Sections:**
-1. **Hero** — full-width portrait image with name overlay
-2. **Story** — long-form bio, Veena's path, how she found esoteric astrology
-3. **Philosophy** — "Why Vedic + Esoteric?" — 3 principle blocks
-4. **What a Session Looks Like** — step-by-step process
-5. **Credentials / Background** — tag pills
-6. **CTA** — "Book a Reading"
+---
+
+#### ABOUT — Section 1: Hero Banner
+
+**What it looks like:** Dark full-height banner, centered text, rotating mandala SVG behind it, gold eyebrow line, large heading with italic gold text, thin gold divider, italic subtitle.
+
+1. Add a new **Strip** — set height to **70vh minimum**
+2. Background: `linear-gradient(180deg, #0a0a0f 0%, #0f0a1a 60%, #0a0a0f 100%)` — set via strip background color `#0f0a1a`
+3. Add a faint radial purple glow overlay: Add → **Shape** → Rectangle, full-width, set fill to a radial gradient from `rgba(139,111,191,0.08)` to transparent. Send to back.
+4. Add the rotating mandala SVG:
+   - Add → **Embed** → **HTML iFrame**
+   - Paste this SVG code:
+   ```html
+   <!DOCTYPE html><html><body style="margin:0;background:transparent;overflow:hidden;">
+   <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg"
+     style="width:600px;height:600px;opacity:0.05;animation:spin 120s linear infinite;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
+     <style>@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg);}}</style>
+     <circle cx="300" cy="300" r="260" stroke="#C9A84C" stroke-width="0.5"/>
+     <circle cx="300" cy="300" r="200" stroke="#C9A84C" stroke-width="0.5"/>
+     <circle cx="300" cy="300" r="140" stroke="#C9A84C" stroke-width="0.5"/>
+     <circle cx="300" cy="300" r="80" stroke="#C9A84C" stroke-width="0.5"/>
+     <circle cx="300" cy="300" r="30" stroke="#C9A84C" stroke-width="0.5"/>
+     <line x1="40" y1="300" x2="560" y2="300" stroke="#C9A84C" stroke-width="0.5"/>
+     <line x1="300" y1="40" x2="300" y2="560" stroke="#C9A84C" stroke-width="0.5"/>
+     <line x1="116" y1="116" x2="484" y2="484" stroke="#C9A84C" stroke-width="0.5"/>
+     <line x1="484" y1="116" x2="116" y2="484" stroke="#C9A84C" stroke-width="0.5"/>
+     <polygon points="300,60 520,440 80,440" stroke="#C9A84C" stroke-width="0.5" fill="none"/>
+     <polygon points="300,540 80,160 520,160" stroke="#C9A84C" stroke-width="0.5" fill="none"/>
+     <polygon points="300,80 490,410 110,410" stroke="#C9A84C" stroke-width="0.3" fill="none" opacity="0.5"/>
+     <polygon points="300,520 110,190 490,190" stroke="#C9A84C" stroke-width="0.3" fill="none" opacity="0.5"/>
+   </svg></body></html>
+   ```
+   - Set embed size to 600×600px, center it, send to back. Set background transparent.
+5. Add a **Container** centered in the strip (max-width 700px):
+6. Inside the container, add a **Text** element:
+   - `VEENA MAHESHWARI · MYSTIC · MISFIT · NO FILTER`
+   - Font: Cinzel, 10px, gold `#C9A84C`, letter spacing 4px
+   - Margin bottom: 20px
+7. Add **Heading 1**:
+   - Line 1: "A Woman Who Has " (plain) + "Loved Him" (italic, gold `#C9A84C`)
+   - Line 2: "Across Kalpas"
+   - Font: Cormorant Garamond, weight 300, ~72px, color `#e8e0d0`
+   - Margin bottom: 20px
+8. Add the **gold divider** (reuse component from homepage, or build fresh):
+   - Add → **Line** element, width 80px, color `rgba(201,168,76,0.2)`, 1px
+   - Add → **Shape** → Small square, 6×6px, gold, rotated 45°
+   - Add another **Line** 80px
+   - Group all three, center horizontally
+   - Margin: 32px top and bottom
+9. Add **subtitle text**:
+   - "A living mandir of Bhakti, wisdom, and divine longing."
+   - Font: EB Garamond, 18px italic, color `rgba(232,224,208,0.35)`
+10. Strip padding: 120px top, 80px bottom
+
+---
+
+#### ABOUT — Section 2: Intro Split (Portrait + Bio)
+
+**What it looks like:** Two columns — portrait photo with decorative corner brackets, two floating info boxes, and the intro bio text on the right.
+
+1. Add a new **Strip**, background `#0f0a1a`, top border 1px `rgba(232,224,208,0.07)`
+2. Inside, add a **2-column container** — set column ratio to **1 : 1.1** (left slightly narrower), gap 80px, max-width 1200px centered
+3. **LEFT COLUMN — Portrait:**
+   a. Add an **Image** element, set to 3:4 aspect ratio (portrait orientation)
+   b. Upload Veena's photo; set **fit: cover**
+   c. Apply a slight vignette: add a semi-transparent rectangle overlay on top, gradient from transparent (top) to `rgba(10,10,15,0.5)` (bottom)
+   d. Add a gold **border** 1px `rgba(201,168,76,0.2)` around the image frame
+   e. **Corner brackets** — add 4 small L-shaped decorative lines (or use Box elements, borderless on 2 sides):
+      - Top-left: border top + left, 28×28px, gold, opacity 40%, offset -10px from image corner
+      - Top-right: border top + right
+      - Bottom-left: border bottom + left
+      - Bottom-right: border bottom + right
+   f. **Floating credential box** (bottom-right, overlapping image):
+      - Add a **Box**, background `#1a1525`, border 1px `rgba(201,168,76,0.2)`
+      - Padding: 18px 24px
+      - Position: absolute, –24px right, –24px bottom of the image
+      - Inside: label text "LINEAGE & PRACTICE" — Cinzel 10px, gold, letter-spacing 2px
+      - Below label: small text list — EB Garamond 12px, color `rgba(232,224,208,0.35)`:
+        ```
+        Kashmiri Shaivism
+        Jyotish · D60 Shashtiamsha
+        Shaktipat Initiated
+        Madhurya Bhakti
+        ```
+   g. **Floating stats box** (top-left, overlapping image):
+      - Add a **Box**, background `#1a1525`, border 1px `rgba(201,168,76,0.2)`
+      - Padding: 16px 20px
+      - Position: absolute, 32px top, –32px left of the image
+      - Inside — two stat blocks separated by a 1px horizontal line:
+        - **"99K"** — Cormorant Garamond 28px weight 300, gold
+        - **"Seekers"** — Cinzel 8px, letter-spacing 2px, color `rgba(232,224,208,0.35)`
+        - Divider line
+        - **"2.3M"** — same style
+        - **"Monthly Reach"** — same label style
+
+4. **RIGHT COLUMN — Intro text:**
+   a. Add small eyebrow label: "THE GUIDE" — Cinzel 10px, gold, letter-spacing 4px
+   b. Add **Heading 2**:
+      - "Not Your" (plain)
+      - "Typical " (plain) + "Astrologer." (italic, gold)
+      - "Not Your Typical " (plain) + "Mystic." (italic, gold)
+      - Font: Cormorant Garamond, weight 300, ~48px, color `#e8e0d0`
+      - Margin bottom: 28px
+   c. Add **paragraph text** — EB Garamond 17px, color `rgba(232,224,208,0.65)`, line-height 1.85:
+      - Para 1: "My name is Veena Maheshwari, and my life has always been intertwined with Shiv."
+      - Para 2: "Even as a child… as a **living presence.**" (bold words = `#e8e0d0`, weight 400)
+      - Para 3: "I would look at images of Shakti…"
+   d. Add short **gold divider** (left-aligned): 40px line + diamond, margin 28px top/bottom
+   e. Add **italic pull line** below divider:
+      - "If you have ever whispered His name in the dark — you are home."
+      - Font: Cormorant Garamond, 20px italic, color `rgba(232,224,208,0.8)`
+5. Strip padding: 100px top and bottom
+
+---
+
+#### ABOUT — Section 3: Pull Quote
+
+**What it looks like:** Full-width dark band, large centered italic quote, gold highlighted words, citation below.
+
+1. Add a new **Strip**, background `#0f0a1a`, top and bottom border 1px `rgba(232,224,208,0.07)`
+2. Add a faint radial gold glow: Add → Shape → Rectangle full-width, radial fill `rgba(201,168,76,0.04)` center → transparent edges. Send to back.
+3. Add a centered **Blockquote / Text** element, max-width 800px:
+   - Text: "I live not as someone who worships Shiva from afar — but as someone who knows Him as "
+   - "Husband, Lover, and Guru." — this phrase in gold `#C9A84C`, non-italic
+   - Font: Cormorant Garamond, weight 300, ~38px italic, color `#e8e0d0`, line-height 1.35
+4. Below it, add citation text:
+   - "— Veena Maheshwari"
+   - Font: Cinzel, 10px, letter-spacing 3px, color `rgba(232,224,208,0.35)`
+   - Margin top: 24px
+5. Strip padding: 80px top and bottom
+
+---
+
+#### ABOUT — Section 4: Story (Three numbered blocks)
+
+**What it looks like:** Three story entries, each with a large faint number on the left, a short tag label, and the story text on the right. A thin line separates each entry.
+
+1. Add a new **Strip**, background `#0a0a0f`
+2. Max-width container: 1200px, centered, padding 80px sides
+3. Create **3 story blocks** (repeat this structure three times):
+
+   **Each story block layout:** 2 columns — left: 200px wide (number + tag), right: remaining width (heading + paragraphs)
+
+   **Story 01 — "The Searching":**
+   - Left: Text "01" — Cormorant Garamond, 72px, weight 300, color `rgba(201,168,76,0.08)` (very faint gold), line-height 1
+   - Below the number: "THE" on one line, "SEARCHING" on next — Cinzel, 9px, letter-spacing 3px, gold `#C9A84C`
+   - Right: Heading "A Soul That Could Not " (plain) + "Fit." (italic gold) — Cormorant Garamond ~34px weight 300
+   - Two paragraphs of body text — EB Garamond 17px, `rgba(232,224,208,0.65)`, line-height 1.85
+   - Bottom: 1px horizontal line `rgba(232,224,208,0.07)`, margin 60px top and bottom
+
+   **Story 02 — "The Initiation":**
+   - Number: "02", tag: "THE / INITIATION"
+   - Heading: "When the " + "Forgotten River" (italic gold) + " Began Flowing Again."
+   - Two paragraphs (Shaktipat initiation, years of sadhana)
+   - Same bottom divider line
+
+   **Story 03 — "The Offering":**
+   - Number: "03", tag: "THE / OFFERING"
+   - Heading: "Why " + "Shivoham Path" (italic gold) + " Was Born."
+   - Three paragraphs — last one in Cormorant Garamond 19px italic gold: "Because in the end, we do not find Shiv. He finds us. And when He does, our entire life becomes His path."
+   - No bottom divider (last item)
+
+---
+
+#### ABOUT — Section 5: Lineage Cards
+
+**What it looks like:** Dark section with centered header, 4 equal cards in a row, each with a symbol icon, title, and short description. Top gold line appears on hover.
+
+1. Add a new **Strip**, background `#131020`, top and bottom border 1px `rgba(232,224,208,0.07)`
+2. Add centered header block (max-width 1200px):
+   - Eyebrow: "THE FOUNDATIONS" — Cinzel 10px, gold, letter-spacing 4px
+   - Heading: "The " (plain) + "Paths" (italic gold) + " That Shaped This Work" — Cormorant Garamond ~44px weight 300
+   - Gold divider (centered, same as hero)
+   - Margin below header: 60px
+3. Add a **4-column container** (equal columns, gap 2px):
+
+   **Card 1 — Kashmiri Shaivism:**
+   - Box background `#131020`, border 1px `rgba(232,224,208,0.07)`
+   - Padding: 36px 28px, text-align center
+   - Icon: "◈" — text element, 24px, gold, opacity 70%, margin-bottom 16px
+   - Title: "Kashmiri Shaivism" — Cormorant Garamond 20px, `#e8e0d0`
+   - Body: "The non-dual philosophy of Trika…" — EB Garamond 13px, `rgba(232,224,208,0.35)`
+   - Hover effect: Add a thin gold line (1px, 40px wide) as a top border that appears on hover using Wix interactions
+
+   **Card 2 — Jyotish & D60:**
+   - Icon: "✦"
+   - Title: "Jyotish & D60"
+   - Body: "The ancient science of light. Karmic astrology through the Shashtiamsha…"
+
+   **Card 3 — Tantric Sadhana:**
+   - Icon: "🔱"
+   - Title: "Tantric Sadhana"
+   - Body: "Not the commercialized version. The actual fire…"
+
+   **Card 4 — Madhurya Bhakti:**
+   - Icon: "◯"
+   - Title: "Madhurya Bhakti"
+   - Body: "The path of the Divine Beloved…"
+
+4. To add **hover effect** on cards (gold top-line reveal):
+   - Select card → **Interactions** panel → On Hover → change border-top color to gold
+   - Or: place a 40px × 1px gold rectangle at the top of each card, set opacity to 0, then in Interactions set it to opacity 100 on hover
+
+---
+
+#### ABOUT — Section 6: Offerings (2×2 Grid)
+
+**What it looks like:** Left-aligned header, then a 2×2 grid of dark cards. Each card has a small tag, title, description, and a text link arrow. On hover, a vertical gold line appears on the left edge.
+
+1. Add a new **Strip**, background `#0a0a0f`
+2. Max-width container 1200px, centered, padding 100px top/bottom
+
+3. **Header block:**
+   - Eyebrow: "THIS IS MY OFFERING" — Cinzel 10px, gold, letter-spacing 4px
+   - Heading: "How I " (plain) + "Walk With You" (italic gold) — Cormorant Garamond ~48px weight 300
+   - Margin below: 60px
+
+4. Add a **2×2 grid container** (2 columns, gap 2px):
+
+   **Card 1 — Karmic Astrology:**
+   - Box: background `#131020`, border 1px `rgba(232,224,208,0.07)`, padding 40px 36px
+   - Tag: "KARMIC ASTROLOGY" — Cinzel 9px, gold, letter-spacing 2.5px, margin-bottom 14px
+   - Title: "Astrology for the Soul" — Cormorant Garamond 26px, `#e8e0d0`
+   - Body: "Go beyond predictions. I read the D1, D9, and D60 together…" — EB Garamond 15px, `rgba(232,224,208,0.65)`
+   - Link: "View All Readings →" — Cinzel 10px, letter-spacing 2px, color `rgba(232,224,208,0.35)` (gold on hover)
+   - Link to: Readings page
+
+   **Card 2 — She Who Becomes Him:**
+   - Tag: "COURSE · LIVE JOURNEY"
+   - Title: "She Who Becomes Him"
+   - Body: "A four-week journey for women who know Shiv as Beloved…"
+   - Link: "Enter the Course →" → Courses page
+
+   **Card 3 — Blog:**
+   - Tag: "WRITING & WISDOM"
+   - Title: "The Blog — From the Archive"
+   - Body: "Essays on karma, mythology, Jyotish, and the esoteric path…"
+   - Link: "Read the Archive →" → Blog page
+
+   **Card 4 — Inner Circle:**
+   - Tag: "INNER CIRCLE"
+   - Title: "Shivohampath Insiders"
+   - Body: "The private space where the real conversations happen…"
+   - Link: "Join the Circle →" → (link to wherever the membership/Insiders page will be)
+
+5. **Hover effect on each card:**
+   - Border color changes from `rgba(232,224,208,0.07)` to `rgba(201,168,76,0.2)` — set in Interactions
+   - A 2px wide × 100% tall gold rectangle on the left edge, opacity 0 normally → opacity 100 on hover
+
+---
+
+#### ABOUT — Section 7: Closing CTA
+
+**What it looks like:** Full-width, centered, radial gold glow behind the text, small eyebrow, large heading with italic gold, italic subtitle, two buttons side by side.
+
+1. Add a new **Strip**, background `#0a0a0f`, top border 1px `rgba(232,224,208,0.07)`
+2. Add radial gold glow overlay: Shape → Rectangle full-width, radial gradient `rgba(201,168,76,0.05)` center → transparent. Send to back.
+3. Add centered container (max-width 700px):
+4. Eyebrow: "BEGIN THE WORK" — Cinzel 10px, gold, letter-spacing 4px, margin-bottom 20px
+5. **Heading:**
+   - "The Love You Feel for the" (line break)
+   - "Divine Is Not Madness." (line break)
+   - "It Is " (plain) + "The Highest Truth." (italic gold)
+   - Font: Cormorant Garamond, ~50px weight 300, line-height 1.15
+   - Margin-bottom: 20px
+6. **Subtitle:**
+   - "And your chart holds the map of exactly how your soul has been moving toward it — across every lifetime."
+   - EB Garamond 17px italic, color `rgba(232,224,208,0.35)`, max-width 480px
+   - Margin-bottom: 48px
+7. **Button row** (centered, side by side, gap 16px):
+   - Button 1 (Primary): "Book a Karmic Reading" — Cinzel 11px, letter-spacing 2.5px, padding 14px 36px, background gold `#C9A84C`, text color `#0a0a0f`. Link to Bookings.
+   - Button 2 (Ghost): "Explore the Courses" — same font/size, transparent background, border 1px `rgba(201,168,76,0.5)`, text gold. Link to Courses page.
+8. Strip padding: 120px top and bottom
+
+---
+
+#### ABOUT — Final Checklist
+
+Before publishing the About page:
+
+- [ ] Veena's portrait photo uploaded and cropped correctly (3:4 ratio, face centered)
+- [ ] Stats boxes show correct numbers (99K Seekers, 2.3M Monthly Reach)
+- [ ] Credential box shows correct lineage items
+- [ ] All three story sections have correct text
+- [ ] Mandala SVG embed has transparent background (no white box)
+- [ ] All 4 offering cards link to their correct pages
+- [ ] CTA buttons link to correct destinations (Bookings + Courses)
+- [ ] Hover effects tested on lineage cards and offering cards
+- [ ] Mobile view checked — portrait stacks above text, cards go to single column
 
 ---
 

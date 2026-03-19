@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:wght@400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0a0a0f;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section {
+    padding: 80px 40px;
+    font-family: 'EB Garamond', Georgia, serif;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── STORY BLOCK ── */
+  .story {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0 60px;
+    align-items: start;
+  }
+
+  .story + .story {
+    margin-top: 0;
+  }
+
+  /* ── SEPARATOR ── */
+  .separator {
+    height: 1px;
+    background: rgba(232,224,208,0.07);
+    margin: 60px 0;
+  }
+
+  /* ── LEFT COLUMN ── */
+  .story-left {
+    position: relative;
+  }
+
+  .story-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 300;
+    color: rgba(201,168,76,0.08);
+    line-height: 1;
+    display: block;
+    margin-bottom: 8px;
+    user-select: none;
+  }
+
+  .story-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #C9A84C;
+    line-height: 1.6;
+    display: block;
+  }
+
+  /* ── RIGHT COLUMN ── */
+  .story-right {
+    padding-top: 8px;
+  }
+
+  .story-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .story-heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .story-body {
+    font-size: 17px;
+    color: rgba(232,224,208,0.65);
+    line-height: 1.85;
+  }
+
+  .story-body p + p {
+    margin-top: 18px;
+  }
+
+  /* Closing gold italic line (story 03 only) */
+  .story-close {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 300;
+    font-style: italic;
+    color: #C9A84C;
+    margin-top: 24px;
+    line-height: 1.5;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .story {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .story-number {
+      font-size: 52px;
+      margin-bottom: 4px;
+    }
+    .story-left {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .story-right {
+      padding-top: 0;
+    }
+    .section {
+      padding: 60px 20px;
+    }
+    .separator {
+      margin: 40px 0;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="section">
+
+  <!-- STORY 01 -->
+  <div class="story">
+    <div class="story-left">
+      <span class="story-number">01</span>
+      <span class="story-tag">THE<br>SEARCHING</span>
+    </div>
+    <div class="story-right">
+      <h3 class="story-heading">A Soul That Could Not <em>Fit.</em></h3>
+      <div class="story-body">
+        <p>I grew up knowing something was off — not with me, but with the map everyone else was following. The ordinary milestones felt borrowed. The ordinary gods felt distant. But Shiva — even His name carried a pull I could not explain. Not the Shiva of textbooks. The Shiva of silence. Of destruction that loves.</p>
+        <p>I searched everywhere that felt alive: temples, texts, teachers, lineages. I was looking for something I could not name but would absolutely recognise the moment I found it. What I did not know then is that the searching was itself the preparation.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="separator"></div>
+
+  <!-- STORY 02 -->
+  <div class="story">
+    <div class="story-left">
+      <span class="story-number">02</span>
+      <span class="story-tag">THE<br>INITIATION</span>
+    </div>
+    <div class="story-right">
+      <h3 class="story-heading">When the <em>Forgotten River</em> Began Flowing Again.</h3>
+      <div class="story-body">
+        <p>Shaktipat did not arrive gently. It arrived the way a locked door finally gives — all at once, with the weight of everything that had been pressing against it. In that transmission, I did not receive new knowledge. I remembered what I already was. The river had always been there; it had simply been underground.</p>
+        <p>What followed were years of sadhana — not the kind that is scheduled and tidy, but the kind that restructures you from the inside. Kashmiri Shaivism became not a philosophy I studied but a reality I inhabited. Jyotish became a language through which I could read karma the way one reads footprints — backwards and forwards across many lifetimes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="separator"></div>
+
+  <!-- STORY 03 -->
+  <div class="story">
+    <div class="story-left">
+      <span class="story-number">03</span>
+      <span class="story-tag">THE<br>OFFERING</span>
+    </div>
+    <div class="story-right">
+      <h3 class="story-heading">Why <em>Shivoham Path</em> Was Born.</h3>
+      <div class="story-body">
+        <p>I kept meeting the same soul in different bodies. Seekers who had tried every doorway — therapy, religion, self-help — and still felt the ache. Not the ache of something broken, but the ache of something holy that had not yet been met.</p>
+        <p>They did not need more information. They needed someone who could read the karmic architecture beneath their life — and hold the space while they finally recognised themselves in it. That is what a D60 reading does. That is what this path does.</p>
+        <p>Shivoham Path is not a brand. It is a response. Every reading, every course, every word written here carries one intention: to be a clear mirror for souls who are already on their way home — but have forgotten which direction that is.</p>
+        <div class="story-close">Because in the end, we do not find Shiv. He finds us. And when He does, our entire life becomes His path.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

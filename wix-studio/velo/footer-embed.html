@@ -401,17 +401,37 @@
 
   // ── Auto-resize iframe height in Wix ──────────────────────────
   function sendHeight() {
-    var h = document.body.scrollHeight;
+    // Measure full rendered height
+    var h = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight
+    );
+    // Wix HTML component accepts JSON-stringified height message
+    window.parent.postMessage(JSON.stringify({ height: h }), '*');
+    // Also try object form as fallback
     window.parent.postMessage({ type: 'iframeHeight', height: h }, '*');
   }
+
   window.addEventListener('load', sendHeight);
   window.addEventListener('resize', sendHeight);
-  new ResizeObserver(sendHeight).observe(document.body);
+
+  // ResizeObserver watches the footer element itself, not just body
+  if (window.ResizeObserver) {
+    new ResizeObserver(function() {
+      requestAnimationFrame(sendHeight);
+    }).observe(document.querySelector('.footer'));
+  }
 
   // ── Mobile accordion ──────────────────────────────────────────
+  // Use clientWidth on the document root — more reliable inside a sandboxed iframe
+  function isMobile() {
+    return document.documentElement.clientWidth <= 600;
+  }
+
   document.querySelectorAll('.nav-section .col-heading').forEach(function(heading) {
     heading.addEventListener('click', function() {
-      if (window.innerWidth > 600) return;
+      if (!isMobile()) return;
       var section = heading.parentElement;
       var wasOpen = section.classList.contains('open');
       // Close all
@@ -420,7 +440,11 @@
       });
       // Toggle clicked
       if (!wasOpen) section.classList.add('open');
-      setTimeout(sendHeight, 350);
+      // Send height updates during and after the CSS transition (0.3s)
+      var steps = [50, 150, 250, 350];
+      steps.forEach(function(delay) {
+        setTimeout(sendHeight, delay);
+      });
     });
   });
 </script>

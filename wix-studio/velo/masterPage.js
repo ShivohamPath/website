@@ -34,21 +34,20 @@ $w.onReady(function () {
   // No code needed — link via the editor link panel.
 
   // ── FOOTER IFRAME NAVIGATION ───────────────────────────────
-  // Listens for postMessage events sent by footer-embed.html
-  // when visitor clicks a footer nav link.
+  // Receives postMessage events sent by footer-embed.html when a
+  // visitor clicks a footer nav link.
   //
-  // Give the footer HTML embed element the ID: #footerEmbed
-  // in the editor (optional — message listener works globally).
-  wixWindow.addEventListener('message', (event) => {
-    try {
+  // REQUIRED: give the HTML embed element the ID #footerEmbed
+  // in the Wix editor (Add → Embed → HTML iFrame → right-click → ID).
+  // Wix Velo uses $w().onMessage() — NOT window.addEventListener.
+  try {
+    $w('#footerEmbed').onMessage((event) => {
       const data = event.data;
       if (data && data.type === 'footerNav' && data.path) {
-        // Strip leading slash for wixLocation.to()
-        const path = String(data.path).replace(/^\//, '');
-        wixLocation.to(`/${path}`);
+        wixLocation.to(String(data.path));
       }
-    } catch (e) { /* ignore malformed messages */ }
-  });
+    });
+  } catch (e) { /* #footerEmbed not found on this page */ }
 
   console.log('ShivohamPath · Site loaded · Path:', currentPath);
 });

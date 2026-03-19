@@ -257,12 +257,12 @@
       <div>
         <div class="col-heading">Readings</div>
         <ul class="nav-list">
-          <li><a onclick="nav('/readings#specific-question')">Specific Question</a></li>
-          <li><a onclick="nav('/readings#karmic-knots')" class="featured-link">Karmic Knots ★</a></li>
-          <li><a onclick="nav('/readings#synastry')">Synastry &amp; Kundali Milan</a></li>
-          <li><a onclick="nav('/readings#moksha-path')">Moksha Path Consultation</a></li>
-          <li><a onclick="nav('/readings#madhurya-bhakta')">Madhurya Bhakta Sessions</a></li>
-          <li><a onclick="nav('/readings#shiva-oracle')">Shiva Oracle Reading</a></li>
+          <li><a href="https://www.shivohampath.com/readings" target="_top">Specific Question</a></li>
+          <li><a href="https://www.shivohampath.com/readings" target="_top" class="featured-link">Karmic Knots ★</a></li>
+          <li><a href="https://www.shivohampath.com/readings" target="_top">Synastry &amp; Kundali Milan</a></li>
+          <li><a href="https://www.shivohampath.com/readings" target="_top">Moksha Path Consultation</a></li>
+          <li><a href="https://www.shivohampath.com/readings" target="_top">Madhurya Bhakta Sessions</a></li>
+          <li><a href="https://www.shivohampath.com/readings" target="_top">Shiva Oracle Reading</a></li>
         </ul>
       </div>
 
@@ -270,11 +270,11 @@
       <div>
         <div class="col-heading">Courses</div>
         <ul class="nav-list">
-          <li><a onclick="nav('/courses#esoteric-astrology')">Esoteric Astrology Course</a></li>
-          <li><a onclick="nav('/courses#spirituality-misfits')">Spirituality for Misfits</a></li>
-          <li><a onclick="nav('/courses#she-who-becomes')">She Who Becomes Him</a></li>
-          <li><a onclick="nav('/courses#live-sessions')">Live Sessions</a></li>
-          <li><a onclick="nav('/books')">Books &amp; PDFs</a></li>
+          <li><a href="https://www.shivohampath.com/courses" target="_top">Esoteric Astrology Course</a></li>
+          <li><a href="https://www.shivohampath.com/courses" target="_top">Spirituality for Misfits</a></li>
+          <li><a href="https://www.shivohampath.com/courses" target="_top">She Who Becomes Him</a></li>
+          <li><a href="https://www.shivohampath.com/courses" target="_top">Live Sessions</a></li>
+          <li><a href="https://www.shivohampath.com/books" target="_top">Books &amp; PDFs</a></li>
         </ul>
       </div>
 
@@ -282,11 +282,11 @@
       <div>
         <div class="col-heading">Explore</div>
         <ul class="nav-list">
-          <li><a onclick="nav('/')">Home</a></li>
-          <li><a onclick="nav('/about')">About Veena</a></li>
-          <li><a onclick="nav('/blog')">The Archive · Blog</a></li>
-          <li><a onclick="nav('/about#testimonials')">Testimonials</a></li>
-          <li><a onclick="nav('/contact')">Contact</a></li>
+          <li><a href="https://www.shivohampath.com/" target="_top">Home</a></li>
+          <li><a href="https://www.shivohampath.com/about" target="_top">About Veena</a></li>
+          <li><a href="https://www.shivohampath.com/blog" target="_top">The Archive · Blog</a></li>
+          <li><a href="https://www.shivohampath.com/about" target="_top">Testimonials</a></li>
+          <li><a href="https://www.shivohampath.com/contact" target="_top">Contact</a></li>
           <li>
             <a href="https://www.instagram.com/shivohampath" target="_blank" rel="noopener">
               Instagram ↗
@@ -303,9 +303,9 @@
         © <span id="year"></span> Shivoham Path · Veena Maheshwari · All Rights Reserved
       </span>
       <div class="bottom-links">
-        <a onclick="nav('/privacy')">Privacy</a>
-        <a onclick="nav('/terms')">Terms</a>
-        <a onclick="nav('/contact')">Contact</a>
+        <a href="https://www.shivohampath.com/privacy" target="_top">Privacy</a>
+        <a href="https://www.shivohampath.com/terms" target="_top">Terms</a>
+        <a href="https://www.shivohampath.com/contact" target="_top">Contact</a>
       </div>
     </div>
 
@@ -315,18 +315,6 @@
 <script>
   // ── Dynamic year ─────────────────────────────────────────────
   document.getElementById('year').textContent = new Date().getFullYear();
-
-  // ── Navigation helper ────────────────────────────────────────
-  // Navigates the parent Wix page (escapes the iframe)
-  function nav(path) {
-    try {
-      // Primary: postMessage to masterPage.js listener
-      window.parent.postMessage({ type: 'footerNav', path: path }, '*');
-    } catch (e) {
-      // Fallback: direct parent navigation
-      window.top.location.href = path;
-    }
-  }
 </script>
 
 </body>

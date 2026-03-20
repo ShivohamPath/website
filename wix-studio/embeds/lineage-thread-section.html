@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:wght@400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0a0a0f;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section {
+    padding: 100px 40px 120px;
+    font-family: 'EB Garamond', Georgia, serif;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.15;
+    margin-bottom: 32px;
+    letter-spacing: 0.02em;
+  }
+
+  .heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .divider-line {
+    width: 80px;
+    height: 1px;
+    background: rgba(201,168,76,0.2);
+  }
+
+  .divider-diamond {
+    width: 6px;
+    height: 6px;
+    background: #C9A84C;
+    transform: rotate(45deg);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  /* ── THREAD / TIMELINE ── */
+  .thread {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Vertical gold line running through all nodes */
+  .thread::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(201,168,76,0.25) 5%,
+      rgba(201,168,76,0.25) 95%,
+      transparent 100%
+    );
+    z-index: 0;
+  }
+
+  /* ── NODE (connector dot between cards) ── */
+  .node {
+    position: relative;
+    z-index: 1;
+    width: 8px;
+    height: 8px;
+    background: rgba(201,168,76,0.5);
+    transform: rotate(45deg);
+    margin: 28px 0;
+    flex-shrink: 0;
+  }
+
+  /* ── CARD ── */
+  .card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    background: #0f0e1a;
+    border: 1px solid rgba(232,224,208,0.07);
+    padding: 44px 48px;
+    transition: border-color 0.4s;
+  }
+
+  .card:hover {
+    border-color: rgba(201,168,76,0.18);
+  }
+
+  /* Gold top accent line on hover */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 1px;
+    background: #C9A84C;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .card:hover::before {
+    opacity: 1;
+  }
+
+  /* ── CARD: YOU ARE HERE (last card) ── */
+  .card--here {
+    border-color: rgba(201,168,76,0.2);
+    background: rgba(201,168,76,0.03);
+  }
+
+  .card--here::before {
+    opacity: 1;
+    width: 60px;
+  }
+
+  /* ── CARD INTERNALS ── */
+  .card-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .card-era {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(201,168,76,0.4);
+    display: block;
+    margin-bottom: 22px;
+    text-transform: uppercase;
+  }
+
+  .card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .card-subtitle {
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: rgba(232,224,208,0.35);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .card-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    color: rgba(232,224,208,0.6);
+    line-height: 1.85;
+  }
+
+  .card-body strong {
+    color: rgba(232,224,208,0.85);
+    font-weight: 400;
+  }
+
+  .card-body em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .card-body p + p {
+    margin-top: 16px;
+  }
+
+  /* Lineage chain — styled inline list */
+  .lineage-chain {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(232,224,208,0.07);
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(201,168,76,0.5);
+    line-height: 2.2;
+    text-transform: uppercase;
+  }
+
+  .lineage-chain span {
+    display: inline;
+  }
+
+  .lineage-chain .arrow {
+    color: rgba(201,168,76,0.25);
+    margin: 0 6px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .section {
+      padding: 70px 20px 80px;
+    }
+
+    .card {
+      padding: 32px 24px;
+    }
+
+    /* Hide the centre vertical line on mobile */
+    .thread::before {
+      display: none;
+    }
+
+    .node {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="section">
+
+  <!-- SECTION HEADER -->
+  <div class="header">
+    <span class="eyebrow">THE UNBROKEN THREAD</span>
+    <h2 class="heading">A Lineage That Runs<br>Through <em>Time</em></h2>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="thread">
+
+    <!-- ── CARD 1: THE ROOT ── -->
+    <div class="card">
+      <span class="card-label">The Root</span>
+      <span class="card-era">Trika Shaivism · Kashmir · c. 850 CE Onwards</span>
+      <h3 class="card-name">Kashmir Shaivism</h3>
+      <p class="card-subtitle">The Non-Dual Tradition of the Trika</p>
+      <div class="card-body">
+        <p>The philosophical and experiential lineage of non-dual Shaivism that emerged in Kashmir — asserting that Shiva is not a distant deity but the very consciousness within which all existence arises and dissolves. Its foundational texts — the <strong>Shiva Sutras</strong>, <strong>Spanda Karikas</strong>, <strong>Pratyabhijnahridayam</strong>, and the <strong>Vijnana Bhairava Tantra</strong> — map the direct path from human limitation to the recognition of one's nature as Shiva itself.</p>
+      </div>
+    </div>
+
+    <div class="node"></div>
+
+    <!-- ── CARD 2: THE FLAME ── -->
+    <div class="card">
+      <span class="card-label">The Flame</span>
+      <span class="card-era">14th Century · Kashmir · c. 1320 – 1392</span>
+      <h3 class="card-name">Lalleshwari (Lal Ded)</h3>
+      <p class="card-subtitle">The Only Woman Saint of the Trika Lineage · Wandering Yogini of Kashmir</p>
+      <div class="card-body">
+        <p>Born into a Kashmiri Pandit family, initiated into Shaivism by her guru Siddha Srikantha, Lalleshwari renounced her household life and wandered naked through Kashmir — reciting <em>Vakhs</em>, mystic verses that are among the earliest compositions in the Kashmiri language. She was the only woman in the lineage of Trika Shaivism.</p>
+        <p>Her Vakhs carry no religion, no caste, no separation — only the direct experience of Shiva as the ground of all being. Kashmir has said for centuries: <em>"We know only two words that are meaningful — one is Allah, the other is Lalla."</em></p>
+      </div>
+    </div>
+
+    <div class="node"></div>
+
+    <!-- ── CARD 3: THE REVIVAL ── -->
+    <div class="card">
+      <span class="card-label">The Revival</span>
+      <span class="card-era">19th Century · India · c. 1870 Onwards</span>
+      <h3 class="card-name">Swami Gangadhar Tirth &amp; Swami Narayan Dev Tirth</h3>
+      <p class="card-subtitle">Revivalists of the Shaktipat Transmission</p>
+      <div class="card-body">
+        <p>The science of Shaktipat — the direct transmission of awakening Shakti from Guru to disciple — has existed as an underground current in the Hindu spiritual tradition since ancient times. At the close of the 19th century, <strong>Swami Gangadhar Tirth</strong> brought it back into living form. A deeply reclusive yogi who rarely left his small cottage near Chandan Talab in Jagannathpuri, he initiated only one disciple — a young man from Bengal named Kali Kishore.</p>
+        <p>That disciple, who would come to be known as <strong>Swami Narayan Dev Tirth</strong>, was born in 1870 and initiated in 1889. Where his Guru had given the blessing to almost no one, Swami Narayan Dev Tirth gave it to many — traveling widely, writing, and heralding Shaktipat among the masses. It was he who restored this sacred science to the world.</p>
+      </div>
+    </div>
+
+    <div class="node"></div>
+
+    <!-- ── CARD 4: THE TRANSMISSION ── -->
+    <div class="card">
+      <span class="card-label">The Transmission</span>
+      <span class="card-era">Contemporary · Siddha Maha Yoga Lineage</span>
+      <h3 class="card-name">Guru Ji Greg Hagi</h3>
+      <p class="card-subtitle">Shaktipat Guru · Seventh in an Unbroken Lineage from Swami Gangadhar Tirth</p>
+      <div class="card-body">
+        <p>From Swami Gangadhar Tirth, the flame of Shaktipat passed without interruption through six masters before reaching Greg Hagi — each holding and transmitting the living Shakti to the next.</p>
+        <p>Greg Hagi spent over 30 years in sincere spiritual search — across physical yoga, shamanism, and many paths — driven by an inexhaustible longing for what he could feel but not yet name. Everything changed when he found his Guru, <strong>Col. T. Sreenivasulu (Swami Sahajananda Tirtha)</strong> — himself a disciple of the great Swami Shivom Tirth — and later received the personal blessing of Swami Sahajananda, a 98-year-old realised being. Initiated as a Shaktipat Guru into the Siddha Maha Yoga tradition, he now transmits this ancient awakening to sincere seekers worldwide.</p>
+      </div>
+      <div class="lineage-chain">
+        <span>Swami Gangadhar Tirth</span>
+        <span class="arrow">→</span>
+        <span>Swami Narayan Dev Tirth</span>
+        <span class="arrow">→</span>
+        <span>Shri Yogananda Maharaj</span>
+        <span class="arrow">→</span>
+        <span>Swami Vishnu Tirth</span>
+        <span class="arrow">→</span>
+        <span>Swami Shivom Tirth</span>
+        <span class="arrow">→</span>
+        <span>Swami Sahajananda Tirth</span>
+        <span class="arrow">→</span>
+        <span style="color: rgba(201,168,76,0.8);">Greg Hagi</span>
+      </div>
+    </div>
+
+    <div class="node"></div>
+
+    <!-- ── CARD 5: YOU ARE HERE ── -->
+    <div class="card card--here">
+      <span class="card-label">You Are Here</span>
+      <span class="card-era">May 2024 · Shaktipat Initiation</span>
+      <h3 class="card-name">Veena Maheshwari (Shivohampath)</h3>
+      <p class="card-subtitle">Madhurya Bhakt · Initiated into the Lalleshwari Lineage</p>
+      <div class="card-body">
+        <p>Born a Madhurya Bhakt — one who loves Shiva as Beloved rather than deity — Veena received formal initiation into the Lalleshwari lineage through Shaktipat from Guru Ji Greg Hagi in May 2024.</p>
+        <p>This was not a beginning. It was a recognition — a formalization of what her soul had been carrying lifetimes before this body was born.</p>
+      </div>
+    </div>
+
+  </div><!-- /thread -->
+
+</div><!-- /section -->
+</body>
+</html>

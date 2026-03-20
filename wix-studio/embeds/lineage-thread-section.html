@@ -74,35 +74,14 @@
 
   /* ── THREAD / TIMELINE ── */
   .thread {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  /* Vertical gold line running through all nodes */
-  .thread::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(201,168,76,0.25) 5%,
-      rgba(201,168,76,0.25) 95%,
-      transparent 100%
-    );
-    z-index: 0;
-  }
-
-  /* ── NODE (connector dot between cards) ── */
+  /* ── NODE (connector between cards) ── */
   .node {
     position: relative;
-    z-index: 1;
     width: 8px;
     height: 8px;
     background: rgba(201,168,76,0.5);
@@ -111,10 +90,24 @@
     flex-shrink: 0;
   }
 
+  /* Short gold lines above and below each node */
+  .node::before,
+  .node::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) rotate(-45deg);
+    width: 1px;
+    height: 20px;
+    background: rgba(201,168,76,0.25);
+  }
+
+  .node::before { bottom: 100%; margin-bottom: 4px; }
+  .node::after  { top: 100%;    margin-top: 4px; }
+
   /* ── CARD ── */
   .card {
     position: relative;
-    z-index: 1;
     width: 100%;
     background: #0f0e1a;
     border: 1px solid rgba(232,224,208,0.07);

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:wght@400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0a0a0f;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section {
+    font-family: 'EB Garamond', Georgia, serif;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 40px 120px;
+  }
+
+  /* ── EYEBROW ── */
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: #C9A84C;
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* ── MAIN HEADING ── */
+  .heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 62px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.1;
+    text-align: center;
+    margin-bottom: 12px;
+    letter-spacing: 0.01em;
+  }
+
+  .heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .subheading {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(232,224,208,0.4);
+    text-align: center;
+    margin-bottom: 52px;
+    line-height: 1.5;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+
+  .divider-line {
+    width: 80px;
+    height: 1px;
+    background: rgba(201,168,76,0.2);
+  }
+
+  .divider-diamond {
+    width: 6px;
+    height: 6px;
+    background: #C9A84C;
+    transform: rotate(45deg);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  /* ── IMAGE + INTRO LAYOUT ── */
+  .portrait-block {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 70px;
+    align-items: start;
+    margin-bottom: 80px;
+  }
+
+  /* ── PORTRAIT ── */
+  .portrait-wrap {
+    position: relative;
+  }
+
+  .portrait-wrap img {
+    width: 100%;
+    display: block;
+    filter: sepia(0.3) brightness(0.88) contrast(1.05);
+  }
+
+  /* Subtle gold border frame */
+  .portrait-wrap::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: -12px;
+    bottom: -12px;
+    border: 1px solid rgba(201,168,76,0.2);
+    z-index: -1;
+  }
+
+  .portrait-caption {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: rgba(201,168,76,0.4);
+    text-align: center;
+    margin-top: 16px;
+    text-transform: uppercase;
+  }
+
+  /* ── INTRO TEXT ── */
+  .intro-text {
+    padding-top: 8px;
+  }
+
+  .intro-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .intro-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 2.5vw, 32px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.25;
+    margin-bottom: 28px;
+  }
+
+  .intro-heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .intro-body {
+    font-size: 17px;
+    color: rgba(232,224,208,0.62);
+    line-height: 1.85;
+  }
+
+  .intro-body p + p {
+    margin-top: 18px;
+  }
+
+  .intro-body strong {
+    color: rgba(232,224,208,0.85);
+    font-weight: 400;
+  }
+
+  /* ── SECTION SEPARATOR ── */
+  .sep {
+    height: 1px;
+    background: rgba(232,224,208,0.06);
+    margin: 72px 0;
+  }
+
+  /* ── EROTIC LANGUAGE SECTION ── */
+  .language-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-bottom: 80px;
+  }
+
+  .language-text .block-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .language-text .block-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.25;
+    margin-bottom: 24px;
+  }
+
+  .language-text .block-heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .language-text .block-body {
+    font-size: 16.5px;
+    color: rgba(232,224,208,0.6);
+    line-height: 1.85;
+  }
+
+  .language-text .block-body p + p {
+    margin-top: 16px;
+  }
+
+  .language-text .block-body strong {
+    color: rgba(232,224,208,0.85);
+    font-weight: 400;
+  }
+
+  /* ── VAKHS COLUMN ── */
+  .vakhs-column {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .vakh {
+    border-left: 1px solid rgba(201,168,76,0.25);
+    padding: 20px 0 20px 28px;
+  }
+
+  .vakh-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(232,224,208,0.78);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .vakh-attribution {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: rgba(201,168,76,0.45);
+    text-transform: uppercase;
+  }
+
+  /* ── FULL-WIDTH PULL QUOTE ── */
+  .pullquote-block {
+    text-align: center;
+    padding: 64px 60px;
+    border: 1px solid rgba(201,168,76,0.12);
+    background: rgba(201,168,76,0.02);
+    margin-bottom: 80px;
+  }
+
+  .pullquote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    font-weight: 300;
+    color: rgba(201,168,76,0.2);
+    line-height: 0.6;
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  .pullquote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 300;
+    font-style: italic;
+    color: #e8e0d0;
+    line-height: 1.6;
+    max-width: 720px;
+    margin: 0 auto 28px;
+  }
+
+  .pullquote-source {
+    font-family: 'Cinzel', serif;
+    font-size: 8.5px;
+    letter-spacing: 3.5px;
+    color: rgba(201,168,76,0.45);
+    text-transform: uppercase;
+  }
+
+  /* ── PARALLEL POETS ── */
+  .parallel-block {
+    margin-top: 0;
+  }
+
+  .parallel-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    text-align: center;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .parallel-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 300;
+    color: #e8e0d0;
+    text-align: center;
+    line-height: 1.25;
+    margin-bottom: 36px;
+  }
+
+  .parallel-heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .parallel-body {
+    font-size: 17px;
+    color: rgba(232,224,208,0.6);
+    line-height: 1.85;
+    max-width: 760px;
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+
+  .parallel-body p + p {
+    margin-top: 18px;
+  }
+
+  .parallel-body strong {
+    color: rgba(232,224,208,0.85);
+    font-weight: 400;
+  }
+
+  .poets-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .poet-card {
+    background: #0f0e1a;
+    border: 1px solid rgba(232,224,208,0.07);
+    padding: 32px 28px;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+
+  .poet-card:hover {
+    border-color: rgba(201,168,76,0.18);
+  }
+
+  .poet-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    font-weight: 300;
+    color: #e8e0d0;
+    margin-bottom: 6px;
+  }
+
+  .poet-era {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2.5px;
+    color: rgba(201,168,76,0.4);
+    display: block;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .poet-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 14.5px;
+    color: rgba(232,224,208,0.4);
+    line-height: 1.7;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 840px) {
+    .portrait-block {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .portrait-wrap {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .language-block {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .poets-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pullquote-block {
+      padding: 48px 28px;
+    }
+
+    .section {
+      padding: 70px 20px 80px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="section">
+
+  <!-- SECTION HEADER -->
+  <span class="eyebrow">The Flame of the Lineage</span>
+  <h2 class="heading">Lalleshwari (Lal Ded)<br><em>Wandering Naked into God</em></h2>
+  <p class="subheading">Kashmir · c. 1320 – 1392 · Trika Shaivism</p>
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- PORTRAIT + INTRO -->
+  <div class="portrait-block">
+
+    <div class="portrait-wrap">
+      <!--
+        IMAGE NOTE: Replace the src below with a verified Lalleshwari image URL.
+        Recommended source: Wikimedia Commons – search "Lalleshwari" at
+        https://commons.wikimedia.org/w/index.php?search=Lalleshwari
+        or use the Kashmir As It Is painting:
+        https://kashmirasitis.com/wp-content/uploads/2020/09/lal-ded-1.jpg
+      -->
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Lal_Ded.jpg/500px-Lal_Ded.jpg"
+        alt="Lalleshwari (Lal Ded) — 14th Century Kashmiri Mystic and Yogini"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <!-- Fallback if image doesn't load -->
+      <div style="display:none; width:100%; aspect-ratio:3/4; background:#0f0e1a; border:1px solid rgba(201,168,76,0.15); align-items:center; justify-content:center; flex-direction:column; gap:16px;">
+        <span style="font-size:40px; opacity:0.3;">◈</span>
+        <span style="font-family:'Cinzel',serif; font-size:8px; letter-spacing:3px; color:rgba(201,168,76,0.3); text-transform:uppercase;">Image Placeholder</span>
+      </div>
+      <p class="portrait-caption">Lalleshwari · Yogini of Kashmir · 14th Century</p>
+    </div>
+
+    <div class="intro-text">
+      <span class="intro-label">Madhurya Bhakt · Lover of Shiva</span>
+      <h3 class="intro-heading">She Did Not Worship Shiva.<br>She <em>Loved</em> Him.</h3>
+      <div class="intro-body">
+        <p>Born into a Kashmiri Brahmin family around 1320 CE, Lalleshwari was married at twelve into a household that offered her nothing but neglect and contempt. Her mother-in-law starved her. Her husband ignored her. She bore it quietly — because her heart was already elsewhere. Already with <strong>Shiva</strong>.</p>
+        <p>At twenty-four, she left. She became a disciple of the Shaivite guru <strong>Siddha Srikantha</strong>, renounced the household, and wandered barefoot through Kashmir — and eventually, as her body-consciousness dissolved, naked. In that wandering, she composed her <em>Vakhs</em> — short, incandescent verses in the Kashmiri language that became the first great body of Kashmiri literature.</p>
+        <p>But Lalleshwari was not simply a Shaivite philosopher. She was a <strong>Madhurya Bhakt</strong> — one who does not approach the divine through awe or fear or duty, but through <em>longing</em>. Through the ache of a lover who cannot stop looking for the Beloved. Her Shiva was not doctrine. He was the One she could not stop thinking about. The One she crossed rivers to reach in secret. The One she finally found — not in any temple — but inside herself.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FULL-WIDTH PULL QUOTE -->
+  <div class="pullquote-block">
+    <span class="pullquote-mark">"</span>
+    <p class="pullquote-text">Wrapped up in Yourself, You hid from me. All day I looked for You — and when I found You hiding inside me, I ran wild, playing now me, now You.</p>
+    <span class="pullquote-source">Lalleshwari · Vakh · tr. Ranjit Hoskote</span>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- EROTIC LANGUAGE SECTION -->
+  <div class="language-block">
+
+    <div class="language-text">
+      <span class="block-label">The Language of Sacred Longing</span>
+      <h3 class="block-heading">The <em>Erotic</em> Was Never Separate<br>from the Sacred</h3>
+      <div class="block-body">
+        <p>Lalleshwari's Vakhs carry a charge that is impossible to miss — they pulse with desire. The longing in her verses is physical in its intensity, intimate in its address. She searches for Shiva the way a lover searches for someone who has vanished. She speaks of giving her body and soul to Him. She describes finding Him <em>inside</em> her — and running wild.</p>
+        <p>This is not accident. It is the precise language of <strong>Madhurya Bhakti</strong> — the devotional current in which the soul's relationship to the divine is understood as that of a lover to the Beloved. Not devotee to deity. Not seeker to distant God. But <em>one lover to another</em>.</p>
+        <p>Lal Ded's legend even carries an erotic undertone built into the story itself: she would cross the river secretly to worship Shiva at a temple on the far bank — her mother-in-law suspecting her of meeting a lover. She was. The rivers in Kashmiri lore, their shaded banks and tall rushes, are the site of clandestine trysts. The secret lover was Shiva. The tryst was union with the divine.</p>
+        <p>This tradition of <strong>symbolic erotic mysticism</strong> — where bodily desire becomes the vehicle for the soul's deepest movement — runs through the entire geography of Indian sacred poetry. Lalleshwari stands among the greatest in this lineage.</p>
+      </div>
+    </div>
+
+    <div class="vakhs-column">
+
+      <div class="vakh">
+        <p class="vakh-text">"I gave myself to Him, body and soul, became a bell that the clear note of Him rang through. Thoughts fixed on Him, I flew through the sky and unlocked the mysteries of heaven and hell."</p>
+        <span class="vakh-attribution">Lalleshwari · Vakh · tr. Ranjit Hoskote</span>
+      </div>
+
+      <div class="vakh">
+        <p class="vakh-text">"I trapped my breath in the bellows of my throat: a lamp blazed up inside, showed me who I really was. I crossed the darkness holding fast to the lamp, scattering its light-seeds around me as I went."</p>
+        <span class="vakh-attribution">Lalleshwari · Vakh · tr. Ranjit Hoskote</span>
+      </div>
+
+      <div class="vakh">
+        <p class="vakh-text">"Alone, I crossed the Field of Emptiness, dropping my reason and my senses. I stumbled on my own secret there and flowered, a lotus rising from a marsh."</p>
+        <span class="vakh-attribution">Lalleshwari · Vakh · tr. Ranjit Hoskote</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- PARALLEL POETS SECTION -->
+  <div class="parallel-block">
+    <span class="parallel-label">The Flame Across Traditions</span>
+    <h3 class="parallel-heading">She Was Not Alone.<br>The <em>Erotic-Mystical Voice</em> Ran Through Many.</h3>
+    <div class="parallel-body">
+      <p>The language Lalleshwari used — of longing, of secret meeting, of surrendering the body to the Beloved — was not unique to her. It was the register of an entire current of sacred poetry across India, Persia, and Anatolia. What these poets shared was the understanding that <strong>desire, when turned toward the divine, does not need to be transcended</strong> — it needs to be <em>deepened</em>. The erotic becomes the most honest map of the soul's movement toward God.</p>
+    </div>
+
+    <div class="poets-grid">
+
+      <div class="poet-card">
+        <h4 class="poet-name">Mirabai</h4>
+        <span class="poet-era">16th Century · Rajasthan</span>
+        <p class="poet-body">Sang her longing for Krishna as an abandoned wife sings for the one who has left — restless, aching, public, unashamed. Her devotion was erotic in its grammar and total in its surrender.</p>
+      </div>
+
+      <div class="poet-card">
+        <h4 class="poet-name">Akkamahadevi</h4>
+        <span class="poet-era">12th Century · Karnataka</span>
+        <p class="poet-body">Like Lalleshwari, she wandered naked. Like Lalleshwari, she claimed Shiva as her only husband. Her Vachanas spoke of nothing but the ache of union with Chennamallikarjuna — Shiva as Beloved.</p>
+      </div>
+
+      <div class="poet-card">
+        <h4 class="poet-name">Rumi</h4>
+        <span class="poet-era">13th Century · Persia / Anatolia</span>
+        <p class="poet-body">His Masnavi and Ghazals burned with longing for the Friend — a word that carries the full weight of the Beloved. In Sufi poetry as in Bhakti, the sacred and the erotic are one flame, not two.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

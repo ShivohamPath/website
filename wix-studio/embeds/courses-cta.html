@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .cta-section {
+    padding: 0 40px 80px;
+  }
+
+  /* ── TWO COLUMN LAYOUT ── */
+  .cta-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  /* ── SHARED CARD STYLES ── */
+  .cta-card {
+    background: var(--bg3);
+    border: 1px solid var(--line2);
+    padding: 48px 44px;
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+    justify-content: space-between; gap: 28px;
+  }
+  .cta-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.03), transparent);
+    pointer-events: none;
+  }
+
+  .card-eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 3px; color: var(--gold);
+    display: block; margin-bottom: 12px;
+  }
+  .cta-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.8vw, 32px);
+    font-weight: 300; color: var(--text);
+    line-height: 1.15; margin-bottom: 12px;
+  }
+  .cta-card h3 em { font-style: italic; color: var(--gold); }
+  .cta-card p {
+    font-size: clamp(14px, 1.8vw, 16px);
+    color: var(--text2); line-height: 1.8;
+  }
+
+  .card-top { position: relative; z-index: 1; }
+  .card-bottom-actions {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    position: relative; z-index: 1;
+  }
+
+  .btn-primary {
+    font-family: 'Cinzel', serif; font-size: 11px;
+    letter-spacing: 2px; padding: 13px 28px;
+    background: var(--gold); color: var(--bg);
+    border: none; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #a8893a; }
+
+  .btn-ghost {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2px; padding: 11px 22px;
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold2); cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { background: var(--gold3); }
+
+  /* Divider between two cards */
+  .card-divider {
+    display: flex; align-items: center;
+    justify-content: center;
+    background: var(--bg3);
+    border-top: 1px solid var(--line2);
+    border-bottom: 1px solid var(--line2);
+    padding: 18px;
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 3px; color: var(--text3);
+  }
+  .divider-diamond {
+    width: 6px; height: 6px; background: var(--gold);
+    transform: rotate(45deg); opacity: 0.4; flex-shrink: 0;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .cta-section { padding: 0 20px 60px; }
+    .cta-grid { grid-template-columns: 1fr; }
+    .cta-card { padding: 36px 28px; }
+  }
+  @media (max-width: 480px) {
+    .cta-section { padding: 0 16px 48px; }
+    .cta-card { padding: 28px 20px; }
+    .card-bottom-actions { flex-direction: column; }
+    .btn-primary, .btn-ghost { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cta-section">
+  <div class="cta-grid">
+
+    <!-- Card 1: Start Now -->
+    <div class="cta-card">
+      <div class="card-top">
+        <span class="card-eyebrow">START HERE</span>
+        <h3>Begin with<br><em>Madhurya Bhakti</em></h3>
+        <p>
+          The first course is open now. If you feel the pull of Shiva as Beloved —
+          not as religion, not as ritual, but as the deepest longing of your soul —
+          this is where you begin.
+        </p>
+      </div>
+      <div class="card-bottom-actions">
+        <a href="/courses/madhurya-bhakti" class="btn-primary">Explore the Course</a>
+      </div>
+    </div>
+
+    <!-- Card 2: Stay Informed -->
+    <div class="cta-card">
+      <div class="card-top">
+        <span class="card-eyebrow">STAY INFORMED</span>
+        <h3>Be First to Know<br><em>When New Courses Open</em></h3>
+        <p>
+          Future courses on Kashmiri Shaivism, D60 Karmic Astrology, and Shaktipat
+          will open to a small group first. If you want to be on that list —
+          reach out directly or follow along.
+        </p>
+      </div>
+      <div class="card-bottom-actions">
+        <a href="https://www.shivohampath.com/contact" class="btn-ghost">Contact Veena</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --bg3:   #131020;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.22);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --text4: rgba(232,224,208,0.12);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .section {
+    padding: 80px 40px 90px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── HEADER ── */
+  .section-header {
+    text-align: center; margin-bottom: 56px;
+  }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 16px;
+  }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 300; color: var(--text);
+    line-height: 1.1; margin-bottom: 16px;
+  }
+  .section-header h2 em { font-style: italic; color: var(--gold); }
+  .section-header p {
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--text3); line-height: 1.7;
+    max-width: 560px; margin: 0 auto;
+    font-style: italic;
+  }
+
+  /* ── COMING SOON GRID ── */
+  .coming-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .coming-card {
+    background: var(--bg3);
+    border: 1px solid var(--line);
+    padding: 36px 28px;
+    position: relative; overflow: hidden;
+    /* Deliberately muted — these are not yet available */
+    opacity: 0.75;
+    transition: opacity 0.3s, border-color 0.3s;
+  }
+  .coming-card:hover {
+    opacity: 0.9;
+    border-color: var(--gold2);
+  }
+
+  /* Lock overlay glyph */
+  .coming-card::after {
+    content: '◌';
+    position: absolute; top: 16px; right: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; color: var(--text4);
+    line-height: 1;
+  }
+
+  .soon-badge {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+    border: 1px solid var(--line);
+    padding: 3px 10px; display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  .card-icon {
+    font-size: 24px; color: var(--gold);
+    opacity: 0.4; display: block;
+    margin-bottom: 16px; line-height: 1;
+  }
+
+  .coming-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(19px, 2vw, 24px);
+    font-weight: 400; color: var(--text);
+    line-height: 1.2; margin-bottom: 10px;
+  }
+  .coming-card h3 em { font-style: italic; color: var(--gold); }
+
+  .coming-card p {
+    font-size: clamp(13px, 1.6vw, 14px);
+    color: var(--text2); line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .coming-tag {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+    display: block;
+  }
+
+  /* Horizontal divider bar between label and grid */
+  .coming-divider {
+    display: flex; align-items: center; gap: 20px;
+    margin-bottom: 28px;
+  }
+  .coming-divider-line {
+    flex: 1; height: 1px; background: var(--line);
+  }
+  .coming-divider-text {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 3px; color: var(--text3);
+    white-space: nowrap;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .section { padding: 60px 24px 70px; }
+    .coming-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .section { padding: 48px 16px 56px; }
+    .coming-grid { grid-template-columns: 1fr; gap: 2px; }
+    .coming-card { padding: 26px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="section">
+
+  <div class="section-header">
+    <span class="eyebrow">WHAT IS COMING</span>
+    <h2>The Teachings<br>Being <em>Prepared</em></h2>
+    <p>
+      These are the paths I will bring forward next —
+      each one as misunderstood as the last, each one waiting to be seen clearly.
+    </p>
+  </div>
+
+  <div class="coming-divider">
+    <div class="coming-divider-line"></div>
+    <span class="coming-divider-text">IN PREPARATION</span>
+    <div class="coming-divider-line"></div>
+  </div>
+
+  <div class="coming-grid">
+
+    <!-- Kashmir Shaivism -->
+    <div class="coming-card">
+      <span class="soon-badge">COMING SOON</span>
+      <span class="card-icon">◈</span>
+      <h3>Kashmiri<br><em>Shaivism</em></h3>
+      <p>
+        The complete non-dual philosophy of the Trika — Shiva Sutras, Spanda,
+        Pratyabhijna. The recognition of your own nature as Shiva itself.
+        Not as metaphor. As direct experience.
+      </p>
+      <span class="coming-tag">TRIKA · NON-DUAL PHILOSOPHY</span>
+    </div>
+
+    <!-- Jyotish & D60 -->
+    <div class="coming-card">
+      <span class="soon-badge">COMING SOON</span>
+      <span class="card-icon">✦</span>
+      <h3>Jyotish &amp;<br><em>Karmic Astrology</em></h3>
+      <p>
+        The D60 Shashtiamsha — the most advanced and most ignored divisional chart
+        in Jyotish. The record of everything your soul has carried across all lifetimes.
+        Learning to read it changes everything.
+      </p>
+      <span class="coming-tag">JYOTISH · D60 · KARMIC MAPS</span>
+    </div>
+
+    <!-- Shaktipat & Kundalini -->
+    <div class="coming-card">
+      <span class="soon-badge">COMING SOON</span>
+      <span class="card-icon">⚡</span>
+      <h3>Shaktipat &amp;<br><em>Kundalini Awakening</em></h3>
+      <p>
+        The science of transmission — what Shaktipat actually is, how Kundalini moves,
+        what awakening looks like when it is real, and how to support
+        the process in yourself and others.
+      </p>
+      <span class="coming-tag">SHAKTIPAT · KUNDALINI · AWAKENING</span>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

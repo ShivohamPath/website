@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.22);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .page-hero {
+    min-height: 72vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 80px 60px 70px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 55% at 50% 45%, rgba(201,168,76,0.05) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 50% at 20% 60%, rgba(139,111,191,0.06) 0%, transparent 60%),
+      linear-gradient(180deg, #0a0a0f 0%, #0f0a1a 55%, #0a0a0f 100%);
+  }
+
+  /* Rotating geometric shape */
+  .hero-geo {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 560px; height: 560px;
+    opacity: 0.04; z-index: 0;
+    animation: spin 120s linear infinite;
+  }
+  @keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .hero-content { position: relative; z-index: 1; max-width: 740px; }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 18px;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 7vw, 78px);
+    font-weight: 300; line-height: 1.05;
+    color: var(--text); margin-bottom: 28px;
+  }
+  h1 em { font-style: italic; color: var(--gold); }
+
+  .divider {
+    display: flex; align-items: center; gap: 16px;
+    justify-content: center; margin-bottom: 28px;
+  }
+  .divider-line { flex: 1; max-width: 80px; height: 1px; background: var(--line2); }
+  .divider-diamond {
+    width: 6px; height: 6px; background: var(--gold);
+    transform: rotate(45deg); opacity: 0.7; flex-shrink: 0;
+  }
+
+  .hero-lead {
+    font-size: clamp(16px, 2.5vw, 19px);
+    color: var(--text2); line-height: 1.8;
+    max-width: 600px; margin: 0 auto 32px;
+  }
+  .hero-lead em { font-style: italic; color: var(--text); }
+
+  /* Floating stat pills */
+  .hero-stats {
+    display: flex; gap: 24px;
+    justify-content: center; flex-wrap: wrap;
+  }
+  .stat-pill {
+    border: 1px solid var(--gold2);
+    padding: 10px 22px;
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+  }
+  .stat-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 300; color: var(--gold); line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .page-hero { padding: 60px 24px 50px; min-height: 60vh; }
+    .hero-geo { width: 320px; height: 320px; }
+    .hero-stats { gap: 12px; }
+    .stat-pill { padding: 8px 16px; }
+  }
+  @media (max-width: 480px) {
+    .page-hero { padding: 48px 16px 40px; }
+    .hero-stats { gap: 8px; }
+    .stat-pill { padding: 8px 14px; }
+    .stat-val { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="page-hero">
+  <div class="hero-bg"></div>
+  <svg class="hero-geo" viewBox="0 0 560 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="280" cy="280" r="260" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="280" cy="280" r="190" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="280" cy="280" r="120" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="280" cy="280" r="55"  stroke="#C9A84C" stroke-width="0.5"/>
+    <polygon points="280,30 510,420 50,420"  stroke="#C9A84C" stroke-width="0.4" fill="none"/>
+    <polygon points="280,530 50,140 510,140" stroke="#C9A84C" stroke-width="0.4" fill="none"/>
+    <line x1="20"  y1="280" x2="540" y2="280" stroke="#C9A84C" stroke-width="0.4"/>
+    <line x1="280" y1="20"  x2="280" y2="540" stroke="#C9A84C" stroke-width="0.4"/>
+    <line x1="86"  y1="86"  x2="474" y2="474" stroke="#C9A84C" stroke-width="0.3"/>
+    <line x1="474" y1="86"  x2="86"  y2="474" stroke="#C9A84C" stroke-width="0.3"/>
+  </svg>
+
+  <div class="hero-content">
+    <span class="eyebrow">THE COURSES</span>
+    <h1>These Are Not<br>Courses. They Are<br><em>Transmissions.</em></h1>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+    <p class="hero-lead">
+      The teachings here are not the kind you find in textbooks or on mainstream spiritual platforms.
+      They are the ones that have been <em>misunderstood, mistranslated, or kept hidden</em> —
+      and it is my work to bring them forward, one at a time, in their full depth.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-pill">
+        <span class="stat-val">1</span>
+        <span class="stat-label">Live Course</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-val">3+</span>
+        <span class="stat-label">Coming Soon</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-val">∞</span>
+        <span class="stat-label">Lifetimes of Depth</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

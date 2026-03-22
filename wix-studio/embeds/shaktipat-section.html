@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:wght@400&family=Cinzel:wght@400&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0a0a0f;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section {
+    font-family: 'EB Garamond', Georgia, serif;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 40px 120px;
+  }
+
+  /* ── EYEBROW ── */
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: #C9A84C;
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  /* ── MAIN HEADING ── */
+  .heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 62px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.1;
+    text-align: center;
+    margin-bottom: 12px;
+    letter-spacing: 0.01em;
+  }
+
+  .heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .subheading {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(232,224,208,0.4);
+    text-align: center;
+    margin-bottom: 52px;
+    line-height: 1.5;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 72px;
+  }
+
+  .divider-line {
+    width: 80px;
+    height: 1px;
+    background: rgba(201,168,76,0.2);
+  }
+
+  .divider-diamond {
+    width: 6px;
+    height: 6px;
+    background: #C9A84C;
+    transform: rotate(45deg);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  /* ── OPENING BODY ── */
+  .opening {
+    max-width: 740px;
+    margin: 0 auto 80px;
+    text-align: center;
+  }
+
+  .opening p {
+    font-size: 18px;
+    color: rgba(232,224,208,0.62);
+    line-height: 1.9;
+  }
+
+  .opening p + p {
+    margin-top: 22px;
+  }
+
+  .opening strong {
+    color: rgba(232,224,208,0.88);
+    font-weight: 400;
+  }
+
+  /* ── SECTION SEPARATOR ── */
+  .sep {
+    height: 1px;
+    background: rgba(232,224,208,0.06);
+    margin: 72px 0;
+  }
+
+  /* ── WHAT IS SHAKTIPAT ── */
+  .definition-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+    margin-bottom: 80px;
+  }
+
+  .definition-text .block-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .definition-text .block-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 2.5vw, 32px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.25;
+    margin-bottom: 28px;
+  }
+
+  .definition-text .block-heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .definition-text .block-body {
+    font-size: 16.5px;
+    color: rgba(232,224,208,0.6);
+    line-height: 1.88;
+  }
+
+  .definition-text .block-body p + p {
+    margin-top: 18px;
+  }
+
+  .definition-text .block-body strong {
+    color: rgba(232,224,208,0.85);
+    font-weight: 400;
+  }
+
+  /* ── SANSKRIT PANEL ── */
+  .sanskrit-panel {
+    background: #0d0c18;
+    border: 1px solid rgba(201,168,76,0.12);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .sanskrit-item {
+    border-bottom: 1px solid rgba(232,224,208,0.05);
+    padding-bottom: 32px;
+  }
+
+  .sanskrit-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .sanskrit-word {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    font-style: italic;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 8px;
+    letter-spacing: 0.03em;
+  }
+
+  .sanskrit-transliteration {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 3.5px;
+    color: rgba(201,168,76,0.4);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .sanskrit-meaning {
+    font-family: 'EB Garamond', serif;
+    font-size: 15.5px;
+    color: rgba(232,224,208,0.5);
+    line-height: 1.75;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pullquote-block {
+    text-align: center;
+    padding: 64px 60px;
+    border: 1px solid rgba(201,168,76,0.12);
+    background: rgba(201,168,76,0.02);
+    margin-bottom: 80px;
+  }
+
+  .pullquote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    font-weight: 300;
+    color: rgba(201,168,76,0.2);
+    line-height: 0.6;
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  .pullquote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 300;
+    font-style: italic;
+    color: #e8e0d0;
+    line-height: 1.65;
+    max-width: 720px;
+    margin: 0 auto 28px;
+  }
+
+  .pullquote-source {
+    font-family: 'Cinzel', serif;
+    font-size: 8.5px;
+    letter-spacing: 3.5px;
+    color: rgba(201,168,76,0.45);
+    text-transform: uppercase;
+  }
+
+  /* ── THE GURU ── */
+  .guru-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+    margin-bottom: 80px;
+  }
+
+  .guru-block .block-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .guru-block .block-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 2.5vw, 32px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.25;
+    margin-bottom: 28px;
+  }
+
+  .guru-block .block-heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .guru-block .block-body {
+    font-size: 16.5px;
+    color: rgba(232,224,208,0.6);
+    line-height: 1.88;
+  }
+
+  .guru-block .block-body p + p {
+    margin-top: 18px;
+  }
+
+  .guru-block .block-body strong {
+    color: rgba(232,224,208,0.85);
+    font-weight: 400;
+  }
+
+  /* ── TRANSMISSION QUOTE STACK ── */
+  .quote-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .quote-card {
+    border-left: 1px solid rgba(201,168,76,0.25);
+    padding: 20px 0 20px 28px;
+  }
+
+  .quote-card-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(232,224,208,0.78);
+    line-height: 1.72;
+    margin-bottom: 14px;
+  }
+
+  .quote-card-attribution {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: rgba(201,168,76,0.45);
+    text-transform: uppercase;
+  }
+
+  /* ── FOUR METHODS ── */
+  .methods-block {
+    margin-bottom: 0;
+  }
+
+  .methods-header {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+
+  .methods-header .block-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .methods-header .block-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 2.5vw, 34px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .methods-header .block-heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .methods-header p {
+    font-size: 17px;
+    color: rgba(232,224,208,0.5);
+    line-height: 1.85;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .methods-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .method-card {
+    background: #0f0e1a;
+    border: 1px solid rgba(232,224,208,0.07);
+    padding: 40px 28px;
+    text-align: center;
+    position: relative;
+    transition: border-color 0.3s;
+  }
+
+  .method-card:hover {
+    border-color: rgba(201,168,76,0.2);
+  }
+
+  .method-card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 1px;
+    background: #C9A84C;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .method-card:hover::before {
+    opacity: 1;
+  }
+
+  .method-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: rgba(201,168,76,0.3);
+    display: block;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .method-sanskrit {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    font-style: italic;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .method-name {
+    font-family: 'Cinzel', serif;
+    font-size: 8.5px;
+    letter-spacing: 3px;
+    color: rgba(201,168,76,0.4);
+    display: block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .method-divider {
+    width: 24px;
+    height: 1px;
+    background: rgba(201,168,76,0.2);
+    margin: 0 auto 20px;
+  }
+
+  .method-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #e8e0d0;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .method-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 14.5px;
+    color: rgba(232,224,208,0.38);
+    line-height: 1.72;
+  }
+
+  /* ── EXPERIENCE BLOCK ── */
+  .experience-block {
+    background: #0d0c18;
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 64px 60px;
+    margin-bottom: 80px;
+  }
+
+  .experience-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .experience-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 2.5vw, 34px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .experience-heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .experience-item {
+    text-align: center;
+  }
+
+  .experience-icon {
+    font-size: 22px;
+    color: rgba(201,168,76,0.5);
+    display: block;
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+
+  .experience-item-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(232,224,208,0.85);
+    margin-bottom: 10px;
+  }
+
+  .experience-item-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 14.5px;
+    color: rgba(232,224,208,0.38);
+    line-height: 1.7;
+  }
+
+  /* ── CLOSING PULLQUOTE ── */
+  .closing-quote {
+    text-align: center;
+    padding: 72px 60px 0;
+  }
+
+  .closing-quote .pullquote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    font-weight: 300;
+    color: rgba(201,168,76,0.2);
+    line-height: 0.6;
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  .closing-quote .pullquote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 300;
+    font-style: italic;
+    color: #e8e0d0;
+    line-height: 1.6;
+    max-width: 740px;
+    margin: 0 auto 28px;
+  }
+
+  .closing-quote .pullquote-source {
+    font-family: 'Cinzel', serif;
+    font-size: 8.5px;
+    letter-spacing: 3.5px;
+    color: rgba(201,168,76,0.45);
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .definition-block,
+    .guru-block {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .methods-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .experience-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .pullquote-block,
+    .experience-block {
+      padding: 48px 28px;
+    }
+
+    .closing-quote {
+      padding: 60px 20px 0;
+    }
+
+    .section {
+      padding: 70px 20px 80px;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .methods-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="section">
+
+  <!-- SECTION HEADER -->
+  <span class="eyebrow">The Initiation</span>
+  <h2 class="heading">Shaktipat<br><em>The Descent of Grace</em></h2>
+  <p class="subheading">śakti · pāta — the falling of power</p>
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- OPENING -->
+  <div class="opening">
+    <p>There is a moment that cannot be manufactured. It does not come through study, through discipline, or through the accumulation of spiritual merit alone. It comes when the Shakti — the divine energy that underlies all of existence — <strong>recognizes itself</strong> in you, and moves.</p>
+    <p>This is Shaktipat. Not a metaphor. Not a ritual. A transmission — real, precise, and utterly unlike anything the ordinary mind expects. In the Trika tradition of Kashmir Shaivism, it is called the <strong>most direct path to liberation</strong>: the moment when the Guru's Shakti touches the dormant Shakti of the disciple, and the sleeping fire wakes.</p>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- DEFINITION BLOCK -->
+  <div class="definition-block">
+
+    <div class="definition-text">
+      <span class="block-label">The Meaning</span>
+      <h3 class="block-heading">Shakti Descends.<br>The Seeker <em>Did Not Climb</em> to It.</h3>
+      <div class="block-body">
+        <p>The word itself is precise. <em>Śakti</em> — divine energy, the living power of consciousness. <em>Pāta</em> — a falling, a descent. This is not something the disciple achieves. It is something that <strong>happens to</strong> the disciple. The Shakti falls, as rain falls — without negotiation, without prerequisite merit alone, by the sovereign grace of the divine.</p>
+        <p>In the Shaiva Agamas and in Abhinavagupta's monumental <em>Tantraloka</em>, Shaktipat is classed as the foundational act of initiation — <em>dīkṣā</em>. All other forms of initiation are its outer shell. Shaktipat is the inner fire that makes them real. Without it, ritual is ceremony. With it, ceremony becomes <strong>transformation</strong>.</p>
+        <p>The Shiva Sutras open with the declaration: <em>Caitanyam ātmā</em> — "The self is consciousness." Shaktipat is the lived proof of that statement. In the moment of transmission, the disciple does not merely believe this — they <strong>know it</strong>, in their body and beyond their mind, as the Shakti moves through them like electricity through a wire.</p>
+      </div>
+    </div>
+
+    <div class="sanskrit-panel">
+      <div class="sanskrit-item">
+        <span class="sanskrit-word">Śakti</span>
+        <span class="sanskrit-transliteration">शक्ति · Divine Power</span>
+        <p class="sanskrit-meaning">The living energy of consciousness itself — not separate from Shiva, but Shiva in his dynamic, creative, descending aspect. The universe is Shakti in motion.</p>
+      </div>
+      <div class="sanskrit-item">
+        <span class="sanskrit-word">Pāta</span>
+        <span class="sanskrit-transliteration">पात · Descent · A Falling</span>
+        <p class="sanskrit-meaning">The act of descending — of grace moving downward, from the infinite into the finite, from the Guru into the disciple. Not earned. Given.</p>
+      </div>
+      <div class="sanskrit-item">
+        <span class="sanskrit-word">Dīkṣā</span>
+        <span class="sanskrit-transliteration">दीक्षा · Initiation</span>
+        <p class="sanskrit-meaning">From <em>dī</em> (to give) and <em>kṣā</em> (to dissolve): initiation gives liberation and dissolves the bonds. Shaktipat is its most direct form — initiation not through ritual alone, but through living transmission.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PULL QUOTE -->
+  <div class="pullquote-block">
+    <span class="pullquote-mark">"</span>
+    <p class="pullquote-text">The Guru does not give you Shakti. The Guru reveals the Shakti that was already yours — sleeping like fire inside wood, waiting only for the one who knows how to draw it forth.</p>
+    <span class="pullquote-source">Swami Lakshmanjoo · Kashmir Shaivism: The Secret Supreme</span>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- THE GURU'S ROLE -->
+  <div class="guru-block">
+
+    <div class="quote-stack">
+      <div class="quote-card">
+        <p class="quote-card-text">"Just as one lamp is lit by another, so too is the Shakti of the disciple kindled by the Shakti of the Guru. The Guru is the lamp already burning."</p>
+        <span class="quote-card-attribution">Kshemaraja · Pratyabhijnahridayam</span>
+      </div>
+      <div class="quote-card">
+        <p class="quote-card-text">"Grace is not withheld by God. It pours continuously, like sunlight. The only question is whether there is an opening in you to receive it — and the Guru creates that opening."</p>
+        <span class="quote-card-attribution">Abhinavagupta · Tantraloka · paraphrase</span>
+      </div>
+      <div class="quote-card">
+        <p class="quote-card-text">"I felt a surge of divine energy unlike anything I had known. I saw a light that had no source. I understood, in that instant, that I had always been what the scriptures described. Always. I had simply not known it."</p>
+        <span class="quote-card-attribution">Swami Muktananda · Play of Consciousness (Chitshakti Vilas)</span>
+      </div>
+    </div>
+
+    <div>
+      <span class="block-label">The Guru as Conduit</span>
+      <h3 class="block-heading">The Guru Does Not<br><em>Own</em> the Shakti</h3>
+      <div class="block-body">
+        <p>This is perhaps the subtlest teaching of Shaktipat: the Guru is not the source. The Guru is a <strong>clear channel</strong> — one whose own egoic contractions have dissolved enough that the infinite Shakti can flow through them without obstruction and into the disciple.</p>
+        <p>Abhinavagupta, the 10th-century master of Kashmir Shaivism whose <em>Tantraloka</em> remains the most comprehensive map of Shaiva tantra ever written, describes this with extraordinary precision: the qualified Guru (<em>śaktipāta-yogya guru</em>) is one who has themselves received the transmission, integrated it, and become transparent to it. They transmit not their own power — but the power they have become empty enough to carry.</p>
+        <p>This is why the relationship between Guru and disciple is unlike all other relationships. It is not teacher and student, not therapist and client, not priest and supplicant. It is a meeting of <strong>two flames</strong> — one already burning, one waiting to be lit. When they come close enough, there is no technique required. The fire simply moves.</p>
+        <p>The <em>Spanda Karikas</em> — the "stanzas on vibration" that map the pulsating awareness at the heart of Shaivism — describe this Spanda, this divine throb, as the very stuff of which Shaktipat is made. In the moment of transmission, the disciple touches Spanda directly: the primal vibration of consciousness that was never absent, only unrecognized.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- FOUR METHODS -->
+  <div class="methods-block">
+
+    <div class="methods-header">
+      <span class="block-label">The Vehicles of Transmission</span>
+      <h3 class="block-heading">Four Ways the <em>Fire Moves</em></h3>
+      <p>The Shaiva Agamas enumerate four classical modes through which Shaktipat can be transmitted. Each is complete in itself. The Guru chooses according to the readiness of the disciple — not by preference, but by perception.</p>
+    </div>
+
+    <div class="methods-grid">
+
+      <div class="method-card">
+        <span class="method-number">I</span>
+        <span class="method-sanskrit">Sparśa</span>
+        <span class="method-name">स्पर्श · Touch</span>
+        <div class="method-divider"></div>
+        <h4 class="method-title">By Sacred Touch</h4>
+        <p class="method-body">The Guru's hand on the disciple's head, back, or chest — the most intimate of transmissions. The body becomes the conductor. Shakti travels through skin and bone into the sleeping center of the disciple's being.</p>
+      </div>
+
+      <div class="method-card">
+        <span class="method-number">II</span>
+        <span class="method-sanskrit">Dṛṣṭi</span>
+        <span class="method-name">दृष्टि · Gaze</span>
+        <div class="method-divider"></div>
+        <h4 class="method-title">By the Guru's Gaze</h4>
+        <p class="method-body">The Guru's eyes meet the disciple's — and something that cannot be named passes between them. The tradition of <em>darshan</em> is rooted here: in the understanding that the enlightened gaze carries its own awakening charge.</p>
+      </div>
+
+      <div class="method-card">
+        <span class="method-number">III</span>
+        <span class="method-sanskrit">Vāk</span>
+        <span class="method-name">वाक् · Word · Mantra</span>
+        <div class="method-divider"></div>
+        <h4 class="method-title">By Mantra or Spoken Word</h4>
+        <p class="method-body">Sound is not merely symbol in the Shaiva view — it is Shakti crystallized into vibration. The Guru's voice, charged with awareness, carries the transmission into the disciple through the ear and the subtle body simultaneously.</p>
+      </div>
+
+      <div class="method-card">
+        <span class="method-number">IV</span>
+        <span class="method-sanskrit">Manas</span>
+        <span class="method-name">मनस् · Mind · Intention</span>
+        <div class="method-divider"></div>
+        <h4 class="method-title">By Pure Intention</h4>
+        <p class="method-body">The subtlest and most powerful form — the Guru's directed sankalpa, their focused intention, transmits the Shakti across any distance. Space is no obstacle to what moves beyond space. This is Shaktipat at its most sovereign.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- THE EXPERIENCE -->
+  <div class="experience-block">
+    <span class="experience-label">What Happens Inside</span>
+    <h3 class="experience-heading">The Awakening of <em>Kuṇḍalinī</em></h3>
+
+    <div class="experience-grid">
+
+      <div class="experience-item">
+        <span class="experience-icon">◈</span>
+        <h4 class="experience-item-title">The Body Knows First</h4>
+        <p class="experience-item-body">Heat at the base of the spine. Vibration spreading upward through the chakras. Spontaneous movements — kriyas — that no instruction produced. The body responds before the mind can form a question.</p>
+      </div>
+
+      <div class="experience-item">
+        <span class="experience-icon">✦</span>
+        <h4 class="experience-item-title">Light Without Source</h4>
+        <p class="experience-item-body">Visions of inner light — blue, gold, or white — that seem to have no origin in the outer world. Swami Muktananda described seeing the Blue Pearl: a radiant point of light that he understood to be the seat of the individual soul.</p>
+      </div>
+
+      <div class="experience-item">
+        <span class="experience-icon">◯</span>
+        <h4 class="experience-item-title">Stillness and Bliss</h4>
+        <p class="experience-item-body">A silence that is not absence but fullness. The sensation of having arrived somewhere that was always here. Joy arising without cause. Tears without grief. Recognition without words — <em>pratyabhijñā</em>, the self knowing itself.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CLOSING QUOTE -->
+  <div class="closing-quote">
+    <span class="pullquote-mark">"</span>
+    <p class="pullquote-text">In one instant the Guru's grace can accomplish what a thousand years of practice might only approach. This is not superstition. This is the most precise science the tradition knows.</p>
+    <span class="pullquote-source">Abhinavagupta · Tantraloka · III · paraphrase after Swami Lakshmanjoo</span>
+  </div>
+
+</div>
+</body>
+</html>

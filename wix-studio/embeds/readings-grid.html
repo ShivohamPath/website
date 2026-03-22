@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --text4: rgba(232,224,208,0.15);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .grid-wrap {
+    padding: 4px 20px 20px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+
+  /* ── 2-COL GRID ── */
+  .readings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+
+  /* ── STANDARD CARD ── */
+  .reading-card {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 36px 32px;
+    position: relative; overflow: hidden;
+    transition: all 0.3s;
+    display: flex; flex-direction: column;
+  }
+  .reading-card:hover { border-color: var(--line2); background: var(--bg4); }
+  .reading-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .reading-card:hover::after { transform: scaleX(1); }
+
+  .card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-weight: 300;
+    color: rgba(201,168,76,0.07);
+    position: absolute; top: 12px; right: 20px;
+    line-height: 1; user-select: none;
+  }
+  .reading-tag {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 3px; color: var(--gold);
+    display: block; margin-bottom: 12px;
+  }
+  .reading-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.2vw, 27px);
+    font-weight: 400; color: var(--text);
+    line-height: 1.2; margin-bottom: 12px;
+  }
+  .reading-card h3 em { font-style: italic; color: var(--gold); }
+  .reading-card > p {
+    font-size: clamp(13px, 1.6vw, 15px);
+    color: var(--text2); line-height: 1.75;
+    flex: 1; margin-bottom: 18px;
+  }
+  .card-meta {
+    display: flex; align-items: center;
+    gap: 8px; margin-bottom: 18px; flex-wrap: wrap;
+  }
+  .meta-pill {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 1.5px; padding: 4px 10px;
+    border: 1px solid var(--line2); color: var(--text3);
+  }
+  .meta-pill.gold { border-color: var(--gold2); color: var(--gold); }
+  .card-bottom {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    padding-top: 18px; border-top: 1px solid var(--line);
+    margin-top: auto; gap: 12px;
+  }
+  .card-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300;
+    color: var(--gold); line-height: 1;
+  }
+  .card-duration {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 1.5px; color: var(--text3); margin-top: 3px;
+  }
+  .card-book {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 2px; color: var(--text3);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 6px;
+    transition: color 0.2s; white-space: nowrap;
+  }
+  .reading-card:hover .card-book { color: var(--gold); }
+  .card-book::after { content: '→'; }
+
+  /* ── WIDE CARD (Shiva Oracle PDF) ── */
+  .reading-card-wide {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 36px 40px;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 32px; align-items: center;
+    position: relative; overflow: hidden;
+    transition: all 0.3s;
+  }
+  .reading-card-wide:hover { border-color: var(--line2); background: var(--bg4); }
+  .reading-card-wide::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .reading-card-wide:hover::after { transform: scaleX(1); }
+
+  .wide-card-num {
+    position: absolute; top: 12px; right: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-weight: 300;
+    color: rgba(201,168,76,0.07); line-height: 1; user-select: none;
+  }
+  .wide-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 400; color: var(--text);
+    line-height: 1.2; margin-bottom: 10px;
+  }
+  .wide-body h3 em { font-style: italic; color: var(--gold); }
+  .wide-body p {
+    font-size: clamp(13px, 1.6vw, 15px);
+    color: var(--text2); line-height: 1.75;
+    margin-bottom: 14px;
+  }
+  .wide-action {
+    display: flex; flex-direction: column;
+    align-items: flex-end; gap: 12px; flex-shrink: 0;
+  }
+  .wide-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300;
+    color: var(--gold); line-height: 1; text-align: right;
+  }
+  .wide-duration {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 1.5px; color: var(--text3);
+    margin-top: 3px; text-align: right;
+  }
+  .btn-ghost {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2px; padding: 10px 22px;
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold2); cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .btn-ghost:hover { background: var(--gold3); }
+
+  /* ── RESPONSIVE ── */
+
+  /* Tablet: tighten padding */
+  @media (max-width: 900px) {
+    .grid-wrap { padding: 4px 16px 16px; }
+    .reading-card { padding: 28px 22px; }
+    .reading-card-wide { padding: 28px 28px; gap: 20px; }
+  }
+
+  /* Mobile: single column */
+  @media (max-width: 640px) {
+    .grid-wrap { padding: 4px 12px 12px; gap: 3px; }
+
+    .readings-grid {
+      grid-template-columns: 1fr;
+      gap: 3px;
+    }
+
+    .reading-card { padding: 24px 18px; }
+    .card-num { font-size: 40px; top: 10px; right: 14px; }
+
+    /* Wide card: stack on mobile */
+    .reading-card-wide {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 24px 18px;
+    }
+    .wide-action {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .wide-price { text-align: left; }
+    .wide-duration { text-align: left; }
+    .wide-card-num { font-size: 40px; }
+  }
+
+  @media (max-width: 380px) {
+    .reading-card { padding: 20px 14px; }
+    .reading-card-wide { padding: 20px 14px; }
+    .btn-ghost { font-size: 9px; padding: 9px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-wrap">
+
+  <!-- Row 1 -->
+  <div class="readings-grid">
+    <!-- 01 Specific Question -->
+    <div class="reading-card">
+      <span class="card-num">01</span>
+      <span class="reading-tag">FOCUSED · SINGLE AREA</span>
+      <h3>Specific Question<br><em>Reading</em></h3>
+      <p>
+        For one area of life that feels heavy, confusing, or karmically stuck — relationships, career, health, or spiritual growth. We go deep on one thing and we go deep on it completely.
+      </p>
+      <div class="card-meta">
+        <span class="meta-pill">30 MINUTES</span>
+        <span class="meta-pill">ONLINE</span>
+        <span class="meta-pill gold">ENTRY POINT</span>
+      </div>
+      <div class="card-bottom">
+        <div>
+          <div class="card-price">₹2,499</div>
+          <div class="card-duration">30 MIN · ONLINE</div>
+        </div>
+        <a href="https://www.shivohampath.com/booking-calendar/specific-question-reading-30-mins" class="card-book">Book Now</a>
+      </div>
+    </div>
+
+    <!-- 02 Synastry -->
+    <div class="reading-card">
+      <span class="card-num">02</span>
+      <span class="reading-tag">RELATIONSHIPS · KARMIC BONDS</span>
+      <h3>Synastry &amp;<br><em>Kundali Milan</em></h3>
+      <p>
+        Not just compatibility — karmic bond analysis. Why you keep finding each other. What contract exists between your souls. Whether this relationship is here to teach, to complete, or to finally release.
+      </p>
+      <div class="card-meta">
+        <span class="meta-pill">1 HR 30 MIN</span>
+        <span class="meta-pill">ONLINE</span>
+        <span class="meta-pill gold">TWO CHARTS</span>
+      </div>
+      <div class="card-bottom">
+        <div>
+          <div class="card-price">₹8,499</div>
+          <div class="card-duration">90 MIN · ONLINE</div>
+        </div>
+        <a href="https://www.shivohampath.com/booking-calendar/synastry-kundali-milan" class="card-book">Book Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="readings-grid">
+    <!-- 03 Moksha -->
+    <div class="reading-card">
+      <span class="card-num">03</span>
+      <span class="reading-tag">ADVANCED · LIBERATION PATH</span>
+      <h3>Advanced Moksha<br><em>Consultation</em></h3>
+      <p>
+        For those who have done the inner work and sense that something deeper is asking to be seen. The soul's liberation path — what your chart says about where you are in the cycle of return, and what this lifetime is asking you to finally complete.
+      </p>
+      <div class="card-meta">
+        <span class="meta-pill">1 HR 30 MIN</span>
+        <span class="meta-pill">ONLINE</span>
+        <span class="meta-pill gold">ADVANCED</span>
+      </div>
+      <div class="card-bottom">
+        <div>
+          <div class="card-price">₹5,499</div>
+          <div class="card-duration">90 MIN · ONLINE</div>
+        </div>
+        <a href="https://www.shivohampath.com/booking-calendar/advanced-moksha-path-consultation" class="card-book">Book Now</a>
+      </div>
+    </div>
+
+    <!-- 04 Madhurya Bhakta -->
+    <div class="reading-card">
+      <span class="card-num">04</span>
+      <span class="reading-tag">DEVOTION · DIVINE BELOVED</span>
+      <h3>Madhurya Bhakta<br><em>Sessions</em></h3>
+      <p>
+        For those who love Shiv not as a distant deity, but as Beloved. This is not a standard astrology session — it is a sacred conversation for souls on the path of divine union. We work with your chart, your devotional history, and your longing.
+      </p>
+      <div class="card-meta">
+        <span class="meta-pill">2 HOURS</span>
+        <span class="meta-pill">ONLINE</span>
+        <span class="meta-pill gold">BHAKTI PATH</span>
+      </div>
+      <div class="card-bottom">
+        <div>
+          <div class="card-price">₹6,499</div>
+          <div class="card-duration">2 HOURS · ONLINE</div>
+        </div>
+        <a href="https://www.shivohampath.com/booking-calendar/madhurya-bhakta-sessions" class="card-book">Book Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 Wide Card — Shiva Oracle PDF -->
+  <div class="reading-card-wide">
+    <span class="wide-card-num">05</span>
+    <div class="wide-body">
+      <span class="reading-tag">PDF REPORT · NO CALL REQUIRED</span>
+      <h3>Shiva Oracle Reading —<br><em>Not Prediction. Revelation.</em></h3>
+      <p>
+        A written oracle report delivered as a PDF. For those who want the depth without the live session format — or as a first entry point into this work before booking a full reading. Sacred, personal, and written specifically for your chart and question.
+      </p>
+      <div class="card-meta">
+        <span class="meta-pill">PDF DELIVERY</span>
+        <span class="meta-pill">NO CALL NEEDED</span>
+        <span class="meta-pill gold">ENTRY LEVEL</span>
+      </div>
+    </div>
+    <div class="wide-action">
+      <div>
+        <div class="wide-price">₹1,499</div>
+        <div class="wide-duration">PDF REPORT</div>
+      </div>
+      <a href="https://www.shivohampath.com/booking-calendar/shiva-oracle-reading-pdf-report-only" class="btn-ghost">Get Your Report</a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --gold:  #C9A84C;
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .how-section {
+    padding: 80px 60px 90px;
+    background: linear-gradient(180deg, transparent, rgba(15,10,26,0.4), transparent);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .how-inner { max-width: 1100px; margin: 0 auto; }
+
+  /* ── HEADER ── */
+  .how-header { text-align: center; margin-bottom: 60px; }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 16px;
+  }
+  .how-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 4vw, 46px);
+    font-weight: 300; color: var(--text); line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .how-header h2 em { font-style: italic; color: var(--gold); }
+  .divider {
+    display: flex; align-items: center; gap: 16px; justify-content: center;
+  }
+  .divider-line { flex: 1; max-width: 80px; height: 1px; background: var(--line2); }
+  .divider-diamond {
+    width: 6px; height: 6px; background: var(--gold);
+    transform: rotate(45deg); opacity: 0.7; flex-shrink: 0;
+  }
+
+  /* ── STEPS GRID ── */
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  /* Horizontal connector line between step numbers */
+  .how-steps::before {
+    content: '';
+    position: absolute;
+    top: 24px; /* aligns with center of step-num circles */
+    left: 12.5%; right: 12.5%;
+    height: 1px;
+    background: var(--line2);
+    z-index: 0;
+  }
+
+  .how-step {
+    text-align: center;
+    padding: 0 20px;
+    position: relative; z-index: 1;
+  }
+  .step-num {
+    width: 48px; height: 48px;
+    border: 1px solid var(--line2);
+    background: var(--bg3);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-family: 'Cinzel', serif; font-size: 13px; color: var(--gold);
+    position: relative; z-index: 1;
+  }
+  .how-step h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 2vw, 21px);
+    font-weight: 400; color: var(--text); margin-bottom: 10px;
+  }
+  .how-step p {
+    font-size: clamp(13px, 1.5vw, 14px);
+    color: var(--text3); line-height: 1.65;
+  }
+
+  /* ── RESPONSIVE ── */
+
+  /* Tablet: 2x2 grid */
+  @media (max-width: 800px) {
+    .how-section { padding: 60px 40px 70px; }
+
+    .how-steps {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 20px;
+    }
+    /* Hide the 4-col connector line on tablet/mobile */
+    .how-steps::before { display: none; }
+  }
+
+  /* Mobile: single column */
+  @media (max-width: 520px) {
+    .how-section { padding: 48px 20px 56px; }
+
+    .how-steps {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .how-step { padding: 0; }
+    .how-step h4 { font-size: 19px; }
+    .how-step p { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="how-section">
+  <div class="how-inner">
+
+    <div class="how-header">
+      <span class="eyebrow">THE PROCESS</span>
+      <h2>How a Reading <em>Works</em></h2>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+      </div>
+    </div>
+
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="step-num">01</div>
+        <h4>Book &amp; Share Details</h4>
+        <p>Choose your reading. Book your slot. Share your accurate birth date, time, and place of birth.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">02</div>
+        <h4>Chart Preparation</h4>
+        <p>Veena prepares your D1, D9, and D60 before the session — arriving with the full map already read.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">03</div>
+        <h4>The Session</h4>
+        <p>A live video session — no scripts, no generic readings. A direct, honest conversation about what your chart is carrying.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">04</div>
+        <h4>Integration</h4>
+        <p>A recording of your session is shared after. The work begins after the call — not during it.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

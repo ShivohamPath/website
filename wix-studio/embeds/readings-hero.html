@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.22);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  /* ── HERO ── */
+  .page-hero {
+    min-height: 70vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 80px 60px 60px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 40%, rgba(139,111,191,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 80% 70%, rgba(201,168,76,0.05) 0%, transparent 60%),
+      linear-gradient(180deg, #0a0a0f 0%, #0f0a1a 60%, #0a0a0f 100%);
+  }
+  .mandala {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    opacity: 0.04; z-index: 0;
+    animation: spin 100s linear infinite;
+  }
+  @keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .hero-content { position: relative; z-index: 1; max-width: 680px; }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 18px;
+  }
+  .page-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 7vw, 78px);
+    font-weight: 300; line-height: 1.05;
+    color: var(--text); margin-bottom: 24px;
+  }
+  .page-hero h1 em { font-style: italic; color: var(--gold); }
+
+  .divider {
+    display: flex; align-items: center; gap: 16px;
+    justify-content: center; margin: 24px 0;
+  }
+  .divider-line { flex: 1; max-width: 80px; height: 1px; background: var(--line2); }
+  .divider-diamond { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; flex-shrink: 0; }
+
+  .page-hero p {
+    font-size: clamp(15px, 2.5vw, 18px);
+    font-style: italic; color: var(--text3);
+    max-width: 520px; margin: 0 auto;
+    line-height: 1.75;
+  }
+
+  /* ── IMPORTANT NOTE ── */
+  .note-wrap {
+    padding: 0 40px 60px;
+    position: relative; z-index: 1;
+  }
+  .important-note {
+    max-width: 780px; margin: 0 auto;
+    padding: 28px 40px;
+    background: var(--gold4);
+    border: 1px solid var(--line2);
+    border-left: 3px solid var(--gold);
+  }
+  .important-note p {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--text2); line-height: 1.75;
+    font-style: italic; text-align: center;
+  }
+  .important-note p strong {
+    color: var(--gold); font-weight: 400; font-style: normal;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .page-hero { padding: 60px 24px 40px; min-height: 60vh; }
+    .note-wrap { padding: 0 20px 40px; }
+    .important-note { padding: 22px 24px; }
+    .mandala { width: 340px; height: 340px; }
+  }
+  @media (max-width: 480px) {
+    .page-hero { padding: 48px 16px 32px; }
+    .note-wrap { padding: 0 16px 32px; }
+    .important-note { padding: 18px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <svg class="mandala" viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="350" cy="350" r="300" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="350" cy="350" r="230" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="350" cy="350" r="160" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="350" cy="350" r="90"  stroke="#C9A84C" stroke-width="0.5"/>
+    <line x1="50"  y1="350" x2="650" y2="350" stroke="#C9A84C" stroke-width="0.5"/>
+    <line x1="350" y1="50"  x2="350" y2="650" stroke="#C9A84C" stroke-width="0.5"/>
+    <line x1="138" y1="138" x2="562" y2="562" stroke="#C9A84C" stroke-width="0.5"/>
+    <line x1="562" y1="138" x2="138" y2="562" stroke="#C9A84C" stroke-width="0.5"/>
+    <polygon points="350,80 600,490 100,490" stroke="#C9A84C" stroke-width="0.4" fill="none"/>
+    <polygon points="350,620 100,210 600,210" stroke="#C9A84C" stroke-width="0.4" fill="none"/>
+  </svg>
+  <div class="hero-content">
+    <span class="eyebrow">THE READINGS</span>
+    <h1>This Is Not<br>Astrology For<br>The <em>Curious.</em></h1>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+    <p>These sessions are for the ones who sense that their patterns go deeper than this lifetime — and are ready to finally see what the chart has been holding.</p>
+  </div>
+</section>
+
+<div class="note-wrap">
+  <div class="important-note">
+    <p>
+      Every reading requires your <strong>accurate birth date, time, and place.</strong>
+      The D60 Shashtiamsha shifts with even a 4-minute difference in birth time.
+      The more precise your details — the deeper the reading can go.
+    </p>
+  </div>
+</div>
+
+</body>
+</html>

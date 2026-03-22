@@ -232,12 +232,21 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 640px) {
+    body {
+      overflow-x: hidden;
+    }
+
     .section {
-      padding: 70px 20px 80px;
+      padding: 60px 16px 70px;
     }
 
     .card {
-      padding: 32px 24px;
+      padding: 28px 20px;
+    }
+
+    .card-body {
+      font-size: 15px;
+      line-height: 1.75;
     }
 
     /* Hide the centre vertical line on mobile */
@@ -247,6 +256,32 @@
 
     .node {
       display: none;
+    }
+
+    /* Stack lineage chain vertically instead of wrapping inline */
+    .lineage-chain {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      line-height: 1.8;
+    }
+
+    .lineage-chain .arrow {
+      display: none;
+    }
+
+    .lineage-chain span:not(.arrow) {
+      display: block;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .lineage-chain span:not(.arrow)::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: rgba(201,168,76,0.25);
     }
   }
 </style>

@@ -139,17 +139,32 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
+    body {
+      overflow-x: hidden;
+    }
+
     .grid {
       grid-template-columns: 1fr 1fr;
+      gap: 1px;
     }
+
     .section {
-      padding: 60px 20px;
+      padding: 60px 16px;
     }
   }
 
   @media (max-width: 480px) {
     .grid {
       grid-template-columns: 1fr;
+      gap: 1px;
+    }
+
+    .card {
+      padding: 28px 20px;
+    }
+
+    .card-body {
+      font-size: 13px;
     }
   }
 </style>

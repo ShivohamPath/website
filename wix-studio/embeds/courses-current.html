@@ -154,20 +154,46 @@
     letter-spacing: 2px; color: var(--text3);
     display: block; margin-bottom: 12px;
   }
-  .inside-list {
+
+  /* Module / curriculum list */
+  .module-list {
     list-style: none; margin-bottom: 28px;
+    border: 1px solid var(--line);
   }
-  .inside-list li {
-    display: flex; align-items: flex-start; gap: 10px;
-    font-size: clamp(13px, 1.6vw, 14px);
-    color: var(--text2); line-height: 1.5;
-    margin-bottom: 8px;
+  .module-item {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.2s;
   }
-  .inside-dot {
-    width: 4px; height: 4px;
-    background: var(--gold); transform: rotate(45deg);
-    margin-top: 7px; flex-shrink: 0;
+  .module-item:last-child { border-bottom: none; }
+  .module-item:hover { background: rgba(201,168,76,0.03); }
+  .module-num {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 1px; color: var(--gold);
+    opacity: 0.5; flex-shrink: 0; width: 18px;
   }
+  .module-name {
+    font-size: clamp(12px, 1.5vw, 14px);
+    color: var(--text2); line-height: 1.4; flex: 1;
+  }
+  .module-steps {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 1px; color: var(--text3);
+    flex-shrink: 0; white-space: nowrap;
+  }
+
+  /* Certificate pill */
+  .cert-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--line2);
+    padding: 6px 14px; margin-bottom: 20px;
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--gold);
+  }
+  .cert-icon { font-size: 12px; opacity: 0.7; }
 
   /* Footer */
   .course-footer {
@@ -252,11 +278,11 @@
       <div class="visual-glyph">♡</div>
       <div class="visual-inner">
         <span class="course-symbol">♡</span>
-        <div class="course-title-visual">The Path of the<br>Divine Beloved</div>
+        <div class="course-title-visual">She Who<br>Becomes Him</div>
         <div class="tag-list">
           <span class="tag lit">MADHURYA BHAKTI</span>
-          <span class="tag">KASHMIR SHAIVISM</span>
-          <span class="tag">DEVOTIONAL PATH</span>
+          <span class="tag">SELF-PACED · 46 STEPS</span>
+          <span class="tag">CERTIFICATE</span>
         </div>
       </div>
     </div>
@@ -264,30 +290,59 @@
     <!-- Body -->
     <div class="course-body">
       <span class="course-tag">FIRST COURSE · DEVOTION &amp; DIVINE UNION</span>
-      <h2>Madhurya <em>Bhakti</em></h2>
-      <p class="course-subtitle">The Path of Loving Shiva as Beloved — Not as Deity</p>
+      <h2>She Who<br>Becomes <em>Him</em></h2>
+      <p class="course-subtitle">For devotional women, mystical seekers, and sacred rebels ready to awaken the divine union within</p>
+
+      <div class="cert-pill">
+        <span class="cert-icon">✦</span>
+        46 STEPS · CERTIFICATE ON COMPLETION
+      </div>
+
       <p class="course-desc">
-        Madhurya Bhakti is perhaps the most <em>misunderstood</em> of all the devotional paths.
-        It is not worship. It is not prayer. It is the radical dissolution of the boundary
-        between the one who loves and the one who is loved — until only love remains.
-        This is where this body of courses begins.
+        This sacred odyssey unfolds across six powerful modules, each a portal into the mystical interplay of Shakti and Shiva — the eternal feminine and masculine that reside in <em>every soul</em>. Devotional storytelling from ancient scriptures, Bhakti and Tantrik insights, personal embodiment work, and myth-based practices woven together into a living altar of devotion and self-discovery.
       </p>
 
-      <span class="inside-label">THIS COURSE COVERS</span>
-      <ul class="inside-list">
-        <li><div class="inside-dot"></div>What Madhurya Bhakti actually is — and what it is not</li>
-        <li><div class="inside-dot"></div>The relationship between bhakti and non-dual Shaivism</li>
-        <li><div class="inside-dot"></div>Working with longing as a spiritual instrument</li>
-        <li><div class="inside-dot"></div>The lived practice of divine union in ordinary life</li>
+      <span class="inside-label">SIX MODULES · OVERVIEW</span>
+      <ul class="module-list">
+        <li class="module-item">
+          <span class="module-num">I</span>
+          <span class="module-name">Entering the Path of Madhurya Bhakti</span>
+          <span class="module-steps">7 STEPS</span>
+        </li>
+        <li class="module-item">
+          <span class="module-num">II</span>
+          <span class="module-name">Sati: Devotion That Burns Through Ego</span>
+          <span class="module-steps">7 STEPS</span>
+        </li>
+        <li class="module-item">
+          <span class="module-num">III</span>
+          <span class="module-name">Awakening Inner Shakti</span>
+          <span class="module-steps">7 STEPS</span>
+        </li>
+        <li class="module-item">
+          <span class="module-num">IV</span>
+          <span class="module-name">Parvati — The Devotee Who Became Goddess</span>
+          <span class="module-steps">7 STEPS</span>
+        </li>
+        <li class="module-item">
+          <span class="module-num">V</span>
+          <span class="module-name">Chandraghanta: She Who Becomes Him</span>
+          <span class="module-steps">7 STEPS</span>
+        </li>
+        <li class="module-item">
+          <span class="module-num">VI</span>
+          <span class="module-name">Living As A Devotional Woman + Pati Bhava Sadhana</span>
+          <span class="module-steps">11 STEPS</span>
+        </li>
       </ul>
 
       <div class="course-footer">
         <div class="price-block">
-          <div class="price">Enrolment open now</div>
+          <div class="price">Enrolment open now · Also available on the mobile app</div>
         </div>
         <div style="display:flex; gap:12px; flex-wrap:wrap;">
-          <a href="/courses/madhurya-bhakti" class="btn-ghost">Learn More</a>
-          <a href="/courses/madhurya-bhakti#enroll" class="btn-primary">Enrol Now</a>
+          <a href="https://www.shivohampath.com/challenge-page/madhuryabhakti?programId=e23f4389-9e01-4b20-80dc-8926d85a109e" class="btn-ghost">Learn More</a>
+          <a href="https://www.shivohampath.com/challenge-page/madhuryabhakti?programId=e23f4389-9e01-4b20-80dc-8926d85a109e" class="btn-primary">Enrol Now</a>
         </div>
       </div>
     </div>

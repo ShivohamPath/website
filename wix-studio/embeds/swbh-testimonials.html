@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --text4: rgba(232,224,208,0.15);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .section { padding: 0 60px 80px; max-width: 1200px; margin: 0 auto; }
+
+  .section-header { text-align: center; margin-bottom: 52px; }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 16px;
+  }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 300; color: var(--text); line-height: 1.1;
+  }
+  .section-header h2 em { font-style: italic; color: var(--gold); }
+  .divider {
+    display: flex; align-items: center; gap: 14px;
+    justify-content: center; margin-top: 18px;
+  }
+  .divider-line { height: 1px; background: var(--line2); width: 60px; }
+  .divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
+
+  .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+
+  .test-card {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 32px 28px;
+  }
+
+  .stars {
+    font-size: 11px; letter-spacing: 3px;
+    color: var(--gold); margin-bottom: 16px;
+    display: block;
+  }
+  .test-card p {
+    font-size: 15px; color: var(--text2);
+    line-height: 1.8; font-style: italic;
+    margin-bottom: 20px;
+  }
+  .test-author {
+    display: flex; align-items: center; gap: 12px;
+    border-top: 1px solid var(--line); padding-top: 16px;
+  }
+  .test-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--gold4); border: 1px solid var(--gold2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 13px;
+    color: var(--gold); flex-shrink: 0;
+  }
+  .test-name {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 1.5px; color: var(--text);
+  }
+  .test-detail { font-size: 12px; color: var(--text3); margin-top: 3px; }
+
+  @media (max-width: 860px) {
+    .section { padding: 0 32px 60px; }
+    .test-grid { grid-template-columns: 1fr; gap: 3px; }
+  }
+  @media (max-width: 520px) {
+    .section { padding: 0 20px 48px; }
+    .test-card { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="section">
+  <div class="section-header">
+    <span class="eyebrow">FROM THOSE WHO WALKED THIS PATH</span>
+    <h2>What the Journey <em>Opened</em></h2>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  <div class="test-grid">
+
+    <div class="test-card">
+      <span class="stars">★★★★★</span>
+      <p>"I have done many spiritual courses. This was the first one that felt like a homecoming rather than a learning. I didn't discover something new — I remembered something ancient."</p>
+      <div class="test-author">
+        <div class="test-avatar">A</div>
+        <div>
+          <div class="test-name">Ananya R.</div>
+          <div class="test-detail">Mumbai · Completed Module 6</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-card">
+      <span class="stars">★★★★★</span>
+      <p>"Veena doesn't teach Bhakti. She transmits it. I started this course feeling spiritually isolated and finished it feeling like I finally belonged somewhere — in my own soul."</p>
+      <div class="test-author">
+        <div class="test-avatar">P</div>
+        <div>
+          <div class="test-name">Priya S.</div>
+          <div class="test-detail">Bangalore · Course Graduate</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-card">
+      <span class="stars">★★★★★</span>
+      <p>"Module 4 — Parvati — broke me open and then put me back together differently. I have never felt so seen by a course in my life. It is not content. It is medicine."</p>
+      <div class="test-author">
+        <div class="test-avatar">M</div>
+        <div>
+          <div class="test-name">Meera K.</div>
+          <div class="test-detail">Delhi · Currently in Module 5</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

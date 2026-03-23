@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+    --rust:  #BF6F6F;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .section {
+    padding: 0 60px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 18px;
+  }
+  .divider-left {
+    display: flex; align-items: center; gap: 14px;
+    margin: 20px 0 24px;
+  }
+  .divider-line { height: 1px; background: var(--line2); width: 40px; }
+  .divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
+
+  /* Left: for-list */
+  .for-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 300; color: var(--text); line-height: 1.1;
+  }
+  .for-text h2 em { font-style: italic; color: var(--gold); }
+  .for-text > p {
+    font-size: 16px; color: var(--text2); line-height: 1.85;
+    margin-bottom: 28px;
+  }
+
+  .for-list { margin-top: 4px; }
+  .for-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 18px 0; border-bottom: 1px solid var(--line);
+  }
+  .for-item:last-child { border-bottom: none; }
+  .for-icon { color: var(--gold); opacity: 0.65; font-size: 14px; margin-top: 3px; flex-shrink: 0; }
+  .for-item-text { font-size: 15px; color: var(--text2); line-height: 1.65; }
+  .for-item-text strong { color: var(--text); font-weight: 400; }
+
+  /* Right: quote block */
+  .quote-block {
+    background: var(--bg3); border: 1px solid var(--line2);
+    padding: 44px 40px; position: relative; overflow: hidden;
+  }
+  .quote-block::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.04), transparent);
+  }
+  blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 300; font-style: italic;
+    color: var(--text); line-height: 1.45;
+    position: relative; z-index: 1;
+    margin-bottom: 20px;
+  }
+  blockquote em { color: var(--gold); font-style: normal; }
+  cite {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 2px; color: var(--text3);
+    font-style: normal; position: relative; z-index: 1;
+    display: block; margin-bottom: 32px;
+  }
+
+  .not-for {
+    border-top: 1px solid var(--line);
+    padding-top: 24px; position: relative; z-index: 1;
+  }
+  .not-for-label {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 2px; color: var(--rust);
+    display: block; margin-bottom: 10px;
+  }
+  .not-for p {
+    font-size: 14px; color: var(--text3);
+    line-height: 1.75; font-style: italic;
+  }
+
+  /* What's included strip */
+  .included-strip {
+    margin-top: 28px; padding-top: 28px;
+    border-top: 1px solid var(--line);
+    position: relative; z-index: 1;
+  }
+  .included-label {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 2px; color: var(--text3);
+    display: block; margin-bottom: 14px;
+  }
+  .included-list { display: flex; flex-direction: column; gap: 8px; }
+  .included-item {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px; color: var(--text2); line-height: 1.4;
+  }
+  .inc-dot { width: 4px; height: 4px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+
+  @media (max-width: 860px) {
+    .section { grid-template-columns: 1fr; padding: 0 32px 60px; gap: 48px; }
+  }
+  @media (max-width: 520px) {
+    .section { padding: 0 20px 48px; }
+    .quote-block { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="section">
+
+  <!-- Left: For who -->
+  <div class="for-text">
+    <span class="eyebrow">IS THIS FOR YOU?</span>
+    <h2>This Course Was Built<br>For <em>Specific Souls</em></h2>
+    <div class="divider-left">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+    </div>
+    <p>Not everyone is ready for this path. And that is perfectly correct. This course is not for the spiritually curious — it is for the spiritually committed.</p>
+
+    <div class="for-list">
+      <div class="for-item">
+        <span class="for-icon">✦</span>
+        <span class="for-item-text"><strong>Women who feel Shiv not as a deity but as a presence</strong> — an inexplicable intimacy that has no rational explanation in this lifetime.</span>
+      </div>
+      <div class="for-item">
+        <span class="for-icon">✦</span>
+        <span class="for-item-text"><strong>Seekers who have felt the dark night</strong> — the silence, the spiritual longing that feels like grief, the ache for something this world cannot give.</span>
+      </div>
+      <div class="for-item">
+        <span class="for-icon">✦</span>
+        <span class="for-item-text"><strong>Sacred rebels done with surface spirituality</strong> — who need depth, honesty, and a guide who will not soften the truth to make it comfortable.</span>
+      </div>
+      <div class="for-item">
+        <span class="for-icon">✦</span>
+        <span class="for-item-text"><strong>Those who sense their devotion is ancient</strong> — older than this life, older than this body, written somewhere in the soul's oldest memory.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Quote + not for -->
+  <div class="quote-block">
+    <blockquote>
+      "The love you feel for the Divine is not madness.<br>
+      It is <em>the highest truth.</em>"
+    </blockquote>
+    <cite>— Veena Maheshwari, Shivohampath</cite>
+
+    <div class="included-strip">
+      <span class="included-label">WHAT THIS COURSE CARRIES</span>
+      <div class="included-list">
+        <div class="included-item"><div class="inc-dot"></div>Devotional storytelling from ancient scriptures</div>
+        <div class="included-item"><div class="inc-dot"></div>Bhakti & Tantrik insights rooted in living tradition</div>
+        <div class="included-item"><div class="inc-dot"></div>Journaling prompts, meditations & sacred rituals</div>
+        <div class="included-item"><div class="inc-dot"></div>Myth-based reflections & embodiment practices</div>
+        <div class="included-item"><div class="inc-dot"></div>Feminine spiritual healing & energy work</div>
+        <div class="included-item"><div class="inc-dot"></div>Certificate of completion</div>
+        <div class="included-item"><div class="inc-dot"></div>Lifetime access · Also available on the mobile app</div>
+      </div>
+    </div>
+
+    <div class="not-for">
+      <span class="not-for-label">THIS IS NOT FOR</span>
+      <p>Those looking for a structured academic course on Shaivism. Those seeking healing from trauma without spiritual readiness. Those who want certainty — this path offers only depth.</p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .section { padding: 0 60px 80px; max-width: 1200px; margin: 0 auto; }
+
+  .section-header { text-align: center; margin-bottom: 52px; }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 16px;
+  }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 3.5vw, 46px);
+    font-weight: 300; color: var(--text); line-height: 1.1;
+  }
+  .section-header h2 em { font-style: italic; color: var(--gold); }
+  .divider {
+    display: flex; align-items: center; gap: 14px;
+    justify-content: center; margin: 18px 0 0;
+  }
+  .divider-line { height: 1px; background: var(--line2); width: 60px; }
+  .divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
+
+  /* Grid */
+  .modules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+
+  .module-card {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 36px 32px; position: relative; overflow: hidden;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .module-card:hover { border-color: var(--line2); background: var(--bg4); }
+  .module-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: var(--gold);
+    transform: scaleY(0); transform-origin: top; transition: transform 0.3s;
+  }
+  .module-card:hover::before { transform: scaleY(1); }
+
+  .module-bg-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px; font-weight: 300;
+    color: rgba(201,168,76,0.06);
+    position: absolute; top: 8px; right: 16px;
+    line-height: 1; user-select: none;
+  }
+
+  .module-tag {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2.5px; color: var(--gold);
+    display: block; margin-bottom: 14px; position: relative; z-index: 1;
+  }
+  .module-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px; font-weight: 400;
+    color: var(--text); line-height: 1.25;
+    margin-bottom: 12px; position: relative; z-index: 1;
+  }
+  .module-card h3 em { font-style: italic; color: var(--gold); }
+  .module-card p {
+    font-size: 14px; color: var(--text3);
+    line-height: 1.75; position: relative; z-index: 1;
+  }
+
+  .module-footer {
+    margin-top: 20px; padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between;
+    position: relative; z-index: 1;
+  }
+  .steps-count {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+  }
+  .module-roman {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; color: var(--gold);
+    opacity: 0.4;
+  }
+
+  @media (max-width: 860px) {
+    .section { padding: 0 32px 60px; }
+    .modules-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .section { padding: 0 20px 48px; }
+    .modules-grid { grid-template-columns: 1fr; }
+    .module-card { padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="section">
+  <div class="section-header">
+    <span class="eyebrow">THE JOURNEY</span>
+    <h2>Six Portals of <em>Transformation</em></h2>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  <div class="modules-grid">
+
+    <div class="module-card">
+      <span class="module-bg-num">I</span>
+      <span class="module-tag">ENTRY · 7 STEPS</span>
+      <h3>Entering the Path of <em>Madhurya Bhakti</em></h3>
+      <p>The foundation. What Madhurya Bhakti is — and isn't. Why the longing you feel is not madness. It is the oldest form of knowledge a soul can carry.</p>
+      <div class="module-footer">
+        <span class="steps-count">7 STEPS</span>
+        <span class="module-roman">Module I</span>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <span class="module-bg-num">II</span>
+      <span class="module-tag">DEVOTION · 7 STEPS</span>
+      <h3><em>Sati:</em> Devotion That Burns Through Ego</h3>
+      <p>The story of Sati as lived theology. What it means to love the Divine so completely that even identity dissolves. The fire is not destruction — it is purification.</p>
+      <div class="module-footer">
+        <span class="steps-count">7 STEPS</span>
+        <span class="module-roman">Module II</span>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <span class="module-bg-num">III</span>
+      <span class="module-tag">SHAKTI · 7 STEPS</span>
+      <h3>Awakening <em>Inner Shakti</em></h3>
+      <p>Shakti is not a concept. She is the living intelligence of your body, your longing, your creative force. This module is about recognising Her — not invoking Her from outside.</p>
+      <div class="module-footer">
+        <span class="steps-count">7 STEPS</span>
+        <span class="module-roman">Module III</span>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <span class="module-bg-num">IV</span>
+      <span class="module-tag">THE BELOVED · 7 STEPS</span>
+      <h3><em>Parvati</em> — The Devotee Who Became Goddess</h3>
+      <p>Parvati's path is the devotee's path. Tapas, longing, rejection, persistence — and finally, recognition. She did not find Shiva. She became worthy of being seen by Him.</p>
+      <div class="module-footer">
+        <span class="steps-count">7 STEPS</span>
+        <span class="module-roman">Module IV</span>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <span class="module-bg-num">V</span>
+      <span class="module-tag">UNION · 7 STEPS</span>
+      <h3><em>Chandraghanta:</em> She Who Becomes Him</h3>
+      <p>The sacred alchemy of Tantrik union — not as sexuality, but as the technology of inner marriage. The point at which the devotee and the Beloved are no longer two.</p>
+      <div class="module-footer">
+        <span class="steps-count">7 STEPS</span>
+        <span class="module-roman">Module V</span>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <span class="module-bg-num">VI</span>
+      <span class="module-tag">BECOMING · 11 STEPS</span>
+      <h3>Living As A Devotional Woman + <em>Pati Bhava Sadhana</em></h3>
+      <p>The final portal. How devotion lives in the body — in relationship, in daily life, in the mundane made sacred. A complete Sadhana for the woman walking this path.</p>
+      <div class="module-footer">
+        <span class="steps-count">11 STEPS</span>
+        <span class="module-roman">Module VI</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

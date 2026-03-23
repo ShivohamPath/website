@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --text4: rgba(232,224,208,0.15);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+    --purple: #8B6FBF;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .hero {
+    position: relative; overflow: hidden;
+    padding: 80px 60px 72px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    min-height: 520px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 70% 80% at 30% 50%, rgba(139,111,191,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 80% 30%, rgba(201,168,76,0.05) 0%, transparent 60%),
+      linear-gradient(180deg, #0a0a0f 0%, #0f0a1a 60%, #0a0a0f 100%);
+  }
+
+  /* Left: text */
+  .hero-text { position: relative; z-index: 1; }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 20px;
+  }
+  .hero-text h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 70px);
+    font-weight: 300; line-height: 1.0;
+    color: var(--text); margin-bottom: 10px;
+  }
+  .hero-text h1 em { font-style: italic; color: var(--gold); }
+
+  .divider {
+    display: flex; align-items: center; gap: 14px;
+    margin: 22px 0;
+  }
+  .divider-line { height: 1px; background: var(--line2); width: 40px; }
+  .divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
+
+  .hero-tagline {
+    font-size: 17px; font-style: italic;
+    color: var(--text2); line-height: 1.75;
+    margin-bottom: 28px; max-width: 460px;
+  }
+
+  /* Stat pills */
+  .stat-row { display: flex; gap: 0; margin-bottom: 36px; }
+  .stat-pill {
+    padding: 14px 22px; border: 1px solid var(--line2);
+    border-right: none;
+    background: var(--bg3);
+  }
+  .stat-pill:last-child { border-right: 1px solid var(--line2); }
+  .stat-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300;
+    color: var(--gold); display: block; line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Cinzel', serif; font-size: 7px;
+    letter-spacing: 2px; color: var(--text3);
+    margin-top: 4px; display: block;
+  }
+
+  /* Buttons */
+  .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: 'Cinzel', serif; font-size: 11px;
+    letter-spacing: 2.5px; padding: 14px 36px;
+    background: var(--gold); color: var(--bg);
+    border: none; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #a8893a; }
+  .btn-ghost {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2px; padding: 12px 24px;
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold2); cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { background: var(--gold3); }
+
+  /* Right: visual card */
+  .hero-visual { position: relative; z-index: 1; }
+  .course-card-visual {
+    background: var(--bg3); border: 1px solid var(--line2);
+    position: relative; overflow: hidden;
+    padding: 48px 40px;
+  }
+  .card-geo {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.08; pointer-events: none;
+  }
+  .card-inner { position: relative; z-index: 1; text-align: center; }
+
+  .course-symbol {
+    font-size: 56px; color: var(--gold);
+    opacity: 0.5; display: block;
+    line-height: 1; margin-bottom: 20px;
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300;
+    font-style: italic; color: var(--text);
+    line-height: 1.2; margin-bottom: 24px;
+  }
+  .card-tags { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 28px; }
+  .card-tag {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+    padding: 5px 16px; border: 1px solid var(--line);
+  }
+  .card-tag.lit { border-color: var(--gold2); color: var(--gold); }
+
+  .live-badge {
+    font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px;
+    background: var(--gold); color: var(--bg);
+    padding: 5px 14px; display: inline-block; margin-bottom: 16px;
+  }
+
+  .card-desc {
+    font-size: 14px; color: var(--text3);
+    line-height: 1.7; font-style: italic;
+    border-top: 1px solid var(--line);
+    padding-top: 20px; margin-top: 4px;
+  }
+
+  /* Floating label */
+  .float-label {
+    position: absolute; top: 20px; right: 20px;
+    background: var(--bg4); border: 1px solid var(--line2);
+    padding: 8px 14px;
+  }
+  .fl-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 300; color: var(--gold); display: block; line-height: 1;
+  }
+  .fl-label {
+    font-family: 'Cinzel', serif; font-size: 7px;
+    letter-spacing: 1.5px; color: var(--text3); margin-top: 2px; display: block;
+  }
+
+  /* Cat pills */
+  .cat-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 28px; }
+  .cat-pill {
+    font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px;
+    padding: 4px 12px; border: 1px solid var(--line2); color: var(--text3);
+  }
+  .cat-pill.gold { border-color: var(--gold2); color: var(--gold); background: var(--gold4); }
+  .cat-pill.purple { border-color: rgba(139,111,191,0.4); color: var(--purple); background: rgba(139,111,191,0.06); }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding: 60px 32px 56px; gap: 40px; min-height: auto; }
+    .course-card-visual { padding: 36px 28px; }
+  }
+  @media (max-width: 520px) {
+    .hero { padding: 48px 20px 44px; }
+    .hero-text h1 { font-size: 38px; }
+    .stat-row { flex-wrap: wrap; }
+    .stat-pill { border-right: 1px solid var(--line2); }
+    .btn-primary, .btn-ghost { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+
+  <!-- Left: Text -->
+  <div class="hero-text">
+    <span class="eyebrow">A SACRED COURSE IN MADHURYA BHAKTI</span>
+    <h1>She Who<br><em>Becomes Him</em></h1>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+    </div>
+
+    <p class="hero-tagline">
+      This is not a course. It is a remembrance.<br>
+      A sacred odyssey for the devotional woman who has always known she belongs to something ancient.
+    </p>
+
+    <div class="cat-pills">
+      <span class="cat-pill gold">LIVE NOW</span>
+      <span class="cat-pill purple">MADHURYA BHAKTI</span>
+      <span class="cat-pill">SELF-PACED</span>
+      <span class="cat-pill">CERTIFICATE</span>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-pill">
+        <span class="stat-val">6</span>
+        <span class="stat-label">MODULES</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-val">46</span>
+        <span class="stat-label">STEPS</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-val">28</span>
+        <span class="stat-label">ENROLLED</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-val">∞</span>
+        <span class="stat-label">LIFETIME ACCESS</span>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <a href="https://www.shivohampath.com/challenge-page/madhuryabhakti?programId=e23f4389-9e01-4b20-80dc-8926d85a109e" class="btn-primary">Enrol Now — ₹5,555</a>
+      <a href="https://www.shivohampath.com/book-online" class="btn-ghost">Book a Reading First</a>
+    </div>
+  </div>
+
+  <!-- Right: Visual card -->
+  <div class="hero-visual">
+    <div class="course-card-visual">
+      <div class="float-label">
+        <span class="fl-num">₹5,555</span>
+        <span class="fl-label">ONE-TIME</span>
+      </div>
+      <svg class="card-geo" width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="150" r="130" stroke="#C9A84C" stroke-width="0.8"/>
+        <circle cx="150" cy="150" r="90" stroke="#C9A84C" stroke-width="0.8"/>
+        <circle cx="150" cy="150" r="50" stroke="#C9A84C" stroke-width="0.8"/>
+        <polygon points="150,30 260,215 40,215" stroke="#C9A84C" stroke-width="0.8" fill="none"/>
+        <polygon points="150,270 40,85 260,85" stroke="#C9A84C" stroke-width="0.8" fill="none"/>
+        <line x1="20" y1="150" x2="280" y2="150" stroke="#C9A84C" stroke-width="0.5"/>
+        <line x1="150" y1="20" x2="150" y2="280" stroke="#C9A84C" stroke-width="0.5"/>
+      </svg>
+      <div class="card-inner">
+        <span class="live-badge">ENROLMENT OPEN</span>
+        <span class="course-symbol">♡</span>
+        <div class="card-title">She Who<br>Becomes Him</div>
+        <div class="card-tags">
+          <span class="card-tag lit">MADHURYA BHAKTI</span>
+          <span class="card-tag">SHAKTI ACTIVATION</span>
+          <span class="card-tag">6 MODULES · 46 STEPS</span>
+          <span class="card-tag">CERTIFICATE ON COMPLETION</span>
+          <span class="card-tag">ALSO ON THE MOBILE APP</span>
+        </div>
+        <p class="card-desc">Devotional storytelling · Bhakti & Tantrik insights · Sacred rituals · Embodiment practices</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

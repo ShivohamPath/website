@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .cta-wrap {
+    padding: 0 60px 80px;
+    text-align: center;
+    position: relative; overflow: hidden;
+    max-width: 900px; margin: 0 auto;
+  }
+  .cta-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 70% at 50% 50%, rgba(201,168,76,0.05), transparent 70%),
+      radial-gradient(ellipse 40% 40% at 10% 50%, rgba(139,111,191,0.04), transparent);
+  }
+  .cta-inner { position: relative; z-index: 1; }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 20px;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 58px);
+    font-weight: 300; color: var(--text);
+    line-height: 1.1; margin-bottom: 16px;
+  }
+  h2 em { font-style: italic; color: var(--gold); }
+  .cta-sub {
+    font-size: 17px; font-style: italic;
+    color: var(--text3); line-height: 1.75;
+    margin-bottom: 36px; max-width: 500px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  /* Price + CTA row */
+  .price-cta-row {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 20px;
+  }
+  .price-display { text-align: center; }
+  .price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-weight: 300;
+    color: var(--gold); line-height: 1;
+    display: block;
+  }
+  .price-note {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+    margin-top: 6px; display: block;
+  }
+
+  .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: 'Cinzel', serif; font-size: 11px;
+    letter-spacing: 2.5px; padding: 15px 44px;
+    background: var(--gold); color: var(--bg);
+    border: none; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #a8893a; }
+  .btn-ghost {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2px; padding: 13px 28px;
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold2); cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { background: var(--gold3); }
+
+  /* Trust line */
+  .trust-line {
+    margin-top: 28px;
+    display: flex; align-items: center; justify-content: center; gap: 24px;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+  }
+  .trust-dot { width: 3px; height: 3px; background: var(--gold); transform: rotate(45deg); opacity: 0.5; }
+
+  @media (max-width: 520px) {
+    .cta-wrap { padding: 0 20px 60px; }
+    .btn-primary, .btn-ghost { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cta-wrap">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <span class="eyebrow">YOUR SACRED PATH BEGINS HERE</span>
+    <h2>
+      You Have Been Called<br>
+      to This Path for a <em>Reason.</em>
+    </h2>
+    <p class="cta-sub">The longing you carry is ancient. This course is the space where it finally has a home.</p>
+
+    <div class="price-cta-row">
+      <div class="price-display">
+        <span class="price">₹5,555</span>
+        <span class="price-note">ONE-TIME PAYMENT · LIFETIME ACCESS</span>
+      </div>
+      <div class="btn-row">
+        <a href="https://www.shivohampath.com/challenge-page/madhuryabhakti?programId=e23f4389-9e01-4b20-80dc-8926d85a109e" class="btn-primary">Enrol Now</a>
+        <a href="https://www.shivohampath.com/book-online" class="btn-ghost">Book a Reading First</a>
+      </div>
+    </div>
+
+    <div class="trust-line">
+      <span class="trust-item"><span class="trust-dot"></span>Self-paced · Start anytime</span>
+      <span class="trust-item"><span class="trust-dot"></span>Also on the mobile app</span>
+      <span class="trust-item"><span class="trust-dot"></span>Certificate on completion</span>
+      <span class="trust-item"><span class="trust-dot"></span>28 souls already enrolled</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

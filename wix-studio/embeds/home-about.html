@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: linear-gradient(180deg, #0a0a0f 0%, #0f0a1a 50%, #0a0a0f 100%);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .about {
+    padding: 100px 60px 100px;
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── IMAGE SIDE ── */
+  .image-side { position: relative; }
+
+  .image-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line2);
+  }
+  .image-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: brightness(0.9) sepia(0.08);
+    transition: transform 0.6s ease;
+  }
+  .image-frame:hover img { transform: scale(1.02); }
+
+  /* Subtle overlay */
+  .image-frame::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 55%,
+      rgba(10,10,15,0.35) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Corner brackets */
+  .corner {
+    position: absolute; width: 26px; height: 26px;
+    border-color: var(--gold); border-style: solid;
+    opacity: 0.55; z-index: 2;
+  }
+  .corner.tl { top: -9px; left: -9px; border-width: 1px 0 0 1px; }
+  .corner.tr { top: -9px; right: -9px; border-width: 1px 1px 0 0; }
+  .corner.bl { bottom: -9px; left: -9px; border-width: 0 0 1px 1px; }
+  .corner.br { bottom: -9px; right: -9px; border-width: 0 1px 1px 0; }
+
+  /* Floating name tag */
+  .name-float {
+    position: absolute;
+    bottom: -22px; right: -22px;
+    background: var(--bg4);
+    border: 1px solid var(--line2);
+    padding: 16px 22px;
+    z-index: 3;
+  }
+  .name-float-title {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2.5px; color: var(--gold);
+    display: block; margin-bottom: 4px;
+  }
+  .name-float-sub {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+    display: block;
+  }
+
+  /* ── TEXT SIDE ── */
+  .text-side { padding-bottom: 24px; }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 18px;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 54px);
+    font-weight: 300; line-height: 1.05;
+    color: var(--text); margin-bottom: 22px;
+  }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  .gold-rule {
+    width: 44px; height: 1px;
+    background: var(--gold); opacity: 0.55;
+    margin-bottom: 28px;
+  }
+
+  p {
+    font-size: clamp(15px, 1.8vw, 17px);
+    color: var(--text2); line-height: 1.85;
+    margin-bottom: 18px;
+  }
+  p:last-of-type { margin-bottom: 0; }
+
+  /* Tag pills */
+  .tag-pills {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin: 28px 0 32px;
+  }
+  .pill {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: rgba(201,168,76,0.6);
+    padding: 6px 14px;
+    border: 1px solid var(--line2);
+  }
+
+  /* Button */
+  .btn-ghost {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2.5px; padding: 12px 28px;
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--line2); cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { background: var(--gold3); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .about {
+      grid-template-columns: 1fr;
+      padding: 72px 32px 80px;
+      gap: 60px;
+    }
+    .image-frame { aspect-ratio: 4/5; max-width: 480px; margin: 0 auto; }
+    .image-side { display: flex; flex-direction: column; align-items: center; }
+    .name-float { bottom: -18px; right: 0; }
+  }
+  @media (max-width: 520px) {
+    .about { padding: 56px 20px 64px; gap: 48px; }
+    .image-frame { aspect-ratio: 1/1; }
+    .corner { width: 20px; height: 20px; }
+    .name-float { right: 0; bottom: -16px; padding: 12px 16px; }
+    .btn-ghost { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<section class="about">
+
+  <!-- Image -->
+  <div class="image-side">
+    <div class="image-frame">
+      <img
+        src="https://static.wixstatic.com/media/ba8bbb_55ab1a58fb274982af1ca60ae789fd43~mv2.jpeg"
+        alt="Veena Maheshwari — Shivohampath"
+      >
+    </div>
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+    <div class="name-float">
+      <span class="name-float-title">Veena Maheshwari</span>
+      <span class="name-float-sub">Mystic &nbsp;·&nbsp; Misfit &nbsp;·&nbsp; Astrologer</span>
+    </div>
+  </div>
+
+  <!-- Text -->
+  <div class="text-side">
+    <span class="eyebrow">The Guide</span>
+    <h2>Not Your<br>Typical <em>Astrologer</em></h2>
+    <div class="gold-rule"></div>
+
+    <p>
+      I don't read charts to tell you what you want to hear.
+      I read charts to show you what your soul has been carrying —
+      across this lifetime and every one before it.
+    </p>
+    <p>
+      Esoteric astrology isn't about personality types or compatibility scores.
+      It's about karma. It's about the ancient patterns your soul chose to work through
+      in this body, in this life. And the sooner you see them clearly,
+      the sooner you can stop being run by them.
+    </p>
+
+    <div class="tag-pills">
+      <span class="pill">Esoteric Astrology</span>
+      <span class="pill">Jyotish</span>
+      <span class="pill">D60 · Shashtiamsha</span>
+      <span class="pill">Past Lives</span>
+      <span class="pill">Karmic Knots</span>
+      <span class="pill">Psychic Readings</span>
+    </div>
+
+    <a href="https://www.shivohampath.com/about" class="btn-ghost" target="_top">My Story</a>
+  </div>
+
+</section>
+
+</body>
+</html>

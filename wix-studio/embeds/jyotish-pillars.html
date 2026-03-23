@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.4);
+    --gold3: rgba(201,168,76,0.1);
+    --gold4: rgba(201,168,76,0.04);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.2);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .section {
+    padding: 0 60px 96px;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .section-header { text-align: center; margin-bottom: 60px; }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 18px;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 300; line-height: 1.1; color: var(--text);
+  }
+  h2 em { font-style: italic; color: var(--gold); }
+  .section-sub {
+    font-size: 16px; font-style: italic;
+    color: var(--text3); margin-top: 14px;
+    max-width: 520px; margin-left: auto; margin-right: auto;
+    line-height: 1.7;
+  }
+  .divider {
+    display: flex; align-items: center; gap: 16px;
+    justify-content: center; margin: 20px 0 0;
+  }
+  .divider-line { flex: 1; max-width: 70px; height: 1px; background: var(--line2); }
+  .divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
+
+  /* Pillars grid */
+  .pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3px; }
+
+  .pillar {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 48px 44px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .pillar:hover { border-color: var(--line2); background: var(--bg4); }
+
+  /* Left accent line on hover */
+  .pillar::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: var(--gold);
+    transform: scaleY(0); transform-origin: top;
+    transition: transform 0.35s;
+  }
+  .pillar:hover::before { transform: scaleY(1); }
+
+  /* Roman numeral bg */
+  .pillar-bg-num {
+    position: absolute; top: 12px; right: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 88px; font-weight: 300;
+    color: rgba(201,168,76,0.05); line-height: 1;
+    user-select: none;
+  }
+
+  .pillar-tag {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 3px; color: var(--gold);
+    display: block; margin-bottom: 6px;
+    position: relative; z-index: 1;
+  }
+  .pillar-roman {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; color: rgba(201,168,76,0.4);
+    display: block; margin-bottom: 20px;
+    position: relative; z-index: 1;
+  }
+
+  .pillar h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.4vw, 30px);
+    font-weight: 300; line-height: 1.15;
+    color: var(--text); margin-bottom: 18px;
+    position: relative; z-index: 1;
+  }
+  .pillar h3 em { font-style: italic; color: var(--gold); }
+
+  .pillar > p {
+    font-size: 15px; color: var(--text3);
+    line-height: 1.8; margin-bottom: 24px;
+    position: relative; z-index: 1;
+  }
+
+  /* Module tags */
+  .module-list {
+    display: flex; flex-direction: column; gap: 0;
+    border: 1px solid var(--line);
+    position: relative; z-index: 1;
+  }
+  .module-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 9px 14px; border-bottom: 1px solid var(--line);
+    transition: background 0.2s;
+  }
+  .module-row:last-child { border-bottom: none; }
+  .module-row:hover { background: rgba(201,168,76,0.03); }
+  .mod-dot {
+    width: 4px; height: 4px; background: var(--gold);
+    transform: rotate(45deg); flex-shrink: 0; opacity: 0.5;
+  }
+  .mod-text {
+    font-size: 13px; color: var(--text2); line-height: 1.4; flex: 1;
+  }
+
+  /* 12 modules note */
+  .modules-note {
+    margin-top: 20px;
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+    position: relative; z-index: 1;
+  }
+  .modules-note::before {
+    content: '';
+    width: 20px; height: 1px; background: var(--line2);
+  }
+
+  @media (max-width: 860px) {
+    .section { padding: 0 32px 72px; }
+    .pillars { grid-template-columns: 1fr; }
+    .pillar { padding: 36px 28px; }
+  }
+  @media (max-width: 520px) {
+    .section { padding: 0 20px 56px; }
+    .pillar { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="section">
+
+  <div class="section-header">
+    <span class="eyebrow">THE CURRICULUM</span>
+    <h2>Four Pillars.<br><em>Twelve Modules.</em><br>One Complete Map.</h2>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+    <p class="section-sub">Each pillar builds on the last. By the end of the four, you can read the complete karmic story of any soul — including your own.</p>
+  </div>
+
+  <div class="pillars">
+
+    <!-- Pillar I -->
+    <div class="pillar">
+      <span class="pillar-bg-num">I</span>
+      <span class="pillar-tag">PILLAR ONE</span>
+      <span class="pillar-roman">Dharma & Karma</span>
+      <h3>Karma, Dharma &<br><em>The Soul's Purpose</em><br>in a Chart</h3>
+      <p>Before you can read a chart, you must understand what a chart is reading. This pillar establishes the philosophical and cosmological foundation — what karma is, how it accretes across lifetimes, and how the birth chart is a precise karmic ledger.</p>
+      <div class="module-list">
+        <div class="module-row"><div class="mod-dot"></div><span class="mod-text">The philosophy of karma — Sanchita, Prarabdha, Agami</span></div>
+        <div class="module-row"><div class="mod-dot"></div><span class="mod-text">Dharma as the soul's chosen path for this incarnation</span></div>
+        <div class="module-row"><div class="mod-dot"></div><span class="mod-text">How the birth chart encodes the karmic contract</span></div>
+      </div>
+      <span class="modules-note">3 Modules</span>
+    </div>
+
+    <!-- Pillar II -->
+    <div class="pillar">
+      <span class="pillar-bg-num">II</span>
+      <span class="pillar-tag">PILLAR TWO</span>
+      <span class="pillar-roman">The Instruments of Karma</span>
+      <h3>Grahas, Rashis, Bhavas<br>&amp; <em>Nakshatras</em><br>as Karmic Tools</h3>
+      <p>This is where Jyotish comes alive. Each planet is not just a celestial body — it is a karmic force with specific agenda. Each nakshatra carries emotional and past-life memory. Each house is a karmic arena. This pillar teaches you to read them as such.</p>
+      <div class="module-list">
+        <div class="module-row"><div class="mod-dot"></div><span class="mod-text">The 9 Grahas as karmic agents — nature, significations, afflictions</span></div>
+        <div class="module-row"><div class="mod-dot"></div><span class="mod-text">The 12 Rashis and 12 Bhavas as fields of karmic experience</span></div>
+        <div class="module-row"><div class="mod-dot"></div><span class="mod-text">The 27 Nakshatras — soul memory embedded in the lunar sky</span></div>
+      </div>
+      <span class="modules-note">3 Modules</span>
+    </div>
+
+    <!-- Pillar III -->
+    <div class="pillar">
+      <span class="pillar-bg-num">III</span>
+      <span class="pillar-tag">PILLAR THREE</span>
+      <span class="pillar-roman">The Karmic Axis</span>
+      <h3>Rahu, Ketu, Yogas<br>&amp; <em>Divisional Charts</em></h3>
+      <p>Rahu and Ketu are the soul's past and future — the karmic axis around which this lifetime rotates. Yogas are karmic combinations that have accrued across lifetimes. Divisional charts — especially the D9 and D60 — reveal the soul's deeper layers. This pillar goes beneath the surface.</p>
+      <div class="module-list">
+        <div class="module-row"><div class="mod-dot"></div><span class="mod-text">Rahu & Ketu — the axis of karma, its lessons, and obsessions</span></div>
+        <div class="module-row"><div class="mod-dot"></div><span class="mod-text">Yogas — karmic combinations and what they reveal about the soul</span></div>
+        <div class="module-row"><div class="mod-dot"></div><span class="mod-text">Divisional charts — D9, D60 and the soul beneath the personality</span></div>
+      </div>
+      <span class="modules-note">3 Modules</span>
+    </div>
+
+    <!-- Pillar IV -->
+    <div class="pillar">
+      <span class="pillar-bg-num">IV</span>
+      <span class="pillar-tag">PILLAR FOUR</span>
+      <span class="pillar-roman">The Living Map</span>
+      <h3>Dashas, Transits &<br><em>Reading the Complete</em><br>Karmic Story</h3>
+      <p>Karma is not static. It moves — activated by dashas, triggered by transits, unfolding in waves that match the soul's readiness. This final pillar teaches you to read a chart as a living document: not just what the soul carries, but when and how it is being asked to face it.</p>
+      <div class="module-list">
+        <div class="module-row"><div class="mod-dot"></div><span class="mod-text">Vimshottari Dasha — the timing system of karma's unfolding</span></div>
+        <div class="module-row"><div class="mod-dot"></div><span class="mod-text">Transits as karmic triggers — Gochara and its real significance</span></div>
+        <div class="module-row"><div class="mod-dot"></div><span class="mod-text">Synthesis — reading the complete karmic story of a soul</span></div>
+      </div>
+      <span class="modules-note">3 Modules</span>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

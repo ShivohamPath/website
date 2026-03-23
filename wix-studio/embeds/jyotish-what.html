@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.4);
+    --gold3: rgba(201,168,76,0.1);
+    --gold4: rgba(201,168,76,0.04);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.2);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .section {
+    padding: 0 60px 96px;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  /* Header */
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 18px;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 300; line-height: 1.1; color: var(--text);
+  }
+  h2 em { font-style: italic; color: var(--gold); }
+  .divider {
+    display: flex; align-items: center; gap: 16px;
+    justify-content: center; margin: 20px 0 0;
+  }
+  .divider-line { flex: 1; max-width: 70px; height: 1px; background: var(--line2); }
+  .divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
+
+  /* Two column layout */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin-bottom: 3px;
+  }
+
+  /* Statement card — large */
+  .statement-card {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 52px 48px;
+    position: relative; overflow: hidden;
+  }
+  .statement-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 1px; background: var(--gold); opacity: 0.3;
+  }
+  .statement-card blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.8vw, 32px);
+    font-weight: 300; font-style: italic;
+    color: var(--text); line-height: 1.4;
+    margin-bottom: 24px;
+  }
+  .statement-card blockquote em { color: var(--gold); font-style: normal; }
+  .statement-card p {
+    font-size: 15px; color: var(--text3);
+    line-height: 1.8; font-style: italic;
+  }
+
+  /* Texts card */
+  .texts-card {
+    background: var(--bg4); border: 1px solid var(--line2);
+    padding: 48px 40px;
+    position: relative;
+  }
+  .texts-label {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 3px; color: var(--gold);
+    display: block; margin-bottom: 24px;
+  }
+  .text-entry {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .text-entry:last-child { border-bottom: none; }
+  .text-entry-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400;
+    color: var(--text); display: block; margin-bottom: 4px;
+    font-style: italic;
+  }
+  .text-entry-desc {
+    font-size: 13px; color: var(--text3); line-height: 1.6;
+  }
+
+  /* Bottom row — 3 columns */
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+
+  .why-card {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 36px 32px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .why-card:hover { border-color: var(--line2); }
+  .why-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px; background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .why-card:hover::after { transform: scaleX(1); }
+  .why-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px; font-weight: 300;
+    color: rgba(201,168,76,0.07);
+    position: absolute; top: 10px; right: 18px;
+    line-height: 1;
+  }
+  .why-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400;
+    color: var(--text); line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .why-card h3 em { font-style: italic; color: var(--gold); }
+  .why-card p { font-size: 14px; color: var(--text3); line-height: 1.75; }
+
+  @media (max-width: 860px) {
+    .section { padding: 0 32px 72px; }
+    .two-col { grid-template-columns: 1fr; }
+    .three-col { grid-template-columns: 1fr; }
+    .statement-card, .texts-card { padding: 36px 28px; }
+  }
+  @media (max-width: 520px) {
+    .section { padding: 0 20px 56px; }
+    .why-card { padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="section">
+
+  <div class="section-header">
+    <span class="eyebrow">WHAT THIS COURSE IS</span>
+    <h2>Jyotish Was Always<br>About <em>One Thing Only</em></h2>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:3px;">
+
+    <!-- Statement -->
+    <div class="statement-card">
+      <blockquote>
+        "The planets do not cause your life.<br>
+        They <em>reveal the karma</em> that is shaping it."
+      </blockquote>
+      <p>
+        Parashara did not give us the Brihat Parashara Hora Shastra to predict who would be rich. He gave it to help souls understand why they chose this birth — what contracts they carry, what they came to complete, and what this lifetime is truly asking of them.
+      </p>
+      <p style="margin-top:16px;">
+        That is the Jyotish this course teaches. Not the astrology of events. The astrology of karma.
+      </p>
+    </div>
+
+    <!-- Classical texts -->
+    <div class="texts-card">
+      <span class="texts-label">ROOTED IN THE CLASSICAL TEXTS</span>
+
+      <div class="text-entry">
+        <span class="text-entry-name">Brihat Parashara Hora Shastra</span>
+        <span class="text-entry-desc">The foundational scripture of Jyotish, authored by Maharishi Parashara. The complete architecture of karmic chart reading.</span>
+      </div>
+      <div class="text-entry">
+        <span class="text-entry-name">Brhat Nakshatra</span>
+        <span class="text-entry-desc">The definitive classical text on the 27 Nakshatras — the soul's deepest emotional and karmic imprints encoded in the lunar mansions.</span>
+      </div>
+      <div class="text-entry">
+        <span class="text-entry-name">Karmavipak Samhita</span>
+        <span class="text-entry-desc">A rare classical text dealing directly with the results of karma — what past actions create as present circumstances, and how the chart carries this record.</span>
+      </div>
+      <div class="text-entry">
+        <span class="text-entry-name">Classical Nadi Texts</span>
+        <span class="text-entry-desc">The ancient oral tradition of soul-level reading — where specific planetary combinations reveal past-life origins and the soul's unfinished work.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Why different -->
+  <div class="three-col">
+    <div class="why-card">
+      <span class="why-num">I</span>
+      <h3>This Is Not<br><em>Prediction Astrology</em></h3>
+      <p>We are not here to tell you when you'll get married or get a promotion. We are here to show you what your soul signed up for — and how to meet it consciously.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-num">II</span>
+      <h3>This Is<br><em>Live Teaching</em></h3>
+      <p>Not a recorded course you watch alone at 2am. A live, structured transmission — where depth is built systematically, session by session, with real interaction and clarity.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-num">III</span>
+      <h3>This Is<br><em>Foundational</em></h3>
+      <p>Whether you've never touched a chart or you've studied for years and feel something is missing — this course builds the foundation that makes everything else in Jyotish make sense.</p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

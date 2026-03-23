@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.4);
+    --gold3: rgba(201,168,76,0.1);
+    --gold4: rgba(201,168,76,0.04);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.2);
+  }
+  body {
+    background: linear-gradient(180deg, #0a0a0f 0%, #0f0a1a 50%, #0a0a0f 100%);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .section {
+    padding: 0 60px 96px;
+    max-width: 1200px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  /* Left */
+  .left-col {}
+
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 18px;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 300; line-height: 1.1; color: var(--text);
+    margin-bottom: 22px;
+  }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  .gold-rule { width: 40px; height: 1px; background: var(--gold); opacity: 0.5; margin-bottom: 28px; }
+
+  .intro-text {
+    font-size: 16px; color: var(--text2); line-height: 1.85;
+    margin-bottom: 32px;
+  }
+
+  .for-list { display: flex; flex-direction: column; gap: 0; }
+  .for-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 18px 0; border-bottom: 1px solid var(--line);
+  }
+  .for-item:last-child { border-bottom: none; }
+  .for-icon { color: var(--gold); opacity: 0.6; font-size: 13px; margin-top: 3px; flex-shrink: 0; }
+  .for-item-body { flex: 1; }
+  .for-item-body strong { color: var(--text); font-weight: 400; font-size: 16px; display: block; margin-bottom: 3px; }
+  .for-item-body span { font-size: 14px; color: var(--text3); line-height: 1.65; }
+
+  /* Right */
+  .right-col {}
+
+  /* Big quote */
+  .pull-quote {
+    background: var(--bg3); border: 1px solid var(--line2);
+    padding: 44px 40px; margin-bottom: 3px;
+    position: relative; overflow: hidden;
+  }
+  .pull-quote::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.04), transparent);
+  }
+  .pull-quote blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 300; font-style: italic;
+    color: var(--text); line-height: 1.45;
+    position: relative; z-index: 1;
+    margin-bottom: 18px;
+  }
+  .pull-quote blockquote em { color: var(--gold); font-style: normal; }
+  .pull-quote cite {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 2px; color: var(--text3);
+    font-style: normal; position: relative; z-index: 1;
+    display: block;
+  }
+
+  /* Prerequisites card */
+  .prereq-card {
+    background: var(--bg4); border: 1px solid var(--line2);
+    padding: 36px 36px;
+  }
+  .prereq-label {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 3px; color: var(--gold);
+    display: block; margin-bottom: 16px;
+  }
+  .prereq-card p {
+    font-size: 15px; color: var(--text2);
+    line-height: 1.8; margin-bottom: 20px;
+  }
+  .prereq-list { display: flex; flex-direction: column; gap: 8px; }
+  .prereq-item {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px; color: var(--text3); line-height: 1.5;
+  }
+  .prereq-dot { width: 4px; height: 4px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; opacity: 0.5; }
+
+  @media (max-width: 860px) {
+    .section { grid-template-columns: 1fr; padding: 0 32px 72px; gap: 48px; }
+    .pull-quote { padding: 32px 28px; }
+    .prereq-card { padding: 28px 28px; }
+  }
+  @media (max-width: 520px) {
+    .section { padding: 0 20px 56px; }
+    .for-item { gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="section">
+
+  <!-- Left: for who list -->
+  <div class="left-col">
+    <span class="eyebrow">WHO THIS IS FOR</span>
+    <h2>This Course Is For<br><em>Seekers, Not Hobbyists</em></h2>
+    <div class="gold-rule"></div>
+    <p class="intro-text">
+      You don't need to have studied astrology before. You don't need to know a single planet. What you need is the genuine desire to understand — not just the charts, but the karmic reality that the charts are pointing to.
+    </p>
+
+    <div class="for-list">
+      <div class="for-item">
+        <span class="for-icon">✦</span>
+        <div class="for-item-body">
+          <strong>The Karma Seeker</strong>
+          <span>You've always felt that astrology has to be about more than predictions. You sense that your chart holds something about why you are here — and you want to learn to read it.</span>
+        </div>
+      </div>
+      <div class="for-item">
+        <span class="for-icon">✦</span>
+        <div class="for-item-body">
+          <strong>The Complete Beginner</strong>
+          <span>You know nothing about Jyotish and want to start from the actual foundation — not YouTube videos and free apps, but a systematic, classical understanding built from the ground up.</span>
+        </div>
+      </div>
+      <div class="for-item">
+        <span class="for-icon">✦</span>
+        <div class="for-item-body">
+          <strong>The Experienced Student Who Feels Lost</strong>
+          <span>You've studied Jyotish elsewhere and something still doesn't click. You can place planets but you can't read a story. This course fills in what was missing — the karmic layer beneath the technique.</span>
+        </div>
+      </div>
+      <div class="for-item">
+        <span class="for-icon">✦</span>
+        <div class="for-item-body">
+          <strong>The Bhakti Practitioner or Spiritual Seeker</strong>
+          <span>Your path is devotional or contemplative and you want to understand what your chart says about your dharma, your karma, and your soul's movement toward liberation in this lifetime.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: quote + prereq -->
+  <div class="right-col">
+    <div class="pull-quote">
+      <blockquote>
+        "Jyotish is not a system of prediction.<br>
+        It is a system of <em>self-recognition</em> —<br>
+        the soul seeing its own karma<br>
+        written in light."
+      </blockquote>
+      <cite>— Veena Maheshwari, Shivohampath</cite>
+    </div>
+
+    <div class="prereq-card">
+      <span class="prereq-label">NO PRIOR KNOWLEDGE REQUIRED</span>
+      <p>
+        This course begins at the very beginning and builds systematically. All you bring is genuine curiosity and the willingness to look at karma — yours and others' — without flinching.
+      </p>
+      <div class="prereq-list">
+        <div class="prereq-item"><div class="prereq-dot"></div>No experience in astrology needed</div>
+        <div class="prereq-item"><div class="prereq-dot"></div>No Sanskrit knowledge required</div>
+        <div class="prereq-item"><div class="prereq-dot"></div>No specific spiritual tradition required</div>
+        <div class="prereq-item"><div class="prereq-dot"></div>Open to all — regardless of background or belief</div>
+        <div class="prereq-item"><div class="prereq-dot"></div>The only requirement is genuine intent</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

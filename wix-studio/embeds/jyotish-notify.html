@@ -251,10 +251,10 @@
   const stateError   = document.getElementById('state-error');
   const errorMsg     = document.getElementById('error-msg');
 
-  const ML_ACCOUNT = '2232960';
-  const ML_FORM    = 'FDqWiJ';
+  // Your Vercel deploy URL — update this after deploying dashboard/
+  const SUBSCRIBE_URL = 'https://shivohampath-dashboard.vercel.app/api/subscribe';
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     btn.disabled = true;
     btn.textContent = 'Sending…';
@@ -262,40 +262,27 @@
     const nameVal  = form.querySelector('[name="name"]').value.trim();
     const emailVal = form.querySelector('[name="email"]').value.trim();
 
-    // MailerLite's endpoint returns HTML, not JSON — use a hidden iframe
-    // so the form POST goes through without any CORS issues
-    const iframeName = 'ml_iframe_' + Date.now();
-
-    const iframe = document.createElement('iframe');
-    iframe.name = iframeName;
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-
-    const hiddenForm = document.createElement('form');
-    hiddenForm.method  = 'POST';
-    hiddenForm.action  = `https://assets.mailerlite.com/jsonp/${ML_ACCOUNT}/forms/${ML_FORM}/subscribe`;
-    hiddenForm.target  = iframeName;
-    hiddenForm.style.display = 'none';
-
-    [['fields[email]', emailVal], ['fields[name]', nameVal], ['ml-submit', '1'], ['anticsrf', 'true']]
-      .forEach(([name, value]) => {
-        const input = document.createElement('input');
-        input.type  = 'hidden';
-        input.name  = name;
-        input.value = value;
-        hiddenForm.appendChild(input);
+    try {
+      const res = await fetch(SUBSCRIBE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: emailVal, name: nameVal })
       });
 
-    document.body.appendChild(hiddenForm);
+      const data = await res.json();
 
-    iframe.addEventListener('load', () => {
-      iframe.remove();
-      hiddenForm.remove();
-      stateForm.style.display    = 'none';
-      stateSuccess.style.display = 'block';
-    }, { once: true });
-
-    hiddenForm.submit();
+      if (data.success) {
+        stateForm.style.display    = 'none';
+        stateSuccess.style.display = 'block';
+      } else {
+        throw new Error(data.error || 'Subscription failed. Please try again.');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Notify Me';
+      errorMsg.textContent = err.message || 'Something went wrong. Please try again.';
+      stateError.style.display = 'block';
+    }
   });
 </script>
 

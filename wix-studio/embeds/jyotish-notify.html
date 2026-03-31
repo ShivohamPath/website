@@ -254,7 +254,7 @@
   const ML_ACCOUNT = '2232960';
   const ML_FORM    = 'FDqWiJ';
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     btn.disabled = true;
     btn.textContent = 'Sending…';
@@ -262,39 +262,45 @@
     const nameVal  = form.querySelector('[name="name"]').value.trim();
     const emailVal = form.querySelector('[name="email"]').value.trim();
 
-    const body = new URLSearchParams();
-    body.append('fields[email]', emailVal);
-    body.append('fields[name]',  nameVal);
-    body.append('ml-submit',     '1');
-    body.append('anticsrf',      'true');
+    // MailerLite uses JSONP — must use a script tag, not fetch
+    const cbName = 'ml_cb_' + Date.now();
+    const params = new URLSearchParams({
+      'fields[email]': emailVal,
+      'fields[name]':  nameVal,
+      'ml-submit':     '1',
+      'anticsrf':      'true',
+      'callback':      cbName
+    });
 
-    try {
-      const res = await fetch(
-        `https://assets.mailerlite.com/jsonp/${ML_ACCOUNT}/forms/${ML_FORM}/subscribe`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: body.toString()
-        }
-      );
+    window[cbName] = function(data) {
+      delete window[cbName];
+      if (script.parentNode) script.parentNode.removeChild(script);
 
-      const json = await res.json();
-
-      if (json.success) {
+      if (data.success) {
         stateForm.style.display = 'none';
         stateSuccess.style.display = 'block';
       } else {
-        const msg = json.errors
-          ? Object.values(json.errors).flat().join(' ')
+        btn.disabled = false;
+        btn.textContent = 'Notify Me';
+        const msg = data.errors
+          ? Object.values(data.errors).flat().join(' ')
           : 'Subscription failed. Please try again.';
-        throw new Error(msg);
+        errorMsg.textContent = msg;
+        stateError.style.display = 'block';
       }
-    } catch (err) {
+    };
+
+    const script = document.createElement('script');
+    script.onerror = function() {
+      delete window[cbName];
+      if (script.parentNode) script.parentNode.removeChild(script);
       btn.disabled = false;
       btn.textContent = 'Notify Me';
-      errorMsg.textContent = err.message || 'Something went wrong. Please try again.';
+      errorMsg.textContent = 'Something went wrong. Please try again.';
       stateError.style.display = 'block';
-    }
+    };
+    script.src = `https://assets.mailerlite.com/jsonp/${ML_ACCOUNT}/forms/${ML_FORM}/subscribe?${params.toString()}`;
+    document.head.appendChild(script);
   });
 </script>
 

@@ -262,45 +262,40 @@
     const nameVal  = form.querySelector('[name="name"]').value.trim();
     const emailVal = form.querySelector('[name="email"]').value.trim();
 
-    // MailerLite uses JSONP — must use a script tag, not fetch
-    const cbName = 'ml_cb_' + Date.now();
-    const params = new URLSearchParams({
-      'fields[email]': emailVal,
-      'fields[name]':  nameVal,
-      'ml-submit':     '1',
-      'anticsrf':      'true',
-      'callback':      cbName
-    });
+    // MailerLite's endpoint returns HTML, not JSON — use a hidden iframe
+    // so the form POST goes through without any CORS issues
+    const iframeName = 'ml_iframe_' + Date.now();
 
-    window[cbName] = function(data) {
-      delete window[cbName];
-      if (script.parentNode) script.parentNode.removeChild(script);
+    const iframe = document.createElement('iframe');
+    iframe.name = iframeName;
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
 
-      if (data.success) {
-        stateForm.style.display = 'none';
-        stateSuccess.style.display = 'block';
-      } else {
-        btn.disabled = false;
-        btn.textContent = 'Notify Me';
-        const msg = data.errors
-          ? Object.values(data.errors).flat().join(' ')
-          : 'Subscription failed. Please try again.';
-        errorMsg.textContent = msg;
-        stateError.style.display = 'block';
-      }
-    };
+    const hiddenForm = document.createElement('form');
+    hiddenForm.method  = 'POST';
+    hiddenForm.action  = `https://assets.mailerlite.com/jsonp/${ML_ACCOUNT}/forms/${ML_FORM}/subscribe`;
+    hiddenForm.target  = iframeName;
+    hiddenForm.style.display = 'none';
 
-    const script = document.createElement('script');
-    script.onerror = function() {
-      delete window[cbName];
-      if (script.parentNode) script.parentNode.removeChild(script);
-      btn.disabled = false;
-      btn.textContent = 'Notify Me';
-      errorMsg.textContent = 'Something went wrong. Please try again.';
-      stateError.style.display = 'block';
-    };
-    script.src = `https://assets.mailerlite.com/jsonp/${ML_ACCOUNT}/forms/${ML_FORM}/subscribe?${params.toString()}`;
-    document.head.appendChild(script);
+    [['fields[email]', emailVal], ['fields[name]', nameVal], ['ml-submit', '1'], ['anticsrf', 'true']]
+      .forEach(([name, value]) => {
+        const input = document.createElement('input');
+        input.type  = 'hidden';
+        input.name  = name;
+        input.value = value;
+        hiddenForm.appendChild(input);
+      });
+
+    document.body.appendChild(hiddenForm);
+
+    iframe.addEventListener('load', () => {
+      iframe.remove();
+      hiddenForm.remove();
+      stateForm.style.display    = 'none';
+      stateSuccess.style.display = 'block';
+    }, { once: true });
+
+    hiddenForm.submit();
   });
 </script>
 

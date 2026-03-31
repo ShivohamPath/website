@@ -4,7 +4,328 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Your Chart Is Not a Prediction Grid</title>
-  <link rel="stylesheet" href="./karma-guide-print.css" />
+  <style>
+:root {
+  --bg: #06070f;
+  --panel: #13101f;
+  --ink: #eadfcb;
+  --muted: #bab0a1;
+  --gold: #d0a84f;
+  --gold-soft: #6f5822;
+  --violet: #8869e6;
+  --red: #d35c43;
+  --blue: #4d79c6;
+  --green: #6da48f;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+.guide {
+  max-width: 210mm;
+  margin: 0 auto;
+}
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 18mm 14mm 16mm;
+  position: relative;
+  background:
+    radial-gradient(circle at 80% 68%, rgba(62, 51, 108, 0.15), transparent 48%),
+    radial-gradient(circle at 28% 35%, rgba(36, 37, 89, 0.15), transparent 35%),
+    var(--bg);
+  border-bottom: 1px solid rgba(208, 168, 79, 0.25);
+  page-break-after: always;
+}
+
+.page:last-child { page-break-after: auto; }
+
+h1, h2, h3, h4, p { margin: 0; }
+
+.topbar, .section-label, .eyebrow, .hero-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8mm;
+  border-bottom: 1px solid var(--gold-soft);
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.cover-grid {
+  display: grid;
+  grid-template-columns: 1fr 64mm;
+  gap: 10mm;
+  margin: 10mm 0;
+}
+
+h1 {
+  font-size: 27mm;
+  line-height: 0.96;
+  color: var(--gold);
+  max-width: 120mm;
+  margin-bottom: 8mm;
+}
+
+.lead { font-size: 13mm; line-height: 1; font-style: italic; margin-bottom: 1mm; }
+.sublead { font-size: 8.5mm; font-style: italic; margin-bottom: 8mm; }
+.intro { max-width: 112mm; font-size: 7.1mm; color: var(--muted); line-height: 1.66; }
+
+.seal { text-align: center; align-self: start; margin-top: 3mm; }
+.seal-ring {
+  width: 60mm;
+  height: 60mm;
+  border-radius: 50%;
+  border: 1.4mm solid var(--gold-soft);
+  margin: 0 auto 5mm;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at center, rgba(137, 105, 230, 0.06), transparent 64%);
+}
+.seal-ring span { color: var(--gold); font-size: 20mm; line-height: 1; }
+.seal-name { font-size: 8.4mm; margin-bottom: 2px; }
+.seal-role { font-size: 3.7mm; color: var(--gold); letter-spacing: 0.08em; }
+
+.quote-box {
+  margin: 10mm 0;
+  padding: 4.5mm 6mm;
+  border: 0.4mm solid var(--gold);
+  border-left-width: 1.5mm;
+  border-radius: 2mm;
+  background: linear-gradient(180deg, rgba(59, 38, 104, 0.4), rgba(40, 24, 66, 0.2));
+}
+
+.quote-source { font-size: 3.2mm; color: var(--gold); margin-bottom: 1.4mm; text-align: center; }
+.quote-text { font-size: 8.3mm; text-align: center; line-height: 1.3; }
+.quote-translation { font-size: 5.5mm; font-style: italic; color: #d8ceb9; margin-top: 1.5mm; text-align: center; }
+.quote-author { margin-top: 2mm; text-align: right; font-size: 5mm; color: var(--gold); }
+
+.section-label {
+  margin: 8mm 0 3mm;
+  color: var(--gold);
+  font-size: 4.9mm;
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  gap: 3.2mm;
+}
+
+.two-col { grid-template-columns: 1fr 1fr; }
+.align-start { align-items: start; }
+.stack { display: grid; gap: 3mm; }
+.stack.compact { gap: 2.2mm; }
+
+.panel, .card {
+  background: rgba(24, 18, 35, 0.82);
+  border: 0.35mm solid rgba(208, 168, 79, 0.5);
+  border-left-width: 1.2mm;
+  border-radius: 2mm;
+  padding: 3.5mm 4mm;
+  break-inside: avoid;
+}
+
+.panel h3, .panel h4, .card h3 { font-size: 7mm; line-height: 1.25; margin-bottom: 1mm; }
+.panel p, .card p { font-size: 5.25mm; color: #d3c8b7; line-height: 1.58; }
+.card-tag {
+  color: var(--gold);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: 4.2mm;
+  margin-bottom: 1.4mm;
+}
+
+.panel-violet { border-color: var(--violet); }
+.panel-red { border-color: var(--red); }
+.panel-gold { border-color: var(--gold); }
+.panel-blue { border-color: var(--blue); }
+.panel-green { border-color: var(--green); }
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 4.2mm;
+  font-weight: 700;
+  padding-bottom: 2.2mm;
+  border-bottom: 0.35mm solid var(--gold-soft);
+}
+
+.display {
+  color: var(--gold);
+  font-size: 17mm;
+  line-height: 1.02;
+  margin: 2.2mm 0 4mm;
+  border-bottom: 0.25mm solid rgba(208, 168, 79, 0.35);
+  padding-bottom: 1.8mm;
+}
+
+.subdisplay {
+  font-style: italic;
+  font-size: 6.7mm;
+  color: #d4cab9;
+  margin-bottom: 6mm;
+}
+
+.prose p {
+  font-size: 6.4mm;
+  margin-bottom: 3.2mm;
+  color: #d5cab9;
+  line-height: 1.67;
+}
+
+.pull-quote {
+  font-style: italic;
+  color: var(--gold);
+  font-size: 9.8mm;
+  margin: 4mm 0;
+  padding-left: 6mm;
+}
+
+.closing-line { font-size: 8.1mm; font-style: italic; color: #f2e8d8; }
+.big-italic { font-size: 8mm; line-height: 1.5; margin-top: 4mm; font-style: italic; }
+
+.chart-wheel {
+  height: 96mm;
+  width: 96mm;
+  border-radius: 50%;
+  border: 0.5mm solid var(--gold-soft);
+  background:
+    conic-gradient(from 0deg, #3e2e0e 0 30deg, #1d1738 30deg 60deg, #0a2242 60deg 90deg, #201544 90deg 120deg, #3e2e0e 120deg 150deg, #11182f 150deg 180deg, #0b1e3a 180deg 210deg, #1f1640 210deg 240deg, #3e2e0e 240deg 270deg, #17233a 270deg 300deg, #131532 300deg 330deg, #281c48 330deg 360deg);
+  display: grid;
+  place-items: center;
+}
+
+.inner-wheel {
+  width: 56mm;
+  height: 56mm;
+  border-radius: 50%;
+  border: 0.6mm solid var(--gold-soft);
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-size: 8mm;
+}
+
+.chart-note {
+  text-align: center;
+  font-style: italic;
+  color: var(--muted);
+  margin: 1.6mm 0 2.8mm;
+  font-size: 5mm;
+}
+
+.callout-banner {
+  border: 0.35mm solid var(--gold);
+  border-left-width: 1.2mm;
+  border-radius: 1.8mm;
+  padding: 2.7mm 3.8mm;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 4.9mm;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 2.8mm;
+}
+
+.prompt h3 { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 5.8mm; letter-spacing: 0.03em; }
+.prompt-one { border-color: var(--violet); }
+.prompt-two { border-color: var(--red); }
+.prompt-three { border-color: var(--gold); }
+
+.hero-card {
+  margin: 4.5mm 0 4mm;
+  border: 0.35mm solid var(--gold);
+  border-left-width: 1.3mm;
+  border-radius: 2mm;
+  padding: 4mm;
+  background: linear-gradient(180deg, rgba(47, 34, 77, 0.62), rgba(25, 17, 37, 0.45));
+}
+.hero-card h2 { font-size: 13.7mm; color: var(--gold); line-height: 1.03; }
+.hero-subtitle { font-size: 9.4mm; font-style: italic; margin-top: 1mm; }
+.hero-meta { margin-top: 3mm; font-size: 4.8mm; color: #ddd0ba; font-family: "Helvetica Neue", Arial, sans-serif; letter-spacing: 0.02em; }
+
+.line-item p strong { color: #f4e9d9; margin-right: 1.5mm; font-size: 6.1mm; }
+
+.clean-list {
+  margin: 0 0 5mm 4mm;
+  padding: 0;
+}
+.clean-list li { margin: 0 0 1.5mm; font-size: 5.9mm; color: #d8cebb; }
+
+.pricing {
+  display: flex;
+  justify-content: space-between;
+  gap: 4mm;
+  align-items: center;
+}
+.pricing h4 { font-size: 7mm; margin-bottom: 0.5mm; }
+.price { color: var(--gold); font-size: 9.5mm; line-height: 1.05; }
+.price span { font-size: 5.7mm; color: #b7ad9b; }
+.pricing-note { max-width: 69mm; font-size: 4.8mm; color: #bab09f; font-style: italic; text-align: right; }
+
+.cta-card, .author-card {
+  margin-top: 4mm;
+  border: 0.35mm solid var(--gold);
+  border-left-width: 1.2mm;
+  border-radius: 2.2mm;
+  padding: 4.2mm;
+  background: rgba(45, 28, 5, 0.45);
+  text-align: center;
+}
+
+.cta-card h3 { font-size: 10.2mm; color: var(--gold); margin: 1.2mm 0; }
+.cta-card p { font-size: 6.2mm; }
+
+.author-card {
+  display: grid;
+  grid-template-columns: 26mm 1fr;
+  text-align: left;
+  background: rgba(27, 18, 42, 0.5);
+}
+.seal-mini {
+  width: 20mm;
+  height: 20mm;
+  border-radius: 50%;
+  border: 0.35mm solid var(--gold);
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-size: 9mm;
+  margin-top: 1.2mm;
+}
+.author-card h3 { color: #f0e5d4; font-size: 10.5mm; margin-bottom: 1.2mm; }
+.muted { color: #9f9687; font-size: 5.2mm; }
+
+.avoid-break { break-inside: avoid; page-break-inside: avoid; }
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { box-shadow: none; }
+}
+
+</style>
 </head>
 <body>
   <main class="guide">

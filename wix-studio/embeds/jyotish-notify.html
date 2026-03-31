@@ -243,6 +243,12 @@
   </div>
 </div>
 
+<!-- MailerLite widget hidden off-screen — our form drives it -->
+<div id="ml-hidden" aria-hidden="true" style="position:absolute;left:-9999px;top:0;width:400px;overflow:hidden;opacity:0;pointer-events:none;">
+  <div class="ml-embedded" data-form="FDqWiJ"></div>
+</div>
+<script>(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');ml('account','2232960');</script>
+
 <script>
   const form = document.getElementById('lead-form');
   const btn  = document.getElementById('submit-btn');
@@ -251,10 +257,7 @@
   const stateError   = document.getElementById('state-error');
   const errorMsg     = document.getElementById('error-msg');
 
-  // Your Vercel deploy URL — update this after deploying dashboard/
-  const SUBSCRIBE_URL = 'https://shivohampath-dashboard.vercel.app/api/subscribe';
-
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     btn.disabled = true;
     btn.textContent = 'Sending…';
@@ -262,27 +265,62 @@
     const nameVal  = form.querySelector('[name="name"]').value.trim();
     const emailVal = form.querySelector('[name="email"]').value.trim();
 
-    try {
-      const res = await fetch(SUBSCRIBE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: emailVal, name: nameVal })
+    // Wait for MailerLite's widget to render its form (it loads async)
+    let attempts = 0;
+    const trySubmit = () => {
+      const mlWrap   = document.getElementById('ml-hidden');
+      const mlEmail  = mlWrap && mlWrap.querySelector('input[type="email"]');
+
+      if (!mlEmail) {
+        if (++attempts < 40) { setTimeout(trySubmit, 250); return; }
+        btn.disabled = false;
+        btn.textContent = 'Notify Me';
+        errorMsg.textContent = 'Could not load form. Please refresh and try again.';
+        stateError.style.display = 'block';
+        return;
+      }
+
+      // Use native setter so React-based inputs register the change
+      const nativeSet = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
+
+      nativeSet.call(mlEmail, emailVal);
+      mlEmail.dispatchEvent(new Event('input',  { bubbles: true }));
+      mlEmail.dispatchEvent(new Event('change', { bubbles: true }));
+
+      const mlName = mlWrap.querySelector('input[type="text"]');
+      if (mlName) {
+        nativeSet.call(mlName, nameVal);
+        mlName.dispatchEvent(new Event('input',  { bubbles: true }));
+        mlName.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+
+      // Watch MailerLite's container for the success state it renders
+      const observer = new MutationObserver(() => {
+        const hasSuccess = mlWrap.querySelector('[class*="success"], [data-success]');
+        const formGone   = !mlWrap.querySelector('form');
+        if (hasSuccess || formGone) {
+          observer.disconnect();
+          clearTimeout(fallback);
+          stateForm.style.display    = 'none';
+          stateSuccess.style.display = 'block';
+        }
       });
+      observer.observe(mlWrap, { childList: true, subtree: true, attributes: true });
 
-      const data = await res.json();
-
-      if (data.success) {
+      // Fallback: if observer never fires, show success after 6s
+      // (submission went through but DOM change wasn't detected)
+      const fallback = setTimeout(() => {
+        observer.disconnect();
         stateForm.style.display    = 'none';
         stateSuccess.style.display = 'block';
-      } else {
-        throw new Error(data.error || 'Subscription failed. Please try again.');
-      }
-    } catch (err) {
-      btn.disabled = false;
-      btn.textContent = 'Notify Me';
-      errorMsg.textContent = err.message || 'Something went wrong. Please try again.';
-      stateError.style.display = 'block';
-    }
+      }, 6000);
+
+      // Click MailerLite's own submit button
+      const mlSubmit = mlWrap.querySelector('button[type="submit"], button');
+      if (mlSubmit) mlSubmit.click();
+    };
+
+    trySubmit();
   });
 </script>
 

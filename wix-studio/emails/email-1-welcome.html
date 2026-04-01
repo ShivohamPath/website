@@ -41,9 +41,20 @@
     background-color: #0f0a1a !important;
     background-image: linear-gradient(#0f0a1a, #0f0a1a) !important;
   }
+  u + .body .gmail-blend-screen {
+    background: #0a0a0f;
+    mix-blend-mode: screen;
+  }
+  u + .body .gmail-blend-difference {
+    background: #0a0a0f;
+    mix-blend-mode: difference;
+  }
 </style>
 </head>
-<body bgcolor="#0a0a0f" style="margin:0; padding:0; background:#0a0a0f !important; background-color:#0a0a0f !important; background-image:linear-gradient(#0a0a0f,#0a0a0f) !important; font-family: Georgia, 'Times New Roman', serif; color-scheme: dark;">
+<body class="body" bgcolor="#0a0a0f" style="margin:0; padding:0; background:#0a0a0f !important; background-color:#0a0a0f !important; background-image:linear-gradient(#0a0a0f,#0a0a0f) !important; font-family: Georgia, 'Times New Roman', serif; color-scheme: dark;">
+
+<div class="gmail-blend-screen">
+<div class="gmail-blend-difference">
 
 <table width="100%" cellpadding="0" cellspacing="0" border="0" class="email-bg" bgcolor="#0a0a0f" style="background:#0a0a0f !important; background-color:#0a0a0f !important; background-image:linear-gradient(#0a0a0f,#0a0a0f) !important;">
   <tr>
@@ -161,6 +172,9 @@
     </td>
   </tr>
 </table>
+
+</div>
+</div>
 
 </body>
 </html>

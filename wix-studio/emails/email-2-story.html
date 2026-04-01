@@ -1,85 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light">
-<meta name="supported-color-schemes" content="light">
+<!-- Dark: signals to email clients that this is intentionally dark-themed -->
+<meta name="color-scheme" content="dark">
+<meta name="supported-color-schemes" content="dark">
 <title>The moment I stopped reading charts the old way</title>
 </head>
-<body style="margin:0; padding:0; background:#0a0a0f !important; font-family: Georgia, 'Times New Roman', serif; color-scheme: light;">
+<body bgcolor="#0a0a0f" style="margin:0; padding:0; background-color:#0a0a0f !important; font-family: Georgia, 'Times New Roman', serif;">
 
-<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0a0a0f !important;">
+<!-- Gmail iOS dark mode override: Gmail adds data-ogsc to <html> in dark mode -->
+<style>
+  [data-ogsc] .em-outer    { background-color: #0a0a0f !important; }
+  [data-ogsc] .em-card     { background-color: #0f0a1a !important; }
+  [data-ogsc] .em-heading  { color: #e8e0d0 !important; }
+  [data-ogsc] .em-body     { color: #9c9590 !important; }
+  [data-ogsc] .em-sub      { color: #5b555a !important; }
+  [data-ogsc] .em-gold     { color: #C9A84C !important; }
+  [data-ogsc] .em-muted    { color: #666063 !important; }
+  [data-ogsc] .em-sig      { color: #7c7575 !important; }
+  [data-ogsc] .em-em       { color: #e8e0d0 !important; }
+  [data-ogsc] .em-footer   { color: #3a353e !important; }
+  [data-ogsc] .em-quote td { background-color: #150f1c !important; border-color: #1f1a0c !important; }
+</style>
+
+<table class="em-outer" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0a0a0f" style="background-color:#0a0a0f !important;">
   <tr>
-    <td align="center" style="padding: 48px 20px;">
+    <td class="em-outer" align="center" bgcolor="#0a0a0f" style="padding: 48px 20px; background-color:#0a0a0f !important;">
 
       <!-- Card -->
-      <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px; width:100%; background:#0f0a1a !important; border:1px solid rgba(201,168,76,0.22);">
+      <table class="em-card" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#0f0a1a" style="max-width:600px; width:100%; background-color:#0f0a1a !important; border:1px solid #342d1c;">
 
-        <!-- Top gold line -->
+        <!-- Top gold line: solid fallback first, then gradient -->
         <tr>
-          <td style="height:2px; background: linear-gradient(to right, transparent, #C9A84C, transparent); font-size:0; line-height:0;">&nbsp;</td>
+          <td bgcolor="#0f0a1a" style="height:2px; background-color:#C9A84C; background:linear-gradient(to right, #0f0a1a, #C9A84C, #0f0a1a); font-size:0; line-height:0;">&nbsp;</td>
         </tr>
 
         <!-- Header -->
         <tr>
-          <td align="center" style="padding: 36px 48px 28px;">
-            <p style="margin:0 0 6px 0; font-family: 'Courier New', monospace; font-size:10px; letter-spacing:4px; color:#C9A84C; text-transform:uppercase;">SHIVOHAMPATH</p>
-            <p style="margin:0; font-family: Georgia, serif; font-size:11px; letter-spacing:3px; color:rgba(232,224,208,0.35); text-transform:uppercase;">A Note from Veena · Day 3</p>
+          <td align="center" bgcolor="#0f0a1a" style="padding: 36px 48px 28px; background-color:#0f0a1a !important;">
+            <p class="em-gold" style="margin:0 0 6px 0; font-family: 'Courier New', monospace; font-size:10px; letter-spacing:4px; color:#C9A84C !important; text-transform:uppercase;">SHIVOHAMPATH</p>
+            <p class="em-sub" style="margin:0; font-family: Georgia, serif; font-size:11px; letter-spacing:3px; color:#5b555a !important; text-transform:uppercase;">A Note from Veena &middot; Day 3</p>
           </td>
         </tr>
 
         <!-- Body -->
         <tr>
-          <td style="padding: 8px 52px 48px;">
+          <td bgcolor="#0f0a1a" style="padding: 8px 52px 48px; background-color:#0f0a1a !important;">
 
-            <p style="margin:0 0 28px 0; font-family: Georgia, serif; font-size:26px; font-weight:normal; font-style:italic; color:#e8e0d0; line-height:1.25;">
+            <p class="em-heading" style="margin:0 0 28px 0; font-family: Georgia, serif; font-size:26px; font-weight:normal; font-style:italic; color:#e8e0d0 !important; line-height:1.25;">
               The moment I stopped reading charts the old way.
             </p>
 
-            <p style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:rgba(232,224,208,0.65); line-height:1.85;">
+            <p class="em-body" style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:#9c9590 !important; line-height:1.85;">
               I used to read charts the way most people teach it. Planets in houses, dashas, predictions. Someone would come to me and I'd tell them: this year looks difficult, this transit brings opportunity, marriage is likely in this window.
             </p>
 
-            <p style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:rgba(232,224,208,0.65); line-height:1.85;">
+            <p class="em-body" style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:#9c9590 !important; line-height:1.85;">
               And people would leave satisfied. But I would leave feeling like I had given them something hollow.
             </p>
 
-            <p style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:rgba(232,224,208,0.65); line-height:1.85;">
-              Because the chart wasn't asking me what would happen to them. It was asking me <em style="color:#e8e0d0;">why they had chosen this birth.</em> What karma had shaped this soul before it arrived here. What it came to face, to resolve, to finally release.
+            <p class="em-body" style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:#9c9590 !important; line-height:1.85;">
+              Because the chart wasn't asking me what would happen to them. It was asking me <em class="em-em" style="color:#e8e0d0 !important;">why they had chosen this birth.</em> What karma had shaped this soul before it arrived here. What it came to face, to resolve, to finally release.
             </p>
 
-            <p style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:rgba(232,224,208,0.65); line-height:1.85;">
-              That is what Parashara actually wrote about. Not "when will I get a job." The Karmavipak Samhita, the Brhat Nakshatra, the classical nadi texts — they are not prediction manuals. They are karma manuals. The planets are not causes. They are <em style="color:#e8e0d0;">karmic signatures.</em>
+            <p class="em-body" style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:#9c9590 !important; line-height:1.85;">
+              That is what Parashara actually wrote about. Not "when will I get a job." The Karmavipak Samhita, the Brhat Nakshatra, the classical nadi texts — they are not prediction manuals. They are karma manuals. The planets are not causes. They are <em class="em-em" style="color:#e8e0d0 !important;">karmic signatures.</em>
             </p>
 
-            <p style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:rgba(232,224,208,0.65); line-height:1.85;">
+            <p class="em-body" style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:#9c9590 !important; line-height:1.85;">
               The moment I made that shift — and started reading charts through that lens — everything changed. Sessions became something different. People didn't just leave with information. They left with recognition. The kind that lands in the body.
             </p>
 
             <!-- Pull quote -->
-            <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin: 32px 0;">
+            <table class="em-quote" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin: 32px 0;">
               <tr>
-                <td style="padding:28px 32px; border:1px solid rgba(201,168,76,0.2); background:rgba(201,168,76,0.03);">
-                  <p style="margin:0; font-family: Georgia, serif; font-size:20px; font-style:italic; color:#e8e0d0; line-height:1.45;">
-                    "Your patterns are not personality.<br>They are karma asking to be seen."
+                <td bgcolor="#150f1c" style="padding:28px 32px; border:1px solid #1f1a0c; background-color:#150f1c !important;">
+                  <p class="em-heading" style="margin:0; font-family: Georgia, serif; font-size:20px; font-style:italic; color:#e8e0d0 !important; line-height:1.45;">
+                    &#8220;Your patterns are not personality.<br>They are karma asking to be seen.&#8221;
                   </p>
                 </td>
               </tr>
             </table>
 
-            <p style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:rgba(232,224,208,0.65); line-height:1.85;">
+            <p class="em-body" style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:#9c9590 !important; line-height:1.85;">
               That's what I want to teach. Not astrology as a parlour trick. Not predictions. But Jyotish as it was always meant to be understood — a living map of the soul's karma, held in light.
             </p>
 
             <!-- Divider rule -->
             <table cellpadding="0" cellspacing="0" border="0" style="margin:32px 0 28px 0;">
               <tr>
-                <td style="width:36px; height:1px; background:rgba(201,168,76,0.4); font-size:0;">&nbsp;</td>
+                <td bgcolor="#59492e" style="width:36px; height:1px; background-color:#59492e !important; font-size:0;">&nbsp;</td>
               </tr>
             </table>
 
-            <p style="margin:0; font-family: Georgia, serif; font-size:16px; font-style:italic; color:rgba(232,224,208,0.4); line-height:1.8;">
+            <p class="em-muted" style="margin:0; font-family: Georgia, serif; font-size:16px; font-style:italic; color:#666063 !important; line-height:1.8;">
               I'm building something for people like you.<br>I'll tell you more very soon.
             </p>
 
@@ -88,26 +104,26 @@
 
         <!-- Signature -->
         <tr>
-          <td style="padding: 0 52px 44px; border-top:1px solid rgba(232,224,208,0.07);">
-            <p style="margin:28px 0 4px 0; font-family: Georgia, serif; font-size:15px; color:rgba(232,224,208,0.5);">With love,</p>
-            <p style="margin:0; font-family: Georgia, serif; font-size:18px; font-style:italic; color:#C9A84C;">Veena</p>
-            <p style="margin:4px 0 0 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:rgba(232,224,208,0.25); text-transform:uppercase;">Shivohampath</p>
+          <td bgcolor="#0f0a1a" style="padding: 0 52px 44px; border-top:1px solid #1e1927; background-color:#0f0a1a !important;">
+            <p class="em-sig" style="margin:28px 0 4px 0; font-family: Georgia, serif; font-size:15px; color:#7c7575 !important;">With love,</p>
+            <p class="em-gold" style="margin:0; font-family: Georgia, serif; font-size:18px; font-style:italic; color:#C9A84C !important;">Veena</p>
+            <p class="em-footer" style="margin:4px 0 0 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:#454048 !important; text-transform:uppercase;">Shivohampath</p>
           </td>
         </tr>
 
-        <!-- Bottom gold line -->
+        <!-- Bottom accent line -->
         <tr>
-          <td style="height:1px; background:rgba(201,168,76,0.15); font-size:0; line-height:0;">&nbsp;</td>
+          <td bgcolor="#0f0a1a" style="height:1px; background-color:#2b2222 !important; font-size:0; line-height:0;">&nbsp;</td>
         </tr>
 
         <!-- Footer -->
         <tr>
-          <td align="center" style="padding:20px 48px;">
-            <p style="margin:0 0 10px 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:rgba(232,224,208,0.2); text-transform:uppercase;">
-              www.shivohampath.com &nbsp;·&nbsp; You are receiving this because you joined the Jyotish waitlist.
+          <td align="center" bgcolor="#0f0a1a" style="padding:20px 48px; background-color:#0f0a1a !important;">
+            <p class="em-footer" style="margin:0 0 10px 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:#3a353e !important; text-transform:uppercase;">
+              www.shivohampath.com &nbsp;&middot;&nbsp; You are receiving this because you joined the Jyotish waitlist.
             </p>
             <p style="margin:0;">
-              <a href="{$unsubscribe}" style="font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:rgba(232,224,208,0.2); text-transform:uppercase; text-decoration:underline;">Unsubscribe</a>
+              <a href="{$unsubscribe}" style="font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:#3a353e !important; text-transform:uppercase; text-decoration:underline;">Unsubscribe</a>
             </p>
           </td>
         </tr>

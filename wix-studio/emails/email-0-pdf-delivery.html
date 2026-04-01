@@ -1,42 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light">
-<meta name="supported-color-schemes" content="light">
+<!-- Dark: signals to email clients that this is intentionally dark-themed -->
+<meta name="color-scheme" content="dark">
+<meta name="supported-color-schemes" content="dark">
 <title>Your free guide is here.</title>
 </head>
-<body style="margin:0; padding:0; background:#0a0a0f !important; font-family: Georgia, 'Times New Roman', serif; color-scheme: light;">
+<body bgcolor="#0a0a0f" style="margin:0; padding:0; background-color:#0a0a0f !important; font-family: Georgia, 'Times New Roman', serif;">
 
-<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0a0a0f !important;">
+<!-- Gmail iOS dark mode override: Gmail adds data-ogsc to <html> in dark mode -->
+<style>
+  [data-ogsc] .em-outer   { background-color: #0a0a0f !important; }
+  [data-ogsc] .em-card    { background-color: #0f0a1a !important; }
+  [data-ogsc] .em-heading { color: #e8e0d0 !important; }
+  [data-ogsc] .em-body    { color: #9c9590 !important; }
+  [data-ogsc] .em-sub     { color: #5b555a !important; }
+  [data-ogsc] .em-gold    { color: #C9A84C !important; }
+  [data-ogsc] .em-muted   { color: #666063 !important; }
+  [data-ogsc] .em-sig     { color: #7c7575 !important; }
+  [data-ogsc] .em-em      { color: #e8e0d0 !important; }
+  [data-ogsc] .em-footer  { color: #3a353e !important; }
+  [data-ogsc] .em-btn td  { background-color: #C9A84C !important; }
+  [data-ogsc] .em-btn a   { color: #0a0a0f !important; }
+</style>
+
+<table class="em-outer" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0a0a0f" style="background-color:#0a0a0f !important;">
   <tr>
-    <td align="center" style="padding: 48px 20px; background:#0a0a0f !important;">
+    <td class="em-outer" align="center" bgcolor="#0a0a0f" style="padding: 48px 20px; background-color:#0a0a0f !important;">
 
       <!-- Card -->
-      <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px; width:100%; background:#0f0a1a !important; border:1px solid rgba(201,168,76,0.22);">
+      <table class="em-card" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#0f0a1a" style="max-width:600px; width:100%; background-color:#0f0a1a !important; border:1px solid #342d1c;">
 
-        <!-- Top gold line -->
+        <!-- Top gold line: solid fallback first, then gradient -->
         <tr>
-          <td style="height:2px; background: linear-gradient(to right, transparent, #C9A84C, transparent); font-size:0; line-height:0;">&nbsp;</td>
+          <td bgcolor="#0f0a1a" style="height:2px; background-color:#C9A84C; background:linear-gradient(to right, #0f0a1a, #C9A84C, #0f0a1a); font-size:0; line-height:0;">&nbsp;</td>
         </tr>
 
         <!-- Header -->
         <tr>
-          <td align="center" style="padding: 44px 48px 32px; background:#0f0a1a !important;">
-            <p style="margin:0 0 20px 0; font-family: 'Courier New', monospace; font-size:10px; letter-spacing:4px; color:#C9A84C; text-transform:uppercase;">SHIVOHAMPATH</p>
-            <p style="margin:0; font-family: Georgia, serif; font-size:11px; letter-spacing:3px; color:rgba(232,224,208,0.35); text-transform:uppercase;">Foundations of Jyothish</p>
+          <td align="center" bgcolor="#0f0a1a" style="padding: 44px 48px 32px; background-color:#0f0a1a !important;">
+            <p class="em-gold" style="margin:0 0 20px 0; font-family: 'Courier New', monospace; font-size:10px; letter-spacing:4px; color:#C9A84C !important; text-transform:uppercase;">SHIVOHAMPATH</p>
+            <p class="em-sub" style="margin:0; font-family: Georgia, serif; font-size:11px; letter-spacing:3px; color:#5b555a !important; text-transform:uppercase;">Foundations of Jyotish</p>
           </td>
         </tr>
 
         <!-- Divider -->
         <tr>
-          <td align="center" style="padding: 0 48px 36px; background:#0f0a1a !important;">
+          <td align="center" bgcolor="#0f0a1a" style="padding: 0 48px 36px; background-color:#0f0a1a !important;">
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td style="width:60px; height:1px; background:rgba(201,168,76,0.3); font-size:0;">&nbsp;</td>
-                <td style="width:8px; height:8px; background:#C9A84C; transform:rotate(45deg); font-size:0;">&nbsp;</td>
-                <td style="width:60px; height:1px; background:rgba(201,168,76,0.3); font-size:0;">&nbsp;</td>
+                <td bgcolor="#473929" style="width:60px; height:1px; background-color:#473929 !important; font-size:0;">&nbsp;</td>
+                <td bgcolor="#C9A84C" style="width:8px; height:8px; background-color:#C9A84C !important; font-size:0;">&nbsp;</td>
+                <td bgcolor="#473929" style="width:60px; height:1px; background-color:#473929 !important; font-size:0;">&nbsp;</td>
               </tr>
             </table>
           </td>
@@ -44,31 +61,31 @@
 
         <!-- Body -->
         <tr>
-          <td style="padding: 0 52px 48px; background:#0f0a1a !important;">
+          <td bgcolor="#0f0a1a" style="padding: 0 52px 48px; background-color:#0f0a1a !important;">
 
-            <p style="margin:0 0 28px 0; font-family: Georgia, serif; font-size:28px; font-weight:normal; font-style:italic; color:#e8e0d0; line-height:1.2;">
+            <p class="em-heading" style="margin:0 0 28px 0; font-family: Georgia, serif; font-size:28px; font-weight:normal; font-style:italic; color:#e8e0d0 !important; line-height:1.2;">
               Your free guide is here.
             </p>
 
-            <p style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:rgba(232,224,208,0.65); line-height:1.85;">
+            <p class="em-body" style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:#9c9590 !important; line-height:1.85;">
               I promised you something when you joined the list. Here it is.
             </p>
 
-            <p style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:rgba(232,224,208,0.65); line-height:1.85;">
-              <em style="color:#e8e0d0;">Your Chart Is Not a Prediction Grid</em> is a short guide I wrote on the Three Karmas: Sanchita, Prarabdha, and Kriyamana. It explains why Jyotish was never designed to tell you what will happen, and what it was actually built to reveal.
+            <p class="em-body" style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:#9c9590 !important; line-height:1.85;">
+              <em class="em-em" style="color:#e8e0d0 !important;">Your Chart Is Not a Prediction Grid</em> is a short guide I wrote on the Three Karmas: Sanchita, Prarabdha, and Kriyamana. It explains why Jyotish was never designed to tell you what will happen, and what it was actually built to reveal.
             </p>
 
-            <p style="margin:0 0 36px 0; font-family: Georgia, serif; font-size:17px; color:rgba(232,224,208,0.65); line-height:1.85;">
+            <p class="em-body" style="margin:0 0 36px 0; font-family: Georgia, serif; font-size:17px; color:#9c9590 !important; line-height:1.85;">
               It also includes a simple chart reading prompt you can use right now, with no technical knowledge required.
             </p>
 
             <!-- Download Button -->
-            <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 40px;">
+            <table class="em-btn" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 40px;">
               <tr>
-                <td style="background:#C9A84C;">
+                <td bgcolor="#C9A84C" style="background-color:#C9A84C !important;">
                   <a href="https://ba8bbb95-41db-4685-bf84-cc10b1c6fb48.usrfiles.com/ugd/ba8bbb_512e4d7254bd459e8f48333939e3f783.pdf"
                      target="_blank"
-                     style="display:inline-block; padding:16px 40px; font-family: 'Courier New', monospace; font-size:10px; letter-spacing:2.5px; color:#0a0a0f; text-decoration:none; text-transform:uppercase;">
+                     style="display:inline-block; padding:16px 40px; font-family: 'Courier New', monospace; font-size:10px; letter-spacing:2.5px; color:#0a0a0f !important; text-decoration:none; text-transform:uppercase;">
                     Download the Free Guide
                   </a>
                 </td>
@@ -78,11 +95,11 @@
             <!-- Divider rule -->
             <table cellpadding="0" cellspacing="0" border="0" style="margin:0 0 32px 0;">
               <tr>
-                <td style="width:36px; height:1px; background:rgba(201,168,76,0.4); font-size:0;">&nbsp;</td>
+                <td bgcolor="#59492e" style="width:36px; height:1px; background-color:#59492e !important; font-size:0;">&nbsp;</td>
               </tr>
             </table>
 
-            <p style="margin:0; font-family: Georgia, serif; font-size:16px; font-style:italic; color:rgba(232,224,208,0.4); line-height:1.8;">
+            <p class="em-muted" style="margin:0; font-family: Georgia, serif; font-size:16px; font-style:italic; color:#666063 !important; line-height:1.8;">
               More coming soon. In the meantime, carry your questions.<br>They are already doing the work.
             </p>
 
@@ -91,26 +108,26 @@
 
         <!-- Signature -->
         <tr>
-          <td style="padding: 0 52px 44px; border-top:1px solid rgba(232,224,208,0.07); background:#0f0a1a !important;">
-            <p style="margin:28px 0 4px 0; font-family: Georgia, serif; font-size:15px; color:rgba(232,224,208,0.5);">With love,</p>
-            <p style="margin:0; font-family: Georgia, serif; font-size:18px; font-style:italic; color:#C9A84C;">Veena</p>
-            <p style="margin:4px 0 0 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:rgba(232,224,208,0.25); text-transform:uppercase;">Shivohampath</p>
+          <td bgcolor="#0f0a1a" style="padding: 0 52px 44px; border-top:1px solid #1e1927; background-color:#0f0a1a !important;">
+            <p class="em-sig" style="margin:28px 0 4px 0; font-family: Georgia, serif; font-size:15px; color:#7c7575 !important;">With love,</p>
+            <p class="em-gold" style="margin:0; font-family: Georgia, serif; font-size:18px; font-style:italic; color:#C9A84C !important;">Veena</p>
+            <p class="em-footer" style="margin:4px 0 0 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:#454048 !important; text-transform:uppercase;">Shivohampath</p>
           </td>
         </tr>
 
-        <!-- Bottom gold line -->
+        <!-- Bottom accent line -->
         <tr>
-          <td style="height:1px; background:rgba(201,168,76,0.15); font-size:0; line-height:0;">&nbsp;</td>
+          <td bgcolor="#0f0a1a" style="height:1px; background-color:#2b2222 !important; font-size:0; line-height:0;">&nbsp;</td>
         </tr>
 
         <!-- Footer -->
         <tr>
-          <td align="center" style="padding:20px 48px; background:#0f0a1a !important;">
-            <p style="margin:0 0 10px 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:rgba(232,224,208,0.2); text-transform:uppercase;">
-              www.shivohampath.com &nbsp;·&nbsp; You are receiving this because you joined the Jyotish waitlist.
+          <td align="center" bgcolor="#0f0a1a" style="padding:20px 48px; background-color:#0f0a1a !important;">
+            <p class="em-footer" style="margin:0 0 10px 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:#3a353e !important; text-transform:uppercase;">
+              www.shivohampath.com &nbsp;&middot;&nbsp; You are receiving this because you joined the Jyotish waitlist.
             </p>
             <p style="margin:0;">
-              <a href="{$unsubscribe}" style="font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:rgba(232,224,208,0.2); text-transform:uppercase; text-decoration:underline;">Unsubscribe</a>
+              <a href="{$unsubscribe}" style="font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:#3a353e !important; text-transform:uppercase; text-decoration:underline;">Unsubscribe</a>
             </p>
           </td>
         </tr>

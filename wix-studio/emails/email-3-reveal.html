@@ -1,43 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light">
-<meta name="supported-color-schemes" content="light">
+<!-- Dark: signals to email clients that this is intentionally dark-themed -->
+<meta name="color-scheme" content="dark">
+<meta name="supported-color-schemes" content="dark">
 <title>Here's what I'm building.</title>
 </head>
-<body style="margin:0; padding:0; background:#0a0a0f !important; font-family: Georgia, 'Times New Roman', serif; color-scheme: light;">
+<body bgcolor="#0a0a0f" style="margin:0; padding:0; background-color:#0a0a0f !important; font-family: Georgia, 'Times New Roman', serif;">
 
-<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0a0a0f !important;">
+<!-- Gmail iOS dark mode override: Gmail adds data-ogsc to <html> in dark mode -->
+<style>
+  [data-ogsc] .em-outer      { background-color: #0a0a0f !important; }
+  [data-ogsc] .em-card       { background-color: #0f0a1a !important; }
+  [data-ogsc] .em-inner      { background-color: #131020 !important; border-color: #3b312a !important; }
+  [data-ogsc] .em-heading    { color: #e8e0d0 !important; }
+  [data-ogsc] .em-body       { color: #9c9590 !important; }
+  [data-ogsc] .em-sub        { color: #5b555a !important; }
+  [data-ogsc] .em-sub-inner  { color: #5e595e !important; }
+  [data-ogsc] .em-gold       { color: #C9A84C !important; }
+  [data-ogsc] .em-muted      { color: #666063 !important; }
+  [data-ogsc] .em-muted-inner{ color: #686366 !important; }
+  [data-ogsc] .em-sig        { color: #7c7575 !important; }
+  [data-ogsc] .em-em         { color: #e8e0d0 !important; }
+  [data-ogsc] .em-outcome    { color: #a7a099 !important; }
+  [data-ogsc] .em-footer     { color: #3a353e !important; }
+  [data-ogsc] .em-btn td     { background-color: #C9A84C !important; }
+  [data-ogsc] .em-btn a      { color: #0a0a0f !important; }
+  [data-ogsc] .em-coupon td  { background-color: #18121c !important; border-color: #50412c !important; }
+  [data-ogsc] .em-outcome-row td { border-color: #1e1927 !important; }
+</style>
+
+<table class="em-outer" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0a0a0f" style="background-color:#0a0a0f !important;">
   <tr>
-    <td align="center" style="padding: 48px 20px;">
+    <td class="em-outer" align="center" bgcolor="#0a0a0f" style="padding: 48px 20px; background-color:#0a0a0f !important;">
 
       <!-- Card -->
-      <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px; width:100%; background:#0f0a1a !important; border:1px solid rgba(201,168,76,0.22);">
+      <table class="em-card" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#0f0a1a" style="max-width:600px; width:100%; background-color:#0f0a1a !important; border:1px solid #342d1c;">
 
-        <!-- Top gold line -->
+        <!-- Top gold line: solid fallback first, then gradient -->
         <tr>
-          <td style="height:2px; background: linear-gradient(to right, transparent, #C9A84C, transparent); font-size:0; line-height:0;">&nbsp;</td>
+          <td bgcolor="#0f0a1a" style="height:2px; background-color:#C9A84C; background:linear-gradient(to right, #0f0a1a, #C9A84C, #0f0a1a); font-size:0; line-height:0;">&nbsp;</td>
         </tr>
 
         <!-- Header -->
         <tr>
-          <td align="center" style="padding: 36px 48px 28px;">
-            <p style="margin:0 0 6px 0; font-family: 'Courier New', monospace; font-size:10px; letter-spacing:4px; color:#C9A84C; text-transform:uppercase;">SHIVOHAMPATH</p>
-            <p style="margin:0; font-family: Georgia, serif; font-size:11px; letter-spacing:3px; color:rgba(232,224,208,0.35); text-transform:uppercase;">The Reveal · Day 7</p>
+          <td align="center" bgcolor="#0f0a1a" style="padding: 36px 48px 28px; background-color:#0f0a1a !important;">
+            <p class="em-gold" style="margin:0 0 6px 0; font-family: 'Courier New', monospace; font-size:10px; letter-spacing:4px; color:#C9A84C !important; text-transform:uppercase;">SHIVOHAMPATH</p>
+            <p class="em-sub" style="margin:0; font-family: Georgia, serif; font-size:11px; letter-spacing:3px; color:#5b555a !important; text-transform:uppercase;">The Reveal &middot; Day 7</p>
           </td>
         </tr>
 
-        <!-- Body -->
+        <!-- Body intro -->
         <tr>
-          <td style="padding: 8px 52px 40px;">
+          <td bgcolor="#0f0a1a" style="padding: 8px 52px 40px; background-color:#0f0a1a !important;">
 
-            <p style="margin:0 0 28px 0; font-family: Georgia, serif; font-size:26px; font-weight:normal; font-style:italic; color:#e8e0d0; line-height:1.25;">
+            <p class="em-heading" style="margin:0 0 28px 0; font-family: Georgia, serif; font-size:26px; font-weight:normal; font-style:italic; color:#e8e0d0 !important; line-height:1.25;">
               Here's what I'm building.
             </p>
 
-            <p style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:rgba(232,224,208,0.65); line-height:1.85;">
+            <p class="em-body" style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:#9c9590 !important; line-height:1.85;">
               I told you I was building something for people like you. Here it is.
             </p>
 
@@ -46,21 +69,21 @@
 
         <!-- Course title block -->
         <tr>
-          <td style="padding: 0 52px 40px;">
-            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+          <td bgcolor="#0f0a1a" style="padding: 0 52px 40px; background-color:#0f0a1a !important;">
+            <table class="em-inner" cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
-                <td style="padding:36px 36px; background:#131020; border:1px solid rgba(201,168,76,0.22);">
-                  <p style="margin:0 0 8px 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:3px; color:#C9A84C; text-transform:uppercase;">A Live Course</p>
-                  <p style="margin:0 0 4px 0; font-family: Georgia, serif; font-size:26px; font-style:italic; color:#e8e0d0; line-height:1.1; font-weight:normal;">Foundations of Jyotish:</p>
-                  <p style="margin:0 0 24px 0; font-family: Georgia, serif; font-size:26px; font-style:italic; color:#C9A84C; line-height:1.1; font-weight:normal;">The Karma-Based Path</p>
+                <td bgcolor="#131020" style="padding:36px 36px; background-color:#131020 !important; border:1px solid #3b312a;">
+                  <p class="em-gold" style="margin:0 0 8px 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:3px; color:#C9A84C !important; text-transform:uppercase;">A Live Course</p>
+                  <p class="em-heading" style="margin:0 0 4px 0; font-family: Georgia, serif; font-size:26px; font-style:italic; color:#e8e0d0 !important; line-height:1.1; font-weight:normal;">Foundations of Jyotish:</p>
+                  <p class="em-gold" style="margin:0 0 24px 0; font-family: Georgia, serif; font-size:26px; font-style:italic; color:#C9A84C !important; line-height:1.1; font-weight:normal;">The Karma-Based Path</p>
                   <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:20px;">
                     <tr>
-                      <td style="padding-right:24px; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:rgba(232,224,208,0.35); text-transform:uppercase; border-right:1px solid rgba(232,224,208,0.1);">12 Modules</td>
-                      <td style="padding:0 24px; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:rgba(232,224,208,0.35); text-transform:uppercase; border-right:1px solid rgba(232,224,208,0.1);">4 Pillars</td>
-                      <td style="padding-left:24px; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:rgba(232,224,208,0.35); text-transform:uppercase;">Live Format</td>
+                      <td class="em-sub-inner" style="padding-right:24px; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:#5e595e !important; text-transform:uppercase; border-right:1px solid #2a2535;">12 Modules</td>
+                      <td class="em-sub-inner" style="padding:0 24px; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:#5e595e !important; text-transform:uppercase; border-right:1px solid #2a2535;">4 Pillars</td>
+                      <td class="em-sub-inner" style="padding-left:24px; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:#5e595e !important; text-transform:uppercase;">Live Format</td>
                     </tr>
                   </table>
-                  <p style="margin:0; font-family: Georgia, serif; font-size:15px; font-style:italic; color:rgba(232,224,208,0.4); line-height:1.7;">Rooted in BPHS · Brhat Nakshatra · Karmavipak Samhita · Classical Nadi Texts</p>
+                  <p class="em-muted-inner" style="margin:0; font-family: Georgia, serif; font-size:15px; font-style:italic; color:#686366 !important; line-height:1.7;">Rooted in BPHS &middot; Brhat Nakshatra &middot; Karmavipak Samhita &middot; Classical Nadi Texts</p>
                 </td>
               </tr>
             </table>
@@ -69,54 +92,48 @@
 
         <!-- What you'll leave with -->
         <tr>
-          <td style="padding: 0 52px 40px;">
-            <p style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:rgba(232,224,208,0.65); line-height:1.85;">
+          <td bgcolor="#0f0a1a" style="padding: 0 52px 40px; background-color:#0f0a1a !important;">
+            <p class="em-body" style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:#9c9590 !important; line-height:1.85;">
               This is not an astrology course that teaches you to predict events. It is the course that teaches you to read karma — your own, and anyone else's.
             </p>
-            <p style="margin:0 0 24px 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:3px; color:rgba(232,224,208,0.35); text-transform:uppercase;">By the end, you will be able to:</p>
+            <p class="em-sub" style="margin:0 0 24px 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:3px; color:#5b555a !important; text-transform:uppercase;">By the end, you will be able to:</p>
 
             <!-- Outcomes -->
             <table cellpadding="0" cellspacing="0" border="0" width="100%">
 
-              <tr>
-                <td style="padding:16px 20px; border:1px solid rgba(232,224,208,0.07); border-bottom:none;">
+              <tr class="em-outcome-row">
+                <td bgcolor="#0f0a1a" style="padding:16px 20px; border:1px solid #1e1927; border-bottom:none; background-color:#0f0a1a !important;">
                   <table cellpadding="0" cellspacing="0" border="0" width="100%">
                     <tr>
-                      <td style="width:14px; vertical-align:top; padding-top:4px;">
-                        <div style="width:5px; height:5px; background:#C9A84C; transform:rotate(45deg); display:inline-block;">&nbsp;</div>
-                      </td>
-                      <td style="padding-left:12px; font-family: Georgia, serif; font-size:16px; color:rgba(232,224,208,0.7); line-height:1.7;">
-                        Read any birth chart through the lens of karma — not just what the planets are, but <em style="color:#e8e0d0;">what the soul is carrying</em> and why.
+                      <td bgcolor="#C9A84C" style="width:5px; height:5px; background-color:#C9A84C !important; vertical-align:top; padding-top:7px; font-size:0;">&nbsp;</td>
+                      <td class="em-outcome" style="padding-left:12px; font-family: Georgia, serif; font-size:16px; color:#a7a099 !important; line-height:1.7;">
+                        Read any birth chart through the lens of karma — not just what the planets are, but <em class="em-em" style="color:#e8e0d0 !important;">what the soul is carrying</em> and why.
                       </td>
                     </tr>
                   </table>
                 </td>
               </tr>
 
-              <tr>
-                <td style="padding:16px 20px; border:1px solid rgba(232,224,208,0.07); border-bottom:none;">
+              <tr class="em-outcome-row">
+                <td bgcolor="#0f0a1a" style="padding:16px 20px; border:1px solid #1e1927; border-bottom:none; background-color:#0f0a1a !important;">
                   <table cellpadding="0" cellspacing="0" border="0" width="100%">
                     <tr>
-                      <td style="width:14px; vertical-align:top; padding-top:4px;">
-                        <div style="width:5px; height:5px; background:#C9A84C; transform:rotate(45deg); display:inline-block;">&nbsp;</div>
-                      </td>
-                      <td style="padding-left:12px; font-family: Georgia, serif; font-size:16px; color:rgba(232,224,208,0.7); line-height:1.7;">
-                        Understand Rahu, Ketu, Dashas and divisional charts as <em style="color:#e8e0d0;">instruments of the soul's journey</em> — not just technical placements.
+                      <td bgcolor="#C9A84C" style="width:5px; height:5px; background-color:#C9A84C !important; vertical-align:top; padding-top:7px; font-size:0;">&nbsp;</td>
+                      <td class="em-outcome" style="padding-left:12px; font-family: Georgia, serif; font-size:16px; color:#a7a099 !important; line-height:1.7;">
+                        Understand Rahu, Ketu, Dashas and divisional charts as <em class="em-em" style="color:#e8e0d0 !important;">instruments of the soul's journey</em> — not just technical placements.
                       </td>
                     </tr>
                   </table>
                 </td>
               </tr>
 
-              <tr>
-                <td style="padding:16px 20px; border:1px solid rgba(232,224,208,0.07);">
+              <tr class="em-outcome-row">
+                <td bgcolor="#0f0a1a" style="padding:16px 20px; border:1px solid #1e1927; background-color:#0f0a1a !important;">
                   <table cellpadding="0" cellspacing="0" border="0" width="100%">
                     <tr>
-                      <td style="width:14px; vertical-align:top; padding-top:4px;">
-                        <div style="width:5px; height:5px; background:#C9A84C; transform:rotate(45deg); display:inline-block;">&nbsp;</div>
-                      </td>
-                      <td style="padding-left:12px; font-family: Georgia, serif; font-size:16px; color:rgba(232,224,208,0.7); line-height:1.7;">
-                        Synthesise all of it into a <em style="color:#e8e0d0;">complete karmic story</em> — the kind of reading that lands in the body, not just the mind.
+                      <td bgcolor="#C9A84C" style="width:5px; height:5px; background-color:#C9A84C !important; vertical-align:top; padding-top:7px; font-size:0;">&nbsp;</td>
+                      <td class="em-outcome" style="padding-left:12px; font-family: Georgia, serif; font-size:16px; color:#a7a099 !important; line-height:1.7;">
+                        Synthesise all of it into a <em class="em-em" style="color:#e8e0d0 !important;">complete karmic story</em> — the kind of reading that lands in the body, not just the mind.
                       </td>
                     </tr>
                   </table>
@@ -129,29 +146,29 @@
 
         <!-- CTA -->
         <tr>
-          <td style="padding: 0 52px 48px;">
-            <p style="margin:0 0 28px 0; font-family: Georgia, serif; font-size:17px; color:rgba(232,224,208,0.65); line-height:1.85;">
+          <td bgcolor="#0f0a1a" style="padding: 0 52px 48px; background-color:#0f0a1a !important;">
+            <p class="em-body" style="margin:0 0 28px 0; font-family: Georgia, serif; font-size:17px; color:#9c9590 !important; line-height:1.85;">
               The course is now open. As someone who has been on the list from the beginning, you get something no one else will.
             </p>
 
             <!-- Coupon block -->
-            <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 28px;">
+            <table class="em-coupon" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 28px;">
               <tr>
-                <td style="padding:20px 24px; border:1px solid rgba(201,168,76,0.35); background:rgba(201,168,76,0.05);">
-                  <p style="margin:0 0 6px 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:3px; color:#C9A84C; text-transform:uppercase;">Waitlist Offer</p>
-                  <p style="margin:0 0 4px 0; font-family: Georgia, serif; font-size:22px; font-weight:normal; color:#e8e0d0; line-height:1.2;">Rs. 1,000 off the course price.</p>
-                  <p style="margin:0; font-family: Georgia, serif; font-size:14px; font-style:italic; color:rgba(232,224,208,0.45); line-height:1.6;">Valid until April 19th only. Applied at checkout.</p>
+                <td bgcolor="#18121c" style="padding:20px 24px; border:1px solid #50412c; background-color:#18121c !important;">
+                  <p class="em-gold" style="margin:0 0 6px 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:3px; color:#C9A84C !important; text-transform:uppercase;">Waitlist Offer</p>
+                  <p class="em-heading" style="margin:0 0 4px 0; font-family: Georgia, serif; font-size:22px; font-weight:normal; color:#e8e0d0 !important; line-height:1.2;">Rs. 1,000 off the course price.</p>
+                  <p class="em-muted" style="margin:0; font-family: Georgia, serif; font-size:14px; font-style:italic; color:#666063 !important; line-height:1.6;">Valid until April 19th only. Applied at checkout.</p>
                 </td>
               </tr>
             </table>
 
             <!-- Button -->
-            <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 28px;">
+            <table class="em-btn" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 28px;">
               <tr>
-                <td style="background:#C9A84C;">
+                <td bgcolor="#C9A84C" style="background-color:#C9A84C !important;">
                   <a href="https://www.shivohampath.com/challenge-page/a8b33611-606f-495b-ba6a-88b3ea263ac5"
                      target="_blank"
-                     style="display:inline-block; padding:14px 36px; font-family: 'Courier New', monospace; font-size:10px; letter-spacing:2.5px; color:#0a0a0f; text-decoration:none; text-transform:uppercase;">
+                     style="display:inline-block; padding:14px 36px; font-family: 'Courier New', monospace; font-size:10px; letter-spacing:2.5px; color:#0a0a0f !important; text-decoration:none; text-transform:uppercase;">
                     Join the Founding Cohort
                   </a>
                 </td>
@@ -161,11 +178,11 @@
             <!-- Divider -->
             <table cellpadding="0" cellspacing="0" border="0" style="margin:8px 0 28px 0;">
               <tr>
-                <td style="width:36px; height:1px; background:rgba(201,168,76,0.4); font-size:0;">&nbsp;</td>
+                <td bgcolor="#59492e" style="width:36px; height:1px; background-color:#59492e !important; font-size:0;">&nbsp;</td>
               </tr>
             </table>
 
-            <p style="margin:0; font-family: Georgia, serif; font-size:16px; font-style:italic; color:rgba(232,224,208,0.4); line-height:1.8;">
+            <p class="em-muted" style="margin:0; font-family: Georgia, serif; font-size:16px; font-style:italic; color:#666063 !important; line-height:1.8;">
               You've been carrying questions about your chart for a reason.<br>
               This is the course that was built to answer them.
             </p>
@@ -175,26 +192,26 @@
 
         <!-- Signature -->
         <tr>
-          <td style="padding: 0 52px 44px; border-top:1px solid rgba(232,224,208,0.07);">
-            <p style="margin:28px 0 4px 0; font-family: Georgia, serif; font-size:15px; color:rgba(232,224,208,0.5);">With love,</p>
-            <p style="margin:0; font-family: Georgia, serif; font-size:18px; font-style:italic; color:#C9A84C;">Veena</p>
-            <p style="margin:4px 0 0 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:rgba(232,224,208,0.25); text-transform:uppercase;">Shivohampath</p>
+          <td bgcolor="#0f0a1a" style="padding: 0 52px 44px; border-top:1px solid #1e1927; background-color:#0f0a1a !important;">
+            <p class="em-sig" style="margin:28px 0 4px 0; font-family: Georgia, serif; font-size:15px; color:#7c7575 !important;">With love,</p>
+            <p class="em-gold" style="margin:0; font-family: Georgia, serif; font-size:18px; font-style:italic; color:#C9A84C !important;">Veena</p>
+            <p class="em-footer" style="margin:4px 0 0 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:#454048 !important; text-transform:uppercase;">Shivohampath</p>
           </td>
         </tr>
 
-        <!-- Bottom gold line -->
+        <!-- Bottom accent line -->
         <tr>
-          <td style="height:1px; background:rgba(201,168,76,0.15); font-size:0; line-height:0;">&nbsp;</td>
+          <td bgcolor="#0f0a1a" style="height:1px; background-color:#2b2222 !important; font-size:0; line-height:0;">&nbsp;</td>
         </tr>
 
         <!-- Footer -->
         <tr>
-          <td align="center" style="padding:20px 48px;">
-            <p style="margin:0 0 10px 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:rgba(232,224,208,0.2); text-transform:uppercase;">
-              www.shivohampath.com &nbsp;·&nbsp; You are receiving this because you joined the Jyotish waitlist.
+          <td align="center" bgcolor="#0f0a1a" style="padding:20px 48px; background-color:#0f0a1a !important;">
+            <p class="em-footer" style="margin:0 0 10px 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:#3a353e !important; text-transform:uppercase;">
+              www.shivohampath.com &nbsp;&middot;&nbsp; You are receiving this because you joined the Jyotish waitlist.
             </p>
             <p style="margin:0;">
-              <a href="{$unsubscribe}" style="font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:rgba(232,224,208,0.2); text-transform:uppercase; text-decoration:underline;">Unsubscribe</a>
+              <a href="{$unsubscribe}" style="font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:#3a353e !important; text-transform:uppercase; text-decoration:underline;">Unsubscribe</a>
             </p>
           </td>
         </tr>

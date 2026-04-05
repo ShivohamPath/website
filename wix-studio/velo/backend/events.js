@@ -1,4 +1,24 @@
+import { members } from 'wix-members-backend';
 import { syncToMailerLite, GROUPS } from 'backend/mailerlite';
+
+// ─── Challenge participant joins (paid enrolment) → Course Members group ─────
+export async function wixChallenge_onChallengeParticipantJoined(event) {
+  const memberId = event.data?.participant?.memberId;
+  if (!memberId) return;
+
+  try {
+    const member = await members.getMember(memberId, { fieldSets: ['FULL'] });
+    const email  = member.loginEmail;
+    const name   = [
+      member.contactDetails?.firstName,
+      member.contactDetails?.lastName
+    ].filter(Boolean).join(' ');
+
+    syncToMailerLite(email, name, GROUPS.COURSE_MEMBERS);
+  } catch (err) {
+    console.error('Course member MailerLite sync error:', err);
+  }
+}
 
 // ─── New Site Member → Site Members group ────────────────────────────────────
 export function wixMembers_onMemberCreated(event) {

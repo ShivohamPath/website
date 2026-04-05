@@ -4,9 +4,10 @@ import { getSecret } from 'wix-secrets-backend';
 const ML_API = 'https://connect.mailerlite.com/api';
 
 export const GROUPS = {
-  EMAIL_SUBSCRIBERS: '183427858702534273',
-  SITE_MEMBERS:      '183428098925004623',
-  COURSE_WAITLIST:   '183387514562675961'
+  EMAIL_SUBSCRIBERS:    '183427858702534273',
+  SITE_MEMBERS:         '183428098925004623',
+  COURSE_WAITLIST:      '183387514562675961',
+  COURSE_MEMBERS:       'PASTE_GROUP_ID_HERE'  // MailerLite → Subscribers → Groups → "Jyothish Course Joiners" → ID from URL
 };
 
 export async function syncToMailerLite(email, name, groupId) {

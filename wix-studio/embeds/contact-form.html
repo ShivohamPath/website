@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.4);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+    --error: #bf6f6f;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  /* ── LAYOUT ── */
+  .contact {
+    padding: 80px 60px 100px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── HEADER ── */
+  .contact-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 18px;
+  }
+  .contact-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 300;
+    line-height: 1.08;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+  .contact-header h2 em { font-style: italic; color: var(--gold); }
+  .divider {
+    display: flex; align-items: center;
+    justify-content: center; gap: 12px;
+    width: 180px; margin: 0 auto 22px;
+  }
+  .divider-line { flex: 1; height: 1px; background: var(--line2); }
+  .divider-diamond {
+    width: 5px; height: 5px;
+    background: var(--gold); transform: rotate(45deg);
+    opacity: 0.65; flex-shrink: 0;
+  }
+  .contact-header .sub {
+    font-size: 17px; font-style: italic;
+    color: var(--text3); line-height: 1.75;
+    max-width: 500px; margin: 0 auto;
+  }
+
+  /* ── TWO-COLUMN BODY ── */
+  .contact-body {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  /* ── LEFT SIDE ── */
+  .contact-info { padding-top: 8px; }
+
+  .info-block { margin-bottom: 40px; }
+  .info-block:last-child { margin-bottom: 0; }
+
+  .info-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .info-text {
+    font-size: 16px;
+    color: var(--text2);
+    line-height: 1.8;
+  }
+
+  .inquiry-types { list-style: none; margin-top: 28px; }
+  .inquiry-types li {
+    display: flex; align-items: flex-start;
+    gap: 12px; margin-bottom: 18px;
+  }
+  .inquiry-types li:last-child { margin-bottom: 0; }
+  .inq-dot {
+    width: 4px; height: 4px;
+    background: var(--gold); transform: rotate(45deg);
+    opacity: 0.55; flex-shrink: 0; margin-top: 8px;
+  }
+  .inq-title {
+    font-family: 'Cinzel', serif;
+    font-size: 9px; letter-spacing: 2px;
+    color: var(--text); display: block; margin-bottom: 3px;
+  }
+  .inq-desc {
+    font-size: 14px; color: var(--text3);
+    line-height: 1.65;
+  }
+
+  .response-note {
+    margin-top: 40px;
+    padding: 20px 24px;
+    border: 1px solid var(--line2);
+    background: var(--bg4);
+  }
+  .response-note p {
+    font-size: 14px; font-style: italic;
+    color: var(--text3); line-height: 1.7;
+  }
+  .response-note p span {
+    font-style: normal; color: var(--gold);
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 2px; display: block; margin-bottom: 6px;
+  }
+
+  /* ── FORM CARD ── */
+  .form-card {
+    background: var(--bg3);
+    border: 1px solid var(--line2);
+    position: relative;
+    overflow: hidden;
+  }
+  .form-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--gold); opacity: 0.5;
+  }
+  .form-inner { padding: 48px 44px; }
+
+  /* ── FIELDS ── */
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-bottom: 0;
+    border: 1px solid var(--line2);
+    border-bottom: none;
+  }
+  .field-wrap {
+    position: relative;
+    border-bottom: 1px solid var(--line2);
+  }
+  .field-wrap + .field-wrap {
+    border-left: 1px solid var(--line2);
+  }
+  .field-wrap.full {
+    border: 1px solid var(--line2);
+    border-top: none;
+  }
+  .field-wrap.full + .field-wrap.full {
+    border-top: none;
+  }
+
+  .field-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px; letter-spacing: 2.5px;
+    color: var(--text3);
+    display: block;
+    padding: 14px 18px 0;
+  }
+  .field-input {
+    width: 100%;
+    font-family: 'EB Garamond', serif;
+    font-size: 16px; font-style: italic;
+    color: var(--text);
+    background: transparent;
+    border: none; outline: none;
+    padding: 6px 18px 14px;
+    display: block;
+    transition: background 0.2s;
+  }
+  .field-input::placeholder { color: var(--text3); }
+  .field-wrap:focus-within {
+    background: var(--bg4);
+  }
+  .field-wrap:focus-within .field-label {
+    color: var(--gold);
+  }
+
+  /* Select */
+  .select-wrap { position: relative; }
+  .select-wrap .field-input {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    padding-right: 44px;
+  }
+  .select-wrap .field-input option {
+    background: var(--bg3);
+    color: var(--text);
+    font-style: normal;
+  }
+  .select-arrow {
+    position: absolute;
+    right: 18px; bottom: 18px;
+    width: 6px; height: 6px;
+    border-right: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    transform: rotate(45deg);
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  /* Textarea */
+  .field-input.textarea {
+    resize: none;
+    min-height: 140px;
+    line-height: 1.7;
+    padding-top: 8px;
+    padding-bottom: 16px;
+  }
+
+  /* Submit row */
+  .submit-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 28px;
+  }
+  .submit-note {
+    font-family: 'Cinzel', serif;
+    font-size: 8px; letter-spacing: 2px;
+    color: var(--text3); line-height: 1.6;
+  }
+  .submit-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 10px; letter-spacing: 2.5px;
+    padding: 14px 32px;
+    background: var(--gold); color: var(--bg);
+    border: none; cursor: pointer;
+    white-space: nowrap; flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .submit-btn:hover:not(:disabled) { background: #a8893a; }
+  .submit-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+  /* Inline error */
+  .field-error {
+    font-family: 'Cinzel', serif;
+    font-size: 8px; letter-spacing: 1.5px;
+    color: var(--error);
+    padding: 8px 18px;
+    display: none;
+  }
+
+  /* ── SUCCESS STATE ── */
+  #state-success {
+    display: none;
+    padding: 64px 44px;
+    text-align: center;
+  }
+  .success-icon {
+    font-size: 28px; color: var(--gold);
+    display: block; margin-bottom: 20px; opacity: 0.8;
+  }
+  #state-success h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 300;
+    font-style: italic; color: var(--text);
+    margin-bottom: 14px;
+  }
+  #state-success p {
+    font-size: 16px; color: var(--text3);
+    line-height: 1.8; font-style: italic;
+    max-width: 400px; margin: 0 auto;
+  }
+
+  /* ── GLOBAL ERROR ── */
+  #global-error {
+    display: none;
+    font-family: 'Cinzel', serif;
+    font-size: 9px; letter-spacing: 2px;
+    color: var(--error);
+    margin-top: 16px; text-align: center;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .contact { padding: 64px 32px 80px; }
+    .contact-body {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .contact-info { padding-top: 0; }
+    .response-note { display: none; }
+  }
+  @media (max-width: 600px) {
+    .contact { padding: 48px 20px 64px; }
+    .field-row { grid-template-columns: 1fr; }
+    .field-wrap + .field-wrap { border-left: none; border-top: none; }
+    .form-inner { padding: 32px 24px; }
+    .submit-row { flex-direction: column; align-items: stretch; }
+    .submit-btn { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<section class="contact">
+
+  <!-- Header -->
+  <div class="contact-header">
+    <span class="eyebrow">Get In Touch</span>
+    <h2>Ask. Inquire. <em>Connect.</em></h2>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+    <p class="sub">
+      Whether you have a question about a reading, the course, or simply
+      need clarity — this is the place.
+    </p>
+  </div>
+
+  <!-- Body -->
+  <div class="contact-body">
+
+    <!-- Left: info -->
+    <div class="contact-info">
+
+      <div class="info-block">
+        <span class="info-label">What You Can Ask</span>
+        <ul class="inquiry-types">
+          <li>
+            <div class="inq-dot"></div>
+            <div>
+              <span class="inq-title">Booking Inquiry</span>
+              <span class="inq-desc">Not sure which reading is right for you, or want to know availability before booking.</span>
+            </div>
+          </li>
+          <li>
+            <div class="inq-dot"></div>
+            <div>
+              <span class="inq-title">Clarity Session</span>
+              <span class="inq-desc">You have a specific question — about your chart, a transit, a past-life pattern — and need a focused answer.</span>
+            </div>
+          </li>
+          <li>
+            <div class="inq-dot"></div>
+            <div>
+              <span class="inq-title">Course Question</span>
+              <span class="inq-desc">Curious about the Jyotish course — its structure, suitability for you, or when the next intake opens.</span>
+            </div>
+          </li>
+          <li>
+            <div class="inq-dot"></div>
+            <div>
+              <span class="inq-title">Something Else</span>
+              <span class="inq-desc">Anything that doesn't fit a box. If it matters to you, it's worth asking.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="response-note">
+        <p>
+          <span>Response Time</span>
+          I read every message personally. You can expect a reply within 2–3 days.
+          For urgent bookings, mention it — I'll prioritise.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Right: form -->
+    <div>
+      <div class="form-card">
+
+        <!-- Form state -->
+        <div id="state-form">
+          <div class="form-inner">
+            <form id="contact-form" novalidate>
+
+              <!-- Name + Email -->
+              <div class="field-row">
+                <div class="field-wrap">
+                  <label class="field-label" for="f-name">Your Name</label>
+                  <input id="f-name" name="name" type="text" class="field-input"
+                    placeholder="How shall I address you?" autocomplete="name" required>
+                </div>
+                <div class="field-wrap">
+                  <label class="field-label" for="f-email">Email Address</label>
+                  <input id="f-email" name="email" type="email" class="field-input"
+                    placeholder="your@email.com" autocomplete="email" required>
+                </div>
+              </div>
+
+              <!-- Inquiry type -->
+              <div class="field-wrap full select-wrap">
+                <label class="field-label" for="f-inquiry">Inquiry Type</label>
+                <select id="f-inquiry" name="inquiry_type" class="field-input" required>
+                  <option value="" disabled selected>What brings you here?</option>
+                  <option value="Booking Inquiry">Booking Inquiry</option>
+                  <option value="Clarity Session">Clarity Session</option>
+                  <option value="Course Question">Course Question</option>
+                  <option value="Something Else">Something Else</option>
+                </select>
+                <div class="select-arrow"></div>
+              </div>
+
+              <!-- Message -->
+              <div class="field-wrap full">
+                <label class="field-label" for="f-message">Your Message</label>
+                <textarea id="f-message" name="message" class="field-input textarea"
+                  placeholder="Write freely. There are no wrong questions here." required></textarea>
+              </div>
+
+              <!-- Inline validation error -->
+              <p id="field-error" class="field-error"></p>
+
+              <!-- Submit -->
+              <div class="submit-row">
+                <span class="submit-note">
+                  Your details go into MailerLite.<br>
+                  No spam — ever.
+                </span>
+                <button type="submit" id="submit-btn" class="submit-btn">
+                  Send Message
+                </button>
+              </div>
+
+            </form>
+
+            <p id="global-error"></p>
+          </div>
+        </div>
+
+        <!-- Success state -->
+        <div id="state-success">
+          <span class="success-icon">✦</span>
+          <h3>Message received.</h3>
+          <p>
+            Thank you for reaching out. I'll read your message carefully
+            and get back to you within a few days.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // ─── SET YOUR VERCEL ENDPOINT URL HERE ───────────────────────────────────
+  const API_URL = 'https://website-shivohampaths-projects.vercel.app/api/contact';
+  // ─────────────────────────────────────────────────────────────────────────
+
+  const form        = document.getElementById('contact-form');
+  const btn         = document.getElementById('submit-btn');
+  const stateForm   = document.getElementById('state-form');
+  const stateOk     = document.getElementById('state-success');
+  const fieldError  = document.getElementById('field-error');
+  const globalError = document.getElementById('global-error');
+
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function showFieldError(msg) {
+    fieldError.textContent = msg;
+    fieldError.style.display = 'block';
+    globalError.style.display = 'none';
+  }
+  function showGlobalError(msg) {
+    globalError.textContent = msg;
+    globalError.style.display = 'block';
+    fieldError.style.display = 'none';
+    btn.disabled = false;
+    btn.textContent = 'Send Message';
+  }
+  function clearErrors() {
+    fieldError.style.display = 'none';
+    globalError.style.display = 'none';
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearErrors();
+
+    const name         = form.name.value.trim();
+    const email        = form.email.value.trim();
+    const inquiry_type = form.inquiry_type.value;
+    const message      = form.message.value.trim();
+
+    // Client-side validation
+    if (!name)                      return showFieldError('Please enter your name.');
+    if (!EMAIL_RE.test(email))      return showFieldError('Please enter a valid email address.');
+    if (!inquiry_type)              return showFieldError('Please select an inquiry type.');
+    if (message.length < 10)       return showFieldError('Please write a brief message (at least 10 characters).');
+    if (message.length > 2000)     return showFieldError('Message is too long (max 2000 characters).');
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, inquiry_type, message })
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        stateForm.style.display = 'none';
+        stateOk.style.display   = 'block';
+      } else {
+        showGlobalError(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      showGlobalError('Could not send your message. Please check your connection and try again.');
+    }
+  });
+</script>
+
+</body>
+</html>

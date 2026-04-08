@@ -13,6 +13,18 @@ export const GROUPS = {
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
+export async function addSubscriberNote(subscriberId, noteText) {
+  const apiKey = await getSecret('MAILERLITE_API_KEY');
+  await fetch(`${ML_API}/subscribers/${subscriberId}/notes`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({ note: noteText })
+  }).catch(() => {}); // non-blocking
+}
+
 export async function syncToMailerLite(email, name, groupId, retries = 3) {
   if (!email || !EMAIL_REGEX.test(email)) return;
 

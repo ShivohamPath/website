@@ -473,10 +473,6 @@
 </section>
 
 <script>
-  // ─── SET YOUR VERCEL ENDPOINT URL HERE ───────────────────────────────────
-  const API_URL = 'https://shivohampath-website-shivohampaths-projects.vercel.app/api/contact';
-  // ─────────────────────────────────────────────────────────────────────────
-
   const form        = document.getElementById('contact-form');
   const btn         = document.getElementById('submit-btn');
   const stateForm   = document.getElementById('state-form');
@@ -503,7 +499,18 @@
     globalError.style.display = 'none';
   }
 
-  form.addEventListener('submit', async (e) => {
+  // Listen for response from Wix Velo page code
+  window.addEventListener('message', function(event) {
+    if (!event.data || event.data.type !== 'CONTACT_RESPONSE') return;
+    if (event.data.success) {
+      stateForm.style.display = 'none';
+      stateOk.style.display   = 'block';
+    } else {
+      showGlobalError(event.data.error || 'Something went wrong. Please try again.');
+    }
+  });
+
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
     clearErrors();
 
@@ -522,24 +529,11 @@
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
-    try {
-      const res = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, inquiry_type, message })
-      });
-
-      const data = await res.json();
-
-      if (res.ok && data.success) {
-        stateForm.style.display = 'none';
-        stateOk.style.display   = 'block';
-      } else {
-        showGlobalError(data.error || 'Something went wrong. Please try again.');
-      }
-    } catch (err) {
-      showGlobalError('Network error: ' + (err && err.message ? err.message : String(err)));
-    }
+    // Send to Wix Velo page code via postMessage (bypasses iframe CORS restrictions)
+    window.parent.postMessage({
+      type: 'CONTACT_SUBMIT',
+      payload: { name, email, inquiry_type, message }
+    }, '*');
   });
 </script>
 

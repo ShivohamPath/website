@@ -1,10 +1,1 @@
-{
-  "functions": {
-    "api/subscribe.js": {
-      "runtime": "nodejs20.x"
-    },
-    "api/contact.js": {
-      "runtime": "nodejs20.x"
-    }
-  }
-}
+{}

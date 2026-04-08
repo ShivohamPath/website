@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   // Allow requests from your Wix site
-  res.setHeader('Access-Control-Allow-Origin', 'https://www.shivohampath.com');
+  res.setHeader('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGIN || 'https://www.shivohampath.com');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -16,6 +16,11 @@ export default async function handler(req, res) {
 
   if (!email) {
     return res.status(400).json({ error: 'Email is required' });
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ error: 'Invalid email address' });
   }
 
   const apiKey = process.env.MAILERLITE_API_KEY;

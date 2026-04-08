@@ -14,14 +14,14 @@ export async function wixChallenge_onChallengeParticipantJoined(event) {
       member.contactDetails?.lastName
     ].filter(Boolean).join(' ');
 
-    syncToMailerLite(email, name, GROUPS.COURSE_MEMBERS);
+    await syncToMailerLite(email, name, GROUPS.COURSE_MEMBERS);
   } catch (err) {
     console.error('Course member MailerLite sync error:', err);
   }
 }
 
 // ─── New Site Member → Site Members group ────────────────────────────────────
-export function wixMembers_onMemberCreated(event) {
+export async function wixMembers_onMemberCreated(event) {
   const { member } = event;
   const email = member.loginEmail;
   const name  = [
@@ -29,22 +29,30 @@ export function wixMembers_onMemberCreated(event) {
     member.contactDetails?.lastName
   ].filter(Boolean).join(' ');
 
-  syncToMailerLite(email, name, GROUPS.SITE_MEMBERS);
+  try {
+    await syncToMailerLite(email, name, GROUPS.SITE_MEMBERS);
+  } catch (err) {
+    console.error('Member created MailerLite sync error:', err);
+  }
 }
 
 // ─── New Booking (Reading) → Email Subscribers group ────────────────────────
-export function wixBookings_onBookingConfirmed(event) {
+export async function wixBookings_onBookingConfirmed(event) {
   const contact = event.booking?.contactDetails;
   const email   = contact?.email;
   const name    = [contact?.firstName, contact?.lastName].filter(Boolean).join(' ');
 
-  syncToMailerLite(email, name, GROUPS.EMAIL_SUBSCRIBERS);
+  try {
+    await syncToMailerLite(email, name, GROUPS.EMAIL_SUBSCRIBERS);
+  } catch (err) {
+    console.error('Booking confirmed MailerLite sync error:', err);
+  }
 }
 
 // ─── New Contact → catches blog subscribers ──────────────────────────────────
 // Blog subscribers are added as Wix contacts with a "blog" label.
 // We check for that and route them to Site Members.
-export function wixCrm_onContactCreated(event) {
+export async function wixCrm_onContactCreated(event) {
   const contact = event.contact;
   const email   = contact?.primaryInfo?.email;
   const name    = [
@@ -58,6 +66,10 @@ export function wixCrm_onContactCreated(event) {
   );
 
   if (isBlogSubscriber) {
-    syncToMailerLite(email, name, GROUPS.SITE_MEMBERS);
+    try {
+      await syncToMailerLite(email, name, GROUPS.SITE_MEMBERS);
+    } catch (err) {
+      console.error('Contact created MailerLite sync error:', err);
+    }
   }
 }

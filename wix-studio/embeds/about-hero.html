@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.2);
+    --gold3: rgba(201,168,76,0.12);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+  }
+
+  body {
+    background: var(--bg2);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  /* ── HERO SECTION ── */
+  .hero {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 40px 80px;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg2);
+  }
+
+  /* Subtle radial glow behind content */
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 55% 45% at 50% 40%, rgba(139,111,191,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 35% 35% at 25% 65%, rgba(201,168,76,0.04) 0%, transparent 60%);
+  }
+
+  /* ── MANDALA ── */
+  .mandala {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    width: 600px; height: 600px;
+    opacity: 0.05;
+    z-index: 0;
+    animation: rotateSlow 120s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes rotateSlow {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  /* ── CONTENT ── */
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Eyebrow pill */
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    border: 1px solid var(--gold2);
+    padding: 6px 18px;
+    margin-bottom: 36px;
+  }
+
+  /* H1 */
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    margin-bottom: 0;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  /* Diamond divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 28px auto;
+    width: 220px;
+  }
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--gold2);
+  }
+  .divider-diamond {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  /* Subtitle */
+  .hero-subtitle {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text3);
+    line-height: 1.7;
+    letter-spacing: 0.5px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ── SCROLL INDICATOR ── */
+  .hero-scroll {
+    position: absolute;
+    bottom: 36px; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--text3);
+    z-index: 1;
+  }
+  .hero-scroll-line {
+    width: 1px; height: 44px;
+    background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse { 0%,100%{opacity:0.35} 50%{opacity:1} }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero { padding: 100px 24px 72px; min-height: 65vh; }
+    .mandala { width: 380px; height: 380px; }
+    .divider { width: 160px; }
+    .hero-subtitle { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+
+  <!-- Mandala background -->
+  <svg class="mandala" viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="350" cy="350" r="320" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="350" cy="350" r="265" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="350" cy="350" r="210" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="350" cy="350" r="155" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="350" cy="350" r="100" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="350" cy="350" r="45"  stroke="#C9A84C" stroke-width="0.5"/>
+    <line x1="30"  y1="350" x2="670" y2="350" stroke="#C9A84C" stroke-width="0.5"/>
+    <line x1="350" y1="30"  x2="350" y2="670" stroke="#C9A84C" stroke-width="0.5"/>
+    <line x1="123" y1="123" x2="577" y2="577" stroke="#C9A84C" stroke-width="0.5"/>
+    <line x1="577" y1="123" x2="123" y2="577" stroke="#C9A84C" stroke-width="0.5"/>
+    <line x1="30"  y1="210" x2="670" y2="490" stroke="#C9A84C" stroke-width="0.3"/>
+    <line x1="30"  y1="490" x2="670" y2="210" stroke="#C9A84C" stroke-width="0.3"/>
+    <line x1="210" y1="30"  x2="490" y2="670" stroke="#C9A84C" stroke-width="0.3"/>
+    <line x1="490" y1="30"  x2="210" y2="670" stroke="#C9A84C" stroke-width="0.3"/>
+    <polygon points="350,68 619,518 81,518"  stroke="#C9A84C" stroke-width="0.4" fill="none"/>
+    <polygon points="350,632 81,182 619,182" stroke="#C9A84C" stroke-width="0.4" fill="none"/>
+    <polygon points="350,140 560,490 140,490" stroke="#C9A84C" stroke-width="0.3" fill="none"/>
+    <polygon points="350,560 140,210 560,210" stroke="#C9A84C" stroke-width="0.3" fill="none"/>
+  </svg>
+
+  <!-- Content -->
+  <div class="hero-content">
+
+    <span class="hero-tag">About · The Path</span>
+
+    <h1 class="hero-title">
+      Before I Had Words For It,<br>
+      I <em>Loved Him</em>
+    </h1>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+
+    <p class="hero-subtitle">
+      The story of a soul that wandered far — and found its way back
+      through the stars.
+    </p>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+
+</section>
+
+</body>
+</html>

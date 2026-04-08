@@ -537,8 +537,8 @@
       } else {
         showGlobalError(data.error || 'Something went wrong. Please try again.');
       }
-    } catch {
-      showGlobalError('Could not send your message. Please check your connection and try again.');
+    } catch (err) {
+      showGlobalError('Network error: ' + (err && err.message ? err.message : String(err)));
     }
   });
 </script>

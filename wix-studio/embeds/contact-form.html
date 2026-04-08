@@ -546,6 +546,25 @@
         mlName.dispatchEvent(new Event('change', { bubbles: true }));
       }
 
+      // Fill message field if the ML form has one (textarea or extra text input)
+      const noteText = '[' + inquiry_type + ']\n\n' + message;
+      const nativeSetTA = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set;
+      const mlTextarea = mlWrap.querySelector('textarea');
+      if (mlTextarea) {
+        nativeSetTA.call(mlTextarea, noteText);
+        mlTextarea.dispatchEvent(new Event('input',  { bubbles: true }));
+        mlTextarea.dispatchEvent(new Event('change', { bubbles: true }));
+      } else {
+        // Fallback: look for additional text inputs beyond the name field
+        const allTextInputs = mlWrap.querySelectorAll('input[type="text"]');
+        if (allTextInputs.length > 1) {
+          const mlMsg = allTextInputs[allTextInputs.length - 1];
+          nativeSet.call(mlMsg, noteText);
+          mlMsg.dispatchEvent(new Event('input',  { bubbles: true }));
+          mlMsg.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }
+
       // Watch MailerLite's container for the success state it renders
       const observer = new MutationObserver(() => {
         const hasSuccess = mlWrap.querySelector('[class*="success"], [data-success]');

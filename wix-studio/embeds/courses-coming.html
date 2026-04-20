@@ -58,87 +58,58 @@
     font-style: italic;
   }
 
-  /* ── COMING SOON GRID ── */
-  .coming-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-  }
-
-  .coming-card {
+  /* ── CARD ── */
+  .course-card {
     background: var(--bg3);
-    border: 1px solid var(--line);
+    border: 1px solid var(--line2);
     padding: 36px 28px;
     position: relative; overflow: hidden;
-    /* Deliberately muted — these are not yet available */
-    opacity: 0.75;
-    transition: opacity 0.3s, border-color 0.3s;
+    transition: border-color 0.3s;
   }
-  .coming-card:hover {
-    opacity: 0.9;
+  .course-card:hover {
     border-color: var(--gold2);
   }
 
-  /* Lock overlay glyph */
-  .coming-card::after {
-    content: '◌';
-    position: absolute; top: 16px; right: 20px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; color: var(--text4);
-    line-height: 1;
-  }
-
-  .soon-badge {
+  .live-badge {
     font-family: 'Cinzel', serif; font-size: 8px;
-    letter-spacing: 2px; color: var(--text3);
-    border: 1px solid var(--line);
+    letter-spacing: 2px; color: var(--bg);
+    background: var(--gold);
     padding: 3px 10px; display: inline-block;
     margin-bottom: 20px;
   }
 
   .card-icon {
     font-size: 24px; color: var(--gold);
-    opacity: 0.4; display: block;
+    opacity: 0.55; display: block;
     margin-bottom: 16px; line-height: 1;
   }
 
-  .coming-card h3 {
+  .course-card h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(19px, 2vw, 24px);
+    font-size: clamp(22px, 2.5vw, 32px);
     font-weight: 400; color: var(--text);
     line-height: 1.2; margin-bottom: 10px;
   }
-  .coming-card h3 em { font-style: italic; color: var(--gold); }
+  .course-card h3 em { font-style: italic; color: var(--gold); }
 
-  .coming-card p {
-    font-size: clamp(13px, 1.6vw, 14px);
-    color: var(--text2); line-height: 1.7;
+  .course-card p {
+    font-size: clamp(13px, 1.6vw, 15px);
+    color: var(--text2); line-height: 1.8;
     margin-bottom: 20px;
+    max-width: 720px;
   }
 
-  .waitlist-btn {
-    display: inline-block;
-    margin-top: 24px;
-    font-family: 'Cinzel', serif; font-size: 9px;
-    letter-spacing: 2.5px; text-transform: uppercase;
-    color: var(--gold);
-    border: 1px solid var(--gold2);
-    padding: 10px 22px;
-    text-decoration: none;
-    transition: background 0.2s, color 0.2s;
-  }
-  .waitlist-btn:hover {
-    background: var(--gold);
-    color: var(--bg);
-  }
-
-  .coming-tag {
+  .course-tag {
     font-family: 'Cinzel', serif; font-size: 8px;
     letter-spacing: 2px; color: var(--text3);
     display: block;
   }
 
-  /* Horizontal divider bar between label and grid */
+  .tags-row {
+    margin-top: 12px; display: flex; flex-direction: column; gap: 5px;
+  }
+
+  /* Horizontal divider bar */
   .coming-divider {
     display: flex; align-items: center; gap: 20px;
     margin-bottom: 28px;
@@ -152,15 +123,41 @@
     white-space: nowrap;
   }
 
+  .card-footer {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    margin-top: 28px; padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+
+  .btn-primary {
+    font-family: 'Cinzel', serif; font-size: 11px;
+    letter-spacing: 2px; padding: 13px 28px;
+    background: var(--gold); color: var(--bg);
+    border: none; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #a8893a; }
+
+  .btn-ghost {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2px; padding: 11px 22px;
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold2); cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { background: var(--gold3); }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .section { padding: 60px 24px 70px; }
-    .coming-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 560px) {
     .section { padding: 48px 16px 56px; }
-    .coming-grid { grid-template-columns: 1fr; gap: 2px; }
-    .coming-card { padding: 26px 20px; }
+    .course-card { padding: 26px 20px; }
+    .card-footer { flex-direction: column; }
+    .btn-primary, .btn-ghost { width: 100%; text-align: center; }
   }
 </style>
 </head>
@@ -169,46 +166,46 @@
 <div class="section">
 
   <div class="section-header">
-    <span class="eyebrow">WHAT IS COMING</span>
-    <h2>The Teachings<br>Being <em>Prepared</em></h2>
+    <span class="eyebrow">ALSO ON THE PATH</span>
+    <h2>She Who<br>Becomes <em>Him</em></h2>
     <p>
-      These are the paths I will bring forward next —
-      each one as misunderstood as the last, each one waiting to be seen clearly.
+      A sacred odyssey through Madhurya Bhakti — devotion, divine union,
+      and the eternal interplay of Shakti and Shiva within every soul.
     </p>
   </div>
 
   <div class="coming-divider">
     <div class="coming-divider-line"></div>
-    <span class="coming-divider-text">IN PREPARATION</span>
+    <span class="coming-divider-text">AVAILABLE NOW</span>
     <div class="coming-divider-line"></div>
   </div>
 
-  <div class="coming-grid" style="grid-template-columns: 1fr;">
-
-    <!-- Foundations of Jyotish -->
-    <div class="coming-card">
-      <span class="soon-badge">OPEN NOW</span>
-      <span class="card-icon">✦</span>
-      <h3>Foundations of Jyotish:<br><em>The Karma-Based Path</em></h3>
-      <p>
-        12 modules across 4 pillars — rooted in BPHS, Brhat Nakshatra,
-        Karmavipak Samhita &amp; classical nadi texts. Karma, Dharma, Grahas,
-        Nakshatras, Rahu &amp; Ketu, Dashas, and how to read the complete karmic story of a soul.
-      </p>
-      <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 5px;">
-        <span class="coming-tag">I · Karma, Dharma &amp; the soul's purpose in a chart</span>
-        <span class="coming-tag">II · Grahas, Rashis, Bhavas &amp; Nakshatras as karmic tools</span>
-        <span class="coming-tag">III · Rahu, Ketu, Yogas &amp; Divisional charts</span>
-        <span class="coming-tag">IV · Dashas, Transits &amp; Reading the complete karmic story</span>
-      </div>
-      <a href="https://www.shivohampath.com/challenge-page/foundationsofjyothishthekarmapath"
-         target="_top"
-         class="waitlist-btn">Enrol Now</a>
-      <a href="https://www.shivohampath.com/spiritualcourses/foundations-of-jyothish"
-         target="_top"
-         class="waitlist-btn" style="margin-top: 8px; background: transparent; color: var(--gold); border-color: rgba(201,168,76,0.4);">Join the Waitlist</a>
+  <div class="course-card">
+    <span class="live-badge">LIVE COURSE</span>
+    <span class="card-icon">♡</span>
+    <h3>She Who Becomes <em>Him</em></h3>
+    <p>
+      Six powerful modules, each a portal into the mystical interplay of Shakti and Shiva.
+      Devotional storytelling from ancient scriptures, Bhakti and Tantrik insights,
+      personal embodiment work, and myth-based practices — woven into a living altar
+      of devotion and self-discovery. Self-paced, 46 steps, certificate on completion.
+    </p>
+    <div class="tags-row">
+      <span class="course-tag">I · Entering the Path of Madhurya Bhakti</span>
+      <span class="course-tag">II · Sati: Devotion That Burns Through Ego</span>
+      <span class="course-tag">III · Awakening Inner Shakti</span>
+      <span class="course-tag">IV · Parvati — The Devotee Who Became Goddess</span>
+      <span class="course-tag">V · Chandraghanta: She Who Becomes Him</span>
+      <span class="course-tag">VI · Living As A Devotional Woman + Pati Bhava Sadhana</span>
     </div>
-
+    <div class="card-footer">
+      <a href="https://www.shivohampath.com/challenge-page/madhuryabhakti?programId=e23f4389-9e01-4b20-80dc-8926d85a109e"
+         target="_top"
+         class="btn-ghost">Learn More</a>
+      <a href="https://www.shivohampath.com/challenge-payment/e23f4389-9e01-4b20-80dc-8926d85a109e?showOneAppInfo=true"
+         target="_top"
+         class="btn-primary">Enrol Now</a>
+    </div>
   </div>
 
 </div>

@@ -28,15 +28,14 @@
     margin: 0; padding: 0;
   }
 
-  .notify-wrap {
+  .enrol-wrap {
     padding: 0 60px 96px;
     max-width: 900px; margin: 0 auto;
     text-align: center;
     position: relative;
   }
 
-  /* Bg glow */
-  .notify-wrap::before {
+  .enrol-wrap::before {
     content: '';
     position: fixed; inset: 0;
     background: radial-gradient(ellipse 80% 70% at 50% 60%, rgba(201,168,76,0.05), transparent 70%);
@@ -65,264 +64,147 @@
     max-width: 520px; margin: 0 auto 48px;
   }
 
-  /* Form card */
-  .form-card {
+  /* Main enrol card */
+  .enrol-card {
     background: var(--bg3); border: 1px solid var(--line2);
     padding: 52px 56px;
     position: relative; overflow: hidden;
     margin-bottom: 28px;
   }
-  .form-card::before {
+  .enrol-card::before {
     content: '';
     position: absolute; top: 0; left: 0; right: 0;
     height: 2px; background: var(--gold); opacity: 0.5;
   }
 
-  .form-row {
-    display: flex; gap: 0;
+  /* Course facts row */
+  .facts-row {
+    display: flex; justify-content: center;
+    gap: 0; flex-wrap: wrap;
+    margin-bottom: 40px;
     border: 1px solid var(--line2);
-    max-width: 600px; margin: 0 auto;
   }
-
-  .name-input, .email-input {
-    flex: 1;
-    font-family: 'EB Garamond', serif; font-size: 16px;
-    font-style: italic; color: var(--text);
-    background: transparent; border: none;
-    padding: 16px 20px;
-    outline: none;
+  .fact {
+    padding: 18px 28px;
     border-right: 1px solid var(--line2);
+    text-align: center; flex: 1; min-width: 110px;
   }
-  .name-input::placeholder, .email-input::placeholder {
-    color: var(--text3);
+  .fact:last-child { border-right: none; }
+  .fact-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 300;
+    color: var(--gold); line-height: 1; display: block;
   }
-
-  .submit-btn {
-    font-family: 'Cinzel', serif; font-size: 10px;
-    letter-spacing: 2px; padding: 16px 28px;
-    background: var(--gold); color: var(--bg);
-    border: none; cursor: pointer;
-    white-space: nowrap; flex-shrink: 0;
-    transition: background 0.2s;
-  }
-  .submit-btn:hover { background: #a8893a; }
-  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-
-  .form-note {
+  .fact-label {
     font-family: 'Cinzel', serif; font-size: 8px;
     letter-spacing: 2px; color: var(--text3);
-    margin-top: 16px; display: block;
+    margin-top: 5px; display: block;
   }
 
-  /* What you'll receive */
-  .receive-list {
+  /* CTA button */
+  .enrol-btn {
+    display: inline-block;
+    font-family: 'Cinzel', serif; font-size: 12px;
+    letter-spacing: 2.5px; padding: 16px 52px;
+    background: var(--gold); color: var(--bg);
+    text-decoration: none;
+    transition: background 0.2s;
+    margin-bottom: 20px;
+  }
+  .enrol-btn:hover { background: #a8893a; }
+
+  .enrol-note {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+    display: block; margin-top: 4px;
+  }
+
+  /* What you study */
+  .study-list {
     display: flex; justify-content: center;
     gap: 32px; flex-wrap: wrap;
     margin-top: 36px; padding-top: 32px;
     border-top: 1px solid var(--line);
   }
-  .receive-item {
+  .study-item {
     display: flex; align-items: center; gap: 10px;
     font-family: 'Cinzel', serif; font-size: 8px;
     letter-spacing: 2px; color: var(--text3);
   }
-  .receive-dot {
+  .study-dot {
     width: 4px; height: 4px; background: var(--gold);
     transform: rotate(45deg); opacity: 0.6; flex-shrink: 0;
   }
 
-  /* States */
-  .state-success, .state-error { display: none; }
-
-  .state-success .success-icon {
-    font-size: 32px; color: var(--gold);
-    display: block; margin-bottom: 16px; opacity: 0.8;
-  }
-  .state-success h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px; font-weight: 300;
-    color: var(--text); margin-bottom: 10px;
-    font-style: italic;
-  }
-  .state-success p {
-    font-size: 15px; color: var(--text3);
-    line-height: 1.75; font-style: italic;
-  }
-
-  .state-error p {
-    font-family: 'Cinzel', serif; font-size: 10px;
-    letter-spacing: 2px; color: #BF6F6F;
-  }
-
   @media (max-width: 768px) {
-    .notify-wrap { padding: 0 28px 72px; }
-    .form-card { padding: 36px 28px; }
-    .form-row { flex-direction: column; border: none; gap: 0; }
-    .name-input, .email-input {
-      border: 1px solid var(--line2); border-bottom: none;
-    }
-    .submit-btn { border: 1px solid var(--gold); padding: 16px; }
-    .receive-list { gap: 16px; }
+    .enrol-wrap { padding: 0 28px 72px; }
+    .enrol-card { padding: 36px 28px; }
+    .facts-row { flex-wrap: wrap; }
+    .fact { min-width: 50%; border-bottom: 1px solid var(--line2); }
+    .fact:nth-child(2n) { border-right: none; }
+    .fact:nth-last-child(-n+2) { border-bottom: none; }
+    .enrol-btn { width: 100%; text-align: center; }
+    .study-list { gap: 16px; }
   }
   @media (max-width: 480px) {
-    .notify-wrap { padding: 0 20px 56px; }
-    .form-card { padding: 28px 20px; }
-    .receive-list { flex-direction: column; align-items: center; }
+    .enrol-wrap { padding: 0 20px 56px; }
+    .enrol-card { padding: 28px 20px; }
+    .study-list { flex-direction: column; align-items: center; }
   }
 </style>
 </head>
 <body>
 
-<div class="notify-wrap" id="notify">
+<div class="enrol-wrap">
   <div class="inner">
 
-    <span class="eyebrow">BE THE FIRST TO KNOW</span>
+    <span class="eyebrow">BEGIN NOW</span>
 
-    <h2>This Course Is<br><em>Coming Live.</em><br>Reserve Your Place.</h2>
+    <h2>The Course Is<br><em>Open.</em></h2>
 
     <p class="sub">
-      Drop your name and email below. When the course brief and dates are ready, you will be the first to receive them — before anything is made public.
+      Enrolment is open now. The study begins when you do.
     </p>
 
-    <!-- Form card -->
-    <div class="form-card">
+    <div class="enrol-card">
 
-      <!-- Default form state -->
-      <div id="state-form">
-        <form id="lead-form">
-          <div class="form-row">
-            <input
-              type="text"
-              name="name"
-              class="name-input"
-              placeholder="Your name"
-              required
-              autocomplete="off"
-            >
-            <input
-              type="email"
-              name="email"
-              class="email-input"
-              placeholder="Your email address"
-              required
-              autocomplete="off"
-            >
-            <button type="submit" class="submit-btn" id="submit-btn">
-              Notify Me
-            </button>
-          </div>
-        </form>
-
-        <span class="form-note">No spam. One email when the course is ready. That's it.</span>
-
-        <div class="receive-list">
-          <div class="receive-item"><div class="receive-dot"></div>Course brief & full syllabus</div>
-          <div class="receive-item"><div class="receive-dot"></div>Live session dates</div>
-          <div class="receive-item"><div class="receive-dot"></div>Early enrolment access</div>
-          <div class="receive-item"><div class="receive-dot"></div>A note from Veena on why now</div>
+      <div class="facts-row">
+        <div class="fact">
+          <span class="fact-val">12</span>
+          <span class="fact-label">Modules</span>
+        </div>
+        <div class="fact">
+          <span class="fact-val">4</span>
+          <span class="fact-label">Pillars</span>
+        </div>
+        <div class="fact">
+          <span class="fact-val">Live</span>
+          <span class="fact-label">Format</span>
+        </div>
+        <div class="fact">
+          <span class="fact-val">✦</span>
+          <span class="fact-label">Classical Texts</span>
         </div>
       </div>
 
-      <!-- Success state -->
-      <div id="state-success" class="state-success">
-        <span class="success-icon">✦</span>
-        <h3>You are on the list.</h3>
-        <p>
-          When the course brief is ready, you will receive it first.<br>
-          In the meantime — carry your questions. They are already doing the work.
-        </p>
-      </div>
+      <a href="https://www.shivohampath.com/challenge-page/foundationsofjyothishthekarmapath"
+         class="enrol-btn" target="_top">
+        Enrol in the Course
+      </a>
 
-      <!-- Error state -->
-      <div id="state-error" class="state-error">
-        <p id="error-msg">Something went wrong. Please try again or write directly to us.</p>
+      <span class="enrol-note">No prior knowledge of astrology required</span>
+
+      <div class="study-list">
+        <div class="study-item"><div class="study-dot"></div>Karma, Dharma and the birth chart</div>
+        <div class="study-item"><div class="study-dot"></div>Grahas, Rashis, Bhavas, Nakshatras</div>
+        <div class="study-item"><div class="study-dot"></div>Rahu, Ketu, Yogas, Divisional charts</div>
+        <div class="study-item"><div class="study-dot"></div>Dashas, Transits and chart synthesis</div>
       </div>
 
     </div>
 
   </div>
 </div>
-
-<!-- MailerLite widget hidden off-screen — our form drives it -->
-<div id="ml-hidden" aria-hidden="true" style="position:absolute;left:-9999px;top:0;width:400px;overflow:hidden;opacity:0;pointer-events:none;">
-  <div class="ml-embedded" data-form="FDqWiJ"></div>
-</div>
-<script>(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');ml('account','2232960');</script>
-
-<script>
-  const form = document.getElementById('lead-form');
-  const btn  = document.getElementById('submit-btn');
-  const stateForm    = document.getElementById('state-form');
-  const stateSuccess = document.getElementById('state-success');
-  const stateError   = document.getElementById('state-error');
-  const errorMsg     = document.getElementById('error-msg');
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
-
-    const nameVal  = form.querySelector('[name="name"]').value.trim();
-    const emailVal = form.querySelector('[name="email"]').value.trim();
-
-    // Wait for MailerLite's widget to render its form (it loads async)
-    let attempts = 0;
-    const trySubmit = () => {
-      const mlWrap   = document.getElementById('ml-hidden');
-      const mlEmail  = mlWrap && mlWrap.querySelector('input[type="email"]');
-
-      if (!mlEmail) {
-        if (++attempts < 40) { setTimeout(trySubmit, 250); return; }
-        btn.disabled = false;
-        btn.textContent = 'Notify Me';
-        errorMsg.textContent = 'Could not load form. Please refresh and try again.';
-        stateError.style.display = 'block';
-        return;
-      }
-
-      // Use native setter so React-based inputs register the change
-      const nativeSet = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
-
-      nativeSet.call(mlEmail, emailVal);
-      mlEmail.dispatchEvent(new Event('input',  { bubbles: true }));
-      mlEmail.dispatchEvent(new Event('change', { bubbles: true }));
-
-      const mlName = mlWrap.querySelector('input[type="text"]');
-      if (mlName) {
-        nativeSet.call(mlName, nameVal);
-        mlName.dispatchEvent(new Event('input',  { bubbles: true }));
-        mlName.dispatchEvent(new Event('change', { bubbles: true }));
-      }
-
-      // Watch MailerLite's container for the success state it renders
-      const observer = new MutationObserver(() => {
-        const hasSuccess = mlWrap.querySelector('[class*="success"], [data-success]');
-        const formGone   = !mlWrap.querySelector('form');
-        if (hasSuccess || formGone) {
-          observer.disconnect();
-          clearTimeout(fallback);
-          stateForm.style.display    = 'none';
-          stateSuccess.style.display = 'block';
-        }
-      });
-      observer.observe(mlWrap, { childList: true, subtree: true, attributes: true });
-
-      // Fallback: if observer never fires, show success after 6s
-      // (submission went through but DOM change wasn't detected)
-      const fallback = setTimeout(() => {
-        observer.disconnect();
-        stateForm.style.display    = 'none';
-        stateSuccess.style.display = 'block';
-      }, 6000);
-
-      // Click MailerLite's own submit button
-      const mlSubmit = mlWrap.querySelector('button[type="submit"], button');
-      if (mlSubmit) mlSubmit.click();
-    };
-
-    trySubmit();
-  });
-</script>
 
 </body>
 </html>

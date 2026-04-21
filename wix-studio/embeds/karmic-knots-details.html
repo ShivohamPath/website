@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --text4: rgba(232,224,208,0.15);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section-wrapper {
+    padding: 80px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-eyebrow {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 20px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300; line-height: 1.1;
+    color: var(--text); margin-bottom: 28px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* ── CHARTS GRID ── */
+  .charts-intro {
+    font-size: clamp(15px, 2vw, 18px);
+    color: var(--text2); line-height: 1.8;
+    margin-bottom: 48px; max-width: 800px;
+  }
+
+  .charts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+  .chart-card {
+    background: var(--bg3);
+    border: 1px solid var(--line2);
+    padding: 40px 28px;
+    position: relative;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .chart-card:hover {
+    border-color: var(--gold);
+    background: var(--bg4);
+  }
+
+  .chart-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 300;
+    color: var(--gold); margin-bottom: 12px;
+  }
+  .chart-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 300; color: var(--text);
+    margin-bottom: 12px; line-height: 1.1;
+  }
+  .chart-subtitle {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 2px; color: var(--text3);
+    display: block; margin-bottom: 18px;
+  }
+  .chart-description {
+    font-size: clamp(13px, 1.8vw, 15px);
+    color: var(--text2); line-height: 1.7;
+  }
+
+  /* ── INSIGHTS SECTION ── */
+  .insights-divider {
+    display: flex; align-items: center; gap: 16px;
+    justify-content: center; margin: 60px 0;
+  }
+  .insights-divider-line { flex: 1; max-width: 100px; height: 1px; background: var(--line2); }
+  .insights-divider-diamond { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; flex-shrink: 0; }
+
+  .insights-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 300; line-height: 1.1;
+    color: var(--text); text-align: center;
+    margin-bottom: 12px;
+  }
+  .insights-title em { font-style: italic; color: var(--gold); }
+  .insights-subtitle {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 3px; color: var(--text3);
+    text-align: center; display: block;
+    margin-bottom: 48px;
+  }
+
+  /* ── INSIGHTS GRID ── */
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-bottom: 20px;
+  }
+  .insight-item {
+    padding: 0;
+  }
+  .insight-label {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 3px; color: var(--gold);
+    display: block; margin-bottom: 14px;
+  }
+  .insight-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-weight: 300; color: var(--text);
+    margin-bottom: 12px; line-height: 1.15;
+  }
+  .insight-item p {
+    font-size: clamp(13px, 1.8vw, 15px);
+    color: var(--text2); line-height: 1.75;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .section-wrapper { padding: 60px 40px; }
+
+    .charts-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .section-wrapper { padding: 48px 24px; }
+
+    .charts-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .chart-card { padding: 32px 24px; }
+
+    .insights-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .insights-divider { margin: 48px 0; }
+  }
+
+  @media (max-width: 480px) {
+    .section-wrapper { padding: 40px 16px; }
+    .chart-card { padding: 24px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="section-wrapper">
+  <span class="section-eyebrow">WHAT YOU UNCOVER</span>
+  <h2 class="section-title">The Three <em>Charts</em></h2>
+
+  <p class="charts-intro">
+    The Karmic Knots Reading integrates three distinct charts, each revealing a different layer of your soul's journey. Together, they create a complete picture of your karmic architecture.
+  </p>
+
+  <div class="charts-grid">
+    <div class="chart-card">
+      <div class="chart-number">D1</div>
+      <h3 class="chart-title">Rashi</h3>
+      <span class="chart-subtitle">This Lifetime</span>
+      <p class="chart-description">
+        Your birth chart. The planetary positions at your exact moment of birth. This is the surface — what you experience, the events, the circumstances, the personality you show the world.
+      </p>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-number">D9</div>
+      <h3 class="chart-title">Navamsha</h3>
+      <span class="chart-subtitle">Soul's Dharma</span>
+      <p class="chart-description">
+        Your soul's purpose. This chart reveals what your soul came here to express, the gifts it carries, the dharma it must fulfill. It shows your highest calling in this lifetime.
+      </p>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-number">D60</div>
+      <h3 class="chart-title">Shashtiamsha</h3>
+      <span class="chart-subtitle">All Lifetimes · All Karma</span>
+      <p class="chart-description">
+        The soul's complete history. Every past life, every karmic debt, every unresolved wound, every karmic gift. This is the deepest layer — the why beneath the what.
+      </p>
+    </div>
+  </div>
+
+  <div class="insights-divider">
+    <div class="insights-divider-line"></div>
+    <div class="insights-divider-diamond"></div>
+    <div class="insights-divider-line"></div>
+  </div>
+
+  <h2 class="insights-title">The Karmic <em>Insights</em></h2>
+  <span class="insights-subtitle">WHAT THIS READING REVEALS</span>
+
+  <div class="insights-grid">
+    <div class="insight-item">
+      <span class="insight-label">KARMIC ROOT</span>
+      <h3>The Pattern Beneath</h3>
+      <p>
+        Every confusing life pattern — the relationships that repeat, the fears that persist, the patterns you cannot break — has a root in your karmic architecture. This reading uncovers that root, showing you why these patterns exist and what they are trying to teach you.
+      </p>
+    </div>
+
+    <div class="insight-item">
+      <span class="insight-label">SOUL CONTRACTS</span>
+      <h3>Past-Life Wounds</h3>
+      <p>
+        You carry wounds from lifetimes your conscious mind doesn't remember. These wounds shape your present relationships, your triggers, your deepest vulnerabilities. This reading identifies them, showing you where they came from and how to heal them.
+      </p>
+    </div>
+
+    <div class="insight-item">
+      <span class="insight-label">KARMIC GIFTS</span>
+      <h3>Your Soul's Wealth</h3>
+      <p>
+        Your soul has earned gifts across multiple lifetimes — strengths, intuitions, talents, abilities. Most people never access these gifts because they don't know they carry them. This reading illuminates them, showing you what you already own.
+      </p>
+    </div>
+
+    <div class="insight-item">
+      <span class="insight-label">THE MISSION</span>
+      <h3>Why You're Here</h3>
+      <p>
+        This lifetime is not random. Your soul came into this particular time, in this particular circumstance, to resolve something specific. This reading reveals what your soul came to complete and what happens when you finally do.
+      </p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

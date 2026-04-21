@@ -113,6 +113,27 @@
   }
   .enrol-btn:hover { background: #a8893a; }
 
+  .pay-wrap {
+    display: flex; gap: 20px;
+    justify-content: center; align-items: flex-end;
+    flex-wrap: wrap; margin-bottom: 20px;
+  }
+  .pay-item { text-align: center; }
+  .pay-label {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+    display: block; margin-bottom: 10px;
+  }
+  .btn-pay-outline {
+    font-family: 'Cinzel', serif; font-size: 12px;
+    letter-spacing: 2.5px; padding: 15px 52px;
+    background: transparent; color: var(--gold);
+    text-decoration: none; display: inline-block;
+    border: 1px solid var(--gold2);
+    transition: background 0.2s;
+  }
+  .btn-pay-outline:hover { background: var(--gold3); }
+
   .enrol-note {
     font-family: 'Cinzel', serif; font-size: 8px;
     letter-spacing: 2px; color: var(--text3);
@@ -187,14 +208,14 @@
         </div>
       </div>
 
-      <div style="display:flex;gap:16px;justify-content:center;align-items:flex-end;flex-wrap:wrap;margin-bottom:20px;">
-        <div style="text-align:center;">
-          <div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;color:rgba(232,224,208,0.4);margin-bottom:10px;">INDIA · ₹8,500</div>
-          <a href="https://u.payu.in/YIinV56K6SM4" class="enrol-btn" style="margin-bottom:0;">Enrol Now</a>
+      <div class="pay-wrap">
+        <div class="pay-item">
+          <span class="pay-label">INDIA</span>
+          <a href="https://www.shivohampath.com/_paylink/AZ2vGOXn" class="enrol-btn" style="margin-bottom:0;">Enrol Now</a>
         </div>
-        <div style="text-align:center;">
-          <div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;color:rgba(232,224,208,0.4);margin-bottom:10px;">INTERNATIONAL</div>
-          <a href="https://u.payu.in/yIER7eAFYt3A" style="font-family:'Cinzel',serif;font-size:12px;letter-spacing:2.5px;padding:15px 52px;background:transparent;color:#C9A84C;text-decoration:none;display:inline-block;border:1px solid rgba(201,168,76,0.55);transition:opacity 0.2s;">Enrol Now</a>
+        <div class="pay-item">
+          <span class="pay-label">INTERNATIONAL</span>
+          <a href="https://www.shivohampath.com/_paylink/AZ2vGbBi" class="btn-pay-outline">Enrol Now</a>
         </div>
       </div>
 

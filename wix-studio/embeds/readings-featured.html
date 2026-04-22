@@ -157,6 +157,16 @@
   }
   .btn-primary:hover { background: #a8893a; }
 
+  .btn-ghost {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2px; padding: 11px 22px;
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold2); cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .btn-ghost:hover { background: var(--gold3); }
+
   /* ── RESPONSIVE ── */
 
   /* Tablet: shrink padding, keep layout */
@@ -254,7 +264,10 @@
           <div class="price">₹4,000</div>
           <div class="duration">60 MINUTES · ONLINE</div>
         </div>
-        <a href="https://www.shivohampath.com/booking-calendar/karmic-knots-reading-60-mins" class="btn-primary" target="_top">Book This Reading</a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="https://www.shivohampath.com/readings/karmic-knots" class="btn-ghost" target="_top">Explore the Reading</a>
+          <a href="https://www.shivohampath.com/booking-calendar/karmic-knots-reading-60-mins" class="btn-primary" target="_top">Book This Reading</a>
+        </div>
       </div>
     </div>
   </div>

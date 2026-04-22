@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .what-section {
+    padding: 80px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 300; line-height: 1.08;
+    color: var(--text); margin-bottom: 48px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .what-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  .what-body p {
+    font-size: clamp(15px, 1.9vw, 17px);
+    color: var(--text2); line-height: 1.9;
+    margin-bottom: 22px;
+  }
+  .what-body p:last-child { margin-bottom: 0; }
+
+  .for-you {
+    background: var(--bg3);
+    border: 1px solid var(--line2);
+    padding: 40px 36px;
+    position: relative;
+  }
+  .for-you::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--gold); opacity: 0.45;
+  }
+
+  .for-you-title {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 3px; color: var(--gold);
+    display: block; margin-bottom: 28px;
+  }
+
+  .for-you-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .for-you-list li {
+    display: flex; gap: 14px; align-items: flex-start;
+    font-size: clamp(14px, 1.7vw, 15px);
+    color: var(--text2); line-height: 1.7;
+  }
+  .diamond {
+    width: 5px; height: 5px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0; margin-top: 7px; opacity: 0.65;
+  }
+
+  @media (max-width: 900px) {
+    .what-section { padding: 60px 40px; }
+    .what-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+  @media (max-width: 560px) {
+    .what-section { padding: 48px 20px; }
+    .for-you { padding: 28px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="what-section">
+  <span class="eyebrow">THE READING</span>
+  <h2 class="section-title">What Is the<br><em>Karmic Knots</em> Reading?</h2>
+
+  <div class="what-grid">
+
+    <div class="what-body">
+      <p>
+        Most people come to astrology looking for predictions. This reading does something different. It looks underneath — at the karmic structure your soul built across lifetimes — to find the root of what is happening in your life right now.
+      </p>
+      <p>
+        A Karmic Knots Reading integrates three charts from Jyotish: the D1, which maps this lifetime; the D9, which reveals your soul's dharma; and the D60 Shashtiamsha — the rarest and most precise chart in Vedic astrology, encoding every past life your soul has carried. Together, they create a complete picture of why you are the way you are, why certain patterns repeat, and what your soul actually came here to do.
+      </p>
+      <p>
+        This is not interpretation. Veena reads what is literally written in your chart — through the lens of classical Jyotish texts — and speaks plainly about what she sees. No generalizations, no guesswork. What the chart holds, the reading delivers.
+      </p>
+    </div>
+
+    <div class="for-you">
+      <span class="for-you-title">THIS READING IS FOR YOU IF</span>
+      <ul class="for-you-list">
+        <li>
+          <div class="diamond"></div>
+          You keep repeating the same patterns in relationships, work, or inner life — and cannot understand why
+        </li>
+        <li>
+          <div class="diamond"></div>
+          You carry something you cannot name — a weight, a wound, a fear with no clear origin
+        </li>
+        <li>
+          <div class="diamond"></div>
+          You have tried therapy, healing, shadow work — and still feel something deeper is unresolved
+        </li>
+        <li>
+          <div class="diamond"></div>
+          You want to understand your soul's actual purpose, not a generic sun-sign reading
+        </li>
+        <li>
+          <div class="diamond"></div>
+          You are at a crossroads and want clarity that goes beyond logic or circumstance
+        </li>
+        <li>
+          <div class="diamond"></div>
+          You are drawn to past lives and want to see what your chart actually says — not speculation
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

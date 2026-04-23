@@ -62,8 +62,8 @@
   /* ── MAIN GRID ─────────────────────────────────────────────── */
   .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 48px;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 40px;
     padding-bottom: 56px;
     border-bottom: 1px solid var(--line);
   }
@@ -380,6 +380,31 @@
         </ul>
       </div>
 
+      <!-- Column 5 · Account -->
+      <div class="nav-section">
+        <div class="col-heading">My Account</div>
+        <ul class="nav-list">
+          <li id="accountLink-login" style="display:none;">
+            <a href="#" class="featured-link" id="btn-login">Login</a>
+          </li>
+          <li id="accountLink-signup" style="display:none;">
+            <a href="#" id="btn-signup">Create Account</a>
+          </li>
+          <li id="accountLink-member" style="display:none;">
+            <a href="https://www.shivohampath.com/my-account" target="_top" class="featured-link">My Dashboard</a>
+          </li>
+          <li id="accountLink-courses" style="display:none;">
+            <a href="https://www.shivohampath.com/my-account/my-courses" target="_top">My Courses</a>
+          </li>
+          <li id="accountLink-bookings" style="display:none;">
+            <a href="https://www.shivohampath.com/my-account/my-bookings" target="_top">My Bookings</a>
+          </li>
+          <li id="accountLink-logout" style="display:none;">
+            <a href="#" id="btn-logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+
     </div><!-- /footer-grid -->
 
     <!-- ── BOTTOM BAR ──────────────────────────────────────────── -->
@@ -424,6 +449,46 @@
       requestAnimationFrame(sendHeight);
     }).observe(document.querySelector('.footer'));
   }
+
+  // ── Member state ──────────────────────────────────────────────
+  function setMemberState(loggedIn) {
+    var loginItems  = ['accountLink-login', 'accountLink-signup'];
+    var memberItems = ['accountLink-member', 'accountLink-courses', 'accountLink-bookings', 'accountLink-logout'];
+    loginItems.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.style.display = loggedIn ? 'none' : 'list-item';
+    });
+    memberItems.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.style.display = loggedIn ? 'list-item' : 'none';
+    });
+    setTimeout(sendHeight, 50);
+  }
+
+  // Default: show login/signup until we hear back from masterPage
+  setMemberState(false);
+
+  // Receive member state from masterPage.js via postMessage
+  window.addEventListener('message', function(e) {
+    var data = (typeof e.data === 'string') ? JSON.parse(e.data) : e.data;
+    if (data && data.type === 'memberState') {
+      setMemberState(data.loggedIn);
+    }
+  });
+
+  // Login / Signup / Logout buttons post back to masterPage.js
+  document.getElementById('btn-login').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.parent.postMessage(JSON.stringify({ type: 'memberLogin' }), '*');
+  });
+  document.getElementById('btn-signup').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.parent.postMessage(JSON.stringify({ type: 'memberSignup' }), '*');
+  });
+  document.getElementById('btn-logout').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.parent.postMessage(JSON.stringify({ type: 'memberLogout' }), '*');
+  });
 
   // ── Mobile accordion ──────────────────────────────────────────
   // Use clientWidth on the document root — more reliable inside a sandboxed iframe

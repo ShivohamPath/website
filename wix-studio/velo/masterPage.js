@@ -6,6 +6,7 @@
 
 import wixLocation from 'wix-location';
 import wixWindow from 'wix-window';
+import { authentication, currentMember } from 'wix-members';
 
 $w.onReady(function () {
 
@@ -33,6 +34,38 @@ $w.onReady(function () {
   // and link them to your Wix Bookings page in the editor directly.
   // No code needed — link via the editor link panel.
 
+  // ── MEMBER LOGIN STATE ─────────────────────────────────────
+  // Checks if a member is logged in and sends state to the footer
+  // embed so it can show My Account vs Login link.
+  //
+  // authentication.onLogin() fires whenever a visitor logs in
+  // during the session — keeps the footer in sync without reload.
+  currentMember.getMember()
+    .then((member) => {
+      try {
+        $w('#footerEmbed').postMessage({ type: 'memberState', loggedIn: true, name: member.profile?.nickname || '' });
+      } catch (e) { /* embed not on this page */ }
+    })
+    .catch(() => {
+      try {
+        $w('#footerEmbed').postMessage({ type: 'memberState', loggedIn: false });
+      } catch (e) { /* embed not on this page */ }
+    });
+
+  authentication.onLogin(() => {
+    currentMember.getMember().then((member) => {
+      try {
+        $w('#footerEmbed').postMessage({ type: 'memberState', loggedIn: true, name: member.profile?.nickname || '' });
+      } catch (e) { /* embed not on this page */ }
+    });
+  });
+
+  authentication.onLogout(() => {
+    try {
+      $w('#footerEmbed').postMessage({ type: 'memberState', loggedIn: false });
+    } catch (e) { /* embed not on this page */ }
+  });
+
   // ── FOOTER IFRAME NAVIGATION ───────────────────────────────
   // Receives postMessage events sent by footer-embed.html when a
   // visitor clicks a footer nav link.
@@ -45,6 +78,15 @@ $w.onReady(function () {
       const data = event.data;
       if (data && data.type === 'footerNav' && data.path) {
         wixLocation.to(String(data.path));
+      }
+      if (data && data.type === 'memberLogin') {
+        authentication.promptLogin({ mode: 'login' });
+      }
+      if (data && data.type === 'memberSignup') {
+        authentication.promptLogin({ mode: 'signup' });
+      }
+      if (data && data.type === 'memberLogout') {
+        authentication.logout();
       }
     });
   } catch (e) { /* #footerEmbed not found on this page */ }

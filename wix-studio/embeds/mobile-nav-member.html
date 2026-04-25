@@ -1,175 +1,52 @@
 <!DOCTYPE html>
-<!--
-  ═══════════════════════════════════════════════════════════════
-  SHIVOHAMPATH · MOBILE NAV MEMBER BAR
-  ═══════════════════════════════════════════════════════════════
-  HOW TO ADD THIS TO YOUR WIX SITE:
-  1. In Wix Studio editor, open the Header strip
-  2. Add → Embed → HTML iFrame
-  3. Paste the contents of this file
-  4. Set the embed height to 48px, width to 100%
-  5. Right-click the embed → Properties → set ID to: mobileNavEmbed
-     *** THIS STEP IS REQUIRED for login/logout to work ***
-  6. In the editor, click the embed → "Hide on Desktop" so it only
-     shows on mobile / tablet
-  ═══════════════════════════════════════════════════════════════
--->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg:    #0a0a0f;
-    --gold:  #C9A84C;
-    --gold2: rgba(201,168,76,0.22);
-    --gold3: rgba(201,168,76,0.10);
-    --text:  #e8e0d0;
-    --text3: rgba(232,224,208,0.40);
-    --line:  rgba(232,224,208,0.07);
-  }
-
   html, body {
-    background: var(--bg);
+    background: #0a0a0f;
     margin: 0; padding: 0;
     height: 48px; overflow: hidden;
     width: 100%;
   }
-
   .bar {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 48px;
-    padding: 0 20px;
-    background: var(--bg);
-    border-bottom: 1px solid var(--gold2);
+    background: #0a0a0f;
+    border-bottom: 1px solid rgba(201,168,76,0.22);
+    gap: 20px;
   }
-
-  .bar-right {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  /* Shared button reset */
-  .btn-login, .btn-signup, .btn-logout {
-    font-family: 'Cinzel', serif;
-    letter-spacing: 2px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 9px;
-    /* full-height tap target + no tap delay on mobile */
-    min-height: 44px;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-    display: flex;
-    align-items: center;
-  }
-
-  /* Logged-out state */
-  .btn-login {
-    color: var(--gold);
-    border: 1px solid var(--gold2) !important;
-    padding: 0 16px;
-    transition: background 0.2s;
-  }
-  .btn-login:hover, .btn-login:active { background: var(--gold3); }
-
-  .btn-signup {
-    color: var(--text3);
-    padding: 0 4px;
-    transition: color 0.2s;
-  }
-  .btn-signup:hover, .btn-signup:active { color: var(--gold); }
-
-  /* Logged-in state */
-  .account-link {
+  a {
     font-family: 'Cinzel', serif;
     font-size: 9px;
     letter-spacing: 2px;
-    color: var(--gold);
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 8px;
+    height: 48px;
+    padding: 0 12px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
-  .account-dot {
-    width: 5px; height: 5px;
-    background: var(--gold);
-    border-radius: 50%;
-    opacity: 0.7;
+  .btn-login {
+    color: #C9A84C;
+    border: 1px solid rgba(201,168,76,0.22);
+    padding: 0 16px;
   }
-
-  .btn-logout {
-    color: var(--text3);
-    padding: 0 4px;
-    transition: color 0.2s;
+  .btn-signup {
+    color: rgba(232,224,208,0.40);
   }
-  .btn-logout:hover, .btn-logout:active { color: var(--text); }
-
-  .state-guest  { display: flex; align-items: center; gap: 16px; }
-  .state-member { display: none;  align-items: center; gap: 16px; }
 </style>
 </head>
 <body>
-
 <div class="bar">
-  <div class="bar-right">
-    <!-- Logged-out -->
-    <div class="state-guest" id="stateGuest">
-      <button class="btn-login" id="btnLogin">Login</button>
-      <button class="btn-signup" id="btnSignup">Create Account</button>
-    </div>
-
-    <!-- Logged-in -->
-    <div class="state-member" id="stateMember">
-      <a href="https://www.shivohampath.com/my-account" target="_top" class="account-link">
-        <div class="account-dot"></div>
-        My Account
-      </a>
-      <button class="btn-logout" id="btnLogout">Logout</button>
-    </div>
-  </div>
+  <a href="/my-account" target="_top" class="btn-login">Login</a>
+  <a href="/my-account" target="_top" class="btn-signup">Create Account</a>
 </div>
-
-<script>
-  var guest  = document.getElementById('stateGuest');
-  var member = document.getElementById('stateMember');
-
-  function setState(loggedIn) {
-    guest.style.display  = loggedIn ? 'none'  : 'flex';
-    member.style.display = loggedIn ? 'flex'  : 'none';
-  }
-
-  // Receive member state from masterPage.js
-  window.addEventListener('message', function(e) {
-    try {
-      var data = (typeof e.data === 'string') ? JSON.parse(e.data) : e.data;
-      if (data && data.type === 'memberState') setState(data.loggedIn);
-    } catch(err) {}
-  });
-
-  function sendMsg(msg) {
-    try { window.parent.postMessage(msg, '*'); } catch(e) {}
-    try { if (window.top !== window.parent) window.top.postMessage(msg, '*'); } catch(e) {}
-  }
-
-  document.getElementById('btnLogin').addEventListener('click', function() {
-    sendMsg({ type: 'memberLogin' });
-  });
-
-  document.getElementById('btnSignup').addEventListener('click', function() {
-    sendMsg({ type: 'memberSignup' });
-  });
-
-  document.getElementById('btnLogout').addEventListener('click', function() {
-    sendMsg({ type: 'memberLogout' });
-  });
-</script>
-
 </body>
 </html>

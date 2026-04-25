@@ -148,17 +148,17 @@
 
   // Login → Velo calls authentication.promptLogin() (native Wix modal)
   document.getElementById('btnLogin').addEventListener('click', function() {
-    window.parent.postMessage(JSON.stringify({ type: 'memberLogin' }), '*');
+    window.parent.postMessage({ type: 'memberLogin' }, '*');
   });
 
   // Create Account → same prompt, Wix shows the signup tab
   document.getElementById('btnSignup').addEventListener('click', function() {
-    window.parent.postMessage(JSON.stringify({ type: 'memberSignup' }), '*');
+    window.parent.postMessage({ type: 'memberSignup' }, '*');
   });
 
   // Logout → Velo calls authentication.logout()
   document.getElementById('btnLogout').addEventListener('click', function() {
-    window.parent.postMessage(JSON.stringify({ type: 'memberLogout' }), '*');
+    window.parent.postMessage({ type: 'memberLogout' }, '*');
   });
 </script>
 

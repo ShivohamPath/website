@@ -30,7 +30,8 @@ $w.onReady(function () {
   // REQUIRED: give the mobile nav embed element the ID #mobileNavEmbed.
   try {
     $w('#mobileNavEmbed').onMessage((event) => {
-      const data = event.data;
+      let data = event.data;
+      try { if (typeof data === 'string') data = JSON.parse(data); } catch (e) {}
       if (data && data.type === 'memberLogin') {
         authentication.promptLogin({ mode: 'login' })
           .then(() => {

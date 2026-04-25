@@ -62,23 +62,29 @@
     border: none;
     cursor: pointer;
     font-size: 9px;
+    /* full-height tap target + no tap delay on mobile */
+    min-height: 44px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
   }
 
   /* Logged-out state */
   .btn-login {
     color: var(--gold);
     border: 1px solid var(--gold2) !important;
-    padding: 6px 16px;
+    padding: 0 16px;
     transition: background 0.2s;
   }
-  .btn-login:hover { background: var(--gold3); }
+  .btn-login:hover, .btn-login:active { background: var(--gold3); }
 
   .btn-signup {
     color: var(--text3);
-    padding: 6px 0;
+    padding: 0 4px;
     transition: color 0.2s;
   }
-  .btn-signup:hover { color: var(--gold); }
+  .btn-signup:hover, .btn-signup:active { color: var(--gold); }
 
   /* Logged-in state */
   .account-link {
@@ -100,9 +106,10 @@
 
   .btn-logout {
     color: var(--text3);
+    padding: 0 4px;
     transition: color 0.2s;
   }
-  .btn-logout:hover { color: var(--text); }
+  .btn-logout:hover, .btn-logout:active { color: var(--text); }
 
   .state-guest  { display: flex; align-items: center; gap: 16px; }
   .state-member { display: none;  align-items: center; gap: 16px; }
@@ -146,19 +153,21 @@
     } catch(err) {}
   });
 
-  // Login → Velo calls authentication.promptLogin() (native Wix modal)
+  function sendMsg(msg) {
+    try { window.parent.postMessage(msg, '*'); } catch(e) {}
+    try { if (window.top !== window.parent) window.top.postMessage(msg, '*'); } catch(e) {}
+  }
+
   document.getElementById('btnLogin').addEventListener('click', function() {
-    window.parent.postMessage({ type: 'memberLogin' }, '*');
+    sendMsg({ type: 'memberLogin' });
   });
 
-  // Create Account → same prompt, Wix shows the signup tab
   document.getElementById('btnSignup').addEventListener('click', function() {
-    window.parent.postMessage({ type: 'memberSignup' }, '*');
+    sendMsg({ type: 'memberSignup' });
   });
 
-  // Logout → Velo calls authentication.logout()
   document.getElementById('btnLogout').addEventListener('click', function() {
-    window.parent.postMessage({ type: 'memberLogout' }, '*');
+    sendMsg({ type: 'memberLogout' });
   });
 </script>
 

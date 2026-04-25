@@ -59,11 +59,11 @@
     font-size: 9px;
     letter-spacing: 2px;
     color: var(--gold);
-    background: none;
+    text-decoration: none;
     border: 1px solid var(--gold2);
     padding: 6px 16px;
-    cursor: pointer;
     transition: background 0.2s;
+    display: inline-block;
   }
   .btn-login:hover { background: var(--gold3); }
 
@@ -72,11 +72,10 @@
     font-size: 9px;
     letter-spacing: 2px;
     color: var(--text3);
-    background: none;
-    border: none;
-    cursor: pointer;
+    text-decoration: none;
     padding: 6px 0;
     transition: color 0.2s;
+    display: inline-block;
   }
   .btn-signup:hover { color: var(--gold); }
 
@@ -103,10 +102,8 @@
     font-size: 9px;
     letter-spacing: 2px;
     color: var(--text3);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
+    text-decoration: none;
+    display: inline-block;
     transition: color 0.2s;
   }
   .btn-logout:hover { color: var(--text); }
@@ -121,8 +118,8 @@
   <div class="bar-right">
     <!-- Logged-out -->
     <div class="state-guest" id="stateGuest">
-      <button class="btn-login" id="btnLogin">Login</button>
-      <button class="btn-signup" id="btnSignup">Create Account</button>
+      <a href="https://www.shivohampath.com/my-account" target="_top" class="btn-login">Login</a>
+      <a href="https://www.shivohampath.com/my-account" target="_top" class="btn-signup">Create Account</a>
     </div>
 
     <!-- Logged-in -->
@@ -131,7 +128,7 @@
         <div class="account-dot"></div>
         My Account
       </a>
-      <button class="btn-logout" id="btnLogout">Logout</button>
+      <a href="https://www.shivohampath.com/member-logout" target="_top" class="btn-logout">Logout</a>
     </div>
   </div>
 </div>
@@ -145,7 +142,7 @@
     member.style.display = loggedIn ? 'flex'  : 'none';
   }
 
-  // Receive member state from masterPage.js
+  // Receive member state from masterPage.js if embed ID is set
   window.addEventListener('message', function(e) {
     try {
       var data = (typeof e.data === 'string') ? JSON.parse(e.data) : e.data;
@@ -153,20 +150,6 @@
     } catch(err) {}
   });
 
-  // Login → ask masterPage to call authentication.promptLogin()
-  document.getElementById('btnLogin').addEventListener('click', function() {
-    window.parent.postMessage(JSON.stringify({ type: 'memberLogin' }), '*');
-  });
-
-  // Signup → same prompt, Wix shows the signup tab
-  document.getElementById('btnSignup').addEventListener('click', function() {
-    window.parent.postMessage(JSON.stringify({ type: 'memberLogin' }), '*');
-  });
-
-  // Logout → ask masterPage to call authentication.logout()
-  document.getElementById('btnLogout').addEventListener('click', function() {
-    window.parent.postMessage(JSON.stringify({ type: 'memberLogout' }), '*');
-  });
 </script>
 
 </body>

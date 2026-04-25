@@ -9,6 +9,7 @@
   3. Paste the contents of this file
   4. Set the embed height to 48px, width to 100%
   5. Right-click the embed → Properties → set ID to: mobileNavEmbed
+     *** THIS STEP IS REQUIRED for login/logout to work ***
   6. In the editor, click the embed → "Hide on Desktop" so it only
      shows on mobile / tablet
   ═══════════════════════════════════════════════════════════════
@@ -53,29 +54,29 @@
     gap: 16px;
   }
 
+  /* Shared button reset */
+  .btn-login, .btn-signup, .btn-logout {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 9px;
+  }
+
   /* Logged-out state */
   .btn-login {
-    font-family: 'Cinzel', serif;
-    font-size: 9px;
-    letter-spacing: 2px;
     color: var(--gold);
-    text-decoration: none;
-    border: 1px solid var(--gold2);
+    border: 1px solid var(--gold2) !important;
     padding: 6px 16px;
     transition: background 0.2s;
-    display: inline-block;
   }
   .btn-login:hover { background: var(--gold3); }
 
   .btn-signup {
-    font-family: 'Cinzel', serif;
-    font-size: 9px;
-    letter-spacing: 2px;
     color: var(--text3);
-    text-decoration: none;
     padding: 6px 0;
     transition: color 0.2s;
-    display: inline-block;
   }
   .btn-signup:hover { color: var(--gold); }
 
@@ -98,12 +99,7 @@
   }
 
   .btn-logout {
-    font-family: 'Cinzel', serif;
-    font-size: 9px;
-    letter-spacing: 2px;
     color: var(--text3);
-    text-decoration: none;
-    display: inline-block;
     transition: color 0.2s;
   }
   .btn-logout:hover { color: var(--text); }
@@ -118,8 +114,8 @@
   <div class="bar-right">
     <!-- Logged-out -->
     <div class="state-guest" id="stateGuest">
-      <a href="https://www.shivohampath.com/my-account" target="_top" class="btn-login">Login</a>
-      <a href="https://www.shivohampath.com/my-account" target="_top" class="btn-signup">Create Account</a>
+      <button class="btn-login" id="btnLogin">Login</button>
+      <button class="btn-signup" id="btnSignup">Create Account</button>
     </div>
 
     <!-- Logged-in -->
@@ -128,7 +124,7 @@
         <div class="account-dot"></div>
         My Account
       </a>
-      <a href="https://www.shivohampath.com/member-logout" target="_top" class="btn-logout">Logout</a>
+      <button class="btn-logout" id="btnLogout">Logout</button>
     </div>
   </div>
 </div>
@@ -142,7 +138,7 @@
     member.style.display = loggedIn ? 'flex'  : 'none';
   }
 
-  // Receive member state from masterPage.js if embed ID is set
+  // Receive member state from masterPage.js
   window.addEventListener('message', function(e) {
     try {
       var data = (typeof e.data === 'string') ? JSON.parse(e.data) : e.data;
@@ -150,6 +146,20 @@
     } catch(err) {}
   });
 
+  // Login → Velo calls authentication.promptLogin() (native Wix modal)
+  document.getElementById('btnLogin').addEventListener('click', function() {
+    window.parent.postMessage(JSON.stringify({ type: 'memberLogin' }), '*');
+  });
+
+  // Create Account → same prompt, Wix shows the signup tab
+  document.getElementById('btnSignup').addEventListener('click', function() {
+    window.parent.postMessage(JSON.stringify({ type: 'memberSignup' }), '*');
+  });
+
+  // Logout → Velo calls authentication.logout()
+  document.getElementById('btnLogout').addEventListener('click', function() {
+    window.parent.postMessage(JSON.stringify({ type: 'memberLogout' }), '*');
+  });
 </script>
 
 </body>

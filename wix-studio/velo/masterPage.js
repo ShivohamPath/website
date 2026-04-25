@@ -38,6 +38,13 @@ $w.onReady(function () {
           })
           .catch(() => {});
       }
+      if (data && data.type === 'memberSignup') {
+        authentication.promptLogin({ mode: 'signup' })
+          .then(() => {
+            $w('#mobileNavEmbed').postMessage({ type: 'memberState', loggedIn: true });
+          })
+          .catch(() => {});
+      }
       if (data && data.type === 'memberLogout') {
         authentication.logout();
         $w('#mobileNavEmbed').postMessage({ type: 'memberState', loggedIn: false });

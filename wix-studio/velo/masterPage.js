@@ -30,9 +30,17 @@ $w.onReady(function () {
   // REQUIRED: give the mobile nav embed element the ID #mobileNavEmbed.
   try {
     $w('#mobileNavEmbed').onMessage((event) => {
-      const data = event.data;
+      let data = event.data;
+      try { if (typeof data === 'string') data = JSON.parse(data); } catch (e) {}
       if (data && data.type === 'memberLogin') {
         authentication.promptLogin({ mode: 'login' })
+          .then(() => {
+            $w('#mobileNavEmbed').postMessage({ type: 'memberState', loggedIn: true });
+          })
+          .catch(() => {});
+      }
+      if (data && data.type === 'memberSignup') {
+        authentication.promptLogin({ mode: 'signup' })
           .then(() => {
             $w('#mobileNavEmbed').postMessage({ type: 'memberState', loggedIn: true });
           })

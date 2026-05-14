@@ -41,12 +41,40 @@
   .btn-signup {
     color: rgba(232,224,208,0.40);
   }
+  .btn-account {
+    color: #C9A84C;
+    border: 1px solid rgba(201,168,76,0.22);
+    padding: 0 16px;
+  }
+  .hidden { display: none; }
 </style>
 </head>
 <body>
-<div class="bar">
-  <a href="/my-account" target="_top" class="btn-login">Login</a>
-  <a href="/my-account" target="_top" class="btn-signup">Create Account</a>
+<div class="bar" id="bar">
+  <!-- Logged-out state -->
+  <a href="#" id="btnLogin" class="btn-login" onclick="sendMsg('memberLogin'); return false;">Login</a>
+  <a href="#" id="btnSignup" class="btn-signup" onclick="sendMsg('memberSignup'); return false;">Create Account</a>
+  <!-- Logged-in state -->
+  <a href="/my-account" target="_top" id="btnAccount" class="btn-account hidden">My Account</a>
+  <a href="#" id="btnLogout" class="btn-signup hidden" onclick="sendMsg('memberLogout'); return false;">Logout</a>
 </div>
+<script>
+  function sendMsg(type) {
+    window.parent.postMessage({ type: type }, '*');
+  }
+
+  function setState(loggedIn) {
+    document.getElementById('btnLogin').classList.toggle('hidden', loggedIn);
+    document.getElementById('btnSignup').classList.toggle('hidden', loggedIn);
+    document.getElementById('btnAccount').classList.toggle('hidden', !loggedIn);
+    document.getElementById('btnLogout').classList.toggle('hidden', !loggedIn);
+  }
+
+  window.addEventListener('message', function(e) {
+    var d = e.data;
+    if (typeof d === 'string') { try { d = JSON.parse(d); } catch(_) {} }
+    if (d && d.type === 'memberState') setState(!!d.loggedIn);
+  });
+</script>
 </body>
 </html>

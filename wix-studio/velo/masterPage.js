@@ -12,16 +12,42 @@ $w.onReady(function () {
 
   const currentPath = wixLocation.path;
 
-  // ── FOOTER IFRAME NAVIGATION ───────────────────────────────
+  // ── FOOTER IFRAME NAVIGATION + AUTH ───────────────────────────
   // REQUIRED: give the footer HTML embed element the ID #footerEmbed
   // in Wix editor (right-click element → Properties → ID).
   try {
     $w('#footerEmbed').onMessage((event) => {
-      const data = event.data;
+      let data = event.data;
+      try { if (typeof data === 'string') data = JSON.parse(data); } catch (e) {}
       if (data && data.type === 'footerNav' && data.path) {
         wixLocation.to(String(data.path));
       }
+      if (data && data.type === 'memberLogin') {
+        authentication.promptLogin({ mode: 'login' })
+          .then(() => $w('#footerEmbed').postMessage({ type: 'memberState', loggedIn: true }))
+          .catch(() => {});
+      }
+      if (data && data.type === 'memberSignup') {
+        authentication.promptLogin({ mode: 'signup' })
+          .then(() => $w('#footerEmbed').postMessage({ type: 'memberState', loggedIn: true }))
+          .catch(() => {});
+      }
+      if (data && data.type === 'memberLogout') {
+        authentication.logout();
+        $w('#footerEmbed').postMessage({ type: 'memberState', loggedIn: false });
+      }
     });
+
+    // Send initial member state to footer
+    currentMember.getMember()
+      .then(() => $w('#footerEmbed').postMessage({ type: 'memberState', loggedIn: true }))
+      .catch(() => $w('#footerEmbed').postMessage({ type: 'memberState', loggedIn: false }));
+
+    authentication.onLogin(() =>
+      $w('#footerEmbed').postMessage({ type: 'memberState', loggedIn: true }));
+    authentication.onLogout(() =>
+      $w('#footerEmbed').postMessage({ type: 'memberState', loggedIn: false }));
+
   } catch (e) { /* #footerEmbed not found on this page */ }
 
   // ── MOBILE NAV MEMBER BAR ──────────────────────────────────

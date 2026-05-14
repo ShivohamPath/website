@@ -383,9 +383,13 @@
       <!-- Column 5 · Account -->
       <div class="nav-section">
         <div class="col-heading">My Account</div>
-        <ul class="nav-list">
-          <li><a href="https://www.shivohampath.com/my-account" target="_top" class="featured-link">Login / Sign Up ★</a></li>
-          <li><a href="https://www.shivohampath.com/my-account" target="_top">My Account</a></li>
+        <ul class="nav-list" id="accountLinks">
+          <!-- logged-out -->
+          <li id="liLogin"><a href="#" class="featured-link" onclick="sendAuth('memberLogin'); return false;">Login ★</a></li>
+          <li id="liSignup"><a href="#" onclick="sendAuth('memberSignup'); return false;">Create Account</a></li>
+          <!-- logged-in (hidden until state confirmed) -->
+          <li id="liAccount" style="display:none"><a href="#" onclick="sendNav('/my-account'); return false;">My Account</a></li>
+          <li id="liLogout" style="display:none"><a href="#" onclick="sendAuth('memberLogout'); return false;">Logout</a></li>
         </ul>
       </div>
 
@@ -407,6 +411,27 @@
 </footer>
 
 <script>
+  // ── Auth postMessage helpers ───────────────────────────────────
+  function sendAuth(type) {
+    window.parent.postMessage({ type: type }, '*');
+  }
+  function sendNav(path) {
+    window.parent.postMessage({ type: 'footerNav', path: path }, '*');
+  }
+
+  function setAccountState(loggedIn) {
+    document.getElementById('liLogin').style.display   = loggedIn ? 'none' : '';
+    document.getElementById('liSignup').style.display  = loggedIn ? 'none' : '';
+    document.getElementById('liAccount').style.display = loggedIn ? '' : 'none';
+    document.getElementById('liLogout').style.display  = loggedIn ? '' : 'none';
+  }
+
+  window.addEventListener('message', function(e) {
+    var d = e.data;
+    if (typeof d === 'string') { try { d = JSON.parse(d); } catch(_) {} }
+    if (d && d.type === 'memberState') setAccountState(!!d.loggedIn);
+  });
+
   // ── Dynamic year ──────────────────────────────────────────────
   document.getElementById('year').textContent = new Date().getFullYear();
 

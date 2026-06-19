@@ -8,9 +8,66 @@ import wixLocation from 'wix-location';
 import wixWindow from 'wix-window';
 import { authentication, currentMember } from 'wix-members';
 
+// Where the Wix Members Area "My Account" page lives. If your account
+// page uses a different slug, change it here in ONE place.
+const ACCOUNT_URL = '/account/my-account';
+
 $w.onReady(function () {
 
   const currentPath = wixLocation.path;
+
+  // ── IN-APP BROWSER BANNER ─────────────────────────────────────
+  // The #browserBanner embed shows a "open in your browser" prompt to
+  // visitors stuck inside the Instagram/Facebook/TikTok in-app browser
+  // (where Wix login can't work). It needs the real page URL, which an
+  // embedded iframe can't read on its own — so we send it here.
+  // REQUIRED: give the banner embed element the ID #browserBanner.
+  try {
+    $w('#browserBanner').postMessage({ type: 'pageUrl', url: wixLocation.url });
+  } catch (e) { /* #browserBanner not on this page */ }
+
+  // ── HEADER LOGIN EMBED ────────────────────────────────────────
+  // The #headerLoginEmbed sits in the desktop header (between nav links
+  // and "Book a Reading") and shows log in / sign up or the account menu.
+  // REQUIRED: give that embed element the ID #headerLoginEmbed.
+  const headerEmbed = (() => {
+    try { return $w('#headerLoginEmbed'); } catch (e) { return null; }
+  })();
+
+  function syncHeaderState(loggedIn) {
+    if (headerEmbed) {
+      try { headerEmbed.postMessage({ type: 'memberState', loggedIn }); } catch (e) {}
+    }
+  }
+
+  try {
+    if (headerEmbed) {
+      headerEmbed.onMessage((event) => {
+        let data = event.data;
+        try { if (typeof data === 'string') data = JSON.parse(data); } catch (e) {}
+        if (data && data.type === 'memberAccount') { wixLocation.to(ACCOUNT_URL); }
+        if (data && data.type === 'memberLogin') {
+          authentication.promptLogin({ mode: 'login' })
+            .then(() => syncHeaderState(true))
+            .catch(() => {});
+        }
+        if (data && data.type === 'memberSignup') {
+          authentication.promptLogin({ mode: 'signup' })
+            .then(() => syncHeaderState(true))
+            .catch(() => {});
+        }
+        if (data && data.type === 'memberLogout') {
+          authentication.logout();
+          syncHeaderState(false);
+        }
+      });
+      currentMember.getMember()
+        .then(() => syncHeaderState(true))
+        .catch(() => syncHeaderState(false));
+      authentication.onLogin(() => syncHeaderState(true));
+      authentication.onLogout(() => syncHeaderState(false));
+    }
+  } catch (e) { /* #headerLoginEmbed not on this page */ }
 
   // ── FOOTER IFRAME NAVIGATION + AUTH ───────────────────────────
   // REQUIRED: give the footer HTML embed element the ID #footerEmbed
@@ -21,6 +78,9 @@ $w.onReady(function () {
       try { if (typeof data === 'string') data = JSON.parse(data); } catch (e) {}
       if (data && data.type === 'footerNav' && data.path) {
         wixLocation.to(String(data.path));
+      }
+      if (data && data.type === 'memberAccount') {
+        wixLocation.to(ACCOUNT_URL);
       }
       if (data && data.type === 'memberLogin') {
         authentication.promptLogin({ mode: 'login' })
@@ -58,6 +118,9 @@ $w.onReady(function () {
     $w('#mobileNavEmbed').onMessage((event) => {
       let data = event.data;
       try { if (typeof data === 'string') data = JSON.parse(data); } catch (e) {}
+      if (data && data.type === 'memberAccount') {
+        wixLocation.to(ACCOUNT_URL);
+      }
       if (data && data.type === 'memberLogin') {
         authentication.promptLogin({ mode: 'login' })
           .then(() => {

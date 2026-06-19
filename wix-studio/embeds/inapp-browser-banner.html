@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════
+  SHIVOHAMPATH · IN-APP BROWSER BANNER
+  ═══════════════════════════════════════════════════════════════
+  WHY THIS EXISTS:
+  Instagram / Facebook / TikTok open links inside their own stripped-
+  down "in-app browser". That browser blocks the pop-ups and cookies
+  that Wix Member login needs — so login silently fails and pages load
+  slower. This banner detects that situation and helps the visitor
+  reopen the site in their real browser (Safari / Chrome), where login
+  and everything else works normally.
+
+  HOW TO ADD IT TO YOUR WIX SITE:
+  1. In Wix Studio editor, add a thin section/strip directly UNDER the
+     header (top of every page — or at least Home, Readings, Courses).
+  2. Add → Embed → HTML iFrame (or "Embed a widget").
+  3. Paste the ENTIRE contents of this file.
+  4. Set the embed width to 100%.
+  5. Give the embed element the ID  #browserBanner  (right-click →
+     Properties → ID). This lets masterPage.js pass the real page URL.
+  6. Set the embed height to "auto" if available, or ~70px. When the
+     visitor is NOT in an in-app browser the banner reports height 0
+     and disappears, so it costs nothing for normal visitors.
+  ═══════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* Hidden by default — only shown when an in-app browser is detected */
+  #wrap { display: none; }
+  #wrap.show { display: block; }
+
+  .banner {
+    background: #131020;
+    border-bottom: 1px solid rgba(201,168,76,0.30);
+    color: #e8e0d0;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .banner-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    color: #C9A84C;
+  }
+
+  .banner-text {
+    flex: 1;
+    min-width: 0;
+    font-size: 13px;
+    line-height: 1.4;
+    color: rgba(232,224,208,0.85);
+  }
+  .banner-text strong { color: #e8e0d0; font-weight: 600; }
+  .banner-hint {
+    display: block;
+    font-size: 11px;
+    color: rgba(232,224,208,0.55);
+    margin-top: 2px;
+  }
+
+  .banner-btn {
+    flex-shrink: 0;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    background: #C9A84C;
+    color: #0a0a0f;
+    border: none;
+    border-radius: 4px;
+    padding: 9px 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  .banner-btn:active { background: #a8893a; }
+
+  .banner-close {
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    color: rgba(232,224,208,0.5);
+    font-size: 22px;
+    line-height: 1;
+    padding: 4px 6px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* "Copied!" toast state */
+  .banner-btn.copied { background: #4CAF7D; color: #0a0a0f; }
+
+  @media (max-width: 480px) {
+    .banner { padding: 10px 12px; gap: 10px; }
+    .banner-text { font-size: 12px; }
+    .banner-btn { padding: 8px 12px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="wrap">
+  <div class="banner" role="alert">
+    <svg class="banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="M12 8v5"></path>
+      <circle cx="12" cy="16.5" r="0.6" fill="currentColor" stroke="none"></circle>
+    </svg>
+    <div class="banner-text">
+      <strong>For login &amp; the full experience, open in your browser.</strong>
+      <span class="banner-hint" id="hint">Tap below — or use the &#8943; menu and choose &ldquo;Open in browser&rdquo;.</span>
+    </div>
+    <button class="banner-btn" id="openBtn">Open in Browser</button>
+    <button class="banner-close" id="closeBtn" aria-label="Dismiss">&times;</button>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var DEFAULT_URL = 'https://www.shivohampath.com';
+
+    // Best guess at the real page URL the visitor is on.
+    // (An embed iframe can't read the parent URL directly, so we try the
+    //  referrer first, then accept a pageUrl message from masterPage.js,
+    //  then fall back to the site root.)
+    var pageUrl = DEFAULT_URL;
+    try {
+      if (document.referrer && document.referrer.indexOf('shivohampath') !== -1) {
+        pageUrl = document.referrer;
+      }
+    } catch (e) {}
+
+    var ua = (navigator.userAgent || navigator.vendor || '').toLowerCase();
+    var isAndroid = /android/.test(ua);
+    var isIOS = /iphone|ipad|ipod/.test(ua);
+
+    // In-app browser signatures: Instagram, Facebook, Messenger, TikTok,
+    // Snapchat, Twitter/X, LINE, Pinterest, LinkedIn, WhatsApp.
+    var inApp = /instagram|fban|fbav|fb_iab|messenger|tiktok|bytedance|musical_ly|snapchat|twitter|line\/|pinterest|linkedinapp|whatsapp/.test(ua);
+
+    var wrap = document.getElementById('wrap');
+    var openBtn = document.getElementById('openBtn');
+    var closeBtn = document.getElementById('closeBtn');
+    var hint = document.getElementById('hint');
+
+    // Tell the Wix parent how tall we are so the strip collapses when hidden.
+    function reportHeight() {
+      var h = wrap.classList.contains('show')
+        ? Math.max(document.body.scrollHeight, document.body.offsetHeight)
+        : 0;
+      try { window.parent.postMessage(JSON.stringify({ height: h }), '*'); } catch (e) {}
+      try { window.parent.postMessage({ type: 'iframeHeight', height: h }, '*'); } catch (e) {}
+    }
+
+    // Accept the real page URL from masterPage.js (#browserBanner handler).
+    window.addEventListener('message', function (e) {
+      var d = e.data;
+      if (typeof d === 'string') { try { d = JSON.parse(d); } catch (_) {} }
+      if (d && d.type === 'pageUrl' && d.url) { pageUrl = String(d.url); }
+    });
+
+    var dismissed = false;
+    try { dismissed = sessionStorage.getItem('sp_inapp_dismissed') === '1'; } catch (e) {}
+
+    if (inApp && !dismissed) {
+      wrap.classList.add('show');
+
+      // iOS can't be forced into Safari from a webview — guide the menu.
+      if (isIOS) {
+        hint.innerHTML = 'Or tap the &#8943; menu (top-right) &rarr; &ldquo;Open in external browser&rdquo;.';
+      }
+
+      openBtn.addEventListener('click', function () {
+        if (isAndroid) {
+          // Force Chrome via an Android intent.
+          var noScheme = pageUrl.replace(/^https?:\/\//, '');
+          var intentUrl = 'intent://' + noScheme +
+            '#Intent;scheme=https;package=com.android.chrome;end';
+          try { window.location.href = intentUrl; return; } catch (e) {}
+        }
+        // iOS (and Android fallback): copy the link so they can paste it
+        // into Safari/Chrome, since webviews block programmatic opens.
+        copyLink();
+      });
+
+      closeBtn.addEventListener('click', function () {
+        try { sessionStorage.setItem('sp_inapp_dismissed', '1'); } catch (e) {}
+        wrap.classList.remove('show');
+        reportHeight();
+      });
+    }
+
+    function copyLink() {
+      var done = function () {
+        openBtn.textContent = 'Link Copied ✓';
+        openBtn.classList.add('copied');
+        hint.innerHTML = 'Now open Safari/Chrome and paste the link.';
+        reportHeight();
+        setTimeout(function () {
+          openBtn.textContent = 'Copy Link';
+          openBtn.classList.remove('copied');
+        }, 2600);
+      };
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(pageUrl).then(done, fallbackCopy);
+          return;
+        }
+      } catch (e) {}
+      fallbackCopy();
+      function fallbackCopy() {
+        try {
+          var t = document.createElement('textarea');
+          t.value = pageUrl;
+          t.style.position = 'fixed';
+          t.style.opacity = '0';
+          document.body.appendChild(t);
+          t.focus(); t.select();
+          document.execCommand('copy');
+          document.body.removeChild(t);
+          done();
+        } catch (e) {
+          openBtn.textContent = 'Open in Browser';
+        }
+      }
+    }
+
+    window.addEventListener('load', reportHeight);
+    window.addEventListener('resize', reportHeight);
+    reportHeight();
+  })();
+</script>
+
+</body>
+</html>

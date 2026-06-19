@@ -3,60 +3,86 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
     background: #0a0a0f;
     margin: 0; padding: 0;
-    height: 48px; overflow: hidden;
+    height: 52px; overflow: hidden;
     width: 100%;
   }
   .bar {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 48px;
+    height: 52px;
     background: #0a0a0f;
     border-bottom: 1px solid rgba(201,168,76,0.22);
-    gap: 20px;
+    gap: 12px;
   }
   a {
     font-family: 'Cinzel', serif;
-    font-size: 9px;
-    letter-spacing: 2px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
     text-decoration: none;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    height: 48px;
-    padding: 0 12px;
+    gap: 7px;
+    height: 36px;
+    padding: 0 18px;
+    border-radius: 4px;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
+  /* Primary login pill — filled gold so it is impossible to miss */
   .btn-login {
-    color: #C9A84C;
-    border: 1px solid rgba(201,168,76,0.22);
-    padding: 0 16px;
+    color: #0a0a0f;
+    background: #C9A84C;
   }
+  .btn-login:active { background: #a8893a; }
+  /* Secondary action — outlined */
   .btn-signup {
-    color: rgba(232,224,208,0.40);
+    color: #C9A84C;
+    border: 1px solid rgba(201,168,76,0.40);
   }
   .btn-account {
-    color: #C9A84C;
-    border: 1px solid rgba(201,168,76,0.22);
-    padding: 0 16px;
+    color: #0a0a0f;
+    background: #C9A84C;
   }
-  .hidden { display: none; }
+  .btn-logout {
+    color: rgba(232,224,208,0.55);
+    border: 1px solid rgba(232,224,208,0.18);
+  }
+  .ico { width: 14px; height: 14px; flex-shrink: 0; }
+  .hidden { display: none !important; }
 </style>
 </head>
 <body>
 <div class="bar" id="bar">
   <!-- Logged-out state -->
-  <a href="#" id="btnLogin" class="btn-login" onclick="sendMsg('memberLogin'); return false;">Login</a>
-  <a href="#" id="btnSignup" class="btn-signup" onclick="sendMsg('memberSignup'); return false;">Create Account</a>
+  <a href="#" id="btnLogin" class="btn-login" onclick="sendMsg('memberLogin'); return false;">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+      <polyline points="10 17 15 12 10 7"></polyline>
+      <line x1="15" y1="12" x2="3" y2="12"></line>
+    </svg>
+    Log In
+  </a>
+  <a href="#" id="btnSignup" class="btn-signup" onclick="sendMsg('memberSignup'); return false;">Sign Up</a>
+
   <!-- Logged-in state -->
-  <a href="/my-account" target="_top" id="btnAccount" class="btn-account hidden">My Account</a>
-  <a href="#" id="btnLogout" class="btn-signup hidden" onclick="sendMsg('memberLogout'); return false;">Logout</a>
+  <a href="#" id="btnAccount" class="btn-account hidden" onclick="sendMsg('memberAccount'); return false;">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+      <circle cx="12" cy="7" r="4"></circle>
+    </svg>
+    My Account
+  </a>
+  <a href="#" id="btnLogout" class="btn-logout hidden" onclick="sendMsg('memberLogout'); return false;">Logout</a>
 </div>
 <script>
   function sendMsg(type) {

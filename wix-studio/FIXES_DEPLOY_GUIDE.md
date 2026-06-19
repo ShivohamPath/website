@@ -67,9 +67,29 @@ is exactly where the in-app-browser visitors are.
 
 ---
 
+## 4. Desktop header login
+
+**What changed:** A new `header-login.html` embed goes in the desktop header
+between your nav links and the "Book a Reading" button. It shows a ghost
+"Log In" pill + a "Sign Up" text link when logged out, and "My Account" +
+"Logout" when logged in. Desktop visitors have had no visible login path at all.
+
+**Deploy steps:**
+1. In Wix Studio, select the **Header** strip.
+2. Add → Embed → HTML iFrame.
+3. Paste `wix-studio/embeds/header-login.html`.
+4. Size: **~220px wide × 44px tall** (matches header height).
+5. Position it between the nav links and the "Book a Reading" button.
+6. Set embed background to **transparent**.
+7. Right-click → Properties → set ID to `headerLoginEmbed`.
+8. `masterPage.js` already wires it up — no extra Velo changes needed.
+
+---
+
 ## Quick checklist
 
-- [ ] Paste `inapp-browser-banner.html` into a top strip; set embed ID `browserBanner`
+- [ ] Paste `inapp-browser-banner.html` into a top strip on Home/Readings/Courses; set embed ID `browserBanner`
+- [ ] Paste `header-login.html` into desktop header; set embed ID `headerLoginEmbed`
 - [ ] Re-paste `masterPage.js` (Dev Mode → Site)
 - [ ] Re-paste `global.css` (Dev Mode → CSS)
 - [ ] Re-paste `home-hero.html` (Home hero embed)

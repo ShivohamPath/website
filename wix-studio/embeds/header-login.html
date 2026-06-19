@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════
+  SHIVOHAMPATH · HEADER LOGIN EMBED
+  ═══════════════════════════════════════════════════════════════
+  WHY: Desktop currently has no visible login — only a "Book a Reading"
+  button. This tiny embed goes INSIDE THE HEADER (to the left of the
+  "Book a Reading" button) and shows the login state at all times.
+
+  HOW TO ADD:
+  1. In Wix Studio, select the Header strip.
+  2. Add → Embed → HTML iFrame.
+  3. Paste this entire file.
+  4. Size: ~220px wide × 44px tall (it auto-sizes to the header row).
+  5. Give the embed the element ID  #headerLoginEmbed
+     (right-click → Properties → ID).
+  6. Position it in the header between the nav links and the
+     "Book a Reading" button.
+  7. Set the embed background to transparent.
+  8. Re-paste masterPage.js — it already wires up #headerLoginEmbed.
+  ═══════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: transparent;
+    height: 44px; overflow: hidden;
+    font-family: 'Cinzel', serif;
+    width: 100%;
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 44px;
+    gap: 10px;
+    padding: 0 4px;
+  }
+  a, button {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    white-space: nowrap;
+  }
+
+  /* Logged-out: ghost pill */
+  .btn-login {
+    color: rgba(201,168,76,0.85);
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 3px;
+    padding: 7px 14px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-login:hover { color: #C9A84C; border-color: rgba(201,168,76,0.75); }
+
+  /* "Create Account" — minimal text link */
+  .btn-signup {
+    color: rgba(232,224,208,0.45);
+    font-size: 9.5px;
+    letter-spacing: 1.2px;
+    transition: color 0.2s;
+  }
+  .btn-signup:hover { color: rgba(232,224,208,0.75); }
+
+  /* Logged-in: user icon + "My Account" link */
+  .btn-account {
+    color: #C9A84C;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    gap: 6px;
+  }
+  .btn-account:hover { color: #e8e0d0; }
+
+  /* Logout — tertiary */
+  .btn-logout {
+    color: rgba(232,224,208,0.35);
+    font-size: 9px;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+  .btn-logout:hover { color: rgba(232,224,208,0.6); }
+
+  .separator {
+    width: 1px;
+    height: 16px;
+    background: rgba(232,224,208,0.12);
+  }
+
+  .ico { width: 13px; height: 13px; flex-shrink: 0; }
+
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="bar">
+
+  <!-- ── Logged-out ── -->
+  <a href="#" id="btnLogin" class="btn-login" onclick="sendMsg('memberLogin'); return false;">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/>
+    </svg>
+    Log In
+  </a>
+  <span class="separator"></span>
+  <a href="#" id="btnSignup" class="btn-signup" onclick="sendMsg('memberSignup'); return false;">Sign Up</a>
+
+  <!-- ── Logged-in ── -->
+  <a href="#" id="btnAccount" class="btn-account hidden" onclick="sendMsg('memberAccount'); return false;">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+    </svg>
+    My Account
+  </a>
+  <a href="#" id="btnLogout" class="btn-logout hidden" onclick="sendMsg('memberLogout'); return false;">Logout</a>
+
+</div>
+<script>
+  function sendMsg(type) {
+    window.parent.postMessage({ type: type }, '*');
+  }
+
+  function setState(loggedIn) {
+    document.getElementById('btnLogin').classList.toggle('hidden', loggedIn);
+    document.getElementById('btnSignup').classList.toggle('hidden', loggedIn);
+    document.getElementById('btnAccount').classList.toggle('hidden', !loggedIn);
+    document.getElementById('btnLogout').classList.toggle('hidden', !loggedIn);
+  }
+
+  window.addEventListener('message', function(e) {
+    var d = e.data;
+    if (typeof d === 'string') { try { d = JSON.parse(d); } catch(_) {} }
+    if (d && d.type === 'memberState') setState(!!d.loggedIn);
+  });
+</script>
+</body>
+</html>

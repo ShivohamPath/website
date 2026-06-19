@@ -26,6 +26,49 @@ $w.onReady(function () {
     $w('#browserBanner').postMessage({ type: 'pageUrl', url: wixLocation.url });
   } catch (e) { /* #browserBanner not on this page */ }
 
+  // ── HEADER LOGIN EMBED ────────────────────────────────────────
+  // The #headerLoginEmbed sits in the desktop header (between nav links
+  // and "Book a Reading") and shows log in / sign up or the account menu.
+  // REQUIRED: give that embed element the ID #headerLoginEmbed.
+  const headerEmbed = (() => {
+    try { return $w('#headerLoginEmbed'); } catch (e) { return null; }
+  })();
+
+  function syncHeaderState(loggedIn) {
+    if (headerEmbed) {
+      try { headerEmbed.postMessage({ type: 'memberState', loggedIn }); } catch (e) {}
+    }
+  }
+
+  try {
+    if (headerEmbed) {
+      headerEmbed.onMessage((event) => {
+        let data = event.data;
+        try { if (typeof data === 'string') data = JSON.parse(data); } catch (e) {}
+        if (data && data.type === 'memberAccount') { wixLocation.to(ACCOUNT_URL); }
+        if (data && data.type === 'memberLogin') {
+          authentication.promptLogin({ mode: 'login' })
+            .then(() => syncHeaderState(true))
+            .catch(() => {});
+        }
+        if (data && data.type === 'memberSignup') {
+          authentication.promptLogin({ mode: 'signup' })
+            .then(() => syncHeaderState(true))
+            .catch(() => {});
+        }
+        if (data && data.type === 'memberLogout') {
+          authentication.logout();
+          syncHeaderState(false);
+        }
+      });
+      currentMember.getMember()
+        .then(() => syncHeaderState(true))
+        .catch(() => syncHeaderState(false));
+      authentication.onLogin(() => syncHeaderState(true));
+      authentication.onLogout(() => syncHeaderState(false));
+    }
+  } catch (e) { /* #headerLoginEmbed not on this page */ }
+
   // ── FOOTER IFRAME NAVIGATION + AUTH ───────────────────────────
   // REQUIRED: give the footer HTML embed element the ID #footerEmbed
   // in Wix editor (right-click element → Properties → ID).

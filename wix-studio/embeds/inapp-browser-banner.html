@@ -34,6 +34,9 @@
     background: transparent;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     width: 100%;
+    /* Default to zero height so Wix shows no gap before JS fires.
+       JS sets actual height once it knows whether the banner is needed. */
+    height: 0;
     overflow: hidden;
   }
 

@@ -59,6 +59,77 @@
     padding: 64px 40px 0;
   }
 
+  /* ── NEWSLETTER ROW ────────────────────────────────────────── */
+  .newsletter-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding-bottom: 48px;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--line);
+  }
+  .newsletter-copy { max-width: 420px; }
+  .newsletter-heading {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--text-1);
+    margin-bottom: 6px;
+  }
+  .newsletter-heading em { color: var(--gold); font-style: italic; }
+  .newsletter-sub { font-size: 13px; color: var(--text-3); }
+  .newsletter-form {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--gold-border);
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 380px;
+  }
+  .newsletter-form input {
+    flex: 1;
+    min-width: 0;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-1);
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 12px 14px;
+  }
+  .newsletter-form input::placeholder { color: var(--text-3); }
+  .newsletter-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    padding: 12px 18px;
+    background: var(--gold);
+    color: var(--bg);
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .newsletter-btn:hover:not(:disabled) { background: var(--gold-hover); }
+  .newsletter-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+  .newsletter-msg {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    margin-top: 8px;
+    display: none;
+  }
+  .newsletter-msg.error { color: #bf6f6f; }
+  .newsletter-msg.success { color: var(--gold); }
+
+  @media (max-width: 700px) {
+    .newsletter-row { flex-direction: column; align-items: flex-start; }
+    .newsletter-form { max-width: 100%; }
+  }
+
   /* ── MAIN GRID ─────────────────────────────────────────────── */
   .footer-grid {
     display: grid;
@@ -313,6 +384,21 @@
 <footer class="footer">
   <div class="footer-inner">
 
+    <!-- ── NEWSLETTER ────────────────────────────────────────── -->
+    <div class="newsletter-row">
+      <div class="newsletter-copy">
+        <div class="newsletter-heading">Receive <em>cosmic insights</em></div>
+        <div class="newsletter-sub">New essays on Jyotish and Shaivism, sent occasionally. No spam.</div>
+      </div>
+      <div>
+        <form id="newsletter-form" class="newsletter-form" novalidate>
+          <input id="nl-email" name="email" type="email" placeholder="your@email.com" autocomplete="email" required>
+          <button type="submit" id="nl-submit" class="newsletter-btn">Subscribe</button>
+        </form>
+        <p id="nl-msg" class="newsletter-msg"></p>
+      </div>
+    </div>
+
     <!-- ── MAIN GRID ─────────────────────────────────────────── -->
     <div class="footer-grid">
 
@@ -411,6 +497,54 @@
 </footer>
 
 <script>
+  // ── Newsletter signup ────────────────────────────────────────
+  // Posts to the same Vercel endpoint the contact form uses; forwards
+  // to MailerLite's EMAIL_SUBSCRIBERS group.
+  (function () {
+    var API_URL = 'https://website-shivohampaths-projects.vercel.app/api/subscribe';
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var form = document.getElementById('newsletter-form');
+    var btn = document.getElementById('nl-submit');
+    var msg = document.getElementById('nl-msg');
+
+    function showMsg(text, type) {
+      msg.textContent = text;
+      msg.className = 'newsletter-msg ' + type;
+      msg.style.display = 'block';
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.email.value.trim();
+      if (!EMAIL_RE.test(email)) { showMsg('Please enter a valid email address.', 'error'); return; }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      })
+        .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+        .then(function (result) {
+          if (result.ok && result.data.success) {
+            showMsg("You're in. Watch your inbox.", 'success');
+            form.reset();
+          } else {
+            showMsg((result.data && result.data.error) || 'Something went wrong. Please try again.', 'error');
+          }
+        })
+        .catch(function () {
+          showMsg('Could not subscribe. Please check your connection.', 'error');
+        })
+        .finally(function () {
+          btn.disabled = false;
+          btn.textContent = 'Subscribe';
+        });
+    });
+  })();
+
   // ── Auth postMessage helpers ───────────────────────────────────
   function sendAuth(type) {
     window.parent.postMessage({ type: type }, '*');

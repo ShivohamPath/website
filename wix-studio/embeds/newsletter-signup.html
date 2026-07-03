@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════
+  SHIVOHAMPATH · NEWSLETTER SIGNUP EMBED
+  ═══════════════════════════════════════════════════════════════
+  Reusable inline signup block. Use this on blog post pages (below the
+  article body) and anywhere else you want an email capture that isn't
+  the footer. Posts to the same Vercel endpoint as the contact form,
+  which forwards to MailerLite's EMAIL_SUBSCRIBERS group.
+
+  Set the embed width to 100%, height to auto / ~140px.
+  ═══════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap"
+  onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet"></noscript>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: #0a0a0f; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.4);
+    --gold3: rgba(201,168,76,0.12);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line2: rgba(201,168,76,0.22);
+    --error: #bf6f6f;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .signup {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    background: var(--bg3);
+    border: 1px solid var(--line2);
+    text-align: center;
+  }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 3px; color: var(--gold);
+    display: block; margin-bottom: 14px;
+  }
+  .signup h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3vw, 32px); font-weight: 300; font-style: italic;
+    color: var(--text); margin-bottom: 10px; line-height: 1.2;
+  }
+  .signup h3 em { color: var(--gold); font-style: italic; }
+  .signup .sub {
+    font-size: 15px; color: var(--text3); font-style: italic;
+    line-height: 1.7; margin-bottom: 28px;
+  }
+
+  #state-form { display: block; }
+  .signup-row {
+    display: flex; gap: 0;
+    border: 1px solid var(--line2);
+    max-width: 460px; margin: 0 auto;
+  }
+  .signup-row input {
+    flex: 1; min-width: 0;
+    font-family: 'EB Garamond', serif; font-size: 15px; font-style: italic;
+    color: var(--text); background: transparent;
+    border: none; outline: none;
+    padding: 14px 16px;
+  }
+  .signup-row input::placeholder { color: var(--text3); }
+  .signup-row input:focus { background: var(--bg4); }
+  .signup-btn {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2px; padding: 14px 24px;
+    background: var(--gold); color: var(--bg);
+    border: none; cursor: pointer;
+    white-space: nowrap; flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .signup-btn:hover:not(:disabled) { background: #a8893a; }
+  .signup-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+  .signup-note {
+    font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 1.5px;
+    color: var(--text3); margin-top: 14px;
+  }
+  .signup-error {
+    display: none;
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 1.5px;
+    color: var(--error); margin-top: 14px;
+  }
+
+  #state-success { display: none; }
+  #state-success h3 { margin-bottom: 6px; }
+  .success-icon { font-size: 22px; color: var(--gold); display: block; margin-bottom: 12px; opacity: 0.8; }
+
+  @media (max-width: 560px) {
+    .signup { padding: 36px 24px; }
+    .signup-row { flex-direction: column; }
+    .signup-btn { width: 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 0.001ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<section class="signup">
+
+  <div id="state-form">
+    <span class="eyebrow">Stay Connected</span>
+    <h3>Receive new essays on <em>Jyotish &amp; Shaivism</em></h3>
+    <p class="sub">No spam. Just writing, sent when there's something worth sharing.</p>
+
+    <form id="newsletter-form" novalidate>
+      <div class="signup-row">
+        <input id="nl-email" name="email" type="email" placeholder="your@email.com" autocomplete="email" required>
+        <button type="submit" id="nl-submit" class="signup-btn">Subscribe</button>
+      </div>
+      <p id="nl-error" class="signup-error"></p>
+      <p class="signup-note">Your details go into MailerLite. No spam — ever.</p>
+    </form>
+  </div>
+
+  <div id="state-success">
+    <span class="success-icon">✦</span>
+    <h3>You're in.</h3>
+    <p class="sub">Watch your inbox — the next essay is on its way.</p>
+  </div>
+
+</section>
+
+<script>
+  // ─── SET YOUR VERCEL ENDPOINT URL HERE (same one the contact form uses) ───
+  const API_URL = 'https://website-shivohampaths-projects.vercel.app/api/subscribe';
+  // ────────────────────────────────────────────────────────────────────────
+
+  const form       = document.getElementById('newsletter-form');
+  const btn        = document.getElementById('nl-submit');
+  const stateForm  = document.getElementById('state-form');
+  const stateOk    = document.getElementById('state-success');
+  const errorEl    = document.getElementById('nl-error');
+
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function showError(msg) {
+    errorEl.textContent = msg;
+    errorEl.style.display = 'block';
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorEl.style.display = 'none';
+
+    const email = form.email.value.trim();
+    if (!EMAIL_RE.test(email)) return showError('Please enter a valid email address.');
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        stateForm.style.display = 'none';
+        stateOk.style.display = 'block';
+      } else {
+        showError(data.error || 'Something went wrong. Please try again.');
+        btn.disabled = false;
+        btn.textContent = 'Subscribe';
+      }
+    } catch {
+      showError('Could not subscribe. Please check your connection and try again.');
+      btn.disabled = false;
+      btn.textContent = 'Subscribe';
+    }
+  });
+
+  function sendHeight() {
+    var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    window.parent.postMessage(JSON.stringify({ height: h }), '*');
+    window.parent.postMessage({ type: 'iframeHeight', height: h }, '*');
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  document.fonts.ready.then(sendHeight);
+</script>
+
+</body>
+</html>

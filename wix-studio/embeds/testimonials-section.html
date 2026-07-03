@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════
+  SHIVOHAMPATH · TESTIMONIALS SECTION EMBED (Home page)
+  ═══════════════════════════════════════════════════════════════
+  REPLACE THE PLACEHOLDER QUOTES BELOW with real client testimonials
+  before publishing. First-name + city is enough to feel real without
+  compromising privacy — see the audit's "Missing Social Proof" note.
+  ═══════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap"
+  onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet"></noscript>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: #0a0a0f; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .testimonials {
+    padding: 100px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .testi-hdr {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 56px; gap: 24px; flex-wrap: wrap;
+  }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 14px;
+  }
+  .testi-hdr h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 3.5vw, 48px); font-weight: 300;
+    color: var(--text); line-height: 1.1;
+  }
+  .testi-hdr h2 em { color: var(--gold); font-style: italic; }
+
+  .btn-ghost {
+    font-family: 'Cinzel', serif; font-size: 11px;
+    letter-spacing: 2.5px; padding: 13px 32px;
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold2); cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .btn-ghost:hover { background: var(--gold3); }
+
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .testi-card {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 32px 28px;
+  }
+  .stars { color: var(--gold); font-size: 12px; letter-spacing: 2px; margin-bottom: 16px; }
+  .testi-card p {
+    font-size: 15px; color: var(--text2); line-height: 1.75;
+    font-style: italic; margin-bottom: 20px;
+  }
+  .testi-author {
+    display: flex; align-items: center; gap: 12px;
+    border-top: 1px solid var(--line); padding-top: 16px;
+  }
+  .testi-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--gold3); border: 1px solid var(--gold2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 12px; color: var(--gold);
+    flex-shrink: 0;
+  }
+  .testi-name { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 1.5px; color: var(--text); }
+  .testi-loc { font-size: 11px; color: var(--text3); margin-top: 2px; }
+
+  @media (max-width: 900px) {
+    .testimonials { padding: 72px 32px; }
+    .testi-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .testimonials { padding: 56px 20px; }
+    .testi-hdr { flex-direction: column; align-items: flex-start; gap: 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 0.001ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<section class="testimonials">
+  <div class="testi-hdr">
+    <div>
+      <span class="eyebrow">The Path In Action</span>
+      <h2>What People<br><em>Experience</em></h2>
+    </div>
+  </div>
+
+  <div class="testi-grid">
+    <!-- PLACEHOLDER — replace with a real testimonial -->
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"The Karmic Knots reading broke open something I had been trying to heal for years with therapy. Veena showed me the root — and it was older than this life."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">A</div>
+        <div>
+          <div class="testi-name">Ananya S.</div>
+          <div class="testi-loc">Mumbai, India</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLACEHOLDER — replace with a real testimonial -->
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"I came in skeptical. I left with a completely different understanding of why my life kept repeating the same patterns. The D60 reading was unlike anything I'd experienced."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">R</div>
+        <div>
+          <div class="testi-name">Rohan M.</div>
+          <div class="testi-loc">Bangalore, India</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLACEHOLDER — replace with a real testimonial -->
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"She doesn't just read charts — she reads souls. The clarity I received from one session was more than years of spiritual seeking had given me."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">P</div>
+        <div>
+          <div class="testi-name">Priya K.</div>
+          <div class="testi-loc">Dubai, UAE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function sendHeight() {
+    var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    window.parent.postMessage(JSON.stringify({ height: h }), '*');
+    window.parent.postMessage({ type: 'iframeHeight', height: h }, '*');
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  document.fonts.ready.then(sendHeight);
+</script>
+
+</body>
+</html>

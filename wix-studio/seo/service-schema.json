@@ -1,0 +1,96 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "Service",
+      "position": 1,
+      "name": "Specific Question Reading",
+      "description": "For one area of life that feels heavy, confusing, or karmically stuck — relationships, career, health, or spiritual growth.",
+      "provider": { "@id": "https://www.shivohampath.com/#veena" },
+      "areaServed": "Worldwide",
+      "url": "https://www.shivohampath.com/booking-calendar/specific-question-reading-30-mins",
+      "offers": {
+        "@type": "Offer",
+        "price": "2499",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "position": 2,
+      "name": "Karmic Knots Reading",
+      "description": "D1 + D9 + D60 combined. The full soul audit — past-life wounds, karmic contracts, and what your soul came to resolve.",
+      "provider": { "@id": "https://www.shivohampath.com/#veena" },
+      "areaServed": "Worldwide",
+      "url": "https://www.shivohampath.com/booking-calendar/karmic-knots-reading-60-mins",
+      "offers": {
+        "@type": "Offer",
+        "price": "6500",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "position": 3,
+      "name": "Synastry & Kundali Milan",
+      "description": "Karmic bond analysis between two charts — why you keep finding each other, and what contract exists between your souls.",
+      "provider": { "@id": "https://www.shivohampath.com/#veena" },
+      "areaServed": "Worldwide",
+      "url": "https://www.shivohampath.com/booking-calendar/synastry-kundali-milan",
+      "offers": {
+        "@type": "Offer",
+        "price": "9400",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "position": 4,
+      "name": "Advanced Moksha Path Consultation",
+      "description": "The soul's liberation path — what your chart says about where you are in the cycle of return, and what this lifetime is asking you to complete.",
+      "provider": { "@id": "https://www.shivohampath.com/#veena" },
+      "areaServed": "Worldwide",
+      "url": "https://www.shivohampath.com/booking-calendar/advanced-moksha-path-consultation",
+      "offers": {
+        "@type": "Offer",
+        "price": "8500",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "position": 5,
+      "name": "Madhurya Bhakta Sessions",
+      "description": "Ongoing guidance for those on the path of divine union, working with chart, devotional history, and longing.",
+      "provider": { "@id": "https://www.shivohampath.com/#veena" },
+      "areaServed": "Worldwide",
+      "url": "https://www.shivohampath.com/booking-calendar/madhurya-bhakta-sessions",
+      "offers": {
+        "@type": "Offer",
+        "price": "6499",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "position": 6,
+      "name": "Shiva Oracle Reading",
+      "description": "A written oracle report delivered as a PDF — depth without the live-session format, or a first entry point before booking a full reading.",
+      "provider": { "@id": "https://www.shivohampath.com/#veena" },
+      "areaServed": "Worldwide",
+      "url": "https://www.shivohampath.com/booking-calendar/shiva-oracle-reading-pdf-report-only",
+      "offers": {
+        "@type": "Offer",
+        "price": "1499",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
+}

@@ -5,9 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<!--
+  Font CSS is loaded non-blocking (preload + swap-to-stylesheet on load).
+  A plain <link rel="stylesheet"> here would hold up first paint until the
+  fonts.googleapis.com request returns — on a slow mobile connection that
+  is exactly the multi-second "blank gray hero" the audit flagged, because
+  nothing in this iframe can paint until its <head> finishes loading.
+  This way the browser paints immediately with the fallback serif in the
+  inline <style> below, then swaps to the real fonts once they arrive.
+-->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap"
+  onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet"></noscript>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  /* Paint the dark background immediately, before the fonts CSS or any
+     JS has run — removes the flash of default white iframe background. */
+  html { background: #0a0a0f; }
   :root {
     --bg:    #0a0a0f;
     --bg2:   #0f0a1a;

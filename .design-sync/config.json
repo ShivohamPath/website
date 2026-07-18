@@ -1,0 +1,8 @@
+{
+  "projectId": "4f61602d-3498-4052-9237-0e33e8f099c6",
+  "shape": "package",
+  "pkg": "@shivohampath/design-system",
+  "globalName": "ShivohamPath",
+  "buildCmd": "cd design-system && npm install && npm run build",
+  "cssEntry": "src/styles.css"
+}

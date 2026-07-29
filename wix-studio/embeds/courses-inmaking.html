@@ -100,7 +100,7 @@
 
   .tags-row {
     display: flex; gap: 8px; flex-wrap: wrap;
-    margin-bottom: 8px;
+    margin-bottom: 22px;
   }
   .tag {
     font-family: 'Cinzel', serif; font-size: 8px;
@@ -108,6 +108,20 @@
     padding: 5px 14px; border: 1px solid var(--line);
   }
   .tag.lit { border-color: var(--gold2); color: var(--gold); }
+
+  .modules-label {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 2px; color: var(--text3);
+    display: block; margin-bottom: 10px;
+  }
+  .modules-row {
+    display: flex; flex-direction: column; gap: 5px;
+  }
+  .course-tag {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+    display: block;
+  }
 
   /* ── WAITLIST FORM ── */
   .card-footer {
@@ -197,20 +211,36 @@
   <div class="course-card">
     <span class="making-badge">IN THE MAKING</span>
     <span class="card-icon">☽</span>
-    <h3>Spirituality for <em>Misfits</em></h3>
-    <p class="course-subtitle">A gangster's path to the soul</p>
+    <h3>Śivo'ham — <em>The Recognition</em></h3>
+    <p class="course-subtitle">An advanced course in Kashmir Shaivism for women · Successor to She Who Becomes Him</p>
     <p class="course-desc">
-      For the ones who never fit the mould — the rebels, the questioners, the ones
-      told they were too much for the temple and too strange for the world.
-      This course strips spirituality of its costume and returns it to what it
-      always was: <em>raw, unfiltered, and utterly alive</em>. It is being built now,
-      teaching by teaching, for those who walked the hard road first and found
-      the sacred waiting at the end of it.
+      She Who Becomes Him closed the distance between she and Him — longing, burning,
+      surrender, union. This course removes the bridge itself. In Kashmir Shaivism
+      there is no gap to cross: what feels like distance is only the contraction
+      that makes you experience yourself as small, separate, incomplete.
+      Nothing must be attained. Something must be <em>recognised</em>.
+      Union was the ceiling of the first course. <em>It is the floor of this one.</em>
+    </p>
+    <p class="course-desc">
+      Seven modules through the three upāyas — body, mind, will — into grace and
+      liberation while living. Rooted in the Śiva Sūtras, the Vijñāna Bhairava,
+      the Spanda Kārikās, and the vākhs of Lalleshwari.
     </p>
     <div class="tags-row">
-      <span class="tag lit">COURSE IN CREATION</span>
-      <span class="tag">THE UNCONVENTIONAL PATH</span>
-      <span class="tag">DOORS OPEN SOON</span>
+      <span class="tag lit">IN CREATION NOW</span>
+      <span class="tag">7 MODULES</span>
+      <span class="tag">FOR WOMEN</span>
+      <span class="tag">KASHMIR SHAIVISM</span>
+    </div>
+    <span class="modules-label">THE SEVEN MODULES</span>
+    <div class="modules-row">
+      <span class="course-tag">I · Caitanyam Ātmā — The Ground of Everything</span>
+      <span class="course-tag">II · The Forgetting — Malas and Kañcukas</span>
+      <span class="course-tag">III · Āṇavopāya — The Path Through the Body</span>
+      <span class="course-tag">IV · Śāktopāya — The Path Through the Mind</span>
+      <span class="course-tag">V · Śāmbhavopāya — The Path of Will</span>
+      <span class="course-tag">VI · Śaktipāta &amp; Anupāya — Grace and the Pathless Path</span>
+      <span class="course-tag">VII · Jīvanmukti — Living as Her</span>
     </div>
 
     <div class="card-footer">
@@ -267,7 +297,7 @@
       const res = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'spirituality-for-misfits-waitlist' })
+        body: JSON.stringify({ email, source: 'shivoham-recognition-waitlist' })
       });
       const data = await res.json();
 

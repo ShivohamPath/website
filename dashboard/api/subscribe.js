@@ -30,8 +30,8 @@ export default async function handler(req, res) {
   }
 
   const groups = [process.env.MAILERLITE_GROUP_ID || ''];
-  if (source === 'spirituality-for-misfits-waitlist' && process.env.MAILERLITE_MISFITS_GROUP_ID) {
-    groups.push(process.env.MAILERLITE_MISFITS_GROUP_ID);
+  if (source === 'shivoham-recognition-waitlist' && process.env.MAILERLITE_RECOGNITION_GROUP_ID) {
+    groups.push(process.env.MAILERLITE_RECOGNITION_GROUP_ID);
   }
 
   try {

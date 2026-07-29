@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════
+  SHIVOHAMPATH · COURSES PAGE — "IN THE MAKING" SECTION
+  Śivo'ham — The Recognition (upcoming course announcement)
+  ═══════════════════════════════════════════════════════════════
+  HOW TO ADD THIS TO THE EXISTING COURSES PAGE:
+  1. Wix editor → Courses page → Add → Embed → HTML iFrame,
+     placed below the She Who Becomes Him section
+  2. Paste the ENTIRE contents of this file
+  3. Set embed width to 100%, height ~820px desktop / ~1100px
+     mobile, then preview and adjust until nothing is clipped
+  Nothing else on the page needs to change.
+  ═══════════════════════════════════════════════════════════════
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -297,7 +311,7 @@
       const res = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'shivoham-recognition-waitlist' })
+        body: JSON.stringify({ email })
       });
       const data = await res.json();
 

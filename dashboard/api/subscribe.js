@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { email, name, source } = req.body;
+  const { email, name } = req.body;
 
   if (!email) {
     return res.status(400).json({ error: 'Email is required' });
@@ -29,11 +29,6 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server misconfigured' });
   }
 
-  const groups = [process.env.MAILERLITE_GROUP_ID || ''];
-  if (source === 'shivoham-recognition-waitlist' && process.env.MAILERLITE_RECOGNITION_GROUP_ID) {
-    groups.push(process.env.MAILERLITE_RECOGNITION_GROUP_ID);
-  }
-
   try {
     const mlRes = await fetch('https://connect.mailerlite.com/api/subscribers', {
       method: 'POST',
@@ -44,7 +39,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         email,
         fields: { name: name || '' },
-        groups
+        groups: [process.env.MAILERLITE_GROUP_ID || '']
       })
     });
 

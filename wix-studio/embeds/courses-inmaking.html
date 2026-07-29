@@ -8,9 +8,10 @@
   1. Wix editor → Courses page → Add → Embed → HTML iFrame,
      placed below the She Who Becomes Him section
   2. Paste the ENTIRE contents of this file
-  3. Set embed width to 100%, height ~820px desktop / ~1100px
+  3. Set embed width to 100%, height ~700px desktop / ~950px
      mobile, then preview and adjust until nothing is clipped
-  Nothing else on the page needs to change.
+  Nothing else on the page or site needs to change.
+  No forms, no backend, no configuration — pure announcement.
   ═══════════════════════════════════════════════════════════════
 -->
 <html lang="en">
@@ -137,67 +138,15 @@
     display: block;
   }
 
-  /* ── WAITLIST FORM ── */
+  /* ── FOOTER NOTE ── */
   .card-footer {
     margin-top: 28px; padding-top: 24px;
     border-top: 1px solid var(--line);
   }
-  .waitlist-label {
-    font-family: 'Cinzel', serif; font-size: 9px;
-    letter-spacing: 2px; color: var(--text3);
-    display: block; margin-bottom: 14px;
-  }
-
-  .waitlist-form {
-    display: flex; gap: 12px; flex-wrap: wrap;
-    max-width: 520px;
-  }
-  .waitlist-input {
-    flex: 1; min-width: 220px;
-    background: var(--bg3);
-    border: 1px solid var(--line2);
-    color: var(--text);
-    font-family: 'EB Garamond', Georgia, serif;
-    font-size: 15px;
-    padding: 13px 16px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .waitlist-input::placeholder { color: var(--text3); }
-  .waitlist-input:focus { border-color: var(--gold2); }
-
-  .btn-primary {
-    font-family: 'Cinzel', serif; font-size: 11px;
-    letter-spacing: 2px; padding: 13px 28px;
-    background: var(--gold); color: var(--bg);
-    border: none; cursor: pointer;
-    text-decoration: none; display: inline-block;
-    transition: background 0.2s;
-  }
-  .btn-primary:hover { background: #a8893a; }
-  .btn-primary:disabled { opacity: 0.6; cursor: default; }
-
-  .form-error {
-    display: none;
-    font-size: 13px; font-style: italic;
-    color: #c98a7a; margin-top: 10px;
-  }
-
-  .form-success {
-    display: none;
-  }
-  .form-success .success-icon {
-    font-size: 20px; color: var(--gold);
-    opacity: 0.7; display: block; margin-bottom: 10px;
-  }
-  .form-success h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px; font-weight: 400;
-    color: var(--text); margin-bottom: 6px;
-  }
-  .form-success p {
-    font-size: 14px; font-style: italic;
-    color: var(--text3); line-height: 1.6;
+  .doors-note {
+    font-size: clamp(13px, 1.6vw, 15px);
+    font-style: italic; color: var(--text3);
+    line-height: 1.7;
   }
 
   /* ── RESPONSIVE ── */
@@ -207,8 +156,6 @@
   @media (max-width: 560px) {
     .section { padding: 0 16px 56px; }
     .course-card { padding: 26px 20px; }
-    .waitlist-form { flex-direction: column; }
-    .waitlist-input, .btn-primary { width: 100%; text-align: center; }
   }
 </style>
 </head>
@@ -258,88 +205,14 @@
     </div>
 
     <div class="card-footer">
-
-      <div id="state-form">
-        <span class="waitlist-label">BE THE FIRST TO KNOW WHEN DOORS OPEN</span>
-        <form id="waitlist-form" class="waitlist-form" novalidate>
-          <input type="email" name="email" class="waitlist-input"
-                 placeholder="Your email address" autocomplete="email" required>
-          <button type="submit" id="wl-submit" class="btn-primary">Join the Waitlist</button>
-        </form>
-        <p class="form-error" id="wl-error"></p>
-      </div>
-
-      <div class="form-success" id="state-success">
-        <span class="success-icon">✦</span>
-        <h4>You're on the list.</h4>
-        <p>When the doors open, you will be the first to know.</p>
-      </div>
-
+      <p class="doors-note">
+        Doors open soon. Announcements reach the newsletter first —
+        you can join it at the bottom of this page.
+      </p>
     </div>
   </div>
 
 </div>
-
-<script>
-  // Same Vercel endpoint the newsletter + contact forms use (MailerLite behind it)
-  const API_URL = 'https://website-shivohampaths-projects.vercel.app/api/subscribe';
-
-  const form      = document.getElementById('waitlist-form');
-  const btn       = document.getElementById('wl-submit');
-  const stateForm = document.getElementById('state-form');
-  const stateOk   = document.getElementById('state-success');
-  const errorEl   = document.getElementById('wl-error');
-
-  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  function showError(msg) {
-    errorEl.textContent = msg;
-    errorEl.style.display = 'block';
-  }
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    errorEl.style.display = 'none';
-
-    const email = form.email.value.trim();
-    if (!EMAIL_RE.test(email)) return showError('Please enter a valid email address.');
-
-    btn.disabled = true;
-    btn.textContent = 'Joining…';
-
-    try {
-      const res = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      });
-      const data = await res.json();
-
-      if (res.ok && data.success) {
-        stateForm.style.display = 'none';
-        stateOk.style.display = 'block';
-        sendHeight();
-      } else {
-        showError(data.error || 'Something went wrong. Please try again.');
-        btn.disabled = false;
-        btn.textContent = 'Join the Waitlist';
-      }
-    } catch {
-      showError('Could not join. Please check your connection and try again.');
-      btn.disabled = false;
-      btn.textContent = 'Join the Waitlist';
-    }
-  });
-
-  function sendHeight() {
-    var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-    window.parent.postMessage(JSON.stringify({ height: h }), '*');
-    window.parent.postMessage({ type: 'iframeHeight', height: h }, '*');
-  }
-  window.addEventListener('load', sendHeight);
-  window.addEventListener('resize', sendHeight);
-  document.fonts.ready.then(sendHeight);
-</script>
 
 </body>
 </html>

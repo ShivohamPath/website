@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════
+  SHIVOHAMPATH · ŚIVO'HAM — THE RECOGNITION · SECTION 5 of 5: TEXTS + CLOSE
+  ═══════════════════════════════════════════════════════════════
+  Fifth (last) HTML iFrame on the page. Paste this ENTIRE file.
+  Width 100%; height ~1000px desktop / ~1350px mobile —
+  preview and adjust until nothing is clipped.
+  ═══════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --bg3:   #131020;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .section { padding: 20px 60px 96px; max-width: 1000px; margin: 0 auto; }
+
+  .section-header { text-align: center; margin-bottom: 48px; }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 16px;
+  }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 3.5vw, 46px);
+    font-weight: 300; color: var(--text); line-height: 1.1;
+  }
+  .section-header h2 em { font-style: italic; color: var(--gold); }
+  .section-header .sub {
+    font-size: 15px; font-style: italic; color: var(--text3);
+    max-width: 540px; margin: 16px auto 0; line-height: 1.7;
+  }
+  .divider {
+    display: flex; align-items: center; gap: 14px;
+    justify-content: center; margin: 18px 0 0;
+  }
+  .divider-line { height: 1px; background: var(--line2); width: 60px; }
+  .divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
+
+  /* Texts list */
+  .texts-list {
+    border: 1px solid var(--line);
+    margin-bottom: 72px;
+  }
+  .text-row {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 24px; align-items: baseline;
+    padding: 20px 30px;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.2s;
+  }
+  .text-row:last-child { border-bottom: none; }
+  .text-row:hover { background: rgba(201,168,76,0.03); }
+  .text-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 2vw, 20px);
+    font-weight: 400; font-style: italic;
+    color: var(--text); line-height: 1.35;
+  }
+  .text-name small {
+    display: block; font-family: 'Cinzel', serif;
+    font-size: 7px; letter-spacing: 2px;
+    color: var(--text3); font-style: normal;
+    margin-top: 5px;
+  }
+  .text-role {
+    font-size: clamp(13.5px, 1.6vw, 15px);
+    color: var(--text2); line-height: 1.75;
+  }
+
+  /* Closing CTA */
+  .close-block {
+    text-align: center;
+    position: relative;
+    padding: 56px 32px;
+    border: 1px solid var(--line2);
+    background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
+    overflow: hidden;
+  }
+  .close-block::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--gold); opacity: 0.5;
+  }
+  .close-glyph {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 220px; font-weight: 300;
+    color: rgba(201,168,76,0.04);
+    line-height: 1; user-select: none;
+  }
+  .close-inner { position: relative; z-index: 1; }
+  .close-badge {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--gold);
+    border: 1px solid var(--gold2);
+    background: var(--gold4);
+    padding: 4px 12px; display: inline-block;
+    margin-bottom: 24px;
+  }
+  .close-block h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 300; color: var(--text);
+    line-height: 1.15; margin-bottom: 16px;
+  }
+  .close-block h3 em { font-style: italic; color: var(--gold); }
+  .close-block p {
+    font-size: 16px; font-style: italic;
+    color: var(--text2); line-height: 1.8;
+    max-width: 520px; margin: 0 auto 32px;
+  }
+  .btn-ghost {
+    font-family: 'Cinzel', serif; font-size: 11px;
+    letter-spacing: 2.5px; padding: 14px 36px;
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold2); cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { background: var(--gold3); }
+  .close-note {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+    display: block; margin-top: 22px; line-height: 1.9;
+  }
+
+  @media (max-width: 860px) {
+    .section { padding: 12px 32px 72px; }
+    .text-row { grid-template-columns: 1fr; gap: 8px; padding: 18px 22px; }
+  }
+  @media (max-width: 520px) {
+    .section { padding: 8px 20px 56px; }
+    .close-block { padding: 40px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="section">
+
+  <div class="section-header">
+    <span class="eyebrow">THE SOURCES</span>
+    <h2>Seven Core <em>Texts</em></h2>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+    <p class="sub">
+      Nothing here is invented. Every module stands on the classical
+      literature of Kashmir Shaivism — read as a living practice, not an archive.
+    </p>
+  </div>
+
+  <div class="texts-list">
+    <div class="text-row">
+      <span class="text-name">Pratyabhijñāhṛdayam<small>KṢEMARĀJA</small></span>
+      <span class="text-role">Twenty sūtras — the heart of recognition, and the cleanest spine of the whole course.</span>
+    </div>
+    <div class="text-row">
+      <span class="text-name">Śiva Sūtras<small>WITH KṢEMARĀJA'S VIMARŚINĪ</small></span>
+      <span class="text-role">The source of the upāya structure the course climbs.</span>
+    </div>
+    <div class="text-row">
+      <span class="text-name">Spanda Kārikās<small>THE DOCTRINE OF VIBRATION</small></span>
+      <span class="text-role">The pulse beneath Modules III–V.</span>
+    </div>
+    <div class="text-row">
+      <span class="text-name">Vijñāna Bhairava Tantra<small>112 DHĀRAṆĀS</small></span>
+      <span class="text-role">The working practice manual from Module III onward.</span>
+    </div>
+    <div class="text-row">
+      <span class="text-name">Tantrāloka<small>ABHINAVAGUPTA</small></span>
+      <span class="text-role">Depth and authority — cited where it illuminates, never skimmed as a whole.</span>
+    </div>
+    <div class="text-row">
+      <span class="text-name">Śivastotrāvalī<small>UTPALADEVA</small></span>
+      <span class="text-role">The devotional lifeline. It opens the course in Module I and returns to close it in Module VII.</span>
+    </div>
+    <div class="text-row">
+      <span class="text-name">The Vākhs of Lal Ded<small>LALLESHWARI OF KASHMIR</small></span>
+      <span class="text-role">Threaded throughout, centred in Module VI — a woman's Shaivism, in the vernacular, in the body.</span>
+    </div>
+  </div>
+
+  <div class="close-block">
+    <div class="close-glyph">ॐ</div>
+    <div class="close-inner">
+      <span class="close-badge">IN THE MAKING</span>
+      <h3>The Course Is Being<br><em>Written Now.</em></h3>
+      <p>
+        Teaching by teaching, practice by practice. When the doors open,
+        the announcement reaches the newsletter first.
+      </p>
+      <a href="https://www.shivohampath.com/courses" target="_top" class="btn-ghost">Explore the Live Courses</a>
+      <span class="close-note">JOIN THE NEWSLETTER AT THE BOTTOM OF THIS PAGE<br>TO HEAR IT FIRST</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

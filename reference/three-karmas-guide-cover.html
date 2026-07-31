@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Chart Is Not a Prediction Grid — Free Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070913;
+      --panel: #171229;
+      --panel-2: #120f1e;
+      --text: #efe7d8;
+      --muted: rgba(239, 231, 216, 0.74);
+      --gold: #c4a052;
+      --gold-soft: rgba(196, 160, 82, 0.26);
+      --line: rgba(239, 231, 216, 0.14);
+      --violet: #7a64c6;
+      --rust: #bd6649;
+      --blue: #4a86cc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      line-height: 1.35;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 16mm 14mm 12mm;
+      background:
+        radial-gradient(circle at 72% 22%, rgba(122, 100, 198, 0.16) 0 15%, transparent 38%),
+        radial-gradient(circle at 85% 62%, rgba(196, 160, 82, 0.07) 0 26%, transparent 52%),
+        linear-gradient(180deg, #070913 0%, #070912 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: Inter, Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 10px;
+      color: var(--gold);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--gold-soft);
+      margin-bottom: 18mm;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 0.95fr;
+      gap: 18mm;
+      align-items: start;
+      margin-bottom: 24mm;
+    }
+
+    h1 {
+      font-size: 23mm;
+      line-height: 0.95;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.01em;
+      margin-bottom: 10mm;
+      max-width: 110mm;
+    }
+
+    .subhead {
+      border-top: 1px solid var(--gold);
+      padding-top: 6mm;
+      max-width: 108mm;
+    }
+
+    .subhead p:first-child {
+      font-size: 6.4mm;
+      font-style: italic;
+      margin-bottom: 5mm;
+    }
+
+    .subhead p:last-child {
+      color: var(--muted);
+      font-size: 4.9mm;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .author {
+      text-align: center;
+      padding-top: 4mm;
+    }
+
+    .seal {
+      width: 64mm;
+      aspect-ratio: 1;
+      margin: 0 auto 6mm;
+      border-radius: 50%;
+      border: 1px solid var(--gold-soft);
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at center, rgba(239, 231, 216, 0.05) 0%, rgba(122, 100, 198, 0.14) 50%, rgba(20, 16, 35, 0.6) 100%);
+      box-shadow: inset 0 0 0 5px rgba(196, 160, 82, 0.1);
+    }
+
+    .seal span {
+      font-size: 16mm;
+      color: var(--gold);
+    }
+
+    .author h2 {
+      font-size: 8mm;
+      font-weight: 500;
+      margin-bottom: 1mm;
+    }
+
+    .author p {
+      font-family: Inter, Arial, sans-serif;
+      font-size: 3.7mm;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .quote {
+      background: linear-gradient(180deg, #20153c 0%, #18122d 100%);
+      border: 1px solid var(--gold-soft);
+      border-radius: 3mm;
+      padding: 4mm 6mm;
+      margin-bottom: 11mm;
+      text-align: center;
+    }
+
+    .quote .label {
+      font-family: Inter, Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 3.2mm;
+      color: var(--gold);
+      margin-bottom: 2mm;
+    }
+
+    .quote blockquote {
+      font-size: 5.8mm;
+      font-style: italic;
+      margin-bottom: 1.4mm;
+    }
+
+    .quote .source {
+      font-size: 4.6mm;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .inside-title {
+      font-family: Inter, Arial, sans-serif;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 4.1mm;
+      margin-bottom: 4.5mm;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4mm;
+      margin-bottom: 14mm;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(28, 22, 43, 0.95), rgba(18, 15, 30, 0.95));
+      border: 1px solid var(--line);
+      border-left-width: 2mm;
+      border-radius: 2.5mm;
+      padding: 4mm 4.5mm;
+      min-height: 30mm;
+    }
+
+    .card h3 {
+      font-size: 6.1mm;
+      margin-bottom: 2mm;
+      font-weight: 600;
+    }
+
+    .card p {
+      font-size: 4.9mm;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.35;
+    }
+
+    .violet { border-left-color: var(--violet); }
+    .rust { border-left-color: var(--rust); }
+    .gold { border-left-color: var(--gold); }
+    .blue { border-left-color: var(--blue); }
+
+    .course-strip {
+      border: 1px solid var(--gold-soft);
+      border-radius: 2mm;
+      text-align: center;
+      font-family: Inter, Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      font-size: 3.9mm;
+      padding: 2.5mm 3mm;
+      margin-bottom: 10mm;
+      background: rgba(54, 34, 6, 0.3);
+    }
+
+    .footer {
+      margin-top: auto;
+      border-top: 1px solid var(--line);
+      padding-top: 3.2mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: Inter, Arial, sans-serif;
+      color: rgba(239, 231, 216, 0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 3.3mm;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <span>Shivohampath</span>
+      <span>Free Guide</span>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1>Your Chart Is Not a Prediction Grid</h1>
+        <div class="subhead">
+          <p>The Three Karmas — A New Way to See Your Birth Chart</p>
+          <p>
+            Jyotish was never designed to predict your future.<br />
+            It was designed to reveal your soul's karmic curriculum.
+          </p>
+        </div>
+      </div>
+
+      <aside class="author" aria-label="Guide author">
+        <div class="seal"><span>VM</span></div>
+        <h2>Veena Maheshwari</h2>
+        <p>Jyotish Teacher · Shivohampath</p>
+      </aside>
+    </section>
+
+    <section class="quote" aria-label="Opening quote">
+      <p class="label">BPHS Vol. 1, Ch. 2, Slokas 3–4</p>
+      <blockquote>
+        Karmaphala pradāy' aiva Nava Graharūpiṇām<br />
+        “The Lord incarnated as the nine planets to deliver karmic fruits to all living beings.”
+      </blockquote>
+      <p class="source">— Parasara to Maitreya</p>
+    </section>
+
+    <h3 class="inside-title">What's inside this guide</h3>
+
+    <section class="grid" aria-label="Guide overview">
+      <article class="card violet">
+        <h3>The Three Karmas</h3>
+        <p>Sanchita, Prarabdha &amp; Kriyamana — the three layers of your chart explained in depth.</p>
+      </article>
+      <article class="card rust">
+        <h3>How each karma shows</h3>
+        <p>Which houses and dasha cycles carry each layer, and what to look for in your own chart.</p>
+      </article>
+      <article class="card gold">
+        <h3>Chart reading prompt</h3>
+        <p>Three guided questions to ask your birth chart right now — no technical knowledge needed.</p>
+      </article>
+      <article class="card blue">
+        <h3>Full course brochure</h3>
+        <p>Foundations of Jyotish — 12-module live course details, pricing, and founding cohort info.</p>
+      </article>
+    </section>
+
+    <div class="course-strip">Foundations of Jyotish · The Karma-based Path · 12-Module Live Course · 2026</div>
+
+    <footer class="footer">
+      <span>Shivohampath · Foundations of Jyotish · Free Guide</span>
+      <span>1</span>
+    </footer>
+  </main>
+</body>
+</html>

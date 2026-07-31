@@ -136,19 +136,40 @@
     color: var(--text2); line-height: 1.8;
     max-width: 520px; margin: 0 auto 32px;
   }
-  .btn-ghost {
-    font-family: 'Cinzel', serif; font-size: 11px;
-    letter-spacing: 2.5px; padding: 14px 36px;
-    background: transparent; color: var(--gold);
-    border: 1px solid var(--gold2); cursor: pointer;
-    text-decoration: none; display: inline-block;
-    transition: all 0.2s;
+  /* Enrol buttons */
+  .pay-wrap {
+    display: flex; gap: 24px;
+    justify-content: center; align-items: flex-end;
+    flex-wrap: wrap;
   }
-  .btn-ghost:hover { background: var(--gold3); }
+  .pay-item { text-align: center; }
+  .pay-label {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+    display: block; margin-bottom: 10px;
+  }
+  .btn-pay {
+    font-family: 'Cinzel', serif; font-size: 11px;
+    letter-spacing: 2.5px; padding: 15px 40px;
+    background: var(--gold); color: var(--bg);
+    text-decoration: none; display: inline-block;
+    border: 1px solid var(--gold);
+    transition: background 0.2s;
+  }
+  .btn-pay:hover { background: #a8893a; border-color: #a8893a; }
+  .btn-pay-outline {
+    font-family: 'Cinzel', serif; font-size: 11px;
+    letter-spacing: 2.5px; padding: 15px 40px;
+    background: transparent; color: var(--gold);
+    text-decoration: none; display: inline-block;
+    border: 1px solid var(--gold2);
+    transition: background 0.2s;
+  }
+  .btn-pay-outline:hover { background: var(--gold3); }
   .close-note {
     font-family: 'Cinzel', serif; font-size: 8px;
     letter-spacing: 2px; color: var(--text3);
-    display: block; margin-top: 22px; line-height: 1.9;
+    display: block; margin-top: 26px; line-height: 1.9;
   }
 
   @media (max-width: 860px) {
@@ -213,14 +234,26 @@
   <div class="close-block">
     <div class="close-glyph">ॐ</div>
     <div class="close-inner">
-      <span class="close-badge">IN THE MAKING</span>
-      <h3>The Course Is Being<br><em>Written Now.</em></h3>
+      <span class="close-badge">ENROLMENT OPEN</span>
+      <h3>Enter the<br><em>Recognition.</em></h3>
       <p>
-        Teaching by teaching, practice by practice. When the doors open,
-        the announcement reaches the newsletter first.
+        Three doors, one threshold. Choose the one that is yours.
       </p>
-      <a href="https://www.shivohampath.com/courses" target="_top" class="btn-ghost">Explore the Live Courses</a>
-      <span class="close-note">JOIN THE NEWSLETTER AT THE BOTTOM OF THIS PAGE<br>TO HEAR IT FIRST</span>
+      <div class="pay-wrap">
+        <div class="pay-item">
+          <span class="pay-label">NEW STUDENT · INDIA</span>
+          <a href="https://www.shivohampath.com/_paylink/AZ-4mohF" target="_top" class="btn-pay">Enrol Now</a>
+        </div>
+        <div class="pay-item">
+          <span class="pay-label">NEW STUDENT · INTERNATIONAL</span>
+          <a href="https://www.shivohampath.com/_paylink/AZ-4m7Gi" target="_top" class="btn-pay-outline">Enrol Now</a>
+        </div>
+        <div class="pay-item">
+          <span class="pay-label">SHE WHO BECOMES HIM ALUMNAE</span>
+          <a href="https://www.shivohampath.com/_paylink/AZ-4nJLG" target="_top" class="btn-pay-outline">Enrol as Alumna</a>
+        </div>
+      </div>
+      <span class="close-note">THE ALUMNAE DOOR IS FOR GRADUATES OF SHE WHO BECOMES HIM<br>PRICES IN INR VIA THE INDIA LINK · ALL DOORS OPEN THE SAME COURSE</span>
     </div>
   </div>
 

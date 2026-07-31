@@ -138,11 +138,22 @@
     display: block;
   }
 
-  /* ── FOOTER NOTE ── */
+  /* ── FOOTER ── */
   .card-footer {
     margin-top: 28px; padding-top: 24px;
     border-top: 1px solid var(--line);
+    display: flex; align-items: center; gap: 20px;
+    flex-wrap: wrap;
   }
+  .btn-ghost {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2px; padding: 12px 26px;
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold2); cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { background: var(--gold3); }
   .doors-note {
     font-size: clamp(13px, 1.6vw, 15px);
     font-style: italic; color: var(--text3);
@@ -205,9 +216,11 @@
     </div>
 
     <div class="card-footer">
+      <a href="https://www.shivohampath.com/shivoham-the-recognition-course"
+         target="_top"
+         class="btn-ghost">Explore the Course</a>
       <p class="doors-note">
-        Doors open soon. Announcements reach the newsletter first —
-        you can join it at the bottom of this page.
+        The full journey — the arc, all seven modules, and enrolment — awaits.
       </p>
     </div>
   </div>

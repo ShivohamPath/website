@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════
+  SHIVOHAMPATH · TERMS OF SERVICE  →  page slug: /terms
+  ═══════════════════════════════════════════════════════════════
+  The footer already links here, so no navigation changes are needed.
+  1. Wix editor → create the page /terms (if it doesn't exist)
+  2. Add → Embed → HTML iFrame, width 100%, height ~5350px desktop /
+     ~6700px mobile — preview and adjust until nothing is clipped
+  3. Paste the ENTIRE contents of this file
+
+  BEFORE PUBLISHING, decide and set these (search for them below):
+    · LAST UPDATED date       — currently reads "14 August 2026"
+    · REFUND WINDOW           — section 6 currently says 7 days, and
+                                that course refunds close once more
+                                than one module has been accessed
+    · RESCHEDULING NOTICE     — section 7 currently says 24 hours
+    · GOVERNING LAW / CITY    — section 15 currently says the courts
+                                of Kochi, Kerala
+    · REGISTERED NAME         — section 1, if you trade under one
+
+  NOTE: this is a solid, accurate starting draft written against how
+  the site actually operates. It is not legal advice — have a lawyer
+  review it before relying on it, especially sections 6 and 12.
+  ═══════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --bg3:   #131020;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.72);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  /* ── HEADER ── */
+  .legal-header {
+    text-align: center;
+    padding: 72px 40px 48px;
+    position: relative; overflow: hidden;
+    background:
+      radial-gradient(ellipse 60% 70% at 50% 40%, rgba(201,168,76,0.05) 0%, transparent 65%),
+      linear-gradient(180deg, #0a0a0f 0%, #0f0a1a 70%, #0a0a0f 100%);
+  }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 18px;
+  }
+  .legal-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 5vw, 58px);
+    font-weight: 300; line-height: 1.08;
+    color: var(--text); margin-bottom: 20px;
+  }
+  .legal-header h1 em { font-style: italic; color: var(--gold); }
+  .divider {
+    display: flex; align-items: center; gap: 14px;
+    justify-content: center; margin-bottom: 20px;
+  }
+  .divider-line { height: 1px; background: var(--line2); width: 60px; }
+  .divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
+  .updated {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+  }
+
+  /* ── BODY ── */
+  .legal-body {
+    max-width: 760px; margin: 0 auto;
+    padding: 8px 40px 96px;
+  }
+
+  .intro {
+    font-size: clamp(15px, 1.8vw, 17px);
+    color: var(--text2); line-height: 1.9;
+    padding-bottom: 32px; margin-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .intro em { font-style: italic; color: var(--text); }
+
+  section { padding-top: 40px; }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.6vw, 28px);
+    font-weight: 400; color: var(--text);
+    line-height: 1.25; margin-bottom: 16px;
+    display: flex; align-items: baseline; gap: 14px;
+  }
+  .num {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 1px; color: var(--gold);
+    opacity: 0.6; flex-shrink: 0;
+  }
+
+  h3 {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 2.5px; color: var(--gold);
+    margin: 26px 0 12px;
+  }
+
+  p {
+    font-size: clamp(14.5px, 1.7vw, 16px);
+    color: var(--text2); line-height: 1.9;
+    margin-bottom: 16px;
+  }
+  p em { font-style: italic; color: var(--text); }
+  a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold2); }
+  a:hover { color: var(--text); }
+
+  ul { list-style: none; margin: 0 0 16px; }
+  ul li {
+    display: flex; gap: 12px; align-items: baseline;
+    font-size: clamp(14.5px, 1.7vw, 16px);
+    color: var(--text2); line-height: 1.85;
+    margin-bottom: 10px;
+  }
+  ul li .bullet {
+    flex-shrink: 0; width: 4px; height: 4px;
+    background: var(--gold); opacity: 0.6;
+    transform: rotate(45deg); position: relative; top: -3px;
+  }
+  ul li .li-text { flex: 1; }
+  ul li strong { font-weight: 400; color: var(--text); }
+
+  /* Callout — used for the important disclaimers */
+  .callout {
+    border-left: 2px solid var(--gold2);
+    background: var(--gold4);
+    padding: 24px 28px; margin: 24px 0;
+  }
+  .callout .callout-label {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--gold);
+    display: block; margin-bottom: 10px;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* Contact block */
+  .contact-block {
+    border: 1px solid var(--line2);
+    background: var(--bg3);
+    padding: 32px 30px; margin-top: 44px;
+    text-align: center;
+  }
+  .contact-block .label {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--gold);
+    display: block; margin-bottom: 14px;
+  }
+  .contact-block p { margin-bottom: 0; }
+
+  @media (max-width: 700px) {
+    .legal-header { padding: 56px 24px 40px; }
+    .legal-body { padding: 8px 24px 72px; }
+  }
+  @media (max-width: 460px) {
+    .legal-header { padding: 48px 18px 32px; }
+    .legal-body { padding: 8px 18px 56px; }
+    h2 { flex-direction: column; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="legal-header">
+  <span class="eyebrow">SHIVOHAM PATH</span>
+  <h1>Terms of <em>Service</em></h1>
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line"></div>
+  </div>
+  <span class="updated">LAST UPDATED · 14 AUGUST 2026</span>
+</header>
+
+<div class="legal-body">
+
+  <p class="intro">
+    These terms govern your use of shivohampath.com and everything offered
+    through it — courses, readings, writings, and downloads. By using this site,
+    enrolling in a course, or booking a reading, you agree to them. Please read
+    section 9 in particular, which explains <em>what this work is and what it is not</em>.
+  </p>
+
+  <section>
+    <h2><span class="num">01</span>Who We Are</h2>
+    <p>
+      This website is operated by Shivoham Path ("we", "us"), based in India.
+      "You" means anyone using the site or its offerings. For anything relating
+      to these terms, write to
+      <a href="mailto:info@shivohampath.com">info@shivohampath.com</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span>Who May Use These Offerings</h2>
+    <p>
+      You must be at least 18 years old to purchase a course, book a reading, or
+      create an account. By doing so, you confirm that you are.
+    </p>
+    <p>
+      Some offerings have their own conditions of entry — for example, courses
+      held in a women-only container, or courses that assume you have completed
+      an earlier one. Where such a condition applies it is stated plainly on that
+      course's page, and enrolling means you meet it.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span>What We Offer</h2>
+    <ul>
+      <li><span class="bullet"></span><span class="li-text"><strong>Courses:</strong> structured teachings delivered online as written material, recorded lectures, practices, rituals, and workbooks — some self-paced, some with live sessions.</span></li>
+      <li><span class="bullet"></span><span class="li-text"><strong>Readings:</strong> one-to-one consultations, delivered live or as a written or recorded document.</span></li>
+      <li><span class="bullet"></span><span class="li-text"><strong>Writings and downloads:</strong> essays, guides, and digital texts, some free and some paid.</span></li>
+    </ul>
+    <p>
+      We describe each offering as accurately as we can. Where a course is still
+      in development, its page says so, and its contents may be refined before
+      release.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span>Enrolment and Payment</h2>
+    <p>
+      Prices are shown on the relevant page, in the currency indicated. Payment
+      is taken through our payment providers; your enrolment is confirmed once
+      payment clears and you receive confirmation by email.
+    </p>
+    <p>
+      Where an offering has separate payment links for India and international
+      students, please use the one that matches where you are paying from. Where
+      a reduced rate is offered to graduates of an earlier course, it is for those
+      graduates — we may ask to verify this.
+    </p>
+    <p>
+      Any bank charges, currency conversion costs, or taxes applicable in your
+      country are yours to bear.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">05</span>Access to Course Material</h2>
+    <p>
+      When you enrol, we give you a personal, non-transferable licence to access
+      the course material for your own study, for as long as the course remains
+      available to you.
+    </p>
+    <p>You may not:</p>
+    <ul>
+      <li><span class="bullet"></span><span class="li-text">Share your login, or give anyone else access to material you paid for.</span></li>
+      <li><span class="bullet"></span><span class="li-text">Copy, record, screenshot, download (beyond what is offered), or redistribute the material.</span></li>
+      <li><span class="bullet"></span><span class="li-text">Republish, resell, or teach the material as your own, in whole or in part.</span></li>
+      <li><span class="bullet"></span><span class="li-text">Use the material to train an automated or machine-learning system.</span></li>
+    </ul>
+    <p>
+      We may suspend or end access, without refund, where these are seriously or
+      repeatedly breached.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">06</span>Refunds and Cancellations</h2>
+
+    <h3>COURSES</h3>
+    <p>
+      Because course material is delivered digitally and becomes available
+      immediately, refunds are limited. You may request a refund within
+      <em>7 days</em> of purchase, provided you have not accessed more than one
+      module. After that point, or once more than one module has been opened, the
+      enrolment is non-refundable.
+    </p>
+
+    <h3>READINGS</h3>
+    <p>
+      A booked reading may be cancelled for a full refund up to 48 hours before
+      the appointment. Within 48 hours, or once a written or recorded reading has
+      been prepared and sent, it is non-refundable.
+    </p>
+
+    <h3>IF WE CANCEL</h3>
+    <p>
+      If we cancel a course, a live session, or a reading and cannot offer you a
+      suitable alternative, you receive a full refund of the affected portion.
+    </p>
+    <p>
+      To request a refund, write to
+      <a href="mailto:info@shivohampath.com">info@shivohampath.com</a> from the
+      email address you enrolled with. Approved refunds go back through the
+      original payment method.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">07</span>Rescheduling and Missed Sessions</h2>
+    <p>
+      If you need to move a booked session, tell us at least <em>24 hours</em>
+      beforehand and we will reschedule where we reasonably can. A session missed
+      without notice is treated as delivered. If we must move a session, we will
+      offer you the earliest suitable alternative.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">08</span>Intellectual Property</h2>
+    <p>
+      All material on this site and within its courses — writings, lectures,
+      practices, translations, commentary, images, design, and the Shivoham Path
+      name — belongs to us or is used with permission, and is protected by
+      copyright.
+    </p>
+    <p>
+      The classical texts these teachings draw on belong to the tradition itself.
+      Our translations, commentary, structuring, and presentation of them do not.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">09</span>The Nature of This Work</h2>
+
+    <div class="callout">
+      <span class="callout-label">PLEASE READ THIS SECTION CAREFULLY</span>
+      <p>
+        Everything offered here is spiritual and educational in nature. It is
+        <em>not</em> medical, psychological, psychiatric, legal, or financial
+        advice, and it is not a substitute for care from a qualified professional
+        in any of those fields.
+      </p>
+      <p>
+        Nothing here diagnoses, treats, or cures any condition. If you are unwell,
+        in crisis, or under treatment, please stay with your doctor or therapist —
+        this work sits alongside that care, never in place of it.
+      </p>
+    </div>
+
+    <p>
+      Readings, including those drawing on Jyotish, are offered as insight and
+      contemplation. They are not predictions of fact, and no outcome is
+      guaranteed. Decisions you take about your health, relationships, finances,
+      or life remain entirely your own.
+    </p>
+    <p>
+      Some practices work with breath, attention, and states of heightened
+      intensity. Approach them with care and at your own pace, never forcing an
+      experience. If you have a physical or psychological condition that such
+      practices might affect, speak with your doctor before beginning. You take
+      part in your own judgement and at your own risk.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">10</span>Your Conduct</h2>
+    <p>
+      Where a course includes a shared space — a sharing circle, a group, a
+      comment thread — what is spoken there is held in confidence by everyone
+      present. Please do not repeat it outside, and please treat other
+      participants with the respect the work asks for.
+    </p>
+    <p>
+      We may remove anyone from a shared space, without refund, for harassment,
+      abuse, or conduct that breaks the safety of the container.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">11</span>Third-Party Links and Services</h2>
+    <p>
+      This site links to other places — Instagram, YouTube, payment providers,
+      and others. We do not control them and are not responsible for their
+      content or their handling of your data. Their own terms apply when you
+      use them.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">12</span>Availability and Liability</h2>
+    <p>
+      We work to keep this site and its offerings available, but we cannot promise
+      uninterrupted access. Hosting, maintenance, and circumstances beyond our
+      control may interrupt it.
+    </p>
+    <p>
+      To the fullest extent the law allows, our total liability to you for any
+      claim connected to this site or its offerings is limited to the amount you
+      paid us for the offering the claim relates to. We are not liable for
+      indirect or consequential loss, or for decisions you make based on the
+      teachings or a reading.
+    </p>
+    <p>
+      Nothing here limits liability that cannot lawfully be limited, including for
+      fraud or for death or personal injury caused by negligence.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">13</span>Privacy</h2>
+    <p>
+      How we handle your personal information — including the birth details you
+      share for a reading — is set out in our
+      <a href="https://www.shivohampath.com/privacy" target="_top">Privacy Policy</a>,
+      which forms part of these terms.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">14</span>Changes to These Terms</h2>
+    <p>
+      We may revise these terms as our offerings change. The date at the top shows
+      when they were last revised, and the version in force is the one published
+      when you make your purchase. Where a change materially affects you, we will
+      say so directly.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">15</span>Governing Law</h2>
+    <p>
+      These terms are governed by the laws of India, and the courts of Kochi,
+      Kerala have exclusive jurisdiction over any dispute arising from them —
+      save that this does not deprive you of the protection of any mandatory
+      consumer law in your own country of residence.
+    </p>
+    <p>
+      If any part of these terms is found unenforceable, the rest remains in
+      force.
+    </p>
+  </section>
+
+  <div class="contact-block">
+    <span class="label">QUESTIONS ABOUT THESE TERMS</span>
+    <p>
+      Write to <a href="mailto:info@shivohampath.com">info@shivohampath.com</a>
+      and we will answer you personally.
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>

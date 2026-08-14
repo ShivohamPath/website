@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════
+  SHIVOHAMPATH · PRIVACY POLICY  →  page slug: /privacy
+  ═══════════════════════════════════════════════════════════════
+  The footer already links here, so no navigation changes are needed.
+  1. Wix editor → create the page /privacy (if it doesn't exist)
+  2. Add → Embed → HTML iFrame, width 100%, height ~4650px desktop /
+     ~5800px mobile — preview and adjust until nothing is clipped
+  3. Paste the ENTIRE contents of this file
+
+  BEFORE PUBLISHING, set these two things (search for them below):
+    · LAST UPDATED date  — currently reads "14 August 2026"
+    · REGISTERED NAME + address in section 1, if you trade under a
+      registered business name rather than "Shivoham Path"
+
+  NOTE: this is a solid, accurate starting draft written against what
+  the site actually collects (MailerLite, Wix, Vercel, Google Fonts).
+  It is not legal advice — have a lawyer review it before relying on it.
+  ═══════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --bg3:   #131020;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.72);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  /* ── HEADER ── */
+  .legal-header {
+    text-align: center;
+    padding: 72px 40px 48px;
+    position: relative; overflow: hidden;
+    background:
+      radial-gradient(ellipse 60% 70% at 50% 40%, rgba(201,168,76,0.05) 0%, transparent 65%),
+      linear-gradient(180deg, #0a0a0f 0%, #0f0a1a 70%, #0a0a0f 100%);
+  }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 18px;
+  }
+  .legal-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 5vw, 58px);
+    font-weight: 300; line-height: 1.08;
+    color: var(--text); margin-bottom: 20px;
+  }
+  .legal-header h1 em { font-style: italic; color: var(--gold); }
+  .divider {
+    display: flex; align-items: center; gap: 14px;
+    justify-content: center; margin-bottom: 20px;
+  }
+  .divider-line { height: 1px; background: var(--line2); width: 60px; }
+  .divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
+  .updated {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+  }
+
+  /* ── BODY ── */
+  .legal-body {
+    max-width: 760px; margin: 0 auto;
+    padding: 8px 40px 96px;
+  }
+
+  .intro {
+    font-size: clamp(15px, 1.8vw, 17px);
+    color: var(--text2); line-height: 1.9;
+    padding-bottom: 32px; margin-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .intro em { font-style: italic; color: var(--text); }
+
+  section { padding-top: 40px; }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.6vw, 28px);
+    font-weight: 400; color: var(--text);
+    line-height: 1.25; margin-bottom: 16px;
+    display: flex; align-items: baseline; gap: 14px;
+  }
+  .num {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 1px; color: var(--gold);
+    opacity: 0.6; flex-shrink: 0;
+  }
+
+  h3 {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 2.5px; color: var(--gold);
+    margin: 26px 0 12px;
+  }
+
+  p {
+    font-size: clamp(14.5px, 1.7vw, 16px);
+    color: var(--text2); line-height: 1.9;
+    margin-bottom: 16px;
+  }
+  p em { font-style: italic; color: var(--text); }
+  a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold2); }
+  a:hover { color: var(--text); }
+
+  ul { list-style: none; margin: 0 0 16px; }
+  ul li {
+    display: flex; gap: 12px; align-items: baseline;
+    font-size: clamp(14.5px, 1.7vw, 16px);
+    color: var(--text2); line-height: 1.85;
+    margin-bottom: 10px;
+  }
+  ul li .bullet {
+    flex-shrink: 0; width: 4px; height: 4px;
+    background: var(--gold); opacity: 0.6;
+    transform: rotate(45deg); position: relative; top: -3px;
+  }
+  ul li .li-text { flex: 1; }
+  ul li strong { font-weight: 400; color: var(--text); }
+
+  /* Third-party table */
+  .party-list {
+    border: 1px solid var(--line);
+    margin: 20px 0 8px;
+  }
+  .party-row {
+    display: grid; grid-template-columns: 1fr 1.6fr;
+    gap: 20px; padding: 16px 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  .party-row:last-child { border-bottom: none; }
+  .party-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; font-style: italic; color: var(--text);
+  }
+  .party-role {
+    font-size: 14.5px; color: var(--text2); line-height: 1.75;
+  }
+
+  /* Callout */
+  .callout {
+    border-left: 2px solid var(--gold2);
+    background: var(--gold4);
+    padding: 22px 26px; margin: 24px 0;
+  }
+  .callout p { margin-bottom: 0; font-size: 15px; }
+  .callout p em { font-style: italic; color: var(--text); }
+
+  /* Contact block */
+  .contact-block {
+    border: 1px solid var(--line2);
+    background: var(--bg3);
+    padding: 32px 30px; margin-top: 44px;
+    text-align: center;
+  }
+  .contact-block .label {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--gold);
+    display: block; margin-bottom: 14px;
+  }
+  .contact-block p { margin-bottom: 0; }
+
+  @media (max-width: 700px) {
+    .legal-header { padding: 56px 24px 40px; }
+    .legal-body { padding: 8px 24px 72px; }
+    .party-row { grid-template-columns: 1fr; gap: 6px; padding: 16px 18px; }
+  }
+  @media (max-width: 460px) {
+    .legal-header { padding: 48px 18px 32px; }
+    .legal-body { padding: 8px 18px 56px; }
+    h2 { flex-direction: column; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="legal-header">
+  <span class="eyebrow">SHIVOHAM PATH</span>
+  <h1>Privacy <em>Policy</em></h1>
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line"></div>
+  </div>
+  <span class="updated">LAST UPDATED · 14 AUGUST 2026</span>
+</header>
+
+<div class="legal-body">
+
+  <p class="intro">
+    This policy explains what personal information Shivoham Path collects when you
+    visit this website, subscribe to the newsletter, write to us, book a reading,
+    or enrol in a course — and what we do with it. We collect as little as the work
+    requires, and we do not sell your data to anyone, <em>ever</em>.
+  </p>
+
+  <section>
+    <h2><span class="num">01</span>Who We Are</h2>
+    <p>
+      Shivoham Path ("we", "us") publishes teachings, courses, and readings on
+      Jyotish, Kashmir Shaivism, and the esoteric traditions, and operates the
+      website at shivohampath.com. For anything relating to your privacy, write to
+      <a href="mailto:info@shivohampath.com">info@shivohampath.com</a>.
+    </p>
+    <p>
+      We are based in India, and this website is operated from there.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span>What We Collect</h2>
+
+    <h3>INFORMATION YOU GIVE US</h3>
+    <ul>
+      <li><span class="bullet"></span><span class="li-text"><strong>Newsletter signup:</strong> your email address.</span></li>
+      <li><span class="bullet"></span><span class="li-text"><strong>Contact form:</strong> your name, email address, the type of enquiry, and the message you write.</span></li>
+      <li><span class="bullet"></span><span class="li-text"><strong>Bookings and readings:</strong> the details you provide when booking — which, for a chart reading, ordinarily includes your date, time, and place of birth.</span></li>
+      <li><span class="bullet"></span><span class="li-text"><strong>Course enrolment:</strong> your name, email address, and account details for the members area.</span></li>
+      <li><span class="bullet"></span><span class="li-text"><strong>Anything you choose to send us</strong> by email, Instagram, or in the course of a session.</span></li>
+    </ul>
+
+    <h3>INFORMATION COLLECTED AUTOMATICALLY</h3>
+    <ul>
+      <li><span class="bullet"></span><span class="li-text">Standard technical data your browser sends — IP address, browser and device type, pages visited, and the time of your visit — collected by our website host as part of normal operation and security.</span></li>
+      <li><span class="bullet"></span><span class="li-text">Cookies and similar technologies, described in section 5.</span></li>
+    </ul>
+
+    <h3>PAYMENT INFORMATION</h3>
+    <p>
+      When you pay for a course or reading, your card or banking details go
+      directly to the payment processor. <em>We never see or store your full
+      payment details.</em> We receive only a confirmation that payment
+      succeeded, along with your name and email.
+    </p>
+
+    <div class="callout">
+      <p>
+        <em>On birth data:</em> the birth details you share for a reading are
+        treated as confidential. They are used to prepare and deliver your
+        reading and for nothing else — never shared, sold, published, or used
+        as an example without your explicit permission.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span>How We Use It</h2>
+    <ul>
+      <li><span class="bullet"></span><span class="li-text">To send you the newsletter and teachings you asked for.</span></li>
+      <li><span class="bullet"></span><span class="li-text">To answer your enquiries and stay in correspondence with you.</span></li>
+      <li><span class="bullet"></span><span class="li-text">To deliver what you have paid for — course access, readings, downloads — and to provide support around it.</span></li>
+      <li><span class="bullet"></span><span class="li-text">To tell you about new courses, offerings, or changes to something you are enrolled in.</span></li>
+      <li><span class="bullet"></span><span class="li-text">To keep the website secure, working, and free from abuse.</span></li>
+      <li><span class="bullet"></span><span class="li-text">To meet our legal, tax, and accounting obligations.</span></li>
+    </ul>
+    <p>
+      We rely on your consent for marketing emails, on the performance of our
+      agreement with you for delivering what you purchased, and on our legitimate
+      interest in running and securing the site for the rest.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span>Who We Share It With</h2>
+    <p>
+      We do not sell your personal information, and we do not share it for anyone
+      else's marketing. We do use a small number of service providers who process
+      data on our behalf:
+    </p>
+
+    <div class="party-list">
+      <div class="party-row">
+        <span class="party-name">Wix</span>
+        <span class="party-role">Hosts the website, the members area, bookings, and payment links.</span>
+      </div>
+      <div class="party-row">
+        <span class="party-name">MailerLite</span>
+        <span class="party-role">Stores newsletter subscribers and contact-form submissions, and sends our emails.</span>
+      </div>
+      <div class="party-row">
+        <span class="party-name">Vercel</span>
+        <span class="party-role">Hosts the small service that passes newsletter and contact form submissions to MailerLite.</span>
+      </div>
+      <div class="party-row">
+        <span class="party-name">Payment processors</span>
+        <span class="party-role">Handle card and bank payments directly, under their own privacy terms.</span>
+      </div>
+      <div class="party-row">
+        <span class="party-name">Google Fonts</span>
+        <span class="party-role">Serves the typefaces used on this site; your browser requests them when a page loads.</span>
+      </div>
+    </div>
+
+    <p>
+      We may also disclose information where the law requires it, or where it is
+      necessary to protect our rights or someone's safety.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">05</span>Cookies</h2>
+    <p>
+      This site uses cookies that are necessary for it to function — keeping you
+      logged in to the members area, remembering your session, and keeping things
+      secure. Our host also sets cookies that help us understand, in aggregate,
+      how the site is being used.
+    </p>
+    <p>
+      You can block or delete cookies in your browser settings. If you block the
+      necessary ones, parts of the site — particularly member login and course
+      access — will stop working.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">06</span>How Long We Keep It</h2>
+    <ul>
+      <li><span class="bullet"></span><span class="li-text"><strong>Newsletter subscribers:</strong> until you unsubscribe, and for a short period afterwards so we can honour your unsubscribe.</span></li>
+      <li><span class="bullet"></span><span class="li-text"><strong>Enquiries and correspondence:</strong> for as long as needed to deal with the matter, and a reasonable period after.</span></li>
+      <li><span class="bullet"></span><span class="li-text"><strong>Course and purchase records:</strong> for as long as you have access, plus the period our tax and accounting obligations require.</span></li>
+      <li><span class="bullet"></span><span class="li-text"><strong>Birth details for readings:</strong> kept only as long as needed to deliver and follow up on the reading, unless you ask us to keep them for future sessions.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">07</span>Your Rights</h2>
+    <p>
+      You may ask us to show you the personal information we hold about you,
+      correct it if it is wrong, or delete it. You may withdraw consent for
+      marketing at any time — every email we send carries an unsubscribe link,
+      and it works immediately.
+    </p>
+    <p>
+      Depending on where you live, you may have further rights under laws such as
+      India's Digital Personal Data Protection Act or the GDPR, including the
+      right to object to certain processing, to request a portable copy of your
+      data, and to complain to your data protection authority.
+    </p>
+    <p>
+      To exercise any of this, write to
+      <a href="mailto:info@shivohampath.com">info@shivohampath.com</a>. We will
+      respond within a reasonable time, and in any case within the period the law
+      allows.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">08</span>Security</h2>
+    <p>
+      We use reputable providers, encrypted connections, and sensible access
+      controls to protect your information. No method of transmission or storage
+      is perfectly secure, and we cannot guarantee absolute security — but we take
+      the confidentiality of what you share with us seriously, particularly the
+      personal matters that arise in readings and course work.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">09</span>International Transfers</h2>
+    <p>
+      Our service providers may store or process data on servers outside India,
+      including in the European Union and the United States. Where that happens,
+      we rely on those providers' contractual safeguards to protect your
+      information.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">10</span>Children</h2>
+    <p>
+      This website and its offerings are intended for adults. We do not knowingly
+      collect personal information from children. If you believe a child has
+      given us their information, write to us and we will delete it.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">11</span>Changes to This Policy</h2>
+    <p>
+      We may update this policy as our offerings or our providers change. The date
+      at the top of this page shows when it was last revised. Where a change
+      materially affects your rights, we will say so directly.
+    </p>
+  </section>
+
+  <div class="contact-block">
+    <span class="label">QUESTIONS ABOUT YOUR PRIVACY</span>
+    <p>
+      Write to <a href="mailto:info@shivohampath.com">info@shivohampath.com</a>
+      and we will answer you personally.
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>

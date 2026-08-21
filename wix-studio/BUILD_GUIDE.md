@@ -103,7 +103,7 @@ Go to **Dashboard → Add Apps** and install all of these first:
    - Logo
    - Tagline: "Esoteric astrology for souls who came here with unfinished business."
    - Social icons: Instagram, YouTube (36×36px boxes with gold border)
-5. **Column 2 — Readings:** list all 6 services
+5. **Column 2 — Readings:** The Shiva Oracle (`/readings#oracle`), then the chart readings (`/readings#chart`) — see the Readings page section for the full list
 6. **Column 3 — Courses:** Esoteric Astrology Course, Live Sessions, Books & PDFs
 7. **Column 4 — Explore:** Blog, About Veena, Testimonials, Instagram, Contact
 8. Bottom strip: Copyright text in Cinzel 9px
@@ -510,43 +510,50 @@ Before republishing the About page:
 
 ### READINGS PAGE
 
-**Sections:**
-1. **Hero** — "Readings for Souls Who Are Ready"
-2. **What Makes These Different** — intro paragraph
-3. **Service Cards** (full page, one card per service):
+The page is split into **two branches**: the written Shiva Oracle (no birth data
+required) and live Chart Readings (birth data required). Each branch is its own
+embed. Build the sections in this order:
 
-For each of the 6 services, create a wide card with:
-- Service name + duration
-- Detailed description
-- What's included (bullet list)
-- Price
-- "Book Now" button → linked to that specific Wix Bookings service
+| # | Section | Embed |
+|---|---------|-------|
+| 1 | Hero | `embeds/readings-hero.html` |
+| 2 | The fork — two doors | `embeds/readings-fork.html` |
+| 3 | Path One — The Shiva Oracle | `embeds/readings-oracle.html` |
+| 4 | Path Two — Chart Readings | `embeds/readings-chart.html` |
+| 5 | How each path works | `embeds/readings-how.html` |
+| 6 | Testimonials | `embeds/testimonials-section.html` |
+| 7 | Chooser / CTA | `embeds/readings-cta.html` |
 
-**Services:**
+**Anchor IDs (required).** The fork buttons and the oracle→chart bridge link to
+`/readings#oracle` and `/readings#chart` with `target="_top"`. In Wix Studio, set
+the section containing `readings-oracle.html` to ID **`oracle`** and the section
+containing `readings-chart.html` to ID **`chart`** (Section settings → HTML ID).
+Without these the fork buttons reload the page instead of scrolling.
+
+**The offerings:**
+
 ```
-01 · Specific Question Reading
-     30 mins · For one area of life that feels karmically stuck.
+PATH ONE — THE SHIVA ORACLE          written · no call · no birth data
+  Single Draw                  ₹599     ~500 words · within 24 hours
+  Three-Card Spread            ₹1,199   Root · Present · Emergence · PDF
+  Shiva Oracle Full Spread     ₹1,499   five cards · PDF
 
-02 · Karmic Knots Reading ★ FEATURED
-     60 mins · D1 + D9 + D60. Full soul audit.
-
-03 · Synastry & Kundali Milan
-     60 mins · Karmic compatibility reading.
-
-04 · Advanced Moksha Path Consultation
-     90 mins · Soul liberation path. Deepest work available.
-
-05 · Madhurya Bhakta Sessions
-     Ongoing · Continued guidance as your cycles unfold.
-
-06 · Shiva Oracle Reading
-     PDF Report · Written transmission. No call needed.
+PATH TWO — CHART READINGS            live · recorded · birth data required
+  BEGIN
+    Specific Question Reading  ₹2,499   30 min
+  THE FULL MAP
+    Karmic Knots Reading       ₹6,500   60 min  ★ SIGNATURE
+    Advanced Moksha Path       ₹8,500   90 min
+    Madhurya Bhakta Sessions   ₹7,500   120 min
+    Synastry & Kundali Milan   ₹9,400   90 min
+    Varshaphala Annual Reading ₹5,500   60 min
+    Muhurta Timing Selection   ₹3,500   30 min
+  AFTER
+    Follow-Up Session          ₹2,999   30 min · returning clients only
 ```
 
-4. **How It Works** — 3-step process
-5. **Testimonials** (3 cards)
-6. **FAQ accordion**
-7. **CTA**
+Keep `seo/service-schema.json` in step with this list — it is the source of truth
+for the Service structured data and is maintained by hand.
 
 ---
 
@@ -621,17 +628,41 @@ SHE WHO BECOMES HIM
 
 ---
 
-## Step 9 — Connect Wix Bookings
+## Step 9 — Connect Wix Bookings & Store
+
+### Chart readings → Wix Bookings (appointment services)
 
 1. Dashboard → Wix Bookings → **Services**
-2. Create a service for each reading:
-   - Specific Question Reading (30 min)
-   - Karmic Knots Reading (60 min)
-   - Synastry & Kundali Milan (60 min)
-   - Advanced Moksha Path Consultation (90 min)
-   - Madhurya Bhakta Sessions (ongoing)
-   - Shiva Oracle Reading (PDF — set as a "class" not a session, or use Wix Stores)
-3. On the Readings page, link each "Book Now" button to its specific service URL
+2. Create an appointment service for each:
+   - Specific Question Reading (30 min) — `specific-question-reading-30-mins`
+   - Karmic Knots Reading (60 min) — `karmic-knots-reading-60-mins`
+   - Advanced Moksha Path Consultation (90 min) — `advanced-moksha-path-consultation`
+   - Madhurya Bhakta Sessions (120 min) — `madhurya-bhakta-sessions`
+   - Synastry & Kundali Milan (90 min) — `synastry-kundali-milan`
+   - Varshaphala Annual Reading (60 min) — `varshaphala-annual-reading`
+   - Muhurta Timing Selection (30 min) — `muhurta-timing-selection`
+   - Follow-Up Session (30 min) — `follow-up-integration-session`
+3. Add a **required booking form field** for birth date, birth time, and birth place.
+4. Restrict Follow-Up Session to returning clients (hide from the services list, or
+   gate it behind a members-only page).
+
+### Shiva Oracle → written products, not appointments
+
+The three oracle readings have no appointment slot, so a booking calendar is the
+wrong container — it makes the buyer pick a time for something that has no time.
+Set these up as **Wix Stores products** with a required "Your question" text field
+at checkout:
+
+   - Shiva Oracle — Single Draw (₹599) — `shiva-oracle-single-draw`
+   - Shiva Oracle — Three-Card Spread (₹1,199) — `shiva-oracle-three-card-spread`
+   - Shiva Oracle — Full Spread (₹1,499) — `shiva-oracle-reading-pdf-report-only`
+
+The embeds currently point at `/booking-calendar/<slug>` for all three, matching
+the existing Shiva Oracle PDF product. **If you move them to Wix Stores, update the
+`href` in `embeds/readings-oracle.html` and `embeds/readings-cta.html`** (the
+chooser's `BOOK` constant and the three oracle entries in its `R` table).
+
+5. Link each "Book Now" button on the Readings page to its specific service URL.
 
 ---
 

@@ -84,8 +84,8 @@ this once).
 **New folder:** `wix-studio/seo/`
 
 - `organization-person-schema.json` — Organization + Person (Veena)
-- `service-schema.json` — all 6 readings as `Service` items, with real
-  prices/URLs pulled from `readings-grid.html` and `readings-featured.html`
+- `service-schema.json` — all 11 readings as `Service` items, with real
+  prices/URLs pulled from `readings-oracle.html` and `readings-chart.html`
 
 **Before deploying `organization-person-schema.json`:**
 - Replace `"logo": "https://www.shivohampath.com/logo.png"` with the real

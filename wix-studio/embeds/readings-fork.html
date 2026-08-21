@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .fork-section { padding: 20px 20px 40px; }
+  .fork-inner { max-width: 1100px; margin: 0 auto; }
+
+  .fork-header { text-align: center; margin-bottom: 44px; }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 16px;
+  }
+  .fork-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 300; color: var(--text); line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .fork-header h2 em { font-style: italic; color: var(--gold); }
+  .divider { display: flex; align-items: center; gap: 16px; justify-content: center; margin-bottom: 20px; }
+  .divider-line { flex: 1; max-width: 80px; height: 1px; background: var(--line2); }
+  .divider-diamond { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; flex-shrink: 0; }
+  .fork-header p {
+    font-size: clamp(14px, 2vw, 17px);
+    font-style: italic; color: var(--text3);
+    max-width: 560px; margin: 0 auto; line-height: 1.75;
+  }
+
+  /* ── TWO DOORS ── */
+  .fork-doors { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+
+  .door {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 44px 38px 38px;
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+    text-decoration: none; color: inherit;
+    transition: all 0.3s;
+  }
+  .door:hover { border-color: var(--line2); background: var(--bg4); }
+  .door::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .door:hover::after { transform: scaleX(1); }
+
+  /* Glyph */
+  .door-glyph {
+    width: 54px; height: 54px; margin-bottom: 22px;
+    border: 1px solid var(--line2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; color: var(--gold);
+    transform: rotate(45deg); flex-shrink: 0;
+  }
+  .door-glyph span { transform: rotate(-45deg); display: block; }
+
+  .door-tag {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 3px; color: var(--gold);
+    display: block; margin-bottom: 12px;
+  }
+  .door h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 400; color: var(--text);
+    line-height: 1.15; margin-bottom: 14px;
+  }
+  .door h3 em { font-style: italic; color: var(--gold); }
+  .door > p {
+    font-size: clamp(13px, 1.6vw, 15px);
+    color: var(--text2); line-height: 1.75;
+    margin-bottom: 22px;
+  }
+
+  /* Attribute rows */
+  .door-attrs { border-top: 1px solid var(--line); padding-top: 18px; margin-bottom: 22px; }
+  .attr-row {
+    display: flex; align-items: baseline; gap: 12px;
+    padding: 7px 0;
+  }
+  .attr-key {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 1.5px; color: var(--text3);
+    width: 92px; flex-shrink: 0;
+  }
+  .attr-val { font-size: 14px; color: var(--text2); line-height: 1.5; }
+  .attr-val strong { color: var(--gold); font-weight: 400; }
+
+  .door-bottom {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 12px; margin-top: auto;
+    padding-top: 18px; border-top: 1px solid var(--line);
+  }
+  .door-range {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 300; color: var(--gold); line-height: 1;
+  }
+  .door-range-label {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 1.5px; color: var(--text3); margin-top: 5px;
+  }
+  .door-enter {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 2px; color: var(--text3);
+    display: flex; align-items: center; gap: 6px;
+    white-space: nowrap; transition: color 0.2s;
+  }
+  .door:hover .door-enter { color: var(--gold); }
+  .door-enter::after { content: '→'; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .door { padding: 34px 26px 28px; }
+  }
+  @media (max-width: 700px) {
+    .fork-section { padding: 16px 12px 28px; }
+    .fork-doors { grid-template-columns: 1fr; gap: 3px; }
+    .fork-header { margin-bottom: 32px; }
+    .door { padding: 30px 20px 24px; }
+    .door-glyph { width: 46px; height: 46px; margin-bottom: 18px; }
+    .attr-key { width: 84px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="fork-section">
+  <div class="fork-inner">
+
+    <div class="fork-header">
+      <span class="eyebrow">TWO PATHS</span>
+      <h2>There Are Two Ways<br>To <em>Begin</em></h2>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+      </div>
+      <p>One asks nothing of you but the question. The other asks for the hour you were born — and gives you the whole map in return.</p>
+    </div>
+
+    <div class="fork-doors">
+
+      <!-- Door 1 — The Shiva Oracle -->
+      <a class="door" href="https://www.shivohampath.com/readings#oracle" target="_top">
+        <div class="door-glyph"><span>&#9670;</span></div>
+        <span class="door-tag">PATH ONE · WRITTEN</span>
+        <h3>The Shiva<br><em>Oracle</em></h3>
+        <p>
+          A written transmission. You bring a question — the cards answer it. No chart, no call, no scheduling. For when something needs to be seen now, and you are not yet ready for the whole map.
+        </p>
+        <div class="door-attrs">
+          <div class="attr-row">
+            <span class="attr-key">YOU BRING</span>
+            <span class="attr-val">Your question</span>
+          </div>
+          <div class="attr-row">
+            <span class="attr-key">YOU RECEIVE</span>
+            <span class="attr-val">A written reading, by email</span>
+          </div>
+          <div class="attr-row">
+            <span class="attr-key">BIRTH DATA</span>
+            <span class="attr-val"><strong>Not needed</strong></span>
+          </div>
+        </div>
+        <div class="door-bottom">
+          <div>
+            <div class="door-range">&#8377;599 &ndash; &#8377;1,499</div>
+            <div class="door-range-label">THREE DRAWS</div>
+          </div>
+          <span class="door-enter">Enter</span>
+        </div>
+      </a>
+
+      <!-- Door 2 — Chart Readings -->
+      <a class="door" href="https://www.shivohampath.com/readings#chart" target="_top">
+        <div class="door-glyph"><span>&#9671;</span></div>
+        <span class="door-tag">PATH TWO · LIVE</span>
+        <h3>Chart<br><em>Readings</em></h3>
+        <p>
+          A live session with your chart open between us. I read the D1, D9, and D60 — this lifetime, the soul's dharma, and every lifetime behind it. This is the work the whole path is built on.
+        </p>
+        <div class="door-attrs">
+          <div class="attr-row">
+            <span class="attr-key">YOU BRING</span>
+            <span class="attr-val">Date, time &amp; place of birth</span>
+          </div>
+          <div class="attr-row">
+            <span class="attr-key">YOU RECEIVE</span>
+            <span class="attr-val">A live session &amp; a recording</span>
+          </div>
+          <div class="attr-row">
+            <span class="attr-key">BIRTH DATA</span>
+            <span class="attr-val"><strong>Required</strong></span>
+          </div>
+        </div>
+        <div class="door-bottom">
+          <div>
+            <div class="door-range">&#8377;2,499 &ndash; &#8377;9,400</div>
+            <div class="door-range-label">SEVEN READINGS</div>
+          </div>
+          <span class="door-enter">Enter</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

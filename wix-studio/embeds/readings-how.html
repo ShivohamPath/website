@@ -10,8 +10,10 @@
     --bg:    #0a0a0f;
     --bg3:   #131020;
     --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
     --gold4: rgba(201,168,76,0.05);
     --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
     --text3: rgba(232,224,208,0.35);
     --line:  rgba(232,224,208,0.07);
     --line2: rgba(201,168,76,0.22);
@@ -33,7 +35,7 @@
   .how-inner { max-width: 1100px; margin: 0 auto; }
 
   /* ── HEADER ── */
-  .how-header { text-align: center; margin-bottom: 60px; }
+  .how-header { text-align: center; margin-bottom: 56px; }
   .eyebrow {
     font-family: 'Cinzel', serif; font-size: 10px;
     letter-spacing: 4px; color: var(--gold);
@@ -46,83 +48,85 @@
     margin-bottom: 24px;
   }
   .how-header h2 em { font-style: italic; color: var(--gold); }
-  .divider {
-    display: flex; align-items: center; gap: 16px; justify-content: center;
-  }
+  .divider { display: flex; align-items: center; gap: 16px; justify-content: center; }
   .divider-line { flex: 1; max-width: 80px; height: 1px; background: var(--line2); }
   .divider-diamond {
     width: 6px; height: 6px; background: var(--gold);
     transform: rotate(45deg); opacity: 0.7; flex-shrink: 0;
   }
 
-  /* ── STEPS GRID ── */
-  .how-steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    position: relative;
+  /* ── TWO TRACKS ── */
+  .tracks { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+
+  .track {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 38px 34px 34px;
+  }
+  .track-head {
+    padding-bottom: 20px; margin-bottom: 26px;
+    border-bottom: 1px solid var(--line);
+  }
+  .track-label {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 3px; color: var(--gold);
+    display: block; margin-bottom: 10px;
+  }
+  .track-head h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.6vw, 30px);
+    font-weight: 400; color: var(--text);
+    line-height: 1.15; margin-bottom: 10px;
+  }
+  .track-head h3 em { font-style: italic; color: var(--gold); }
+  .track-head p {
+    font-size: 14px; color: var(--text3);
+    font-style: italic; line-height: 1.6;
   }
 
-  /* Horizontal connector line between step numbers */
-  .how-steps::before {
-    content: '';
-    position: absolute;
-    top: 24px; /* aligns with center of step-num circles */
-    left: 12.5%; right: 12.5%;
-    height: 1px;
-    background: var(--line2);
-    z-index: 0;
+  /* Vertical step list */
+  .steps { position: relative; }
+  .steps::before {
+    content: ''; position: absolute;
+    left: 17px; top: 34px; bottom: 34px;
+    width: 1px; background: var(--line2);
   }
-
-  .how-step {
-    text-align: center;
-    padding: 0 20px;
+  .step {
+    display: flex; gap: 20px;
     position: relative; z-index: 1;
+    margin-bottom: 26px;
   }
+  .step:last-child { margin-bottom: 0; }
   .step-num {
-    width: 48px; height: 48px;
+    width: 36px; height: 36px; flex-shrink: 0;
     border: 1px solid var(--line2);
     background: var(--bg3);
     display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px;
-    font-family: 'Cinzel', serif; font-size: 13px; color: var(--gold);
-    position: relative; z-index: 1;
+    font-family: 'Cinzel', serif; font-size: 11px; color: var(--gold);
   }
-  .how-step h4 {
+  .step-body { padding-top: 3px; }
+  .step-body h4 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(17px, 2vw, 21px);
-    font-weight: 400; color: var(--text); margin-bottom: 10px;
+    font-size: clamp(17px, 2vw, 20px);
+    font-weight: 400; color: var(--text); margin-bottom: 7px;
   }
-  .how-step p {
+  .step-body p {
     font-size: clamp(13px, 1.5vw, 14px);
-    color: var(--text3); line-height: 1.65;
+    color: var(--text3); line-height: 1.7;
   }
 
   /* ── RESPONSIVE ── */
-
-  /* Tablet: 2x2 grid */
-  @media (max-width: 800px) {
-    .how-section { padding: 60px 40px 70px; }
-
-    .how-steps {
-      grid-template-columns: 1fr 1fr;
-      gap: 40px 20px;
-    }
-    /* Hide the 4-col connector line on tablet/mobile */
-    .how-steps::before { display: none; }
+  @media (max-width: 860px) {
+    .how-section { padding: 60px 30px 70px; }
+    .tracks { grid-template-columns: 1fr; gap: 3px; }
+    .track { padding: 32px 26px 28px; }
   }
-
-  /* Mobile: single column */
   @media (max-width: 520px) {
-    .how-section { padding: 48px 20px 56px; }
-
-    .how-steps {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-    .how-step { padding: 0; }
-    .how-step h4 { font-size: 19px; }
-    .how-step p { font-size: 14px; }
+    .how-section { padding: 48px 16px 56px; }
+    .how-header { margin-bottom: 36px; }
+    .track { padding: 28px 20px 24px; }
+    .step { gap: 16px; }
+    .steps::before { left: 15px; }
+    .step-num { width: 32px; height: 32px; font-size: 10px; }
   }
 </style>
 </head>
@@ -133,7 +137,7 @@
 
     <div class="how-header">
       <span class="eyebrow">THE PROCESS</span>
-      <h2>How a Reading <em>Works</em></h2>
+      <h2>How Each Path <em>Works</em></h2>
       <div class="divider">
         <div class="divider-line"></div>
         <div class="divider-diamond"></div>
@@ -141,29 +145,87 @@
       </div>
     </div>
 
-    <div class="how-steps">
-      <div class="how-step">
-        <div class="step-num">01</div>
-        <h4>Book &amp; Share Details</h4>
-        <p>Choose your reading. Book your slot. Share your accurate birth date, time, and place of birth.</p>
-      </div>
-      <div class="how-step">
-        <div class="step-num">02</div>
-        <h4>Chart Preparation</h4>
-        <p>Veena prepares your D1, D9, and D60 before the session — arriving with the full map already read.</p>
-      </div>
-      <div class="how-step">
-        <div class="step-num">03</div>
-        <h4>The Session</h4>
-        <p>A live video session — no scripts, no generic readings. A direct, honest conversation about what your chart is carrying.</p>
-      </div>
-      <div class="how-step">
-        <div class="step-num">04</div>
-        <h4>Integration</h4>
-        <p>A recording of your session is shared after. The work begins after the call — not during it.</p>
-      </div>
-    </div>
+    <div class="tracks">
 
+      <!-- Track 1 — The Shiva Oracle -->
+      <div class="track">
+        <div class="track-head">
+          <span class="track-label">PATH ONE</span>
+          <h3>The Shiva <em>Oracle</em></h3>
+          <p>Written. Nothing to schedule.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <h4>Choose Your Draw</h4>
+              <p>One card, three, or the full spread of five. The deeper the spread, the wider the situation it can hold.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <h4>Ask Your Question</h4>
+              <p>Write it in your own words at checkout. No birth details are needed — only what you actually want to know.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <h4>The Cards Are Drawn</h4>
+              <p>I draw for your question and sit with what came before writing a word. Nothing is templated and nothing is automated.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-body">
+              <h4>It Arrives</h4>
+              <p>Your reading comes by email — within 24 hours for a Single Draw, as a written PDF for the larger spreads.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Track 2 — Chart Readings -->
+      <div class="track">
+        <div class="track-head">
+          <span class="track-label">PATH TWO</span>
+          <h3>Chart <em>Readings</em></h3>
+          <p>Live. Your chart open between us.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <h4>Book &amp; Share Details</h4>
+              <p>Choose your reading. Book your slot. Share your accurate birth date, time, and place of birth.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <h4>Chart Preparation</h4>
+              <p>Veena prepares your D1, D9, and D60 before the session — arriving with the full map already read.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <h4>The Session</h4>
+              <p>A live video session — no scripts, no generic readings. A direct, honest conversation about what your chart is carrying.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-body">
+              <h4>Integration</h4>
+              <p>A recording of your session is shared after. The work begins after the call — not during it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 

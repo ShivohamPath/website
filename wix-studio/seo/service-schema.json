@@ -1,18 +1,22 @@
 {
   "@context": "https://schema.org",
   "@type": "ItemList",
+  "name": "Readings — ShivohamPath",
   "itemListElement": [
     {
       "@type": "Service",
       "position": 1,
-      "name": "Specific Question Reading",
-      "description": "For one area of life that feels heavy, confusing, or karmically stuck — relationships, career, health, or spiritual growth.",
-      "provider": { "@id": "https://www.shivohampath.com/#veena" },
+      "name": "Shiva Oracle — Single Draw",
+      "serviceType": "Shiva Oracle Reading",
+      "description": "One question, one card, answered in writing — around 500 words, delivered within 24 hours. No birth details required.",
+      "provider": {
+        "@id": "https://www.shivohampath.com/#veena"
+      },
       "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/specific-question-reading-30-mins",
+      "url": "https://wix.to/LHxCeNG",
       "offers": {
         "@type": "Offer",
-        "price": "2499",
+        "price": "599",
         "priceCurrency": "INR",
         "availability": "https://schema.org/InStock"
       }
@@ -20,11 +24,68 @@
     {
       "@type": "Service",
       "position": 2,
-      "name": "Karmic Knots Reading",
-      "description": "D1 + D9 + D60 combined. The full soul audit — past-life wounds, karmic contracts, and what your soul came to resolve.",
-      "provider": { "@id": "https://www.shivohampath.com/#veena" },
+      "name": "Shiva Oracle — Three-Card Sacred Spread",
+      "serviceType": "Shiva Oracle Reading",
+      "description": "Root, Present and Emergence — three cards laid across time for a situation with a history behind it. Delivered as a written PDF.",
+      "provider": {
+        "@id": "https://www.shivohampath.com/#veena"
+      },
       "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/karmic-knots-reading-60-mins",
+      "url": "https://wix.to/l9qoRSE",
+      "offers": {
+        "@type": "Offer",
+        "price": "1199",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "position": 3,
+      "name": "Shiva Oracle — Full Spread",
+      "serviceType": "Shiva Oracle Reading",
+      "description": "The complete oracle: five cards read as one movement, for the whole shape of the season you are standing in. Delivered as a written PDF.",
+      "provider": {
+        "@id": "https://www.shivohampath.com/#veena"
+      },
+      "areaServed": "Worldwide",
+      "url": "https://wix.to/dhk2OP9",
+      "offers": {
+        "@type": "Offer",
+        "price": "1499",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "position": 4,
+      "name": "Specific Question Reading",
+      "serviceType": "Vedic Astrology Reading",
+      "description": "For one area of life that feels heavy, confusing, or karmically stuck — relationships, career, health, or spiritual growth.",
+      "provider": {
+        "@id": "https://www.shivohampath.com/#veena"
+      },
+      "areaServed": "Worldwide",
+      "url": "https://wix.to/lupjudw",
+      "offers": {
+        "@type": "Offer",
+        "price": "4299",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "position": 5,
+      "name": "Karmic Knots Reading",
+      "serviceType": "Vedic Astrology Reading",
+      "description": "D1 + D9 + D60 combined. The full soul audit — past-life wounds, karmic contracts, and what your soul came to resolve.",
+      "provider": {
+        "@id": "https://www.shivohampath.com/#veena"
+      },
+      "areaServed": "Worldwide",
+      "url": "https://wix.to/eX9vA5Q",
       "offers": {
         "@type": "Offer",
         "price": "6500",
@@ -34,27 +95,15 @@
     },
     {
       "@type": "Service",
-      "position": 3,
-      "name": "Synastry & Kundali Milan",
-      "description": "Karmic bond analysis between two charts — why you keep finding each other, and what contract exists between your souls.",
-      "provider": { "@id": "https://www.shivohampath.com/#veena" },
-      "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/synastry-kundali-milan",
-      "offers": {
-        "@type": "Offer",
-        "price": "9400",
-        "priceCurrency": "INR",
-        "availability": "https://schema.org/InStock"
-      }
-    },
-    {
-      "@type": "Service",
-      "position": 4,
+      "position": 6,
       "name": "Advanced Moksha Path Consultation",
+      "serviceType": "Vedic Astrology Reading",
       "description": "The soul's liberation path — what your chart says about where you are in the cycle of return, and what this lifetime is asking you to complete.",
-      "provider": { "@id": "https://www.shivohampath.com/#veena" },
+      "provider": {
+        "@id": "https://www.shivohampath.com/#veena"
+      },
       "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/advanced-moksha-path-consultation",
+      "url": "https://wix.to/R9ZUukl",
       "offers": {
         "@type": "Offer",
         "price": "8500",
@@ -64,30 +113,90 @@
     },
     {
       "@type": "Service",
-      "position": 5,
-      "name": "Madhurya Bhakta Sessions",
-      "description": "Ongoing guidance for those on the path of divine union, working with chart, devotional history, and longing.",
-      "provider": { "@id": "https://www.shivohampath.com/#veena" },
+      "position": 7,
+      "name": "Madhurya Bhakta Reading",
+      "serviceType": "Vedic Astrology Reading",
+      "description": "A sacred conversation for women on the path of divine union, working with chart, devotional history, and longing.",
+      "provider": {
+        "@id": "https://www.shivohampath.com/#veena"
+      },
       "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/madhurya-bhakta-sessions",
+      "url": "https://wix.to/QN2T1GI",
       "offers": {
         "@type": "Offer",
-        "price": "6499",
+        "price": "7500",
         "priceCurrency": "INR",
         "availability": "https://schema.org/InStock"
       }
     },
     {
       "@type": "Service",
-      "position": 6,
-      "name": "Shiva Oracle Reading",
-      "description": "A written oracle report delivered as a PDF — depth without the live-session format, or a first entry point before booking a full reading.",
-      "provider": { "@id": "https://www.shivohampath.com/#veena" },
+      "position": 8,
+      "name": "Synastry & Kundali Milan",
+      "serviceType": "Vedic Astrology Reading",
+      "description": "Karmic bond analysis between two charts — why you keep finding each other, and what contract exists between your souls.",
+      "provider": {
+        "@id": "https://www.shivohampath.com/#veena"
+      },
       "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/shiva-oracle-reading-pdf-report-only",
+      "url": "https://wix.to/H6yGXl5",
       "offers": {
         "@type": "Offer",
-        "price": "1499",
+        "price": "9400",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "position": 9,
+      "name": "Varshaphala Annual Reading",
+      "serviceType": "Vedic Astrology Reading",
+      "description": "Your solar return chart — the twelve months that begin on your next birthday, what the year carries, and which months to move in.",
+      "provider": {
+        "@id": "https://www.shivohampath.com/#veena"
+      },
+      "areaServed": "Worldwide",
+      "url": "https://wix.to/PooCvBv",
+      "offers": {
+        "@type": "Offer",
+        "price": "5500",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "position": 10,
+      "name": "Muhurta Auspicious Time Selection",
+      "serviceType": "Vedic Astrology Reading",
+      "description": "Electional astrology — selecting the auspicious window for a marriage, a launch, a journey, or any beginning that deserves to be started well.",
+      "provider": {
+        "@id": "https://www.shivohampath.com/#veena"
+      },
+      "areaServed": "Worldwide",
+      "url": "https://wix.to/XDTdAxG",
+      "offers": {
+        "@type": "Offer",
+        "price": "3500",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "position": 11,
+      "name": "Returning Seeker Reading",
+      "serviceType": "Vedic Astrology Reading",
+      "description": "A reading for returning seekers — for when you have lived with your last reading a while and the questions have changed.",
+      "provider": {
+        "@id": "https://www.shivohampath.com/#veena"
+      },
+      "areaServed": "Worldwide",
+      "url": "https://wix.to/zNYcjzc",
+      "offers": {
+        "@type": "Offer",
+        "price": "2999",
         "priceCurrency": "INR",
         "availability": "https://schema.org/InStock"
       }

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .chart-section { padding: 40px 20px 30px; }
+  .chart-inner { max-width: 1100px; margin: 0 auto; }
+
+  /* ── BRANCH HEADER ── */
+  .branch-header { margin-bottom: 20px; }
+  .branch-rule { display: flex; align-items: center; gap: 18px; margin-bottom: 26px; }
+  .branch-rule-line { flex: 1; height: 1px; background: var(--line2); }
+  .branch-rule-mark {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 3px; color: var(--gold); white-space: nowrap;
+  }
+  .branch-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 4.4vw, 48px);
+    font-weight: 300; color: var(--text);
+    line-height: 1.08; margin-bottom: 16px;
+  }
+  .branch-header h2 em { font-style: italic; color: var(--gold); }
+  .branch-intro {
+    font-size: clamp(14px, 1.8vw, 16px);
+    color: var(--text2); line-height: 1.8;
+    max-width: 640px; margin-bottom: 18px;
+  }
+  .birth-note {
+    padding: 20px 26px; background: var(--gold4);
+    border: 1px solid var(--line2); border-left: 3px solid var(--gold);
+    margin-bottom: 40px; max-width: 780px;
+  }
+  .birth-note p {
+    font-size: clamp(13px, 1.7vw, 15px);
+    color: var(--text2); line-height: 1.75; font-style: italic;
+  }
+  .birth-note p strong { color: var(--gold); font-weight: 400; font-style: normal; }
+
+  /* ── GROUP HEADINGS ── */
+  .group { margin-bottom: 34px; }
+  .group-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 14px; }
+  .group-name {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 3px; color: var(--gold); white-space: nowrap;
+  }
+  .group-line { flex: 1; height: 1px; background: var(--line); }
+  .group-sub {
+    font-size: 14px; color: var(--text3); font-style: italic;
+    margin-bottom: 18px; line-height: 1.6;
+  }
+
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 4px; }
+  .row-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-bottom: 4px; }
+
+  /* ── STANDARD CARD ── */
+  .reading-card {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 32px 28px 26px;
+    position: relative; overflow: hidden;
+    transition: all 0.3s;
+    display: flex; flex-direction: column;
+  }
+  .reading-card:hover { border-color: var(--line2); background: var(--bg4); }
+  .reading-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .reading-card:hover::after { transform: scaleX(1); }
+
+  .reading-tag {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 3px; color: var(--gold);
+    display: block; margin-bottom: 12px;
+  }
+  .reading-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.2vw, 27px);
+    font-weight: 400; color: var(--text);
+    line-height: 1.18; margin-bottom: 12px;
+  }
+  .reading-card h3 em { font-style: italic; color: var(--gold); }
+  .reading-card > p {
+    font-size: clamp(13px, 1.6vw, 15px);
+    color: var(--text2); line-height: 1.75;
+    flex: 1; margin-bottom: 18px;
+  }
+  .card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+  .meta-pill {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 1.5px; padding: 4px 10px;
+    border: 1px solid var(--line2); color: var(--text3);
+  }
+  .meta-pill.gold { border-color: var(--gold2); color: var(--gold); }
+  .card-bottom {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    padding-top: 18px; border-top: 1px solid var(--line);
+    margin-top: auto; gap: 12px;
+  }
+  .card-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300; color: var(--gold); line-height: 1;
+  }
+  .card-duration {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 1.5px; color: var(--text3); margin-top: 4px;
+  }
+  .card-book {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 2px; color: var(--text3);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 6px;
+    transition: color 0.2s; white-space: nowrap;
+  }
+  .reading-card:hover .card-book { color: var(--gold); }
+  .card-book::after { content: '→'; }
+
+  /* ── WIDE CARD (single-item groups) ── */
+  .reading-card-wide {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 32px 34px 28px;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 34px; align-items: center;
+    position: relative; overflow: hidden;
+    transition: all 0.3s;
+  }
+  .reading-card-wide:hover { border-color: var(--line2); background: var(--bg4); }
+  .reading-card-wide::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .reading-card-wide:hover::after { transform: scaleX(1); }
+  .wide-body { max-width: 640px; }
+  .wide-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.6vw, 30px);
+    font-weight: 400; color: var(--text);
+    line-height: 1.15; margin-bottom: 12px;
+  }
+  .wide-body h3 em { font-style: italic; color: var(--gold); }
+  .wide-body > p {
+    font-size: clamp(13px, 1.6vw, 15px);
+    color: var(--text2); line-height: 1.75; margin-bottom: 16px;
+  }
+  .wide-action {
+    display: flex; flex-direction: column;
+    align-items: flex-end; gap: 14px; flex-shrink: 0;
+  }
+  .wide-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px; font-weight: 300;
+    color: var(--gold); line-height: 1; text-align: right;
+  }
+  .wide-duration {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 1.5px; color: var(--text3);
+    margin-top: 5px; text-align: right;
+  }
+
+  /* ── SIGNATURE CARD (Karmic Knots) ── */
+  .signature-card {
+    background: linear-gradient(135deg, #131020 0%, #171226 100%);
+    border: 1px solid var(--gold2);
+    display: grid; grid-template-columns: 300px 1fr;
+    position: relative; overflow: hidden;
+    margin-bottom: 4px;
+  }
+  .signature-badge {
+    position: absolute; top: 0; right: 0;
+    background: var(--gold); color: #0a0a0f;
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; padding: 7px 16px; z-index: 2;
+  }
+  .sig-visual {
+    padding: 40px 30px;
+    border-right: 1px solid var(--line);
+    background: var(--gold4);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 18px;
+  }
+  .sig-glyph {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px; font-weight: 300; color: var(--gold);
+    letter-spacing: 2px; line-height: 1;
+  }
+  .chart-layers { width: 100%; display: flex; flex-direction: column; align-items: center; }
+  .chart-layer {
+    width: 100%; text-align: center;
+    border: 1px solid var(--line2); background: rgba(201,168,76,0.05);
+    padding: 9px 8px;
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 1.5px; color: var(--gold);
+  }
+  .chart-layer-label {
+    display: block; font-family: 'EB Garamond', serif;
+    font-size: 11px; letter-spacing: 0; color: var(--text3);
+    font-style: italic; margin-top: 3px;
+  }
+  .chart-connector { width: 1px; height: 12px; background: var(--line2); }
+
+  .sig-body { padding: 38px 34px 30px; display: flex; flex-direction: column; }
+  .sig-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 400; color: var(--text);
+    line-height: 1.12; margin-bottom: 14px;
+  }
+  .sig-body h3 em { font-style: italic; color: var(--gold); }
+  .sig-body > p {
+    font-size: clamp(13px, 1.7vw, 16px);
+    color: var(--text2); line-height: 1.8; margin-bottom: 20px;
+  }
+  .sig-includes { border-top: 1px solid var(--line); padding-top: 18px; margin-bottom: 22px; }
+  .sig-includes-title {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+    display: block; margin-bottom: 14px;
+  }
+  .include-item {
+    display: flex; align-items: flex-start; gap: 11px;
+    font-size: 14px; color: var(--text2);
+    line-height: 1.65; margin-bottom: 9px;
+  }
+  .include-dot {
+    width: 4px; height: 4px; background: var(--gold);
+    transform: rotate(45deg); opacity: 0.7;
+    margin-top: 8px; flex-shrink: 0;
+  }
+  .sig-bottom {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+    padding-top: 20px; border-top: 1px solid var(--line);
+    margin-top: auto;
+  }
+  .sig-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px; font-weight: 300; color: var(--gold); line-height: 1;
+  }
+  .sig-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-ghost {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2px; padding: 12px 22px;
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold2); text-decoration: none;
+    display: inline-block; transition: all 0.2s; white-space: nowrap;
+  }
+  .btn-ghost:hover { background: var(--gold3); }
+  .btn-primary {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2px; padding: 12px 22px;
+    background: var(--gold); color: #0a0a0f;
+    border: 1px solid var(--gold); text-decoration: none;
+    display: inline-block; transition: all 0.2s; white-space: nowrap;
+  }
+  .btn-primary:hover { background: transparent; color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 940px) {
+    .row-3 { grid-template-columns: 1fr 1fr; }
+    .signature-card { grid-template-columns: 1fr; }
+    .sig-visual { border-right: none; border-bottom: 1px solid var(--line); padding: 32px 24px; }
+    .sig-body { padding: 30px 26px 26px; }
+  }
+  @media (max-width: 640px) {
+    .chart-section { padding: 30px 12px 20px; }
+    .branch-rule { gap: 12px; margin-bottom: 20px; }
+    .birth-note { padding: 18px 18px; margin-bottom: 32px; }
+    .row, .row-3 { grid-template-columns: 1fr; gap: 3px; margin-bottom: 3px; }
+    .reading-card-wide {
+      grid-template-columns: 1fr; gap: 20px; padding: 26px 18px 22px;
+    }
+    .wide-action {
+      flex-direction: row; align-items: center;
+      justify-content: space-between; width: 100%;
+    }
+    .wide-price, .wide-duration { text-align: left; }
+    .reading-card { padding: 26px 18px 22px; }
+    .sig-body { padding: 26px 20px 22px; }
+    .sig-visual { padding: 28px 20px; }
+    .group { margin-bottom: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="chart-section" id="chart">
+  <div class="chart-inner">
+
+    <div class="branch-header">
+      <div class="branch-rule">
+        <span class="branch-rule-mark">PATH TWO</span>
+        <div class="branch-rule-line"></div>
+      </div>
+      <h2>Chart <em>Readings</em></h2>
+      <p class="branch-intro">
+        Live sessions with your chart open between us. I read the D1, the D9, and the D60 together — this lifetime, the soul's dharma, and the whole karmic architecture behind both. Every session is recorded and sent to you after.
+      </p>
+      <div class="birth-note">
+        <p>
+          Every chart reading requires your <strong>accurate birth date, time, and place.</strong>
+          The D60 Shashtiamsha shifts with even a 4-minute difference in birth time.
+          The more precise your details — the deeper the reading can go.
+        </p>
+      </div>
+    </div>
+
+    <!-- ══ BEGIN ══ -->
+    <div class="group">
+      <div class="group-head">
+        <span class="group-name">BEGIN</span>
+        <div class="group-line"></div>
+      </div>
+      <p class="group-sub">If you have never sat with your chart before, start here.</p>
+
+      <div class="reading-card-wide">
+        <div class="wide-body">
+          <span class="reading-tag">FOCUSED · SINGLE AREA</span>
+          <h3>Specific Question <em>Reading</em></h3>
+          <p>
+            For one area of life that feels heavy, confusing, or karmically stuck — relationships, career, health, or spiritual growth. We go deep on one thing and we go deep on it completely.
+          </p>
+          <div class="card-meta" style="margin-bottom:0;">
+            <span class="meta-pill">30 MINUTES</span>
+            <span class="meta-pill">ONLINE</span>
+            <span class="meta-pill gold">ENTRY POINT</span>
+          </div>
+        </div>
+        <div class="wide-action">
+          <div>
+            <div class="wide-price">&#8377;4,299</div>
+            <div class="wide-duration">30 MIN · ONLINE</div>
+          </div>
+          <a href="https://wix.to/lupjudw" class="btn-ghost" target="_top">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ THE FULL MAP ══ -->
+    <div class="group">
+      <div class="group-head">
+        <span class="group-name">THE FULL MAP</span>
+        <div class="group-line"></div>
+      </div>
+      <p class="group-sub">The whole chart, read whole — and the particular threads running through it.</p>
+
+      <!-- Karmic Knots — Signature -->
+      <div class="signature-card">
+        <span class="signature-badge">SIGNATURE READING</span>
+        <div class="sig-visual">
+          <div class="sig-glyph">D60</div>
+          <div class="chart-layers">
+            <div class="chart-layer">D1 — RASHI
+              <span class="chart-layer-label">This Lifetime</span>
+            </div>
+            <div class="chart-connector"></div>
+            <div class="chart-layer">D9 — NAVAMSHA
+              <span class="chart-layer-label">Soul's Dharma</span>
+            </div>
+            <div class="chart-connector"></div>
+            <div class="chart-layer">D60 — SHASHTIAMSHA
+              <span class="chart-layer-label">All Lifetimes · All Karma</span>
+            </div>
+          </div>
+        </div>
+        <div class="sig-body">
+          <span class="reading-tag">KARMIC ASTROLOGY · THE FULL SOUL AUDIT</span>
+          <h3>Karmic Knots <em>Reading</em></h3>
+          <p>
+            The full soul audit. I read your D1, D9, and D60 together — the complete karmic architecture of your soul across every lifetime it has ever lived. Not just this one. All of them.
+          </p>
+          <div class="sig-includes">
+            <span class="sig-includes-title">THIS READING UNCOVERS</span>
+            <div class="include-item"><div class="include-dot"></div>The root karma beneath your most persistent and confusing life patterns</div>
+            <div class="include-item"><div class="include-dot"></div>Past-life wounds and soul contracts actively shaping your present</div>
+            <div class="include-item"><div class="include-dot"></div>Karmic gifts your soul has earned that you are not yet accessing</div>
+            <div class="include-item"><div class="include-dot"></div>What your soul came into this lifetime specifically to resolve</div>
+          </div>
+          <div class="sig-bottom">
+            <div>
+              <div class="sig-price">&#8377;6,500</div>
+              <div class="card-duration">60 MINUTES · ONLINE</div>
+            </div>
+            <div class="sig-actions">
+              <a href="https://www.shivohampath.com/readings/karmic-knots" class="btn-ghost" target="_top">Explore</a>
+              <a href="https://wix.to/eX9vA5Q" class="btn-primary" target="_top">Book This Reading</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Moksha + Madhurya -->
+      <div class="row">
+        <div class="reading-card">
+          <span class="reading-tag">ADVANCED · LIBERATION PATH</span>
+          <h3>Advanced Moksha<br><em>Consultation</em></h3>
+          <p>
+            For those who have done the inner work and sense that something deeper is asking to be seen. The soul's liberation path — where you are in the cycle of return, and what this lifetime is asking you to finally complete.
+          </p>
+          <div class="card-meta">
+            <span class="meta-pill">1 HR 30 MIN</span>
+            <span class="meta-pill">ONLINE</span>
+            <span class="meta-pill gold">ADVANCED</span>
+          </div>
+          <div class="card-bottom">
+            <div>
+              <div class="card-price">&#8377;8,500</div>
+              <div class="card-duration">90 MIN · ONLINE</div>
+            </div>
+            <a href="https://wix.to/R9ZUukl" class="card-book" target="_top">Book Now</a>
+          </div>
+        </div>
+
+        <div class="reading-card">
+          <span class="reading-tag">DEVOTION · DIVINE BELOVED</span>
+          <h3>Madhurya Bhakta<br><em>Reading</em></h3>
+          <p>
+            For women who love Shiv not as a distant deity, but as Beloved. This is not a standard astrology session — it is a sacred conversation for those on the path of divine union. We work with your chart, your devotional history, and your longing.
+          </p>
+          <div class="card-meta">
+            <span class="meta-pill">2 HOURS</span>
+            <span class="meta-pill">ONLINE</span>
+            <span class="meta-pill gold">BHAKTI PATH</span>
+            <span class="meta-pill gold">FEMALES ONLY</span>
+          </div>
+          <div class="card-bottom">
+            <div>
+              <div class="card-price">&#8377;7,500</div>
+              <div class="card-duration">2 HOURS · ONLINE</div>
+            </div>
+            <a href="https://wix.to/QN2T1GI" class="card-book" target="_top">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Synastry + Varshaphala + Muhurta -->
+      <div class="row-3">
+        <div class="reading-card">
+          <span class="reading-tag">RELATIONSHIPS · KARMIC BONDS</span>
+          <h3>Synastry &amp;<br><em>Kundali Milan</em></h3>
+          <p>
+            Not just compatibility — karmic bond analysis. Why you keep finding each other. What contract exists between your souls. Whether this relationship is here to teach, to complete, or to finally release.
+          </p>
+          <div class="card-meta">
+            <span class="meta-pill">1 HR 30 MIN</span>
+            <span class="meta-pill gold">TWO CHARTS</span>
+          </div>
+          <div class="card-bottom">
+            <div>
+              <div class="card-price">&#8377;9,400</div>
+              <div class="card-duration">90 MIN · ONLINE</div>
+            </div>
+            <a href="https://wix.to/H6yGXl5" class="card-book" target="_top">Book Now</a>
+          </div>
+        </div>
+
+        <div class="reading-card">
+          <span class="reading-tag">THE YEAR AHEAD · SOLAR RETURN</span>
+          <h3>Varshaphala<br><em>Annual Reading</em></h3>
+          <p>
+            Your solar return chart — the map of the twelve months that begin on your next birthday. What this particular year is carrying, where it will ask the most of you, and which months are the ones to move in.
+          </p>
+          <div class="card-meta">
+            <span class="meta-pill">1 HOUR</span>
+            <span class="meta-pill gold">ONCE A YEAR</span>
+          </div>
+          <div class="card-bottom">
+            <div>
+              <div class="card-price">&#8377;5,500</div>
+              <div class="card-duration">60 MIN · ONLINE</div>
+            </div>
+            <a href="https://wix.to/PooCvBv" class="card-book" target="_top">Book Now</a>
+          </div>
+        </div>
+
+        <div class="reading-card">
+          <span class="reading-tag">TIMING · ELECTIONAL</span>
+          <h3>Muhurta<br><em>Auspicious Time Selection</em></h3>
+          <p>
+            Choosing the hour, not reading it. For a marriage, a launch, a journey, a beginning that deserves to be started well. I select the window that supports what you are about to do.
+          </p>
+          <div class="card-meta">
+            <span class="meta-pill">30 MINUTES</span>
+            <span class="meta-pill gold">DATE SELECTION</span>
+          </div>
+          <div class="card-bottom">
+            <div>
+              <div class="card-price">&#8377;3,500</div>
+              <div class="card-duration">30 MIN · ONLINE</div>
+            </div>
+            <a href="https://wix.to/XDTdAxG" class="card-book" target="_top">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ AFTER ══ -->
+    <div class="group">
+      <div class="group-head">
+        <span class="group-name">AFTER</span>
+        <div class="group-line"></div>
+      </div>
+      <p class="group-sub">For those who have already sat with me once.</p>
+
+      <div class="reading-card-wide">
+        <div class="wide-body">
+          <span class="reading-tag">FOR THOSE WHO HAVE SAT WITH ME BEFORE</span>
+          <h3>Returning Seeker <em>Reading</em></h3>
+          <p>
+            The work begins after the call, not during it. This is for when you have lived with your reading for a while and the questions have changed — or when something has moved and you want to look at it together.
+          </p>
+          <div class="card-meta" style="margin-bottom:0;">
+            <span class="meta-pill">30 MINUTES</span>
+            <span class="meta-pill">ONLINE</span>
+            <span class="meta-pill gold">RETURNING ONLY</span>
+          </div>
+        </div>
+        <div class="wide-action">
+          <div>
+            <div class="wide-price">&#8377;2,999</div>
+            <div class="wide-duration">30 MIN · ONLINE</div>
+          </div>
+          <a href="https://wix.to/zNYcjzc" class="btn-ghost" target="_top">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

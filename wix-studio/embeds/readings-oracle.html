@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .oracle-section { padding: 40px 20px 30px; }
+  .oracle-inner { max-width: 1100px; margin: 0 auto; }
+
+  /* ── HEADER ── */
+  .branch-header { margin-bottom: 20px; }
+  .branch-rule {
+    display: flex; align-items: center; gap: 18px; margin-bottom: 26px;
+  }
+  .branch-rule-line { flex: 1; height: 1px; background: var(--line2); }
+  .branch-rule-mark {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 3px; color: var(--gold); white-space: nowrap;
+  }
+  .branch-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 4.4vw, 48px);
+    font-weight: 300; color: var(--text);
+    line-height: 1.08; margin-bottom: 16px;
+  }
+  .branch-header h2 em { font-style: italic; color: var(--gold); }
+  .branch-intro {
+    font-size: clamp(14px, 1.8vw, 16px);
+    color: var(--text2); line-height: 1.8;
+    max-width: 640px; margin-bottom: 18px;
+  }
+  .branch-note {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 10px 18px; background: var(--gold4);
+    border: 1px solid var(--line2); border-left: 3px solid var(--gold);
+    font-size: 14px; color: var(--text2); font-style: italic;
+    margin-bottom: 34px;
+  }
+  .branch-note strong { color: var(--gold); font-weight: 400; font-style: normal; }
+
+  /* ── ORACLE GRID ── */
+  .oracle-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+  }
+
+  .oracle-card {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 34px 30px 30px;
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: all 0.3s;
+  }
+  .oracle-card:hover { border-color: var(--line2); background: var(--bg4); }
+  .oracle-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .oracle-card:hover::after { transform: scaleX(1); }
+
+  /* Card-back fan — 1, 3, or 5 cards */
+  .card-fan {
+    display: flex; align-items: flex-end; gap: 4px;
+    height: 52px; margin-bottom: 22px;
+  }
+  .fan-card {
+    width: 20px; border: 1px solid var(--line2);
+    background: rgba(201,168,76,0.04);
+    position: relative;
+    transition: all 0.3s;
+  }
+  .fan-card::before {
+    content: ''; position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%,-50%) rotate(45deg);
+    width: 4px; height: 4px; background: var(--gold); opacity: 0.5;
+  }
+  .oracle-card:hover .fan-card { border-color: var(--gold2); background: var(--gold3); }
+  .fan-card.h1 { height: 34px; }
+  .fan-card.h2 { height: 42px; }
+  .fan-card.h3 { height: 52px; }
+
+  .oracle-tag {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 3px; color: var(--gold);
+    display: block; margin-bottom: 12px;
+  }
+  .oracle-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(21px, 2.4vw, 28px);
+    font-weight: 400; color: var(--text);
+    line-height: 1.15; margin-bottom: 12px;
+  }
+  .oracle-card h3 em { font-style: italic; color: var(--gold); }
+  .oracle-card > p {
+    font-size: clamp(13px, 1.6vw, 15px);
+    color: var(--text2); line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  /* Spread positions list */
+  .spread-list {
+    border-top: 1px solid var(--line);
+    padding-top: 16px; margin-bottom: 20px;
+  }
+  .spread-list-title {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+    display: block; margin-bottom: 12px;
+  }
+  .spread-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; color: var(--text2);
+    line-height: 1.6; margin-bottom: 8px;
+  }
+  .spread-dot {
+    width: 4px; height: 4px; background: var(--gold);
+    transform: rotate(45deg); opacity: 0.6;
+    margin-top: 8px; flex-shrink: 0;
+  }
+
+  .oracle-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .meta-pill {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 1.5px; padding: 4px 10px;
+    border: 1px solid var(--line2); color: var(--text3);
+  }
+  .meta-pill.gold { border-color: var(--gold2); color: var(--gold); }
+
+  .oracle-bottom {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    padding-top: 18px; border-top: 1px solid var(--line);
+    margin-top: auto; gap: 12px;
+  }
+  .oracle-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300; color: var(--gold); line-height: 1;
+  }
+  .oracle-turnaround {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 1.5px; color: var(--text3); margin-top: 4px;
+  }
+  .oracle-book {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 2px; color: var(--text3);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 6px;
+    transition: color 0.2s; white-space: nowrap;
+  }
+  .oracle-card:hover .oracle-book { color: var(--gold); }
+  .oracle-book::after { content: '→'; }
+
+  /* ── BRIDGE ── */
+  .bridge {
+    margin-top: 4px;
+    background: var(--bg3); border: 1px solid var(--line);
+    border-left: 3px solid var(--gold2);
+    padding: 26px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+  }
+  .bridge p {
+    font-size: clamp(14px, 1.7vw, 16px);
+    color: var(--text2); line-height: 1.7;
+    font-style: italic; flex: 1; min-width: 260px;
+  }
+  .bridge p strong { color: var(--gold); font-weight: 400; font-style: normal; }
+  .btn-ghost {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2px; padding: 12px 24px;
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold2); cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .btn-ghost:hover { background: var(--gold3); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .oracle-grid { grid-template-columns: 1fr; gap: 3px; }
+    .oracle-card { padding: 28px 22px 24px; }
+    .card-fan { height: 44px; }
+    .fan-card.h1 { height: 28px; }
+    .fan-card.h2 { height: 36px; }
+    .fan-card.h3 { height: 44px; }
+  }
+  @media (max-width: 640px) {
+    .oracle-section { padding: 30px 12px 20px; }
+    .branch-rule { gap: 12px; margin-bottom: 20px; }
+    .branch-note { margin-bottom: 26px; padding: 10px 14px; font-size: 13px; }
+    .oracle-card { padding: 24px 18px 20px; }
+    .bridge { padding: 22px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="oracle-section" id="oracle">
+  <div class="oracle-inner">
+
+    <div class="branch-header">
+      <div class="branch-rule">
+        <span class="branch-rule-mark">PATH ONE</span>
+        <div class="branch-rule-line"></div>
+      </div>
+      <h2>The Shiva <em>Oracle</em></h2>
+      <p class="branch-intro">
+        Not prediction. Revelation. You bring a question and the cards are drawn for it — then I sit with what came, and write you what it is saying. It arrives in your inbox. There is no call to schedule and no chart to prepare.
+      </p>
+      <div class="branch-note">
+        <span><strong>No birth details needed.</strong>&nbsp; Only your question.</span>
+      </div>
+    </div>
+
+    <div class="oracle-grid">
+
+      <!-- Single Draw -->
+      <div class="oracle-card">
+        <div class="card-fan">
+          <div class="fan-card h3"></div>
+        </div>
+        <span class="oracle-tag">ONE CARD</span>
+        <h3>Single <em>Draw</em></h3>
+        <p>
+          One question. One card. For the thing you already know you need to ask — the one that has been sitting in you for weeks. Ask it plainly and it will be answered plainly.
+        </p>
+        <div class="spread-list">
+          <span class="spread-list-title">WHAT YOU RECEIVE</span>
+          <div class="spread-item"><div class="spread-dot"></div>The card drawn for your question, and why it came</div>
+          <div class="spread-item"><div class="spread-dot"></div>Around 500 words, written for you alone</div>
+        </div>
+        <div class="oracle-meta">
+          <span class="meta-pill">WRITTEN</span>
+          <span class="meta-pill">NO CALL</span>
+          <span class="meta-pill gold">START HERE</span>
+        </div>
+        <div class="oracle-bottom">
+          <div>
+            <div class="oracle-price">&#8377;599</div>
+            <div class="oracle-turnaround">WITHIN 24 HOURS</div>
+          </div>
+          <a href="https://wix.to/LHxCeNG" class="oracle-book" target="_top">Ask</a>
+        </div>
+      </div>
+
+      <!-- Three-Card Sacred Spread -->
+      <div class="oracle-card">
+        <div class="card-fan">
+          <div class="fan-card h1"></div>
+          <div class="fan-card h3"></div>
+          <div class="fan-card h2"></div>
+        </div>
+        <span class="oracle-tag">THREE CARDS</span>
+        <h3>Three-Card <em>Sacred Spread</em></h3>
+        <p>
+          For a situation with a history. Three cards laid across time — what planted this, what is holding it in place now, and what is already moving toward you whether you can see it yet or not.
+        </p>
+        <div class="spread-list">
+          <span class="spread-list-title">THE SPREAD</span>
+          <div class="spread-item"><div class="spread-dot"></div><strong>Root</strong>&nbsp;— where this actually began</div>
+          <div class="spread-item"><div class="spread-dot"></div><strong>Present</strong>&nbsp;— what is holding it in place</div>
+          <div class="spread-item"><div class="spread-dot"></div><strong>Emergence</strong>&nbsp;— what is coming toward you</div>
+        </div>
+        <div class="oracle-meta">
+          <span class="meta-pill">WRITTEN</span>
+          <span class="meta-pill">NO CALL</span>
+          <span class="meta-pill gold">MOST CHOSEN</span>
+        </div>
+        <div class="oracle-bottom">
+          <div>
+            <div class="oracle-price">&#8377;1,199</div>
+            <div class="oracle-turnaround">PDF REPORT</div>
+          </div>
+          <a href="https://wix.to/l9qoRSE" class="oracle-book" target="_top">Draw</a>
+        </div>
+      </div>
+
+      <!-- Full Spread -->
+      <div class="oracle-card">
+        <div class="card-fan">
+          <div class="fan-card h1"></div>
+          <div class="fan-card h2"></div>
+          <div class="fan-card h3"></div>
+          <div class="fan-card h2"></div>
+          <div class="fan-card h1"></div>
+        </div>
+        <span class="oracle-tag">FIVE CARDS</span>
+        <h3>Shiva Oracle<br><em>Full Spread</em></h3>
+        <p>
+          The complete oracle. Five cards for the whole shape of what you are standing in — not one question but the season itself. The deepest the written work goes before a chart is needed.
+        </p>
+        <div class="spread-list">
+          <span class="spread-list-title">WHAT YOU RECEIVE</span>
+          <div class="spread-item"><div class="spread-dot"></div>Five cards read as one movement, not five answers</div>
+          <div class="spread-item"><div class="spread-dot"></div>A full written transmission, delivered as a PDF</div>
+        </div>
+        <div class="oracle-meta">
+          <span class="meta-pill">WRITTEN</span>
+          <span class="meta-pill">NO CALL</span>
+          <span class="meta-pill gold">DEEPEST WRITTEN</span>
+        </div>
+        <div class="oracle-bottom">
+          <div>
+            <div class="oracle-price">&#8377;1,499</div>
+            <div class="oracle-turnaround">PDF REPORT</div>
+          </div>
+          <a href="https://wix.to/dhk2OP9" class="oracle-book" target="_top">Draw</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bridge into Path Two -->
+    <div class="bridge">
+      <p>
+        The oracle answers the question you brought. <strong>The chart shows you why you keep bringing it.</strong> When the pattern is older than this situation — older, sometimes, than this lifetime — that is where the chart readings begin.
+      </p>
+      <a href="https://www.shivohampath.com/readings#chart" class="btn-ghost" data-jump="chart" target="_top">See Chart Readings</a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function () {
+  // Inside a Wix HTML embed we are in an iframe, so a bare "#oracle" would
+  // resolve against the iframe's own URL. Resolve against the page we are
+  // actually embedded in (document.referrer) so this works on the live page,
+  // in Wix preview, and on any page path.
+  function pageBase(fallback) {
+    try {
+      if (document.referrer) return document.referrer.split('#')[0];
+    } catch (e) {}
+    return fallback.split('#')[0];
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-jump]'), function (el) {
+    el.addEventListener('click', function (e) {
+      var hash = el.getAttribute('data-jump');
+      var href = el.getAttribute('href') || '';
+      e.preventDefault();
+      try {
+        window.top.location.href = pageBase(href) + '#' + hash;
+      } catch (err) {
+        window.open(href, '_top');
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

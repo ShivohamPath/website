@@ -103,7 +103,7 @@ Go to **Dashboard → Add Apps** and install all of these first:
    - Logo
    - Tagline: "Esoteric astrology for souls who came here with unfinished business."
    - Social icons: Instagram, YouTube (36×36px boxes with gold border)
-5. **Column 2 — Readings:** list all 6 services
+5. **Column 2 — Readings:** The Shiva Oracle (`/readings#oracle`), then the chart readings (`/readings#chart`) — see the Readings page section for the full list
 6. **Column 3 — Courses:** Esoteric Astrology Course, Live Sessions, Books & PDFs
 7. **Column 4 — Explore:** Blog, About Veena, Testimonials, Instagram, Contact
 8. Bottom strip: Copyright text in Cinzel 9px
@@ -510,43 +510,55 @@ Before republishing the About page:
 
 ### READINGS PAGE
 
-**Sections:**
-1. **Hero** — "Readings for Souls Who Are Ready"
-2. **What Makes These Different** — intro paragraph
-3. **Service Cards** (full page, one card per service):
+The page is split into **two branches**: the written Shiva Oracle (no birth data
+required) and live Chart Readings (birth data required). Each branch is its own
+embed. Build the sections in this order:
 
-For each of the 6 services, create a wide card with:
-- Service name + duration
-- Detailed description
-- What's included (bullet list)
-- Price
-- "Book Now" button → linked to that specific Wix Bookings service
+| # | Section | Embed |
+|---|---------|-------|
+| 1 | Hero | `embeds/readings-hero.html` |
+| 2 | The fork — two doors | `embeds/readings-fork.html` |
+| 3 | Path One — The Shiva Oracle | `embeds/readings-oracle.html` |
+| 4 | Path Two — Chart Readings | `embeds/readings-chart.html` |
+| 5 | How each path works | `embeds/readings-how.html` |
+| 6 | Testimonials | `embeds/testimonials-section.html` |
+| 7 | Chooser / CTA | `embeds/readings-cta.html` |
 
-**Services:**
+**Anchor IDs (required).** The fork buttons and the oracle→chart bridge link to
+`/readings#oracle` and `/readings#chart` with `target="_top"`. In Wix Studio, set
+the section containing `readings-oracle.html` to ID **`oracle`** and the section
+containing `readings-chart.html` to ID **`chart`** (Section settings → HTML ID).
+Without these the fork buttons reload the page instead of scrolling.
+
+**The offerings:**
+
 ```
-01 · Specific Question Reading
-     30 mins · For one area of life that feels karmically stuck.
+PATH ONE — THE SHIVA ORACLE          written · no call · no birth data
+  One Card Single Draw         ₹599     ~500 words · within 24 hours
+  Three-Card Sacred Spread     ₹1,199   Root · Present · Emergence · PDF
+  Shiva Oracle Reading         ₹1,499   five cards · PDF
 
-02 · Karmic Knots Reading ★ FEATURED
-     60 mins · D1 + D9 + D60. Full soul audit.
-
-03 · Synastry & Kundali Milan
-     60 mins · Karmic compatibility reading.
-
-04 · Advanced Moksha Path Consultation
-     90 mins · Soul liberation path. Deepest work available.
-
-05 · Madhurya Bhakta Sessions
-     Ongoing · Continued guidance as your cycles unfold.
-
-06 · Shiva Oracle Reading
-     PDF Report · Written transmission. No call needed.
+PATH TWO — CHART READINGS            live · recorded · birth data required
+  BEGIN
+    Specific Question Reading  ₹4,299   30 min
+  THE FULL MAP
+    Karmic Knots Reading       ₹6,500   60 min  ★ SIGNATURE
+    Advanced Moksha Path       ₹8,500   90 min
+    Madhurya Bhakta Reading    ₹7,500   120 min · females only
+    Synastry & Kundali Milan   ₹9,400   90 min
+    Varshaphala Annual Reading ₹5,500   60 min
+    Muhurta Auspicious Time    ₹3,500   30 min
+  AFTER
+    Returning Seeker Reading   ₹2,999   30 min
 ```
 
-4. **How It Works** — 3-step process
-5. **Testimonials** (3 cards)
-6. **FAQ accordion**
-7. **CTA**
+Every "Book" button links to the live Wix product short link (`https://wix.to/…`),
+not a `/booking-calendar/` path. The eleven links live in three places that must
+stay in step: `embeds/readings-oracle.html`, `embeds/readings-chart.html`, and the
+`R` table inside the chooser script in `embeds/readings-cta.html`.
+
+Keep `seo/service-schema.json` in step with this list — it is the source of truth
+for the Service structured data and is maintained by hand.
 
 ---
 
@@ -621,17 +633,30 @@ SHE WHO BECOMES HIM
 
 ---
 
-## Step 9 — Connect Wix Bookings
+## Step 9 — Wix products & booking services
 
-1. Dashboard → Wix Bookings → **Services**
-2. Create a service for each reading:
-   - Specific Question Reading (30 min)
-   - Karmic Knots Reading (60 min)
-   - Synastry & Kundali Milan (60 min)
-   - Advanced Moksha Path Consultation (90 min)
-   - Madhurya Bhakta Sessions (ongoing)
-   - Shiva Oracle Reading (PDF — set as a "class" not a session, or use Wix Stores)
-3. On the Readings page, link each "Book Now" button to its specific service URL
+All eleven readings are live Wix products. The embeds link straight to them:
+
+| Reading | Link |
+|---------|------|
+| One Card Single Draw | https://wix.to/LHxCeNG |
+| Three-Card Sacred Spread | https://wix.to/l9qoRSE |
+| Shiva Oracle Reading | https://wix.to/dhk2OP9 |
+| Specific Question Reading (30 min) | https://wix.to/lupjudw |
+| Karmic Knots Reading (60 min) | https://wix.to/eX9vA5Q |
+| Synastry & Kundali Milan | https://wix.to/H6yGXl5 |
+| Advanced Moksha Path Consultation | https://wix.to/R9ZUukl |
+| Madhurya Bhakta Reading (females only) | https://wix.to/QN2T1GI |
+| Varshaphala Annual Reading | https://wix.to/PooCvBv |
+| Muhurta Auspicious Time Selection | https://wix.to/XDTdAxG |
+| Returning Seeker Reading | https://wix.to/zNYcjzc |
+
+For the chart readings, add a **required booking form field** for birth date,
+birth time, and birth place. For the three oracle readings, add a required
+"Your question" field — they have no appointment and no birth data.
+
+If a product link ever changes, update it in all three files listed in the
+Readings page section above, plus `seo/service-schema.json`.
 
 ---
 

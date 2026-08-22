@@ -262,11 +262,11 @@
             <div class="oracle-price">&#8377;599</div>
             <div class="oracle-turnaround">WITHIN 24 HOURS</div>
           </div>
-          <a href="https://www.shivohampath.com/booking-calendar/shiva-oracle-single-draw" class="oracle-book" target="_top">Ask</a>
+          <a href="https://wix.to/LHxCeNG" class="oracle-book" target="_top">Ask</a>
         </div>
       </div>
 
-      <!-- Three-Card Spread -->
+      <!-- Three-Card Sacred Spread -->
       <div class="oracle-card">
         <div class="card-fan">
           <div class="fan-card h1"></div>
@@ -274,7 +274,7 @@
           <div class="fan-card h2"></div>
         </div>
         <span class="oracle-tag">THREE CARDS</span>
-        <h3>Three-Card <em>Spread</em></h3>
+        <h3>Three-Card <em>Sacred Spread</em></h3>
         <p>
           For a situation with a history. Three cards laid across time — what planted this, what is holding it in place now, and what is already moving toward you whether you can see it yet or not.
         </p>
@@ -294,7 +294,7 @@
             <div class="oracle-price">&#8377;1,199</div>
             <div class="oracle-turnaround">PDF REPORT</div>
           </div>
-          <a href="https://www.shivohampath.com/booking-calendar/shiva-oracle-three-card-spread" class="oracle-book" target="_top">Draw</a>
+          <a href="https://wix.to/l9qoRSE" class="oracle-book" target="_top">Draw</a>
         </div>
       </div>
 
@@ -327,7 +327,7 @@
             <div class="oracle-price">&#8377;1,499</div>
             <div class="oracle-turnaround">PDF REPORT</div>
           </div>
-          <a href="https://www.shivohampath.com/booking-calendar/shiva-oracle-reading-pdf-report-only" class="oracle-book" target="_top">Draw</a>
+          <a href="https://wix.to/dhk2OP9" class="oracle-book" target="_top">Draw</a>
         </div>
       </div>
 
@@ -338,11 +338,38 @@
       <p>
         The oracle answers the question you brought. <strong>The chart shows you why you keep bringing it.</strong> When the pattern is older than this situation — older, sometimes, than this lifetime — that is where the chart readings begin.
       </p>
-      <a href="https://www.shivohampath.com/readings#chart" class="btn-ghost" target="_top">See Chart Readings</a>
+      <a href="https://www.shivohampath.com/readings#chart" class="btn-ghost" data-jump="chart" target="_top">See Chart Readings</a>
     </div>
 
   </div>
 </section>
+
+<script>
+(function () {
+  // Inside a Wix HTML embed we are in an iframe, so a bare "#oracle" would
+  // resolve against the iframe's own URL. Resolve against the page we are
+  // actually embedded in (document.referrer) so this works on the live page,
+  // in Wix preview, and on any page path.
+  function pageBase(fallback) {
+    try {
+      if (document.referrer) return document.referrer.split('#')[0];
+    } catch (e) {}
+    return fallback.split('#')[0];
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-jump]'), function (el) {
+    el.addEventListener('click', function (e) {
+      var hash = el.getAttribute('data-jump');
+      var href = el.getAttribute('href') || '';
+      e.preventDefault();
+      try {
+        window.top.location.href = pageBase(href) + '#' + hash;
+      } catch (err) {
+        window.open(href, '_top');
+      }
+    });
+  });
+})();
+</script>
 
 </body>
 </html>

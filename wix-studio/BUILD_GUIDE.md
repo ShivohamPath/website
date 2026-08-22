@@ -534,23 +534,28 @@ Without these the fork buttons reload the page instead of scrolling.
 
 ```
 PATH ONE — THE SHIVA ORACLE          written · no call · no birth data
-  Single Draw                  ₹599     ~500 words · within 24 hours
-  Three-Card Spread            ₹1,199   Root · Present · Emergence · PDF
-  Shiva Oracle Full Spread     ₹1,499   five cards · PDF
+  One Card Single Draw         ₹599     ~500 words · within 24 hours
+  Three-Card Sacred Spread     ₹1,199   Root · Present · Emergence · PDF
+  Shiva Oracle Reading         ₹1,499   five cards · PDF
 
 PATH TWO — CHART READINGS            live · recorded · birth data required
   BEGIN
-    Specific Question Reading  ₹2,499   30 min
+    Specific Question Reading  ₹4,299   30 min
   THE FULL MAP
     Karmic Knots Reading       ₹6,500   60 min  ★ SIGNATURE
     Advanced Moksha Path       ₹8,500   90 min
-    Madhurya Bhakta Sessions   ₹7,500   120 min
+    Madhurya Bhakta Reading    ₹7,500   120 min · females only
     Synastry & Kundali Milan   ₹9,400   90 min
     Varshaphala Annual Reading ₹5,500   60 min
-    Muhurta Timing Selection   ₹3,500   30 min
+    Muhurta Auspicious Time    ₹3,500   30 min
   AFTER
-    Follow-Up Session          ₹2,999   30 min · returning clients only
+    Returning Seeker Reading   ₹2,999   30 min
 ```
+
+Every "Book" button links to the live Wix product short link (`https://wix.to/…`),
+not a `/booking-calendar/` path. The eleven links live in three places that must
+stay in step: `embeds/readings-oracle.html`, `embeds/readings-chart.html`, and the
+`R` table inside the chooser script in `embeds/readings-cta.html`.
 
 Keep `seo/service-schema.json` in step with this list — it is the source of truth
 for the Service structured data and is maintained by hand.
@@ -628,41 +633,30 @@ SHE WHO BECOMES HIM
 
 ---
 
-## Step 9 — Connect Wix Bookings & Store
+## Step 9 — Wix products & booking services
 
-### Chart readings → Wix Bookings (appointment services)
+All eleven readings are live Wix products. The embeds link straight to them:
 
-1. Dashboard → Wix Bookings → **Services**
-2. Create an appointment service for each:
-   - Specific Question Reading (30 min) — `specific-question-reading-30-mins`
-   - Karmic Knots Reading (60 min) — `karmic-knots-reading-60-mins`
-   - Advanced Moksha Path Consultation (90 min) — `advanced-moksha-path-consultation`
-   - Madhurya Bhakta Sessions (120 min) — `madhurya-bhakta-sessions`
-   - Synastry & Kundali Milan (90 min) — `synastry-kundali-milan`
-   - Varshaphala Annual Reading (60 min) — `varshaphala-annual-reading`
-   - Muhurta Timing Selection (30 min) — `muhurta-timing-selection`
-   - Follow-Up Session (30 min) — `follow-up-integration-session`
-3. Add a **required booking form field** for birth date, birth time, and birth place.
-4. Restrict Follow-Up Session to returning clients (hide from the services list, or
-   gate it behind a members-only page).
+| Reading | Link |
+|---------|------|
+| One Card Single Draw | https://wix.to/LHxCeNG |
+| Three-Card Sacred Spread | https://wix.to/l9qoRSE |
+| Shiva Oracle Reading | https://wix.to/dhk2OP9 |
+| Specific Question Reading (30 min) | https://wix.to/lupjudw |
+| Karmic Knots Reading (60 min) | https://wix.to/eX9vA5Q |
+| Synastry & Kundali Milan | https://wix.to/H6yGXl5 |
+| Advanced Moksha Path Consultation | https://wix.to/R9ZUukl |
+| Madhurya Bhakta Reading (females only) | https://wix.to/QN2T1GI |
+| Varshaphala Annual Reading | https://wix.to/PooCvBv |
+| Muhurta Auspicious Time Selection | https://wix.to/XDTdAxG |
+| Returning Seeker Reading | https://wix.to/zNYcjzc |
 
-### Shiva Oracle → written products, not appointments
+For the chart readings, add a **required booking form field** for birth date,
+birth time, and birth place. For the three oracle readings, add a required
+"Your question" field — they have no appointment and no birth data.
 
-The three oracle readings have no appointment slot, so a booking calendar is the
-wrong container — it makes the buyer pick a time for something that has no time.
-Set these up as **Wix Stores products** with a required "Your question" text field
-at checkout:
-
-   - Shiva Oracle — Single Draw (₹599) — `shiva-oracle-single-draw`
-   - Shiva Oracle — Three-Card Spread (₹1,199) — `shiva-oracle-three-card-spread`
-   - Shiva Oracle — Full Spread (₹1,499) — `shiva-oracle-reading-pdf-report-only`
-
-The embeds currently point at `/booking-calendar/<slug>` for all three, matching
-the existing Shiva Oracle PDF product. **If you move them to Wix Stores, update the
-`href` in `embeds/readings-oracle.html` and `embeds/readings-cta.html`** (the
-chooser's `BOOK` constant and the three oracle entries in its `R` table).
-
-5. Link each "Book Now" button on the Readings page to its specific service URL.
+If a product link ever changes, update it in all three files listed in the
+Readings page section above, plus `seo/service-schema.json`.
 
 ---
 

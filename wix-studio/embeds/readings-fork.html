@@ -170,7 +170,7 @@
     <div class="fork-doors">
 
       <!-- Door 1 — The Shiva Oracle -->
-      <a class="door" href="https://www.shivohampath.com/readings#oracle" target="_top">
+      <a class="door" href="https://www.shivohampath.com/readings#oracle" data-jump="oracle" target="_top">
         <div class="door-glyph"><span>&#9670;</span></div>
         <span class="door-tag">PATH ONE · WRITTEN</span>
         <h3>The Shiva<br><em>Oracle</em></h3>
@@ -201,7 +201,7 @@
       </a>
 
       <!-- Door 2 — Chart Readings -->
-      <a class="door" href="https://www.shivohampath.com/readings#chart" target="_top">
+      <a class="door" href="https://www.shivohampath.com/readings#chart" data-jump="chart" target="_top">
         <div class="door-glyph"><span>&#9671;</span></div>
         <span class="door-tag">PATH TWO · LIVE</span>
         <h3>Chart<br><em>Readings</em></h3>
@@ -224,8 +224,8 @@
         </div>
         <div class="door-bottom">
           <div>
-            <div class="door-range">&#8377;2,499 &ndash; &#8377;9,400</div>
-            <div class="door-range-label">SEVEN READINGS</div>
+            <div class="door-range">&#8377;2,999 &ndash; &#8377;9,400</div>
+            <div class="door-range-label">EIGHT READINGS</div>
           </div>
           <span class="door-enter">Enter</span>
         </div>
@@ -234,6 +234,33 @@
     </div>
   </div>
 </section>
+
+<script>
+(function () {
+  // Inside a Wix HTML embed we are in an iframe, so a bare "#oracle" would
+  // resolve against the iframe's own URL. Resolve against the page we are
+  // actually embedded in (document.referrer) so this works on the live page,
+  // in Wix preview, and on any page path.
+  function pageBase(fallback) {
+    try {
+      if (document.referrer) return document.referrer.split('#')[0];
+    } catch (e) {}
+    return fallback.split('#')[0];
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-jump]'), function (el) {
+    el.addEventListener('click', function (e) {
+      var hash = el.getAttribute('data-jump');
+      var href = el.getAttribute('href') || '';
+      e.preventDefault();
+      try {
+        window.top.location.href = pageBase(href) + '#' + hash;
+      } catch (err) {
+        window.open(href, '_top');
+      }
+    });
+  });
+})();
+</script>
 
 </body>
 </html>

@@ -13,7 +13,7 @@
         "@id": "https://www.shivohampath.com/#veena"
       },
       "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/shiva-oracle-single-draw",
+      "url": "https://wix.to/LHxCeNG",
       "offers": {
         "@type": "Offer",
         "price": "599",
@@ -24,14 +24,14 @@
     {
       "@type": "Service",
       "position": 2,
-      "name": "Shiva Oracle — Three-Card Spread",
+      "name": "Shiva Oracle — Three-Card Sacred Spread",
       "serviceType": "Shiva Oracle Reading",
       "description": "Root, Present and Emergence — three cards laid across time for a situation with a history behind it. Delivered as a written PDF.",
       "provider": {
         "@id": "https://www.shivohampath.com/#veena"
       },
       "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/shiva-oracle-three-card-spread",
+      "url": "https://wix.to/l9qoRSE",
       "offers": {
         "@type": "Offer",
         "price": "1199",
@@ -49,7 +49,7 @@
         "@id": "https://www.shivohampath.com/#veena"
       },
       "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/shiva-oracle-reading-pdf-report-only",
+      "url": "https://wix.to/dhk2OP9",
       "offers": {
         "@type": "Offer",
         "price": "1499",
@@ -67,10 +67,10 @@
         "@id": "https://www.shivohampath.com/#veena"
       },
       "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/specific-question-reading-30-mins",
+      "url": "https://wix.to/lupjudw",
       "offers": {
         "@type": "Offer",
-        "price": "2499",
+        "price": "4299",
         "priceCurrency": "INR",
         "availability": "https://schema.org/InStock"
       }
@@ -85,7 +85,7 @@
         "@id": "https://www.shivohampath.com/#veena"
       },
       "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/karmic-knots-reading-60-mins",
+      "url": "https://wix.to/eX9vA5Q",
       "offers": {
         "@type": "Offer",
         "price": "6500",
@@ -103,7 +103,7 @@
         "@id": "https://www.shivohampath.com/#veena"
       },
       "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/advanced-moksha-path-consultation",
+      "url": "https://wix.to/R9ZUukl",
       "offers": {
         "@type": "Offer",
         "price": "8500",
@@ -114,14 +114,14 @@
     {
       "@type": "Service",
       "position": 7,
-      "name": "Madhurya Bhakta Sessions",
+      "name": "Madhurya Bhakta Reading",
       "serviceType": "Vedic Astrology Reading",
-      "description": "A sacred conversation for souls on the path of divine union, working with chart, devotional history, and longing.",
+      "description": "A sacred conversation for women on the path of divine union, working with chart, devotional history, and longing.",
       "provider": {
         "@id": "https://www.shivohampath.com/#veena"
       },
       "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/madhurya-bhakta-sessions",
+      "url": "https://wix.to/QN2T1GI",
       "offers": {
         "@type": "Offer",
         "price": "7500",
@@ -139,7 +139,7 @@
         "@id": "https://www.shivohampath.com/#veena"
       },
       "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/synastry-kundali-milan",
+      "url": "https://wix.to/H6yGXl5",
       "offers": {
         "@type": "Offer",
         "price": "9400",
@@ -157,7 +157,7 @@
         "@id": "https://www.shivohampath.com/#veena"
       },
       "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/varshaphala-annual-reading",
+      "url": "https://wix.to/PooCvBv",
       "offers": {
         "@type": "Offer",
         "price": "5500",
@@ -168,14 +168,14 @@
     {
       "@type": "Service",
       "position": 10,
-      "name": "Muhurta Timing Selection",
+      "name": "Muhurta Auspicious Time Selection",
       "serviceType": "Vedic Astrology Reading",
       "description": "Electional astrology — selecting the auspicious window for a marriage, a launch, a journey, or any beginning that deserves to be started well.",
       "provider": {
         "@id": "https://www.shivohampath.com/#veena"
       },
       "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/muhurta-timing-selection",
+      "url": "https://wix.to/XDTdAxG",
       "offers": {
         "@type": "Offer",
         "price": "3500",
@@ -186,14 +186,14 @@
     {
       "@type": "Service",
       "position": 11,
-      "name": "Follow-Up Session",
+      "name": "Returning Seeker Reading",
       "serviceType": "Vedic Astrology Reading",
-      "description": "A returning-client session for when you have lived with your reading a while and the questions have changed.",
+      "description": "A reading for returning seekers — for when you have lived with your last reading a while and the questions have changed.",
       "provider": {
         "@id": "https://www.shivohampath.com/#veena"
       },
       "areaServed": "Worldwide",
-      "url": "https://www.shivohampath.com/booking-calendar/follow-up-integration-session",
+      "url": "https://wix.to/zNYcjzc",
       "offers": {
         "@type": "Offer",
         "price": "2999",

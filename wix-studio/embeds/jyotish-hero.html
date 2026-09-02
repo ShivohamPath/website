@@ -61,19 +61,13 @@
 
   .hero-inner { position: relative; z-index: 1; max-width: 820px; }
 
-  /* Live badge */
+  /* Admissions status badge */
   .live-badge {
-    display: inline-flex; align-items: center; gap: 10px;
+    display: inline-flex; align-items: center;
     font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px;
     color: var(--bg); background: var(--gold);
     padding: 7px 18px; margin-bottom: 36px;
   }
-  .live-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--bg);
-    animation: blink 1.8s ease-in-out infinite;
-  }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
   .pre-title {
     font-family: 'Cinzel', serif; font-size: 10px;
@@ -118,37 +112,21 @@
     max-width: 580px; margin: 0 auto 40px;
   }
 
-  /* Text pill */
-  .anchor-cta {
-    font-family: 'Cinzel', serif; font-size: 11px;
-    letter-spacing: 2.5px; padding: 14px 44px;
-    background: var(--gold); color: var(--bg);
-    border: none; cursor: pointer;
-    text-decoration: none; display: inline-block;
-    transition: background 0.2s;
-  }
-  .anchor-cta:hover { background: #a8893a; }
-
-  .pay-wrap {
-    display: flex; gap: 20px;
-    justify-content: center; align-items: flex-end;
-    flex-wrap: wrap;
-  }
-  .pay-item { text-align: center; }
-  .pay-label {
-    font-family: 'Cinzel', serif; font-size: 8px;
-    letter-spacing: 2px; color: var(--text3);
-    display: block; margin-bottom: 10px;
-  }
-  .btn-pay-outline {
-    font-family: 'Cinzel', serif; font-size: 11px;
-    letter-spacing: 2.5px; padding: 13px 44px;
-    background: transparent; color: var(--gold);
-    text-decoration: none; display: inline-block;
+  /* Admissions closed notice */
+  .closed-notice {
+    display: inline-flex; flex-direction: column; gap: 7px;
+    padding: 15px 30px;
     border: 1px solid var(--gold2);
-    transition: background 0.2s;
+    background: var(--gold4);
   }
-  .btn-pay-outline:hover { background: var(--gold3); }
+  .closed-title {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2.5px; color: var(--gold);
+  }
+  .closed-copy {
+    font-size: 15px; font-style: italic;
+    color: var(--text2);
+  }
 
   /* Text row below */
   .text-texts {
@@ -204,7 +182,7 @@
   }
   @media (max-width: 480px) {
     .hero { padding: 60px 20px 60px; }
-    .anchor-cta { width: 100%; text-align: center; }
+    .closed-notice { width: 100%; }
     .live-badge { font-size: 8px; }
   }
 </style>
@@ -236,10 +214,7 @@
   </svg>
 
   <div class="hero-inner">
-    <div class="live-badge">
-      <div class="live-dot"></div>
-      OPEN NOW
-    </div>
+    <div class="live-badge">ADMISSIONS CLOSED</div>
 
     <span class="pre-title">A LIVE COURSE BY VEENA MAHESHWARI</span>
 
@@ -261,15 +236,9 @@
       Jyotish is the only system on earth that was designed specifically to decode karma, not as philosophy, but as a precise, living map. Every planet, every nakshatra, every dasha is a message from the soul about what it chose to carry and what it came to complete. This course teaches you to read that message.
     </p>
 
-    <div class="pay-wrap">
-      <div class="pay-item">
-        <span class="pay-label">INDIA</span>
-        <a href="https://www.shivohampath.com/_paylink/AZ2vGOXn" class="anchor-cta">Enrol Now</a>
-      </div>
-      <div class="pay-item">
-        <span class="pay-label">INTERNATIONAL</span>
-        <a href="https://www.shivohampath.com/_paylink/AZ2vGbBi" class="btn-pay-outline">Enrol Now</a>
-      </div>
+    <div class="closed-notice">
+      <span class="closed-title">Admissions are closed</span>
+      <span class="closed-copy">Please wait for the next cohort.</span>
     </div>
 
     <div class="text-texts">

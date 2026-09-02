@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════
+  SHIVOHAMPATH · ŚIVO'HAM — THE RECOGNITION · SECTION 2 of 5: THE ARC
+  ═══════════════════════════════════════════════════════════════
+  Second HTML iFrame on the page, below the hero. Paste this
+  ENTIRE file. Width 100%; height ~980px desktop / ~1500px
+  mobile — preview and adjust until nothing is clipped.
+  ═══════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .section { padding: 20px 60px 80px; max-width: 1100px; margin: 0 auto; }
+
+  .section-header { text-align: center; margin-bottom: 52px; }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 16px;
+  }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 3.5vw, 46px);
+    font-weight: 300; color: var(--text); line-height: 1.1;
+  }
+  .section-header h2 em { font-style: italic; color: var(--gold); }
+  .divider {
+    display: flex; align-items: center; gap: 14px;
+    justify-content: center; margin: 18px 0 0;
+  }
+  .divider-line { height: 1px; background: var(--line2); width: 60px; }
+  .divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
+
+  /* Two-course comparison */
+  .arc-grid {
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    gap: 24px; align-items: stretch;
+    margin-bottom: 48px;
+  }
+  .arc-card {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 36px 32px;
+  }
+  .arc-card.second { border-color: var(--line2); background: var(--bg2); }
+  .arc-tag {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2.5px; color: var(--text3);
+    display: block; margin-bottom: 14px;
+  }
+  .arc-card.second .arc-tag { color: var(--gold); }
+  .arc-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 400;
+    color: var(--text); line-height: 1.25; margin-bottom: 12px;
+  }
+  .arc-card h3 em { font-style: italic; color: var(--gold); }
+  .arc-card p {
+    font-size: 14.5px; color: var(--text2); line-height: 1.8;
+  }
+  .arc-arrow {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; color: var(--gold); opacity: 0.5;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    text-align: center;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 44px 24px;
+    margin-bottom: 48px;
+  }
+  .pull-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 300; font-style: italic;
+    color: var(--text); line-height: 1.4;
+  }
+  .pull-quote p em { color: var(--gold); }
+
+  /* Body prose */
+  .arc-prose {
+    max-width: 720px; margin: 0 auto 48px;
+  }
+  .arc-prose p {
+    font-size: clamp(15px, 1.8vw, 17px);
+    color: var(--text2); line-height: 1.9;
+    margin-bottom: 22px;
+  }
+  .arc-prose p em { font-style: italic; color: var(--text); }
+  .arc-prose .sanskrit { color: var(--gold); font-style: italic; }
+
+  /* The three upāyas spine */
+  .upaya-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 3px; margin-bottom: 40px;
+  }
+  .upaya-card {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 28px 24px; text-align: center;
+    transition: border-color 0.3s;
+  }
+  .upaya-card:hover { border-color: var(--line2); }
+  .upaya-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; color: var(--gold); opacity: 0.5;
+    display: block; margin-bottom: 10px;
+  }
+  .upaya-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; font-style: italic;
+    color: var(--gold); margin-bottom: 6px;
+  }
+  .upaya-card span {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+    display: block; margin-bottom: 12px;
+  }
+  .upaya-card p {
+    font-size: 13.5px; color: var(--text2); line-height: 1.7;
+  }
+
+  /* Honesty note */
+  .order-note {
+    border-left: 2px solid var(--gold2);
+    background: var(--gold4);
+    padding: 22px 26px;
+    max-width: 720px; margin: 0 auto;
+  }
+  .order-note .note-label {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--gold);
+    display: block; margin-bottom: 8px;
+  }
+  .order-note p {
+    font-size: 14px; color: var(--text2);
+    line-height: 1.8; font-style: italic;
+  }
+
+  @media (max-width: 860px) {
+    .section { padding: 12px 32px 60px; }
+    .arc-grid { grid-template-columns: 1fr; gap: 12px; }
+    .arc-arrow { transform: rotate(90deg); padding: 4px 0; }
+    .upaya-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .section { padding: 8px 20px 48px; }
+    .arc-card { padding: 28px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="section">
+
+  <div class="section-header">
+    <span class="eyebrow">THE ARC</span>
+    <h2>From Union to <em>Recognition</em></h2>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  <div class="arc-grid">
+    <div class="arc-card">
+      <span class="arc-tag">COURSE ONE · SHE WHO BECOMES HIM</span>
+      <h3>The Bridge</h3>
+      <p>
+        Two existed — she and Him — and the arc closed the distance:
+        longing, burning, surrender, union. The path of Madhurya Bhakti,
+        walked to its very end.
+      </p>
+    </div>
+    <div class="arc-arrow">→</div>
+    <div class="arc-card second">
+      <span class="arc-tag">COURSE TWO · THE RECOGNITION</span>
+      <h3>No Bridge <em>At All</em></h3>
+      <p>
+        In Kashmir Shaivism there is no gap to cross. What feels like
+        distance is a contraction — the veil that makes you experience
+        yourself as small, separate, incomplete. Nothing must be attained.
+        Something must be <em>recognised</em>.
+      </p>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    <p>Union was the ceiling of the first course.<br>It is the <em>floor</em> of this one.</p>
+  </div>
+
+  <div class="arc-prose">
+    <p>
+      The tradition calls this recognition <span class="sanskrit">pratyabhijñā</span> —
+      re-cognition, knowing again what was never actually lost. And it names the
+      forgetting precisely: <span class="sanskrit">āṇava mala</span>, the primal
+      contraction that makes infinite consciousness experience itself as a
+      limited someone. This is not a flaw in you. It is the first move of
+      manifestation itself — and because it is structural, not personal,
+      it can be seen through.
+    </p>
+    <p>
+      The course's spine is the tradition's own map of the return: the three
+      <span class="sanskrit">upāyas</span> — the paths of body, mind, and will —
+      preceded by the ground and the diagnosis, followed by grace and embodiment.
+    </p>
+  </div>
+
+  <div class="upaya-row">
+    <div class="upaya-card">
+      <span class="upaya-num">I</span>
+      <h4>Āṇavopāya</h4>
+      <span>THE PATH THROUGH THE BODY</span>
+      <p>Breath, mantra, and the body as temple. Where technique begins — and the Vijñāna Bhairava becomes a working manual.</p>
+    </div>
+    <div class="upaya-card">
+      <span class="upaya-num">II</span>
+      <h4>Śāktopāya</h4>
+      <span>THE PATH THROUGH THE MIND</span>
+      <p>The thought that builds your world, and the goddess hiding in your inner voice. The most psychologically potent work in the course.</p>
+    </div>
+    <div class="upaya-card">
+      <span class="upaya-num">III</span>
+      <h4>Śāmbhavopāya</h4>
+      <span>THE PATH OF WILL</span>
+      <p>The flash. No method. Deliberately the shortest and starkest passage — the form itself is the teaching.</p>
+    </div>
+  </div>
+
+  <div class="order-note">
+    <span class="note-label">A NOTE ON TRADITIONAL ORDER</span>
+    <p>
+      The Śiva Sūtras teach the upāyas descending — śāmbhava first, as the
+      highest. This course climbs the ladder the other way, for the sake of
+      pedagogy. That choice is stated openly in Module 1, because a tradition
+      this precise deserves not to be smoothed over.
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>

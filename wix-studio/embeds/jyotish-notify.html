@@ -64,7 +64,7 @@
     max-width: 520px; margin: 0 auto 48px;
   }
 
-  /* Main enrol card */
+  /* Course status card */
   .enrol-card {
     background: var(--bg3); border: 1px solid var(--line2);
     padding: 52px 56px;
@@ -101,38 +101,24 @@
     margin-top: 5px; display: block;
   }
 
-  /* CTA button */
-  .enrol-btn {
-    display: inline-block;
-    font-family: 'Cinzel', serif; font-size: 12px;
-    letter-spacing: 2.5px; padding: 16px 52px;
-    background: var(--gold); color: var(--bg);
-    text-decoration: none;
-    transition: background 0.2s;
+  /* Admissions closed notice */
+  .closed-status {
+    padding: 20px 24px;
+    border: 1px solid var(--gold2);
+    background: var(--gold4);
     margin-bottom: 20px;
   }
-  .enrol-btn:hover { background: #a8893a; }
-
-  .pay-wrap {
-    display: flex; gap: 20px;
-    justify-content: center; align-items: flex-end;
-    flex-wrap: wrap; margin-bottom: 20px;
+  .closed-status strong {
+    display: block;
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2.5px; color: var(--gold);
+    margin-bottom: 8px;
   }
-  .pay-item { text-align: center; }
-  .pay-label {
-    font-family: 'Cinzel', serif; font-size: 8px;
-    letter-spacing: 2px; color: var(--text3);
-    display: block; margin-bottom: 10px;
+  .closed-status span {
+    display: block;
+    font-size: 16px; font-style: italic;
+    color: var(--text2); line-height: 1.6;
   }
-  .btn-pay-outline {
-    font-family: 'Cinzel', serif; font-size: 12px;
-    letter-spacing: 2.5px; padding: 15px 52px;
-    background: transparent; color: var(--gold);
-    text-decoration: none; display: inline-block;
-    border: 1px solid var(--gold2);
-    transition: background 0.2s;
-  }
-  .btn-pay-outline:hover { background: var(--gold3); }
 
   .enrol-note {
     font-family: 'Cinzel', serif; font-size: 8px;
@@ -164,7 +150,7 @@
     .fact { min-width: 50%; border-bottom: 1px solid var(--line2); }
     .fact:nth-child(2n) { border-right: none; }
     .fact:nth-last-child(-n+2) { border-bottom: none; }
-    .enrol-btn { width: 100%; text-align: center; }
+    .closed-status { width: 100%; }
     .study-list { gap: 16px; }
   }
   @media (max-width: 480px) {
@@ -179,12 +165,12 @@
 <div class="enrol-wrap">
   <div class="inner">
 
-    <span class="eyebrow">BEGIN NOW</span>
+    <span class="eyebrow">NEXT COHORT</span>
 
-    <h2>The Course Is<br><em>Open.</em></h2>
+    <h2>Admissions Are<br><em>Closed.</em></h2>
 
     <p class="sub">
-      Enrolment is open now. The study begins when you do.
+      The current cohort is now underway. Please wait for the next cohort.
     </p>
 
     <div class="enrol-card">
@@ -208,15 +194,9 @@
         </div>
       </div>
 
-      <div class="pay-wrap">
-        <div class="pay-item">
-          <span class="pay-label">INDIA</span>
-          <a href="https://www.shivohampath.com/_paylink/AZ2vGOXn" class="enrol-btn" style="margin-bottom:0;">Enrol Now</a>
-        </div>
-        <div class="pay-item">
-          <span class="pay-label">INTERNATIONAL</span>
-          <a href="https://www.shivohampath.com/_paylink/AZ2vGbBi" class="btn-pay-outline">Enrol Now</a>
-        </div>
+      <div class="closed-status">
+        <strong>Admissions are closed</strong>
+        <span>Details for the next cohort will be shared when admissions reopen.</span>
       </div>
 
       <span class="enrol-note">No prior knowledge of astrology required</span>

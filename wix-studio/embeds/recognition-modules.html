@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════
+  SHIVOHAMPATH · ŚIVO'HAM — THE RECOGNITION · SECTION 3 of 5: MODULES
+  ═══════════════════════════════════════════════════════════════
+  Third HTML iFrame on the page. Paste this ENTIRE file.
+  Width 100%; this section is tall — height ~3400px desktop /
+  ~4400px mobile. Preview and adjust until nothing is clipped.
+  ═══════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .section { padding: 20px 60px 80px; max-width: 1100px; margin: 0 auto; }
+
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 16px;
+  }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 3.5vw, 46px);
+    font-weight: 300; color: var(--text); line-height: 1.1;
+  }
+  .section-header h2 em { font-style: italic; color: var(--gold); }
+  .section-header .sub {
+    font-size: 15px; font-style: italic; color: var(--text3);
+    max-width: 560px; margin: 16px auto 0; line-height: 1.7;
+  }
+  .divider {
+    display: flex; align-items: center; gap: 14px;
+    justify-content: center; margin: 18px 0 0;
+  }
+  .divider-line { height: 1px; background: var(--line2); width: 60px; }
+  .divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
+
+  /* Module block */
+  .module {
+    border: 1px solid var(--line);
+    background: var(--bg3);
+    margin-bottom: 28px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .module:hover { border-color: var(--line2); }
+
+  .module-head {
+    padding: 34px 36px 26px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .module-bg-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 110px; font-weight: 300;
+    color: rgba(201,168,76,0.06);
+    position: absolute; top: -6px; right: 24px;
+    line-height: 1; user-select: none;
+  }
+  .module-tag {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2.5px; color: var(--gold);
+    display: block; margin-bottom: 12px; position: relative; z-index: 1;
+  }
+  .module-head h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 2.8vw, 32px);
+    font-weight: 400; color: var(--text);
+    line-height: 1.2; margin-bottom: 4px;
+    position: relative; z-index: 1;
+  }
+  .module-head h3 em { font-style: italic; color: var(--gold); }
+  .module-sub {
+    font-family: 'EB Garamond', serif;
+    font-size: 15px; font-style: italic; color: var(--text3);
+    display: block; margin-bottom: 14px; position: relative; z-index: 1;
+  }
+  .module-purpose {
+    font-size: 14.5px; color: var(--text2); line-height: 1.8;
+    max-width: 700px; position: relative; z-index: 1;
+  }
+
+  /* Step list */
+  .steps { list-style: none; }
+  .step {
+    display: flex; align-items: baseline; gap: 14px;
+    padding: 13px 36px;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.2s;
+  }
+  .step:last-child { border-bottom: none; }
+  .step:hover { background: rgba(201,168,76,0.03); }
+  .step-num {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 1px; color: var(--gold);
+    opacity: 0.5; flex-shrink: 0; width: 14px;
+  }
+  .step-type {
+    font-family: 'Cinzel', serif; font-size: 7px;
+    letter-spacing: 1.5px; color: var(--text3);
+    border: 1px solid var(--line);
+    padding: 3px 8px; flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .step-type.practice { color: var(--gold); border-color: var(--line2); }
+  .step-title {
+    font-size: clamp(13.5px, 1.6vw, 15px);
+    color: var(--text2); line-height: 1.6;
+  }
+  .step-title strong { font-weight: 400; color: var(--text); }
+  .step-title em { font-style: italic; }
+
+  /* Integration pause */
+  .pause {
+    display: flex; align-items: center; gap: 20px;
+    margin: 40px 0;
+  }
+  .pause-line { flex: 1; height: 1px; background: var(--line2); }
+  .pause-text {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 3px; color: var(--gold);
+    white-space: nowrap; text-align: center; line-height: 1.8;
+  }
+  .pause-text small {
+    display: block; font-family: 'EB Garamond', serif;
+    font-size: 12px; font-style: italic; color: var(--text3);
+    letter-spacing: 0; text-transform: none;
+  }
+
+  @media (max-width: 860px) {
+    .section { padding: 12px 32px 60px; }
+    .module-head { padding: 28px 24px 22px; }
+    .step { padding: 12px 24px; flex-wrap: wrap; }
+    .module-bg-num { font-size: 80px; }
+  }
+  @media (max-width: 520px) {
+    .section { padding: 8px 20px 48px; }
+    .module-head { padding: 24px 18px 18px; }
+    .step { padding: 11px 18px; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="section">
+
+  <div class="section-header">
+    <span class="eyebrow">THE JOURNEY</span>
+    <h2>Seven Modules of <em>Recognition</em></h2>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+    <p class="sub">
+      Each module moves through articles, practices and rituals, a lecture,
+      a workbook, and self-inquiry — asking not what you felt,
+      but what you caught yourself being.
+    </p>
+  </div>
+
+  <!-- MODULE 1 -->
+  <div class="module">
+    <div class="module-head">
+      <span class="module-bg-num">I</span>
+      <span class="module-tag">MODULE I · 7 STEPS</span>
+      <h3>Caitanyam <em>Ātmā</em></h3>
+      <span class="module-sub">The Ground of Everything</span>
+      <p class="module-purpose">
+        The non-dual claim, established. A bridge from bhakti — and the
+        dissolving of the first fear this course will raise: that
+        recognition cancels devotion. It doesn't. It explains it.
+      </p>
+    </div>
+    <ul class="steps">
+      <li class="step"><span class="step-num">1</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>You Did Not Come Here to Find Him</strong> — pratyabhijñā as re-cognition, not attainment. Why this course begins where the last one ended.</span></li>
+      <li class="step"><span class="step-num">2</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>Does This End My Bhakti?</strong> — Utpaladeva, the tradition's greatest philosopher, wrote its most ecstatic devotional hymns. Non-dualism doesn't kill longing.</span></li>
+      <li class="step"><span class="step-num">3</span><span class="step-type practice">PRACTICE</span><span class="step-title"><strong>Śivo'ham Ajapa</strong> — the mantra already occurring in the breath. The practice you do not perform.</span></li>
+      <li class="step"><span class="step-num">4</span><span class="step-type practice">RITUAL</span><span class="step-title"><strong>The Unlit Lamp</strong> — sitting at the altar without invoking, without asking. A rite of not petitioning.</span></li>
+      <li class="step"><span class="step-num">5</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>The Map in One Sitting</strong> — the 36 tattvas for orientation, not memorisation. Where the descent happens, and where you are standing.</span></li>
+      <li class="step"><span class="step-num">6</span><span class="step-type">LECTURE</span><span class="step-title"><strong>Caitanyam Ātmā: The First Sūtra</strong></span></li>
+      <li class="step"><span class="step-num">7</span><span class="step-type">WORKBOOK</span><span class="step-title"><strong>What Have I Been Calling Distance?</strong> — with self-inquiry and doctrine check.</span></li>
+    </ul>
+  </div>
+
+  <!-- MODULE 2 -->
+  <div class="module">
+    <div class="module-head">
+      <span class="module-bg-num">II</span>
+      <span class="module-tag">MODULE II · 7 STEPS</span>
+      <h3>The <em>Forgetting</em></h3>
+      <span class="module-sub">Malas and Kañcukas</span>
+      <p class="module-purpose">
+        The diagnostic — and perhaps the most immediately useful module in
+        the course. You will recognise your own psychology in a
+        thousand-year-old list.
+      </p>
+    </div>
+    <ul class="steps">
+      <li class="step"><span class="step-num">1</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>Āṇava: The Wound of Feeling Small</strong> — the primal contraction. Not a flaw in you; the first move of manifestation.</span></li>
+      <li class="step"><span class="step-num">2</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>Māyīya and Kārma</strong> — the sense of otherness, and the story of being the one who does.</span></li>
+      <li class="step"><span class="step-num">3</span><span class="step-type practice">PRACTICE</span><span class="step-title"><strong>The Five Kañcukas Inventory</strong> — limited capacity, limited knowing, desire that never closes, dread of time, the feeling of being fated — mapped onto lived experience.</span></li>
+      <li class="step"><span class="step-num">4</span><span class="step-type practice">BODY PRACTICE</span><span class="step-title"><strong>Locating the Contraction</strong> — where āṇava sits in the body. Breath into it, without trying to fix it.</span></li>
+      <li class="step"><span class="step-num">5</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>This Is Not Your Trauma — It Is the Structure of Manifestation</strong> — the reframe that depersonalises shame.</span></li>
+      <li class="step"><span class="step-num">6</span><span class="step-type">LECTURE</span><span class="step-title"><strong>The Three Impurities and the Five Cloaks</strong></span></li>
+      <li class="step"><span class="step-num">7</span><span class="step-type">WORKBOOK</span><span class="step-title"><strong>Seven-Day Contraction Log</strong> — with doctrine check.</span></li>
+    </ul>
+  </div>
+
+  <!-- MODULE 3 -->
+  <div class="module">
+    <div class="module-head">
+      <span class="module-bg-num">III</span>
+      <span class="module-tag">MODULE III · 7 STEPS · ĀṆAVOPĀYA</span>
+      <h3>The Path Through the <em>Body</em></h3>
+      <span class="module-sub">Āṇavopāya — where technique begins</span>
+      <p class="module-purpose">
+        The Vijñāna Bhairava enters here, and remains the practice manual
+        for the rest of the course.
+      </p>
+    </div>
+    <ul class="steps">
+      <li class="step"><span class="step-num">1</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>The Lowest Path Is Not the Lesser Path</strong> — the upāyas as a ladder of means, not of worth.</span></li>
+      <li class="step"><span class="step-num">2</span><span class="step-type practice">PRACTICE</span><span class="step-title"><strong>Dvādaśānta: The Two Ends of Breath</strong> — the turning points where breath becomes still.</span></li>
+      <li class="step"><span class="step-num">3</span><span class="step-type practice">PRACTICE</span><span class="step-title"><strong>Madhya: Dwelling in the Centre</strong> — the pause; the central channel; the space that is always available.</span></li>
+      <li class="step"><span class="step-num">4</span><span class="step-type practice">PRACTICE</span><span class="step-title"><strong>Uccāra and Mantra Vīrya</strong> — mantra as vibration, not repetition. The potency is in the utterance, not the count.</span></li>
+      <li class="step"><span class="step-num">5</span><span class="step-type practice">RITUAL</span><span class="step-title"><strong>Nyāsa: Placing the Divine in the Body</strong> — the body as temple, not vessel.</span></li>
+      <li class="step"><span class="step-num">6</span><span class="step-type">LECTURE</span><span class="step-title"><strong>The Vijñāna Bhairava as a Working Manual</strong></span></li>
+      <li class="step"><span class="step-num">7</span><span class="step-type">WORKBOOK</span><span class="step-title"><strong>Practice Log</strong> — with doctrine check.</span></li>
+    </ul>
+  </div>
+
+  <!-- MODULE 4 -->
+  <div class="module">
+    <div class="module-head">
+      <span class="module-bg-num">IV</span>
+      <span class="module-tag">MODULE IV · 7 STEPS · ŚĀKTOPĀYA</span>
+      <h3>The Path Through the <em>Mind</em></h3>
+      <span class="module-sub">Śāktopāya — vikalpa work and mātṛkā śakti</span>
+      <p class="module-purpose">
+        The most psychologically potent module in the course — and the one
+        where the women-only container justifies itself.
+      </p>
+    </div>
+    <ul class="steps">
+      <li class="step"><span class="step-num">1</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>Vikalpa: The Thought That Builds Your World</strong> — how construct becomes perception.</span></li>
+      <li class="step"><span class="step-num">2</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>Mātṛkā Śakti: The Goddess Hiding in Your Inner Voice</strong> — the voice that names you is itself a śakti. Unrecognised, and therefore running you.</span></li>
+      <li class="step"><span class="step-num">3</span><span class="step-type practice">PRACTICE</span><span class="step-title"><strong>Śuddha Vikalpa: Installing the True Thought</strong> — bhāvanā. Not affirmation: contemplation held until it becomes perception.</span></li>
+      <li class="step"><span class="step-num">4</span><span class="step-type practice">PRACTICE</span><span class="step-title"><strong>The Gap Between Two Thoughts</strong> — a Vijñāna Bhairava dhāraṇā.</span></li>
+      <li class="step"><span class="step-num">5</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>What Women Are Told They Are</strong> — mātṛkā applied to inherited beliefs about worth, body, desire, silence, and largeness. The heart of why this container is closed.</span></li>
+      <li class="step"><span class="step-num">6</span><span class="step-type">LECTURE</span><span class="step-title"><strong>Turning the Mātṛkā</strong></span></li>
+      <li class="step"><span class="step-num">7</span><span class="step-type">WORKBOOK</span><span class="step-title"><strong>Vikalpa Audit</strong> — with doctrine check.</span></li>
+    </ul>
+  </div>
+
+  <!-- MODULE 5 -->
+  <div class="module">
+    <div class="module-head">
+      <span class="module-bg-num">V</span>
+      <span class="module-tag">MODULE V · 7 STEPS · ŚĀMBHAVOPĀYA</span>
+      <h3>The Path of <em>Will</em></h3>
+      <span class="module-sub">Śāmbhavopāya — icchā, the flash, no method</span>
+      <p class="module-purpose">
+        Deliberately the shortest and starkest module.
+        The format itself is the teaching.
+      </p>
+    </div>
+    <ul class="steps">
+      <li class="step"><span class="step-num">1</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>The Path With No Steps</strong></span></li>
+      <li class="step"><span class="step-num">2</span><span class="step-type practice">PRACTICE</span><span class="step-title"><strong>Bhairavī Mudrā</strong> — eyes open, gaze outward, awareness turned in. The world stays visible, and stops being other.</span></li>
+      <li class="step"><span class="step-num">3</span><span class="step-type practice">PRACTICE</span><span class="step-title"><strong>The Instant Before Desire Takes an Object</strong> — icchā at its source, before it names what it wants.</span></li>
+      <li class="step"><span class="step-num">4</span><span class="step-type practice">PRACTICE</span><span class="step-title"><strong>Dhāraṇās at the Edge of Intensity</strong> — the practices at the peak of fear, joy, sudden fright, longing, union. <em>Approached only with a settled practice; intense states are never forced.</em></span></li>
+      <li class="step"><span class="step-num">5</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>Why This Cannot Be Practised, Only Received</strong></span></li>
+      <li class="step"><span class="step-num">6</span><span class="step-type">LECTURE</span><span class="step-title"><strong>Icchā: The Will That Is Not Yours</strong></span></li>
+      <li class="step"><span class="step-num">7</span><span class="step-type">WORKBOOK</span><span class="step-title"><strong>What Happened Without Me Doing It</strong></span></li>
+    </ul>
+  </div>
+
+  <!-- INTEGRATION PAUSE -->
+  <div class="pause">
+    <div class="pause-line"></div>
+    <div class="pause-text">
+      TWO-WEEK INTEGRATION PAUSE
+      <small>The course stops here on purpose. So do you.</small>
+    </div>
+    <div class="pause-line"></div>
+  </div>
+
+  <!-- MODULE 6 -->
+  <div class="module">
+    <div class="module-head">
+      <span class="module-bg-num">VI</span>
+      <span class="module-tag">MODULE VI · 7 STEPS</span>
+      <h3>Śaktipāta and <em>Anupāya</em></h3>
+      <span class="module-sub">Grace and the Pathless Path</span>
+      <p class="module-purpose">
+        The limits of effort — with Lalleshwari as the lineage's living proof:
+        a woman's Shaivism, in the vernacular, in the body.
+      </p>
+    </div>
+    <ul class="steps">
+      <li class="step"><span class="step-num">1</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>Śaktipāta: The Descent That Chooses You</strong> — the intensities of grace, from the overwhelming to the barely perceptible.</span></li>
+      <li class="step"><span class="step-num">2</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>Lalleshwari: The Woman Who Walked Out</strong> — her vākhs. Not a mascot for this course; the proof of concept.</span></li>
+      <li class="step"><span class="step-num">3</span><span class="step-type practice">PRACTICE</span><span class="step-title"><strong>Sitting Without Method</strong> — anupāya.</span></li>
+      <li class="step"><span class="step-num">4</span><span class="step-type practice">RITUAL</span><span class="step-title"><strong>The Offering of Effort</strong> — releasing sādhana as achievement.</span></li>
+      <li class="step"><span class="step-num">5</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>"Have I Received Grace?" Is the Wrong Question</strong></span></li>
+      <li class="step"><span class="step-num">6</span><span class="step-type">LECTURE</span><span class="step-title"><strong>Grace, and the End of Earning</strong></span></li>
+      <li class="step"><span class="step-num">7</span><span class="step-type">WORKBOOK</span><span class="step-title"><strong>Lal Ded Contemplation</strong> — choose one vākh, and live inside it for seven days.</span></li>
+    </ul>
+  </div>
+
+  <!-- MODULE 7 -->
+  <div class="module">
+    <div class="module-head">
+      <span class="module-bg-num">VII</span>
+      <span class="module-tag">MODULE VII · 11 STEPS · THE CLOSE</span>
+      <h3>Jīvanmukti: Living as <em>Her</em></h3>
+      <span class="module-sub">Integration — and the course's opposite of a wedding</span>
+      <p class="module-purpose">
+        The first course ended in an inner wedding. This one ends in
+        something else entirely: not a marriage, but the end of anyone
+        left to marry.
+      </p>
+    </div>
+    <ul class="steps">
+      <li class="step"><span class="step-num">1</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>Kramamudrā: When Inside and Outside Stop Being Two</strong></span></li>
+      <li class="step"><span class="step-num">2</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>Camatkāra: Wonder as the Native Taste of Consciousness</strong></span></li>
+      <li class="step"><span class="step-num">3</span><span class="step-type practice">PRACTICE</span><span class="step-title"><strong>Recognition in Motion</strong> — the kitchen, the argument, the traffic, the marketplace. Where the course is actually tested.</span></li>
+      <li class="step"><span class="step-num">4</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>The Devotional Woman, Revisited</strong> — bhakti after recognition. Utpaladeva returns to close the circle opened in Module 1.</span></li>
+      <li class="step"><span class="step-num">5</span><span class="step-type">ARTICLE</span><span class="step-title"><strong>Svātantrya: Freedom Was Always Her Own Name</strong> — not Shiva's attribute lent to Shakti. Her name.</span></li>
+      <li class="step"><span class="step-num">6</span><span class="step-type practice">CEREMONY</span><span class="step-title"><strong>The Rite of Absolute Freedom</strong> — the closing ceremony.</span></li>
+      <li class="step"><span class="step-num">7</span><span class="step-type">WRITING</span><span class="step-title"><strong>Śivo'ham, Written in My Own Hand</strong></span></li>
+      <li class="step"><span class="step-num">8</span><span class="step-type practice">PRACTICE</span><span class="step-title"><strong>Designing a Life That Does Not Need a Practice</strong></span></li>
+      <li class="step"><span class="step-num">9</span><span class="step-type">COMMUNITY</span><span class="step-title"><strong>Sharing Circle</strong> — optional.</span></li>
+      <li class="step"><span class="step-num">10</span><span class="step-type">LECTURE</span><span class="step-title"><strong>Jīvanmukti: Liberated While Living</strong></span></li>
+      <li class="step"><span class="step-num">11</span><span class="step-type">WORKBOOK</span><span class="step-title"><strong>Integration Prompts</strong> — with the final doctrine check.</span></li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -39,14 +39,9 @@
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { background: var(--bg); -webkit-text-size-adjust: 100%; }
-/* The Wix embed has a fixed height per breakpoint, but the content's height
-   changes slightly with screen width. The page fills the embed and shares any
-   leftover height evenly between all sections (content stays centred in each),
-   so there is never one blank band. */
-html, body { height: 100%; }
-main { min-height: 100%; display: flex; flex-direction: column; }
-main > section { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: center; }
-main > section > .wrap, main > section > .hero-in { width: 100%; }
+/* Content always starts at the top and sections stack naturally. The Wix
+   embed's height is set per breakpoint to match (HOMEPAGE_V2_BUILD_GUIDE.md). */
+html, body { min-height: 100%; }
 body {
   margin: 0; background: var(--bg); color: var(--text);
   font: 18px/1.7 var(--f-body);
@@ -228,53 +223,60 @@ p { margin: 0; }
 
 /* ── Phones: calmer, less text. Desktop is unchanged. ── */
 @media (max-width: 750px) {
+  /* One fixed column width on every phone 390px and wider, so the page is
+     exactly the same height on all of them (Wix needs one fixed height). */
+  :root { --gutter: 20px; }
+  .wrap, .hero-in { max-width: 390px; }
   body { font-size: 17px; line-height: 1.75; }
-  .section { padding-block: 84px; }
-  .sec-head { gap: 16px; margin-bottom: 40px; }
+  .section { padding-block: 56px; }
+  .sec-head { gap: 12px; margin-bottom: 28px; }
   .sec-head h2 { font-size: 36px; }
 
-  .hero-in { gap: 28px; }
+  .hero { padding-block: 40px 44px; }
+  .hero-in { gap: 20px; }
+  .hero .label { padding: 6px 14px; font-size: 10px; }
+  .proof { margin-top: 6px; }
   .hero h1 { font-size: 50px; }
 
   /* Doors: title + link only */
-  .door { gap: 12px; padding: 28px 24px; }
+  .door { gap: 10px; padding: 22px 20px; }
   .door p { display: none; }
   .door h3 { font-size: 28px; }
   .door .meta { padding-top: 14px; }
 
   /* Karmic Knots: tiles become one compact row, list hidden */
-  .sig { gap: 32px; }
+  .sig { gap: 24px; }
   .charts { order: 0; grid-template-columns: repeat(3, 1fr); }
   .chart-row { grid-template-columns: 1fr; gap: 6px; padding: 16px 10px; text-align: center; }
   .chart-row b { font-size: 34px; }
   .chart-row span { font-size: 9px; letter-spacing: .14em; }
   .chart-row small { display: none; }
-  .sig-body { gap: 22px; }
+  .sig-body { gap: 16px; }
   .uncovers { display: none; }
-  .price-row { gap: 20px; padding-top: 26px; }
+  .price-row { gap: 16px; padding-top: 20px; }
   .price-row .btn { width: 100%; }
 
   /* Other consultations: name, question, price */
-  .inquiries { margin-top: 56px; }
-  .inquiries a { padding: 26px 0; gap: 8px 16px; }
+  .inquiries { margin-top: 36px; }
+  .inquiries a { padding: 20px 0; gap: 6px 16px; }
   .iq-desc { display: none; }
-  .iq-head { gap: 8px; }
+  .iq-head { gap: 4px; }
   .iq-head h3 { font-size: 26px; }
 
-  .oracle { gap: 24px; padding: 28px 24px; }
+  .oracle { gap: 18px; padding: 24px 20px; margin-top: 36px; }
   .oracle-buy { width: 100%; justify-content: space-between; }
 
   /* About: one paragraph */
-  .about { gap: 40px; }
-  .portrait { max-width: 260px; }
-  .about-body { gap: 22px; }
+  .about { gap: 28px; }
+  .portrait { max-width: 240px; }
+  .about-body { gap: 16px; }
   .about-body p + p { display: none; }
 
-  .voices { gap: 48px; }
+  .voices { gap: 32px; }
   .voice p { font-size: 19px; line-height: 1.6; }
-  .voices-foot { flex-direction: column; gap: 18px; margin-top: 48px; }
+  .voices-foot { flex-direction: column; gap: 14px; margin-top: 32px; }
 
-  .guide { padding: 32px 24px; gap: 36px; }
+  .guide { padding: 28px 20px; gap: 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; }  }

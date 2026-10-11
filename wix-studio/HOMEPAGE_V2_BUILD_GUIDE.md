@@ -18,19 +18,29 @@ Your photo is already built into `home-v2.html`, so there's nothing to upload.
 
 ## Exact sizes
 
-Set these in each embed's **size panel**, separately for each breakpoint
-(switch breakpoints at the top of the editor). Width is always **100%
-(stretched)**, with no side margins.
+Wix gives an embed one fixed height per **breakpoint**, so each breakpoint
+needs the height that matches the page. The phone layout is the same height on
+every phone 390px and wider. Smaller phones need a separate height, so
+**add one extra breakpoint** first:
 
-| Embed | Desktop | Tablet | Mobile |
+1. At the top of the editor, open the **breakpoints** menu (the desktop /
+   tablet / mobile icons) → **Manage breakpoints** (or **Add breakpoint**).
+2. Add a breakpoint at **389px**. Mobile is now split into two:
+   **Small phones (320–389px)** and **Phones (390–750px)**.
+
+Then set the homepage embed's height on each breakpoint. Width is always
+**100% (stretched)**, with no side margins.
+
+| Breakpoint | Screen widths | Homepage body height | Footer height |
 |---|---|---|---|
-| Homepage body | **6200px** | **5960px** | **7400px** |
-| Footer | 300px | 300px | 540px |
+| Desktop | 1001px and up | **6200px** | 300px |
+| Tablet | 751–1000px | **5960px** | 300px |
+| Phones | 390–750px | **6280px** | 540px |
+| Small phones | 320–389px | **6540px** | 540px |
 
-The body page fills whatever height it's given and spreads any spare height
-evenly between its sections, so there's no empty band at the bottom.
-
----
+**Also check the section that holds the embed:** its top and bottom
+padding must be **0**, and its height set to fit the embed. Any padding there
+adds empty space above the headline.
 
 ## Step 1: Header (every page)
 
@@ -82,9 +92,9 @@ mobile menu. Just tidy it:
 - [ ] Other pages: the tidied header and new footer appear and every link works
 - [ ] Open the site from an Instagram DM and check that it loads and the banner shows
 
-If the bottom of the homepage gets cut off on some phone, raise the
-**Mobile** body height by 200px. If you see too much space between
-sections, lower it by 200px.
+If the free guide box at the bottom gets cut off on a phone, raise that
+breakpoint's height by 100px. If there's empty space below the free guide box,
+lower it by 100px. The space between sections never changes.
 
 ---
 

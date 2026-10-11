@@ -226,6 +226,57 @@ p { margin: 0; }
 .guide .ok { color: var(--gold); font-style: italic; }
 @media (max-width: 750px) { .guide { grid-template-columns: 1fr; } }
 
+/* ── Phones: calmer, less text. Desktop is unchanged. ── */
+@media (max-width: 750px) {
+  body { font-size: 17px; line-height: 1.75; }
+  .section { padding-block: 84px; }
+  .sec-head { gap: 16px; margin-bottom: 40px; }
+  .sec-head h2 { font-size: 36px; }
+
+  .hero-in { gap: 28px; }
+  .hero h1 { font-size: 50px; }
+
+  /* Doors: title + link only */
+  .door { gap: 12px; padding: 28px 24px; }
+  .door p { display: none; }
+  .door h3 { font-size: 28px; }
+  .door .meta { padding-top: 14px; }
+
+  /* Karmic Knots: tiles become one compact row, list hidden */
+  .sig { gap: 32px; }
+  .charts { order: 0; grid-template-columns: repeat(3, 1fr); }
+  .chart-row { grid-template-columns: 1fr; gap: 6px; padding: 16px 10px; text-align: center; }
+  .chart-row b { font-size: 34px; }
+  .chart-row span { font-size: 9px; letter-spacing: .14em; }
+  .chart-row small { display: none; }
+  .sig-body { gap: 22px; }
+  .uncovers { display: none; }
+  .price-row { gap: 20px; padding-top: 26px; }
+  .price-row .btn { width: 100%; }
+
+  /* Other consultations: name, question, price */
+  .inquiries { margin-top: 56px; }
+  .inquiries a { padding: 26px 0; gap: 8px 16px; }
+  .iq-desc { display: none; }
+  .iq-head { gap: 8px; }
+  .iq-head h3 { font-size: 26px; }
+
+  .oracle { gap: 24px; padding: 28px 24px; }
+  .oracle-buy { width: 100%; justify-content: space-between; }
+
+  /* About: one paragraph */
+  .about { gap: 40px; }
+  .portrait { max-width: 260px; }
+  .about-body { gap: 22px; }
+  .about-body p + p { display: none; }
+
+  .voices { gap: 48px; }
+  .voice p { font-size: 19px; line-height: 1.6; }
+  .voices-foot { flex-direction: column; gap: 18px; margin-top: 48px; }
+
+  .guide { padding: 32px 24px; gap: 36px; }
+}
+
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; }  }
 </style>
 </head>

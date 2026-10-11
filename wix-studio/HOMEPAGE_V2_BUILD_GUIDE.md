@@ -24,7 +24,7 @@ Set these in each embed's **size panel**, separately for each breakpoint
 
 | Embed | Desktop | Tablet | Mobile |
 |---|---|---|---|
-| Homepage body | **6200px** | **5960px** | **8420px** |
+| Homepage body | **6200px** | **5960px** | **7400px** |
 | Footer | 300px | 300px | 540px |
 
 The body page fills whatever height it's given and spreads any spare height

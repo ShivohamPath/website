@@ -25,9 +25,8 @@ and blocks Wix's popup login. In the mockup:
 - The mobile menu uses a native `<details>` element and needs no script.
 
 **User flow.** The hero has one next step, followed by three doors (Get a
-Reading, Study the Path, Read for Free). Then come the signature Karmic Knots
-reading with its price, a price list of the other readings, a short About, the
-quote, testimonials, and the free guide signup. On phones, a booking bar slides
+Reading, Study the Path, Read for Free). Then come the readings (see below), a
+short About, the quote, testimonials, and the free guide signup. On phones, a booking bar slides
 up once the hero scrolls away. The deep Shaktipat, Lalleshwari and lineage
 content moves entirely to the About page.
 

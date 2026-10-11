@@ -251,8 +251,9 @@ p { margin: 0; }
 
 /* ── Testimonials ── */
 .voices { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 48px); }
-.voice { display: grid; gap: 18px; align-content: start; padding-top: 22px; border-top: 1px solid var(--gold-ln); }
+.voice { margin: 0; display: grid; gap: 18px; align-content: start; padding-top: 22px; border-top: 1px solid var(--gold-ln); }
 .voice p { font: italic 400 20px/1.55 var(--f-body); color: var(--text); }
+.voice-stars { color: var(--gold); letter-spacing: .2em; font-size: 14px; }
 .voice footer { font: 11px/1.5 var(--f-label); letter-spacing: .18em; text-transform: uppercase; color: var(--text-3); }
 .voice footer b { color: var(--gold); font-weight: 400; display: block; }
 .voices-foot { display: flex; flex-wrap: wrap; gap: 16px 32px; margin-top: clamp(32px, 4vw, 48px); }
@@ -535,11 +536,12 @@ body.notes .note { display: block; }
     <div class="sec-head">
       <span class="label">What people experience</span>
       <h2>From those who <em>have sat with me</em></h2>
+      <p>Verified reviews from Trustpilot, in clients' own words.</p>
     </div>
     <div class="voices">
-      <blockquote class="voice"><p>"The Karmic Knots reading broke open something I had been trying to heal for years with therapy. Veena showed me the root, and it was older than this life."</p><footer><b>Ananya S.</b>Karmic Knots Reading</footer></blockquote>
-      <blockquote class="voice"><p>"I came in skeptical. I left with a completely different understanding of why my life kept repeating the same patterns."</p><footer><b>Rohan M.</b>D60 Reading</footer></blockquote>
-      <blockquote class="voice"><p>"She doesn't just read charts, she reads souls. One session gave me more clarity than years of seeking."</p><footer><b>Priya K.</b>Specific Question</footer></blockquote>
+      <blockquote class="voice"><span class="voice-stars" aria-label="Rated 5 out of 5">★★★★★</span><p>“I was going through a very confusing phase and felt like I was losing myself, but her guidance brought me immense clarity and reassurance. … One of the best parts of the reading was the detailed PDF report, where she explained every recommendation thoroughly along with the chart placements supporting her insights.”</p><footer><b>Lavanya</b>India · Verified on Trustpilot</footer></blockquote>
+      <blockquote class="voice"><span class="voice-stars" aria-label="Rated 5 out of 5">★★★★★</span><p>“Veena beautifully explained the Karmic knots perspective and dived deep into the details. She gave a real view on the purpose of this life basis the queries I had and provided great clarity.”</p><footer><b>Sachin</b>India · Verified on Trustpilot</footer></blockquote>
+      <blockquote class="voice"><span class="voice-stars" aria-label="Rated 5 out of 5">★★★★★</span><p>“In the world of social media hype around vedic astro, dosha fear psychosis &amp; money induced marketing remedies if you need a sane voice then don’t think twice about Veena at Shivohampath.”</p><footer><b>Anonymous</b>India · Verified on Trustpilot</footer></blockquote>
     </div>
     <div class="voices-foot">
       <a class="arrow-link" href="https://www.trustpilot.com/review/shivohampath.com" rel="noopener">Read all reviews on Trustpilot →</a>
@@ -548,7 +550,7 @@ body.notes .note { display: block; }
   </div>
 </section>
 
-<div class="note-wrap"><div class="note"><b>Testimonials:</b> placeholder quotes. They'll be replaced with your Trustpilot reviews, pasted in as plain text so there's no slow Trustpilot widget. New reviews come in through Trustpilot's free BCC invitation, sent along with each reading report.</div></div>
+<div class="note-wrap"><div class="note"><b>Testimonials:</b> real, verified Trustpilot reviews, quoted word for word (trims marked with …) and pasted as plain text, so there's no slow Trustpilot widget. New reviews arrive through the BCC invitation sent with each report.</div></div>
 
 <section class="section" id="guide">
   <div class="wrap">

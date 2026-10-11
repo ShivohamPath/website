@@ -229,7 +229,7 @@ p { margin: 0; }
 /* ── About ── */
 .about { display: grid; grid-template-columns: 340px 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
 .portrait { position: relative; aspect-ratio: 3/4; max-width: 100%; background: var(--raised); border: 1px solid var(--gold-ln); overflow: hidden; }
-.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
 .portrait .ph { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 20px;
   font: italic 300 22px/1.3 var(--f-display); color: var(--text-3); }
 .portrait img + .ph { display: none; }
@@ -504,8 +504,8 @@ body.notes .note { display: block; }
 <section class="section">
   <div class="wrap about">
     <div class="portrait" id="portrait">
-      <img src="https://static.wixstatic.com/media/ba8bbb_55ab1a58fb274982af1ca60ae789fd43~mv2.jpeg/v1/fill/w_680,h_906,q_80/portrait.jpeg"
-           alt="Veena Maheshwari" width="340" height="453" loading="lazy" decoding="async"
+      <img src="assets/veena-portrait.jpg"
+           alt="Veena Maheshwari in a teal silk sari and red embroidered shawl" width="340" height="453" loading="lazy" decoding="async"
            onerror="this.parentNode.classList.add('noimg');this.remove()">
       <div class="ph">Veena Maheshwari</div>
     </div>
@@ -522,7 +522,7 @@ body.notes .note { display: block; }
   </div>
 </section>
 
-<div class="note-wrap"><div class="note"><b>About:</b> the long Shaktipat, Lalleshwari, lineage and story sections stay on the About page. Here they shrink to a single lineage line that hints at the depth and links through. The photo loads lazily at the size it's shown (Wix serves the original file today).</div></div>
+<div class="note-wrap"><div class="note"><b>About:</b> the long Shaktipat, Lalleshwari, lineage and story sections stay on the About page. Here they shrink to a single lineage line that hints at the depth and links through. Your new photo, cropped to the frame and compressed to about 70 KB, loads only as you scroll near it.</div></div>
 
 <section class="section quote">
   <div class="wrap">

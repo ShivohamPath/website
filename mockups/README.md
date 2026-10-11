@@ -68,8 +68,8 @@ or ritual guidance.
 
 - Testimonials are placeholders. Replace them with Trustpilot reviews pasted
   as plain text (no Trustpilot widget, which would add another slow iFrame).
-  New testimonials come in through the free form described in
-  `wix-studio/TESTIMONIALS_GUIDE.md`.
+  New reviews come in through Trustpilot's free BCC invitation, sent with
+  each reading report.
 - The email form only shows a confirmation. In production it should post to
   `dashboard/api/subscribe.js`.
 - To get the full speed gain in Wix, build these sections with native Wix

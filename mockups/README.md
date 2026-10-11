@@ -69,6 +69,6 @@ or ritual guidance.
   which would add another slow iFrame. New reviews come in through
   Trustpilot's free BCC invitation, sent with each reading report.
 - This file is the design preview only. Do not paste it into Wix. The
-  Wix-ready versions are `wix-studio/embeds/header-v2.html`, `home-v2.html` and
-  `footer-v2.html`. Setup and exact heights are in
+  Wix-ready versions are `wix-studio/embeds/home-v2.html` and `footer-v2.html`
+  (the header stays Wix's own). Setup and exact heights are in
   `wix-studio/HOMEPAGE_V2_BUILD_GUIDE.md`.

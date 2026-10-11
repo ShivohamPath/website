@@ -1,11 +1,10 @@
 # ShivohamPath · Homepage v2: Wix Setup
 
-The new homepage is **three separate pieces**, each pasted into its own
-"Embed HTML" element:
+The new homepage uses **Wix's own header** (tidied up) plus **two embeds**:
 
 | Piece | File | Where it goes in Wix |
 |---|---|---|
-| Header | `embeds/header-v2.html` | Inside the Wix **Header** (shows on every page) |
+| Header | none: Wix's own header | Edit the existing header (Step 1) |
 | Homepage body | `embeds/home-v2.html` | On the **Home** page, between header and footer |
 | Footer | `embeds/footer-v2.html` | Inside the Wix **Footer** (shows on every page) |
 
@@ -19,33 +18,44 @@ Your photo is already built into `home-v2.html`, so there's nothing to upload.
 
 ## Exact sizes
 
-Set these in each embed's **size panel**, separately for each breakpoint
-(switch breakpoints at the top of the editor). Width is always **100%
-(stretched)**, with no side margins.
+Wix gives an embed one fixed height per **breakpoint**, so each breakpoint
+needs the height that matches the page. The phone layout is the same height on
+every phone 390px and wider. Smaller phones need a separate height, so
+**add one extra breakpoint** first:
 
-| Embed | Desktop | Tablet | Mobile |
+1. At the top of the editor, open the **breakpoints** menu (the desktop /
+   tablet / mobile icons) → **Manage breakpoints** (or **Add breakpoint**).
+2. Add a breakpoint at **389px**. Mobile is now split into two:
+   **Small phones (320–389px)** and **Phones (390–750px)**.
+
+Then set the homepage embed's height on each breakpoint. Width is always
+**100% (stretched)**, with no side margins.
+
+| Breakpoint | Screen widths | Homepage body height | Footer height |
 |---|---|---|---|
-| Header | 64px | 64px | 100px |
-| Homepage body | **6200px** | **5960px** | **8420px** |
-| Footer | 300px | 300px | 540px |
+| Desktop | 1001px and up | **6200px** | 300px |
+| Tablet | 751–1000px | **5960px** | 300px |
+| Phones | 390–750px | **6280px** | 540px |
+| Small phones | 320–389px | **6540px** | 540px |
 
-The body page fills whatever height it's given and spreads any spare height
-evenly between its sections, so there's no empty band at the bottom.
-
----
+**Also check the section that holds the embed:** its top and bottom
+padding must be **0**, and its height set to fit the embed. Any padding there
+adds empty space above the headline.
 
 ## Step 1: Header (every page)
 
-1. Open the site **Header**. Delete what's in it now: logo, menu, "Book a
-   Reading" button, the `header-login.html` embed and the
-   `mobile-nav-member.html` embed. (Take a screenshot first if you like.)
-2. Add → Embed Code → **Embed HTML**, inside the header.
-3. Paste all of `embeds/header-v2.html`.
-4. Size it as in the table above, set the header background to `#0a0a0f`,
-   and keep the header **sticky (frozen)**.
+Keep Wix's own header. It already works on every page and has a proper
+mobile menu. Just tidy it:
 
-On phones, the links sit in a row under the logo instead of a dropdown menu,
-because a menu can't open past the edge of an embed.
+1. **Menu:** Site Menu → keep only **Readings, Courses, About, Blog**. Move
+   Contact, Books and anything else out (they're in the new footer).
+2. **Remove** the `header-login.html` embed (ID `headerLoginEmbed`) and the
+   `mobile-nav-member.html` embed (ID `mobileNavEmbed`), if they're in the header.
+3. **Add a "Log in" link:** Add → Text → type `Log in` → link it to the page
+   `/account/my-account`. Place it next to the menu. A plain link works inside
+   Instagram, where the old popup login doesn't.
+4. Keep your logo and the **Book a Reading** button (linking to `/readings`).
+5. Header background `#0a0a0f`, set to **sticky / freeze**.
 
 ## Step 2: Footer (every page)
 
@@ -79,12 +89,12 @@ because a menu can't open past the edge of an embed.
 - [ ] "Find Your Reading" scrolls down to the readings
 - [ ] Booking buttons open the booking page in the same tab, not inside the box
 - [ ] Free guide form: enter your email and check the PDF email arrives
-- [ ] Other pages: the new header and footer appear and every link works
+- [ ] Other pages: the tidied header and new footer appear and every link works
 - [ ] Open the site from an Instagram DM and check that it loads and the banner shows
 
-If the bottom of the homepage gets cut off on some phone, raise the
-**Mobile** body height by 200px. If you see too much space between
-sections, lower it by 200px.
+If the free guide box at the bottom gets cut off on a phone, raise that
+breakpoint's height by 100px. If there's empty space below the free guide box,
+lower it by 100px. The space between sections never changes.
 
 ---
 
@@ -94,10 +104,10 @@ sections, lower it by 200px.
 nav and footer embeds. It safely skips them once they're deleted, so
 nothing needs to change now.
 
-## Why three embeds and not one?
+## Why separate pieces?
 
-Wix's header and footer are shared by every page, so they have to live in
-Wix's header and footer areas. The homepage body changes per page. Three
-embeds instead of the old ten or so is a large speed improvement. The very
+Wix's header and footer are shared by every page, so they live in Wix's
+header and footer areas. The homepage body changes per page. Two embeds
+instead of the old ten or so is a large speed improvement. The very
 fastest option is building the body from native Wix elements; we can do
 that later if you want the last bit of speed.

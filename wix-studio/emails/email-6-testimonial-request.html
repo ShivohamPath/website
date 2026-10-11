@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Dark: signals to email clients that this is intentionally dark-themed -->
+<meta name="color-scheme" content="dark">
+<meta name="supported-color-schemes" content="dark">
+<title>How was your reading?</title>
+</head>
+<body bgcolor="#0a0a0f" style="margin:0; padding:0; background-color:#0a0a0f !important; font-family: Georgia, 'Times New Roman', serif;">
+
+<!--
+  Gmail dark mode mitigations used here:
+  1. color-scheme: dark — signals intentional dark design (better than "only light")
+  2. bgcolor attributes on all table/td elements — HTML4 attribute Gmail cannot override
+  3. All rgba() backgrounds converted to solid hex equivalents
+  4. All rgba() text colors converted to solid hex equivalents
+  5. !important on all background-color and color properties
+  6. [data-ogsc] style block below — targets Gmail iOS dark mode specifically
+  7. Gradient fallbacks use solid background-color before gradient declaration
+-->
+
+<!-- Gmail iOS dark mode override: Gmail adds data-ogsc to <html> in dark mode -->
+<style>
+  [data-ogsc] .em-outer   { background-color: #0a0a0f !important; }
+  [data-ogsc] .em-card    { background-color: #0f0a1a !important; }
+  [data-ogsc] .em-heading { color: #e8e0d0 !important; }
+  [data-ogsc] .em-body    { color: #9c9590 !important; }
+  [data-ogsc] .em-sub     { color: #5b555a !important; }
+  [data-ogsc] .em-gold    { color: #C9A84C !important; }
+  [data-ogsc] .em-muted   { color: #666063 !important; }
+  [data-ogsc] .em-sig     { color: #7c7575 !important; }
+  [data-ogsc] .em-em      { color: #e8e0d0 !important; }
+  [data-ogsc] .em-footer  { color: #3a353e !important; }
+  [data-ogsc] .em-btn td  { background-color: #C9A84C !important; }
+  [data-ogsc] .em-btn a   { color: #0a0a0f !important; }
+</style>
+
+<table class="em-outer" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0a0a0f" style="background-color:#0a0a0f !important;">
+  <tr>
+    <td class="em-outer" align="center" bgcolor="#0a0a0f" style="padding: 48px 20px; background-color:#0a0a0f !important;">
+
+      <!-- Card -->
+      <table class="em-card" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#0f0a1a" style="max-width:600px; width:100%; background-color:#0f0a1a !important; border:1px solid #342d1c;">
+
+        <!-- Top gold line: solid fallback first, then gradient -->
+        <tr>
+          <td bgcolor="#0f0a1a" style="height:2px; background-color:#C9A84C; background:linear-gradient(to right, #0f0a1a, #C9A84C, #0f0a1a); font-size:0; line-height:0;">&nbsp;</td>
+        </tr>
+
+        <!-- Header -->
+        <tr>
+          <td align="center" bgcolor="#0f0a1a" style="padding: 44px 48px 32px; background-color:#0f0a1a !important;">
+            <p class="em-gold" style="margin:0 0 20px 0; font-family: 'Courier New', monospace; font-size:10px; letter-spacing:4px; color:#C9A84C !important; text-transform:uppercase;">SHIVOHAMPATH</p>
+            <p class="em-sub" style="margin:0; font-family: Georgia, serif; font-size:11px; letter-spacing:3px; color:#5b555a !important; text-transform:uppercase;">After your reading</p>
+          </td>
+        </tr>
+
+        <!-- Divider -->
+        <tr>
+          <td align="center" bgcolor="#0f0a1a" style="padding: 0 48px 36px; background-color:#0f0a1a !important;">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td bgcolor="#473929" style="width:60px; height:1px; background-color:#473929 !important; font-size:0;">&nbsp;</td>
+                <td bgcolor="#C9A84C" style="width:8px; height:8px; background-color:#C9A84C !important; font-size:0;">&nbsp;</td>
+                <td bgcolor="#473929" style="width:60px; height:1px; background-color:#473929 !important; font-size:0;">&nbsp;</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+          <td bgcolor="#0f0a1a" style="padding: 0 52px 48px; background-color:#0f0a1a !important;">
+
+            <p class="em-heading" style="margin:0 0 28px 0; font-family: Georgia, serif; font-size:28px; font-weight:normal; font-style:italic; color:#e8e0d0 !important; line-height:1.2;">
+              How are you sitting with it?
+            </p>
+
+            <p class="em-body" style="margin:0 0 20px 0; font-family: Georgia, serif; font-size:17px; color:#9c9590 !important; line-height:1.85;">
+              Dear {$name|default('friend')}, it has been a few days since we sat with your chart. Some of what came up lands immediately. Some of it takes time to settle.
+            </p>
+
+            <p class="em-body" style="margin:0 0 28px 0; font-family: Georgia, serif; font-size:17px; color:#9c9590 !important; line-height:1.85;">
+              If the reading gave you some clarity, would you write a few lines about it? Most people find me through someone else's words, and yours could help the next person decide whether this work is right for them. It takes two minutes, and you choose whether your name is shown.
+            </p>
+
+            <!-- Button -->
+            <table class="em-btn" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 28px;">
+              <tr>
+                <td bgcolor="#C9A84C" style="background-color:#C9A84C !important;">
+                  <a href="https://www.shivohampath.com/share-your-experience"
+                     target="_blank"
+                     style="display:inline-block; padding:16px 40px; font-family: 'Courier New', monospace; font-size:10px; letter-spacing:2.5px; color:#0a0a0f !important; text-decoration:none; text-transform:uppercase;">
+                    Share Your Experience
+                  </a>
+                </td>
+              </tr>
+            </table>
+
+            <p class="em-body" style="margin:0 0 40px 0; font-family: Georgia, serif; font-size:15px; color:#9c9590 !important; line-height:1.8;">
+              If you prefer, you can also leave a review on
+              <a href="https://www.trustpilot.com/evaluate/shivohampath.com" target="_blank" style="color:#C9A84C !important;">Trustpilot</a>.
+            </p>
+
+            <!-- Divider rule -->
+            <table cellpadding="0" cellspacing="0" border="0" style="margin:0 0 32px 0;">
+              <tr>
+                <td bgcolor="#59492e" style="width:36px; height:1px; background-color:#59492e !important; font-size:0;">&nbsp;</td>
+              </tr>
+            </table>
+
+            <p class="em-muted" style="margin:0; font-family: Georgia, serif; font-size:16px; font-style:italic; color:#666063 !important; line-height:1.8;">
+              And if something from the reading is still unclear, just reply to this email.
+            </p>
+
+          </td>
+        </tr>
+
+        <!-- Signature -->
+        <tr>
+          <td bgcolor="#0f0a1a" style="padding: 0 52px 44px; border-top:1px solid #1e1927; background-color:#0f0a1a !important;">
+            <p class="em-sig" style="margin:28px 0 4px 0; font-family: Georgia, serif; font-size:15px; color:#7c7575 !important;">With love,</p>
+            <p class="em-gold" style="margin:0; font-family: Georgia, serif; font-size:18px; font-style:italic; color:#C9A84C !important;">Veena</p>
+            <p class="em-footer" style="margin:4px 0 0 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:#454048 !important; text-transform:uppercase;">Shivohampath</p>
+          </td>
+        </tr>
+
+        <!-- Bottom accent line -->
+        <tr>
+          <td bgcolor="#0f0a1a" style="height:1px; background-color:#2b2222 !important; font-size:0; line-height:0;">&nbsp;</td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td align="center" bgcolor="#0f0a1a" style="padding:20px 48px; background-color:#0f0a1a !important;">
+            <p class="em-footer" style="margin:0 0 10px 0; font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:#3a353e !important; text-transform:uppercase;">
+              www.shivohampath.com &nbsp;&middot;&nbsp; You are receiving this because you had a reading with Shivohampath.
+            </p>
+            <p style="margin:0;">
+              <a href="{$unsubscribe}" style="font-family: 'Courier New', monospace; font-size:9px; letter-spacing:2px; color:#3a353e !important; text-transform:uppercase; text-decoration:underline;">Unsubscribe</a>
+            </p>
+          </td>
+        </tr>
+
+      </table>
+      <!-- /Card -->
+
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

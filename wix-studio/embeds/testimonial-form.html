@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!--
+  SHIVOHAMPATH · SHARE YOUR EXPERIENCE (testimonial form)
+  Free alternative to a paid review plan. Submissions go to the Vercel
+  endpoint dashboard/api/testimonial.js and land in MailerLite as a note on
+  the client's record (group: Testimonials). See TESTIMONIALS_GUIDE.md.
+  Wix: put this in ONE HTML embed on its own page (/share-your-experience),
+  width 100%, height ~1250px desktop / ~1500px mobile.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: #0a0a0f; }
+  :root {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --gold:  #C9A84C;
+    --gold3: rgba(201,168,76,0.12);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.70);
+    --text3: rgba(232,224,208,0.45);
+    --line:  rgba(232,224,208,0.10);
+    --line2: rgba(201,168,76,0.28);
+    --error: #d08585;
+  }
+  body { background: var(--bg); color: var(--text); font: 18px/1.7 'EB Garamond', Georgia, serif; overflow-x: hidden; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 72px 24px 88px; }
+  .eyebrow { font: 11px/1.4 'Cinzel', Georgia, serif; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); }
+  h1 { font: 300 clamp(38px, 6vw, 54px)/1.08 'Cormorant Garamond', Georgia, serif; margin: 14px 0 16px; }
+  h1 em { color: var(--gold); }
+  .lede { color: var(--text2); margin-bottom: 40px; }
+
+  form { display: grid; gap: 22px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  @media (max-width: 560px) { .row { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 8px; min-width: 0; }
+  label, legend { font: 11px/1.4 'Cinzel', Georgia, serif; letter-spacing: .2em; text-transform: uppercase; color: var(--text3); }
+  .opt { text-transform: none; letter-spacing: 0; font: italic 14px 'EB Garamond', Georgia, serif; }
+  input[type=text], input[type=email], select, textarea {
+    width: 100%; min-height: 52px; padding: 12px 16px; font: 18px 'EB Garamond', Georgia, serif;
+    color: var(--text); background: var(--bg3); border: 1px solid var(--line); border-radius: 0; -webkit-appearance: none; appearance: none;
+  }
+  select { background-image: linear-gradient(45deg, transparent 50%, #C9A84C 50%), linear-gradient(135deg, #C9A84C 50%, transparent 50%);
+    background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 40px; }
+  textarea { min-height: 180px; resize: vertical; line-height: 1.6; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); }
+  .hint { font-size: 15px; font-style: italic; color: var(--text3); }
+
+  fieldset { border: 0; display: grid; gap: 10px; }
+  .stars { display: flex; flex-direction: row-reverse; justify-content: flex-end; gap: 4px; }
+  .stars input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .stars label { font-size: 34px; line-height: 1; letter-spacing: 0; color: rgba(201,168,76,.25); cursor: pointer; padding: 2px; }
+  .stars input:checked ~ label, .stars label:hover, .stars label:hover ~ label { color: var(--gold); }
+  .stars input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  .consent { display: grid; gap: 8px; }
+  .consent label { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1px solid var(--line); cursor: pointer;
+    font: 17px/1.45 'EB Garamond', Georgia, serif; letter-spacing: 0; text-transform: none; color: var(--text2); }
+  .consent input { margin-top: 5px; accent-color: #C9A84C; flex-shrink: 0; }
+  .consent label:has(input:checked) { border-color: var(--line2); background: var(--gold3); color: var(--text); }
+
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 32px; border: 1px solid var(--gold);
+    font: 12px/1 'Cinzel', Georgia, serif; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; cursor: pointer; }
+  .btn-solid { background: var(--gold); color: var(--bg); }
+  .btn-solid:disabled { opacity: .6; cursor: wait; }
+  .btn-line { background: transparent; color: var(--gold); border-color: var(--line2); }
+  .error { color: var(--error); font-style: italic; }
+  .fine { font-size: 15px; color: var(--text3); }
+
+  #done { display: grid; gap: 18px; }
+  #done h2 { font: 300 clamp(34px, 5vw, 46px)/1.1 'Cormorant Garamond', Georgia, serif; }
+  #done h2 em { color: var(--gold); }
+  #done p { color: var(--text2); }
+  .tp { display: grid; gap: 14px; padding: 24px; border: 1px solid var(--line2); background: var(--bg3); margin-top: 8px; }
+  .tp-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section id="ask">
+    <span class="eyebrow">Share your experience</span>
+    <h1>How was your <em>reading?</em></h1>
+    <p class="lede">If our session helped you, a few honest lines help the next person decide whether this work is right for them. Write in your own words. Short is perfect.</p>
+
+    <form id="t-form" novalidate>
+      <div class="row">
+        <div class="field"><label for="t-name">Your name</label><input id="t-name" name="name" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="t-email">Email <span class="opt">(never published)</span></label><input id="t-email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="t-city">City <span class="opt">(optional)</span></label><input id="t-city" name="city" type="text" autocomplete="address-level2"></div>
+        <div class="field"><label for="t-reading">Which reading?</label>
+          <select id="t-reading" name="reading">
+            <option value="">Choose one</option>
+            <option>Karmic Knots</option>
+            <option>The Specific Question</option>
+            <option>The Spiritual Path</option>
+            <option>Relationships &amp; Marriage</option>
+            <option>Madhurya Bhakta</option>
+            <option>Shiva Oracle Reading</option>
+            <option>Course</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Your rating</legend>
+        <div class="stars" role="radiogroup">
+          <input type="radio" id="s5" name="rating" value="5"><label for="s5" title="5 stars">★</label>
+          <input type="radio" id="s4" name="rating" value="4"><label for="s4" title="4 stars">★</label>
+          <input type="radio" id="s3" name="rating" value="3"><label for="s3" title="3 stars">★</label>
+          <input type="radio" id="s2" name="rating" value="2"><label for="s2" title="2 stars">★</label>
+          <input type="radio" id="s1" name="rating" value="1"><label for="s1" title="1 star">★</label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="t-message">Your experience</label>
+        <textarea id="t-message" name="message" maxlength="3000" required></textarea>
+        <span class="hint">What were you carrying when you came? What became clearer?</span>
+      </div>
+
+      <fieldset>
+        <legend>May I share your words?</legend>
+        <div class="consent">
+          <label><input type="radio" name="consent" value="full"> Yes, with my first name and city</label>
+          <label><input type="radio" name="consent" value="initial"> Yes, with my first name and last initial only</label>
+          <label><input type="radio" name="consent" value="anonymous"> Yes, but anonymously</label>
+          <label><input type="radio" name="consent" value="private"> No, this is just for Veena</label>
+        </div>
+      </fieldset>
+
+      <div class="hp" aria-hidden="true"><label for="t-website">Website</label><input id="t-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+
+      <p class="error" id="t-error" role="alert" hidden></p>
+      <div><button class="btn btn-solid" id="t-submit" type="submit">Send My Testimonial</button></div>
+      <p class="fine">Your email is only used to confirm the testimonial is genuine. You won't be added to any mailing list.</p>
+    </form>
+  </section>
+
+  <section id="done" hidden>
+    <span class="eyebrow">Received</span>
+    <h2>Thank you. <em>Truly.</em></h2>
+    <p>Your words have reached me. If you chose to let me share them, they may appear on the site soon.</p>
+    <div class="tp" id="tp-box">
+      <p><b style="color:var(--text);font-weight:400">One more small favour?</b> Posting the same words on Trustpilot helps people who look for independent reviews. Copy your text, then paste it there.</p>
+      <textarea id="tp-text" readonly aria-label="Your testimonial" style="min-height:120px"></textarea>
+      <div class="tp-actions">
+        <button class="btn btn-line" id="tp-copy" type="button">Copy my words</button>
+        <a class="btn btn-solid" href="https://www.trustpilot.com/evaluate/shivohampath.com" target="_blank" rel="noopener">Open Trustpilot</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  // ─── SAME VERCEL PROJECT AS THE CONTACT FORM ──────────────────────────────
+  const API_URL = 'https://website-shivohampaths-projects.vercel.app/api/testimonial';
+  // ─────────────────────────────────────────────────────────────────────────
+
+  const form = document.getElementById('t-form');
+  const btn = document.getElementById('t-submit');
+  const err = document.getElementById('t-error');
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  let sentText = '';
+
+  function fail(msg) { err.textContent = msg; err.hidden = false; btn.disabled = false; btn.textContent = 'Send My Testimonial'; }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    err.hidden = true;
+    const d = Object.fromEntries(new FormData(form));
+    d.name = (d.name || '').trim(); d.email = (d.email || '').trim(); d.message = (d.message || '').trim();
+
+    if (!d.name) return fail('Please enter your name.');
+    if (!EMAIL_RE.test(d.email)) return fail('Please enter a valid email address.');
+    if (!d.rating) return fail('Please choose a star rating.');
+    if (d.message.length < 20) return fail('Please write a little more about your experience (at least a sentence or two).');
+    if (!d.consent) return fail('Please choose whether I may share your words.');
+
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try {
+      const res = await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success) {
+        sentText = d.message;
+        document.getElementById('ask').hidden = true;
+        document.getElementById('done').hidden = false;
+        // Respect a private choice, but never filter by rating: Trustpilot
+        // forbids inviting only happy clients ("review gating").
+        if (d.consent === 'private') document.getElementById('tp-box').hidden = true;
+        document.getElementById('tp-text').value = sentText;
+        window.scrollTo(0, 0);
+      } else {
+        fail(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      fail('Could not send. Please check your connection and try again.');
+    }
+  });
+
+  document.getElementById('tp-copy').addEventListener('click', function () {
+    const b = this;
+    const done = () => { b.textContent = 'Copied'; };
+    const box = document.getElementById('tp-text');
+    const manual = () => { box.focus(); box.select(); b.textContent = 'Text selected, copy it'; };
+    if (navigator.clipboard) navigator.clipboard.writeText(sentText).then(done, manual); else manual();
+  });
+</script>
+</body>
+</html>

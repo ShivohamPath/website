@@ -192,25 +192,39 @@ p { margin: 0; }
 .price small { display: block; margin-top: 6px; font: 11px/1.4 var(--f-label); letter-spacing: .18em; color: var(--text-3); }
 @media (max-width: 820px) { .sig { grid-template-columns: 1fr; } .charts { order: 2; } }
 
-.others { margin-top: clamp(48px, 6vw, 72px); }
-.others h3 { font: 11px/1.4 var(--f-label); letter-spacing: .28em; color: var(--text-3); text-transform: uppercase; margin-bottom: 8px; }
-.menu-list { list-style: none; margin: 0; padding: 0; }
-.menu-list a {
-  display: flex; align-items: baseline; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line);
-  text-decoration: none; color: var(--text);
+
+/* ── Readings: method split ── */
+.hl { color: var(--text); font-weight: 400; }
+.method-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 24px;
+  padding-bottom: 16px; margin-bottom: clamp(28px, 4vw, 40px); border-bottom: 1px solid var(--gold-ln); }
+.method-note { font-size: 16px; font-style: italic; color: var(--text-3); }
+.ask { font: italic 300 22px/1.35 var(--f-display); color: var(--gold); }
+.inquiries { list-style: none; margin: clamp(40px, 5vw, 64px) 0 0; padding: 0; border-top: 1px solid var(--line); }
+.inquiries a { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) auto; gap: 12px 40px; align-items: start;
+  padding: 28px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--text); transition: background .2s; }
+.inquiries a:hover h3 { color: var(--gold); }
+.iq-head { display: grid; gap: 6px; min-width: 0; }
+.iq-tag { font: 10px/1.4 var(--f-label); letter-spacing: .24em; text-transform: uppercase; color: var(--text-3); }
+.iq-head h3 { font-size: 28px; transition: color .2s; }
+.iq-head .ask { font-size: 19px; }
+.iq-desc { color: var(--text-2); font-size: 17px; min-width: 0; }
+.iq-meta { display: grid; justify-items: end; gap: 4px; white-space: nowrap; }
+.iq-meta span { font: 11px/1.4 var(--f-label); letter-spacing: .18em; text-transform: uppercase; color: var(--text-3); }
+.iq-meta b { font: 400 26px/1 var(--f-display); color: var(--gold); font-variant-numeric: lining-nums tabular-nums; }
+@media (max-width: 760px) {
+  .inquiries a { grid-template-columns: 1fr auto; }
+  .iq-desc { grid-column: 1 / -1; grid-row: 2; }
+  .iq-meta { grid-column: 2; grid-row: 1; }
 }
-.menu-list a:hover .name { color: var(--gold); }
-.menu-list .name { font: 400 22px/1.25 var(--f-display); }
-.menu-list .what { color: var(--text-3); font-size: 15px; font-style: italic; }
-.menu-list .dots { flex: 1; border-bottom: 1px dotted var(--line); transform: translateY(-5px); min-width: 20px; }
-.menu-list .amt { font: 400 21px/1 var(--f-display); color: var(--gold); font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
-@media (max-width: 560px) {
-  .menu-list a { flex-wrap: wrap; gap: 2px 12px; }
-  .menu-list .what { order: 3; flex-basis: 100%; }
-  .menu-list .dots { display: none; }
-  .menu-list .amt { margin-left: auto; }
-}
-.others .arrow-link { display: inline-block; margin-top: 26px; }
+.oracle { margin-top: clamp(48px, 6vw, 72px); display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: center; justify-content: space-between;
+  padding: clamp(24px, 4vw, 36px); border: 1px dashed rgba(139,111,191,.45); background: rgba(139,111,191,.06); }
+.oracle .label { color: #b29ce0; }
+.oracle-copy { flex: 1 1 360px; min-width: 0; display: grid; gap: 10px; }
+.oracle-copy h3 { font-size: 30px; }
+.oracle-copy p { color: var(--text-2); max-width: 40em; }
+.oracle-buy { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.oracle .btn-line { color: #c7b4ef; border-color: rgba(139,111,191,.55); }
+.oracle .btn-line:hover { background: rgba(139,111,191,.12); }
 
 /* ── About ── */
 .about { display: grid; grid-template-columns: 340px 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
@@ -241,6 +255,7 @@ p { margin: 0; }
 .voice p { font: italic 400 20px/1.55 var(--f-body); color: var(--text); }
 .voice footer { font: 11px/1.5 var(--f-label); letter-spacing: .18em; text-transform: uppercase; color: var(--text-3); }
 .voice footer b { color: var(--gold); font-weight: 400; display: block; }
+.voices-foot { display: flex; flex-wrap: wrap; gap: 16px 32px; margin-top: clamp(32px, 4vw, 48px); }
 @media (max-width: 820px) { .voices { grid-template-columns: 1fr; } }
 
 /* ── Free guide ── */
@@ -368,7 +383,7 @@ body.notes .note { display: block; }
     <h1>Your Chart Is<br><em>A Karmic Map</em></h1>
     <p class="hero-sub">Esoteric astrology for souls who came here with unfinished business. No sugarcoating. Just the truth your chart holds.</p>
     <div class="hero-cta">
-      <a class="btn btn-solid" href="#begin">Find Your Reading</a>
+      <a class="btn btn-solid" href="#readings">Find Your Reading</a>
       <a class="arrow-link" href="#guide">New here? Start with the free guide ↓</a>
     </div>
     <div class="proof" aria-label="Community">
@@ -387,10 +402,10 @@ body.notes .note { display: block; }
       <h2>Three ways <em>to walk with me</em></h2>
     </div>
     <div class="doors">
-      <a class="door primary" href="https://www.shivohampath.com/readings">
+      <a class="door primary" href="#readings">
         <svg class="glyph" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><circle cx="18" cy="18" r="16"/><polygon points="18,4 31,26 5,26"/><polygon points="18,32 5,10 31,10"/></svg>
         <h3>Get a Reading</h3>
-        <p>I read your D1, D9 and D60 to show the karma beneath the patterns you keep repeating.</p>
+        <p>A live Jyotish consultation on your birth chart, or a written Oracle answer to one question.</p>
         <div class="meta"><span>From ₹1,499</span><span>See readings →</span></div>
       </a>
       <a class="door" href="https://www.shivohampath.com/courses">
@@ -411,45 +426,80 @@ body.notes .note { display: block; }
 
 <div class="note-wrap"><div class="note"><b>The main user-flow fix:</b> today a visitor scrolls through about 8 sections before choosing. Here every visitor gets three doors right after the hero, ordered by how ready they are: book, learn, or read.</div></div>
 
-<section class="section" id="karmic-knots">
+<section class="section" id="readings">
   <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Readings</span>
+      <h2>Choose by the question <em>you're carrying</em></h2>
+      <p>Two different methods. <b class="hl">Jyotish</b> is a live consultation that reads your birth chart. <b class="hl">Oracle</b> answers one question intuitively, in writing.</p>
+    </div>
+
+    <div class="method-head">
+      <span class="label">Jyotish · Birth chart consultations</span>
+      <span class="method-note">Live and online. You'll need your date, time and place of birth.</span>
+    </div>
+
     <div class="sig">
       <div class="charts" aria-label="Charts read together">
         <div class="chart-row"><b>D1</b><div><span>RASHI</span><small>This lifetime</small></div></div>
         <div class="chart-row"><b>D9</b><div><span>NAVAMSHA</span><small>Your soul's dharma</small></div></div>
-        <div class="chart-row"><b>D60</b><div><span>SHASHTIAMSHA</span><small>All lifetimes, all karma</small></div></div>
+        <div class="chart-row"><b>D60</b><div><span>SHASHTIAMSHA</span><small>The karmic record</small></div></div>
       </div>
       <div class="sig-body">
-        <span class="label">Signature reading · Most booked</span>
-        <h2>Karmic Knots <em>Reading</em></h2>
-        <p>The full soul audit. I read your D1, D9 and D60 together, the complete karmic architecture of your soul across every lifetime it has lived.</p>
+        <span class="label">Signature consultation</span>
+        <h2>Karmic Knots</h2>
+        <p class="ask">"I want to understand my whole chart and why my life keeps repeating."</p>
+        <p>Your comprehensive Jyotish consultation. I read your D1, D9 and D60 together and explain clearly what I see in your prarabdha, your recurring patterns, your relationships and the larger direction of your life.</p>
         <ul class="uncovers">
-          <li>The root karma beneath your most persistent life patterns</li>
-          <li>Past-life wounds and soul contracts shaping your present</li>
-          <li>What your soul came into this life specifically to resolve</li>
+          <li>The karma beneath the patterns that keep returning</li>
+          <li>How your relationships and life direction show up in the chart</li>
+          <li>What this lifetime is asking you to work through</li>
         </ul>
         <div class="price-row">
           <div class="price">₹6,500<small>60 minutes · Online</small></div>
-          <a class="btn btn-solid" href="https://www.shivohampath.com/readings">Book This Reading</a>
+          <a class="btn btn-solid" href="https://www.shivohampath.com/readings">Book Karmic Knots</a>
         </div>
       </div>
     </div>
 
-    <div class="others">
-      <h3>Other readings</h3>
-      <ul class="menu-list">
-        <li><a href="https://www.shivohampath.com/readings"><span class="name">Shiva Oracle Reading</span><span class="what">Revelation, not prediction</span><span class="dots"></span><span class="amt">₹1,499</span></a></li>
-        <li><a href="https://www.shivohampath.com/readings"><span class="name">Specific Question</span><span class="what">One focused question, answered</span><span class="dots"></span><span class="amt">₹2,499</span></a></li>
-        <li><a href="https://www.shivohampath.com/readings"><span class="name">Madhurya Bhakta Sessions</span><span class="what">For the path of the Beloved</span><span class="dots"></span><span class="amt">₹6,499</span></a></li>
-        <li><a href="https://www.shivohampath.com/readings"><span class="name">Advanced Moksha Consultation</span><span class="what">Liberation and the 12th house</span><span class="dots"></span><span class="amt">₹8,500</span></a></li>
-        <li><a href="https://www.shivohampath.com/readings"><span class="name">Synastry &amp; Kundali Milan</span><span class="what">Two charts, one karmic story</span><span class="dots"></span><span class="amt">₹9,400</span></a></li>
-      </ul>
-      <a class="arrow-link" href="https://www.shivohampath.com/readings">Compare all readings →</a>
+    <ul class="inquiries">
+      <li><a href="https://www.shivohampath.com/readings">
+        <div class="iq-head"><span class="iq-tag">Focused</span><h3>The Specific Question</h3><p class="ask">"I need clarity on one thing."</p></div>
+        <p class="iq-desc">One concern, one clearly defined area of your chart: a relationship, your work, a decision. For when you don't need a full chart examination.</p>
+        <div class="iq-meta"><span>30 min</span><b>₹2,499</b></div>
+      </a></li>
+      <li><a href="https://www.shivohampath.com/readings">
+        <div class="iq-head"><span class="iq-tag">Spiritual</span><h3>The Spiritual Path</h3><p class="ask">"What does my chart say about my spiritual life?"</p></div>
+        <p class="iq-desc">A focused reading of the spiritual horoscope: the D20, Karakamsa, Ishta Devata indications and the nature of your spiritual inclinations.</p>
+        <div class="iq-meta"><span>90 min</span><b>₹8,500</b></div>
+      </a></li>
+      <li><a href="https://www.shivohampath.com/readings">
+        <div class="iq-head"><span class="iq-tag">Two charts</span><h3>Relationships &amp; Marriage</h3><p class="ask">"What is happening between us?"</p></div>
+        <p class="iq-desc">Synastry and Kundali Milan. How two horoscopes interact, compatibility, and the patterns each of you brings into a marriage.</p>
+        <div class="iq-meta"><span>90 min</span><b>₹9,400</b></div>
+      </a></li>
+      <li><a href="https://www.shivohampath.com/readings">
+        <div class="iq-head"><span class="iq-tag">Specialty</span><h3>Madhurya Bhakta</h3><p class="ask">"I love Shiv as Beloved."</p></div>
+        <p class="iq-desc">For those who love Shiv not as a distant deity, but as Beloved. We look at your chart and talk openly about your devotional life and your longing.</p>
+        <div class="iq-meta"><span>2 hours</span><b>₹6,499</b></div>
+      </a></li>
+    </ul>
+
+    <div class="oracle">
+      <div class="oracle-copy">
+        <span class="label">Oracle · A different method</span>
+        <h3>Shiva Oracle Reading</h3>
+        <p>One question, answered through intuitive oracle work and sent to you as a written PDF. This is not an astrology consultation, and there's no call.</p>
+      </div>
+      <div class="oracle-buy">
+        <div class="price">₹1,499<small>Written PDF</small></div>
+        <a class="btn btn-line" href="https://www.shivohampath.com/readings">Ask the Oracle</a>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="note-wrap"><div class="note"><b>Readings:</b> the signature reading leads, then every other reading is listed as a simple price list instead of six heavy cards. Prices are visible on the homepage, so nobody has to dig for them. (Short descriptions are placeholders. Edit freely.)</div></div>
+<div class="note-wrap"><div class="note"><b>Readings, restructured:</b> six overlapping cards become five Jyotish consultations, each answering a different question, plus Oracle in its own clearly separate box. They're ordered by the kind of question, not by price. Advanced Moksha becomes <i>The Spiritual Path</i> (price and length carried over, so review them). No sadhana prescriptions, remedies or ritual guidance are promised anywhere. Returning Seeker, Varshaphala and Muhurta stay off the public menu.</div></div>
 
 <section class="section">
   <div class="wrap about">
@@ -491,10 +541,14 @@ body.notes .note { display: block; }
       <blockquote class="voice"><p>"I came in skeptical. I left with a completely different understanding of why my life kept repeating the same patterns."</p><footer><b>Rohan M.</b>D60 Reading</footer></blockquote>
       <blockquote class="voice"><p>"She doesn't just read charts, she reads souls. One session gave me more clarity than years of seeking."</p><footer><b>Priya K.</b>Specific Question</footer></blockquote>
     </div>
+    <div class="voices-foot">
+      <a class="arrow-link" href="https://www.trustpilot.com/review/shivohampath.com" rel="noopener">Read all reviews on Trustpilot →</a>
+      <a class="arrow-link" href="https://www.trustpilot.com/evaluate/shivohampath.com" rel="noopener">Had a reading? Leave a review →</a>
+    </div>
   </div>
 </section>
 
-<div class="note-wrap"><div class="note"><b>Testimonials:</b> these are still the placeholder quotes from the repo. Swap in real ones before launch.</div></div>
+<div class="note-wrap"><div class="note"><b>Testimonials:</b> placeholder quotes. They'll be replaced with your Trustpilot reviews, pasted in as plain text so there's no slow Trustpilot widget. The links go to your Trustpilot profile and its "write a review" page (check the exact address).</div></div>
 
 <section class="section" id="guide">
   <div class="wrap">
@@ -549,8 +603,8 @@ body.notes .note { display: block; }
 
 <div class="dock" id="dock" aria-hidden="true">
   <div class="dock-in">
-    <p><b>Karmic Knots Reading</b>₹6,500 · 60 min online</p>
-    <a class="btn btn-solid" href="https://www.shivohampath.com/readings" tabindex="-1">Book</a>
+    <p><b>Find your reading</b>Jyotish from ₹2,499 · Oracle ₹1,499</p>
+    <a class="btn btn-solid" href="#readings" tabindex="-1">Readings</a>
   </div>
 </div>
 

@@ -56,6 +56,8 @@ or ritual guidance.
 
 **Decisions (confirmed by Veena)**
 - The Oracle uses Shiva oracle cards only, never the birth chart. Copy says so.
+- Every Jyotish consultation is followed by a written PDF report (summary and
+  reference). Shown under the Jyotish heading.
 - Madhurya Bhakta is strictly for women. Labelled "Women only".
 - Keep a general entry point (The Specific Question) alongside the karmic and
   spiritual signature work.

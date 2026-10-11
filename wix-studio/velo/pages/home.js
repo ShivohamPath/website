@@ -10,9 +10,9 @@
 
 import wixWindowFrontend from 'wix-window-frontend';
 
-// Height of the sticky header, so the target isn't hidden underneath it.
-// Desktop header is 64px, mobile header is 100px.
-const HEADER_OFFSET = { Mobile: 100, Tablet: 64, Desktop: 64 };
+// Height of Wix's sticky header, so the target isn't hidden underneath it.
+// If a section ends up slightly under the header, raise these numbers.
+const HEADER_OFFSET = { Mobile: 70, Tablet: 80, Desktop: 80 };
 
 $w.onReady(function () {
   $w('#homeEmbed').onMessage(async (event) => {
@@ -23,7 +23,7 @@ $w.onReady(function () {
     // target section inside it.
     await $w('#homeEmbed').scrollTo();
     const rect = await wixWindowFrontend.getBoundingRect();
-    const header = HEADER_OFFSET[wixWindowFrontend.formFactor] || 64;
+    const header = HEADER_OFFSET[wixWindowFrontend.formFactor] || 80;
     wixWindowFrontend.scrollTo(0, Math.max(0, rect.scroll.y + data.offset - header));
   });
 });

@@ -2,63 +2,28 @@
 // SHIVOHAMPATH · HOME PAGE VELO CODE (homepage v2)
 // Goes in: Dev Mode → Pages tab → Home
 //
-// The v2 homepage is built from native Wix elements (no HTML embeds),
-// following wix-studio/HOMEPAGE_V2_BUILD_GUIDE.md. This code does two
-// things, and needs these element IDs (Properties panel → ID):
-//
-//   Free guide form   #guideName  (Text Input)
-//                     #guideEmail (Text Input, type Email)
-//                     #guideButton (Button)
-//                     #guideMessage (Text, small, below the button)
-//
-//   Mobile booking bar  #heroSection (the hero section)
-//                       #mobileDock  (container pinned to the bottom,
-//                                     "Hidden on load", mobile only)
+// The homepage body is ONE HTML embed (embeds/home-v2.html) with the
+// element ID #homeEmbed. Its in-page links ("Find Your Reading",
+// "Start with the free guide") can't scroll the Wix page from inside the
+// embed, so the embed sends how far down the target is, and we scroll here.
 // ═══════════════════════════════════════════════════════════════
 
 import wixWindowFrontend from 'wix-window-frontend';
-import { subscribeToGuide } from 'backend/subscribe.web';
 
-const GUIDE_MESSAGE = 'Arrives in your inbox within a minute. Unsubscribe anytime.';
+// Height of the sticky header, so the target isn't hidden underneath it.
+// Desktop header is 64px, mobile header is 100px.
+const HEADER_OFFSET = { Mobile: 100, Tablet: 64, Desktop: 64 };
 
 $w.onReady(function () {
+  $w('#homeEmbed').onMessage(async (event) => {
+    const data = event.data;
+    if (!data || data.type !== 'shivoham-scroll' || typeof data.offset !== 'number') return;
 
-  // ── FREE GUIDE SIGNUP ─────────────────────────────────────────
-  $w('#guideMessage').text = GUIDE_MESSAGE;
-
-  $w('#guideButton').onClick(async () => {
-    const email = ($w('#guideEmail').value || '').trim();
-    const name = ($w('#guideName').value || '').trim();
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      $w('#guideMessage').text = 'Please enter a valid email so the guide can reach you.';
-      return;
-    }
-
-    $w('#guideButton').disable();
-    $w('#guideButton').label = 'Sending…';
-
-    const result = await subscribeToGuide(email, name).catch(() => ({ ok: false }));
-
-    if (result.ok) {
-      $w('#guideMessage').text = `Thank you. The guide is on its way to ${email}.`;
-      $w('#guideButton').label = 'Sent';
-    } else {
-      $w('#guideMessage').text = result.error || 'Something went wrong. Please try again in a moment.';
-      $w('#guideButton').label = 'Send Me the Guide';
-      $w('#guideButton').enable();
-    }
+    // Bring the embed's top to the top of the screen, then move down to the
+    // target section inside it.
+    await $w('#homeEmbed').scrollTo();
+    const rect = await wixWindowFrontend.getBoundingRect();
+    const header = HEADER_OFFSET[wixWindowFrontend.formFactor] || 64;
+    wixWindowFrontend.scrollTo(0, Math.max(0, rect.scroll.y + data.offset - header));
   });
-
-  // ── MOBILE BOOKING BAR ────────────────────────────────────────
-  // Slides up once the hero has scrolled off screen, phones only.
-  if (wixWindowFrontend.formFactor === 'Mobile') {
-    $w('#heroSection').onViewportLeave(() => {
-      $w('#mobileDock').show('slide', { direction: 'bottom', duration: 300 });
-    });
-    $w('#heroSection').onViewportEnter(() => {
-      $w('#mobileDock').hide('slide', { direction: 'bottom', duration: 300 });
-    });
-  }
-
 });

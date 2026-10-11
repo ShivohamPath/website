@@ -68,7 +68,7 @@ or ritual guidance.
   Anonymous), quoted word for word as plain text, not a Trustpilot widget,
   which would add another slow iFrame. New reviews come in through
   Trustpilot's free BCC invitation, sent with each reading report.
-- The email form only shows a confirmation. In production it should post to
-  `dashboard/api/subscribe.js`.
-- To get the full speed gain in Wix, build these sections with native Wix
-  Studio elements (or at most one embed), not one iFrame per section.
+- This file is the design preview only. Do not paste it into Wix. The
+  Wix-ready versions are `wix-studio/embeds/header-v2.html`, `home-v2.html` and
+  `footer-v2.html`. Setup and exact heights are in
+  `wix-studio/HOMEPAGE_V2_BUILD_GUIDE.md`.

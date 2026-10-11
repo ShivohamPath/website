@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Shivoham Path Homepage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400&display=swap">
+<style>
+/* Layout: one narrow, calm column of "rooms". Each section answers one question, in the order a new visitor asks them.
+   Dark-only by design (brand). One document, no iframes. */
+:root {
+  --bg:      #0a0a0f;
+  --bg-2:    #110c1c;
+  --raised:  #17121f;
+  --gold:    #C9A84C;
+  --gold-hi: #d9bc68;
+  --gold-ln: rgba(201,168,76,.28);
+  --gold-wash: rgba(201,168,76,.08);
+  --text:    #e8e0d0;
+  --text-2:  rgba(232,224,208,.70);
+  --text-3:  rgba(232,224,208,.45);
+  --line:    rgba(232,224,208,.09);
+  --note:    #8B6FBF;
+  --note-bg: rgba(139,111,191,.12);
+
+  --f-display: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+  --f-body:    'EB Garamond', 'Iowan Old Style', Georgia, serif;
+  --f-label:   'Cinzel', 'Trajan Pro', Georgia, serif;
+
+  --gutter: clamp(20px, 5vw, 48px);
+  --max: 1080px;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--bg); scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 18px/1.7 var(--f-body);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+[hidden] { display: none !important; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 300; line-height: 1.08; margin: 0; text-wrap: balance; }
+h1 em, h2 em, h3 em { color: var(--gold); font-style: italic; }
+p { margin: 0; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); }
+.label {
+  font: 11px/1.4 var(--f-label); letter-spacing: .28em; text-transform: uppercase; color: var(--gold);
+}
+.section { padding-block: clamp(72px, 10vw, 120px); }
+.section + .section { border-top: 1px solid var(--line); }
+.sec-head { display: grid; gap: 14px; max-width: 620px; margin-bottom: clamp(36px, 5vw, 56px); }
+.sec-head h2 { font-size: clamp(34px, 5vw, 50px); }
+.sec-head p { color: var(--text-2); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 50px; padding: 0 30px;
+  font: 12px/1 var(--f-label); letter-spacing: .2em; text-transform: uppercase; text-decoration: none;
+  border: 1px solid var(--gold); cursor: pointer; transition: background .2s, color .2s;
+}
+.btn-solid { background: var(--gold); color: var(--bg); }
+.btn-solid:hover { background: var(--gold-hi); }
+.btn-line { background: transparent; color: var(--gold); border-color: var(--gold-ln); }
+.btn-line:hover { background: var(--gold-wash); }
+.arrow-link {
+  font: 11px/1.4 var(--f-label); letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-ln); padding-bottom: 4px;
+}
+.arrow-link:hover { border-color: var(--gold); }
+
+/* ── In-app browser banner (Instagram / Facebook / TikTok) ── */
+.inapp {
+  background: var(--raised); border-bottom: 1px solid var(--gold-ln);
+  padding: 12px var(--gutter); font: 14px/1.45 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.inapp-in { max-width: var(--max); margin: 0 auto; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.inapp p { flex: 1 1 240px; min-width: 0; color: var(--text-2); }
+.inapp strong { color: var(--text); }
+.inapp-actions { display: flex; gap: 8px; }
+.inapp button, .inapp a.inapp-open {
+  font: 600 13px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 38px; padding: 0 14px; border-radius: 3px; cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center;
+}
+.inapp a.inapp-open { background: var(--gold); color: var(--bg); border: 0; }
+.inapp .inapp-copy { background: transparent; color: var(--gold); border: 1px solid var(--gold-ln); }
+.inapp .inapp-x { background: transparent; color: var(--text-3); border: 0; padding: 0 6px; font-size: 20px; }
+
+/* ── Header ── */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: rgba(10,10,15,.92); border-bottom: 1px solid var(--line);
+}
+@supports (backdrop-filter: blur(8px)) { .top { background: rgba(10,10,15,.78); backdrop-filter: blur(8px); } }
+.top-in { max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); height: 64px; display: flex; align-items: center; gap: 28px; }
+.brand { font: 15px/1 var(--f-label); letter-spacing: .22em; text-decoration: none; color: var(--text); white-space: nowrap; }
+.brand b { color: var(--gold); font-weight: 400; }
+.nav { display: flex; gap: 26px; margin-left: auto; }
+.nav a { font-size: 16px; color: var(--text-2); text-decoration: none; }
+.nav a:hover { color: var(--gold); }
+.top .btn { min-height: 40px; padding: 0 18px; font-size: 11px; white-space: nowrap; }
+.login { font-size: 16px; color: var(--text-2); text-decoration: none; }
+.login:hover { color: var(--gold); }
+.menu { display: none; }
+@media (max-width: 860px) {
+  .nav, .top .login { display: none; }
+  .top-in { gap: 12px; }
+  .top .btn { margin-left: auto; padding: 0 14px; letter-spacing: .14em; }
+  .brand { font-size: 13px; letter-spacing: .16em; }
+  .menu { display: block; position: relative; }
+  .menu summary {
+    list-style: none; cursor: pointer; width: 44px; height: 44px; display: grid; place-items: center;
+    border: 1px solid var(--line); color: var(--text);
+  }
+  .menu summary::-webkit-details-marker { display: none; }
+  .menu summary span, .menu summary span::before, .menu summary span::after {
+    display: block; width: 18px; height: 1px; background: currentColor; position: relative; content: '';
+  }
+  .menu summary span::before { position: absolute; top: -6px; }
+  .menu summary span::after { position: absolute; top: 6px; }
+  .menu[open] summary { border-color: var(--gold-ln); }
+  .menu-panel {
+    position: absolute; right: 0; top: 52px; width: min(280px, calc(100vw - 32px));
+    background: var(--raised); border: 1px solid var(--gold-ln); padding: 8px 0;
+  }
+  .menu-panel a { display: block; padding: 13px 22px; text-decoration: none; color: var(--text); font-size: 18px; }
+  .menu-panel a:hover { background: var(--gold-wash); }
+  .menu-panel .menu-sep { border-top: 1px solid var(--line); margin: 6px 0; }
+  .menu-panel .muted { color: var(--text-2); font-size: 16px; }
+}
+
+/* ── Hero ── */
+.hero { position: relative; overflow: hidden; text-align: center; padding-block: clamp(72px, 11vw, 130px) clamp(56px, 8vw, 96px);
+  background:
+    radial-gradient(ellipse 55% 45% at 50% 30%, rgba(139,111,191,.09), transparent 70%),
+    radial-gradient(ellipse 40% 35% at 50% 85%, rgba(201,168,76,.06), transparent 70%),
+    var(--bg);
+}
+.yantra {
+  position: absolute; left: 50%; top: 46%; width: min(640px, 130vw); aspect-ratio: 1; transform: translate(-50%,-50%);
+  opacity: .07; pointer-events: none;
+}
+.hero-in { position: relative; display: grid; justify-items: center; gap: 26px; max-width: 760px; margin: 0 auto; padding-inline: var(--gutter); }
+.hero .label { border: 1px solid var(--gold-ln); padding: 8px 18px; }
+.hero h1 { font-size: clamp(48px, 9vw, 92px); letter-spacing: -.01em; }
+.hero-sub { font-style: italic; color: var(--text-2); font-size: clamp(18px, 2.4vw, 21px); max-width: 34em; }
+.hero-cta { display: flex; flex-direction: column; align-items: center; gap: 18px; margin-top: 6px; }
+.proof { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 22px; margin-top: 18px;
+  font: 11px/1.6 var(--f-label); letter-spacing: .2em; text-transform: uppercase; color: var(--text-3); }
+.proof b { font: 400 22px/1 var(--f-display); letter-spacing: 0; color: var(--gold); margin-right: 6px; vertical-align: -2px; }
+
+/* ── Three doors ── */
+.doors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.door {
+  background: var(--bg); padding: clamp(28px, 3.5vw, 40px); display: grid; grid-template-rows: auto auto 1fr auto; gap: 14px;
+  text-decoration: none; transition: background .25s;
+}
+.door:hover { background: var(--bg-2); }
+.door .glyph { width: 36px; height: 36px; color: var(--gold); }
+.door h3 { font-size: 30px; }
+.door p { color: var(--text-2); font-size: 17px; }
+.door .meta { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-top: 18px; border-top: 1px solid var(--line);
+  font: 11px/1.4 var(--f-label); letter-spacing: .18em; text-transform: uppercase; color: var(--text-3); }
+.door .meta span:last-child { color: var(--gold); }
+.door:hover .meta span:last-child { color: var(--gold-hi); }
+.door.primary { background: var(--raised); }
+.door.primary h3 { color: var(--gold); }
+@media (max-width: 820px) { .doors { grid-template-columns: 1fr; } }
+
+/* ── Signature reading ── */
+.sig { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+.charts { display: grid; gap: 1px; background: var(--gold-ln); border: 1px solid var(--gold-ln); }
+.chart-row { background: var(--bg-2); padding: 22px 24px; display: grid; grid-template-columns: 88px 1fr; gap: 18px; align-items: center; }
+.chart-row b { font: 300 42px/1 var(--f-display); color: var(--gold); }
+.chart-row span { display: block; font: 11px/1.5 var(--f-label); letter-spacing: .18em; color: var(--text); }
+.chart-row small { display: block; font-size: 16px; font-style: italic; color: var(--text-2); }
+.sig-body { display: grid; gap: 20px; min-width: 0; }
+.sig-body h2 { font-size: clamp(36px, 5vw, 52px); }
+.sig-body > p { color: var(--text-2); }
+.uncovers { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.uncovers li { padding-left: 26px; position: relative; color: var(--text-2); }
+.uncovers li::before { content: ''; position: absolute; left: 4px; top: .7em; width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); opacity: .8; }
+.price-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; padding-top: 22px; border-top: 1px solid var(--line); }
+.price { font: 300 40px/1 var(--f-display); color: var(--text); font-variant-numeric: lining-nums; }
+.price small { display: block; margin-top: 6px; font: 11px/1.4 var(--f-label); letter-spacing: .18em; color: var(--text-3); }
+@media (max-width: 820px) { .sig { grid-template-columns: 1fr; } .charts { order: 2; } }
+
+.others { margin-top: clamp(48px, 6vw, 72px); }
+.others h3 { font: 11px/1.4 var(--f-label); letter-spacing: .28em; color: var(--text-3); text-transform: uppercase; margin-bottom: 8px; }
+.menu-list { list-style: none; margin: 0; padding: 0; }
+.menu-list a {
+  display: flex; align-items: baseline; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line);
+  text-decoration: none; color: var(--text);
+}
+.menu-list a:hover .name { color: var(--gold); }
+.menu-list .name { font: 400 22px/1.25 var(--f-display); }
+.menu-list .what { color: var(--text-3); font-size: 15px; font-style: italic; }
+.menu-list .dots { flex: 1; border-bottom: 1px dotted var(--line); transform: translateY(-5px); min-width: 20px; }
+.menu-list .amt { font: 400 21px/1 var(--f-display); color: var(--gold); font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
+@media (max-width: 560px) {
+  .menu-list a { flex-wrap: wrap; gap: 2px 12px; }
+  .menu-list .what { order: 3; flex-basis: 100%; }
+  .menu-list .dots { display: none; }
+  .menu-list .amt { margin-left: auto; }
+}
+.others .arrow-link { display: inline-block; margin-top: 26px; }
+
+/* ── About ── */
+.about { display: grid; grid-template-columns: 340px 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+.portrait { position: relative; aspect-ratio: 3/4; max-width: 100%; background: var(--raised); border: 1px solid var(--gold-ln); overflow: hidden; }
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.portrait .ph { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 20px;
+  font: italic 300 22px/1.3 var(--f-display); color: var(--text-3); }
+.portrait img + .ph { display: none; }
+.portrait.noimg .ph { display: grid; }
+.portrait::after { content: ''; position: absolute; inset: 10px; border: 1px solid var(--gold-ln); pointer-events: none; }
+.about-body { display: grid; gap: 20px; min-width: 0; }
+.about-body h2 { font-size: clamp(36px, 5vw, 52px); }
+.about-body p { color: var(--text-2); max-width: 36em; }
+.lineage { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-top: 4px;
+  font: 11px/1.6 var(--f-label); letter-spacing: .16em; text-transform: uppercase; color: var(--text-3); }
+.lineage i { font-style: normal; color: var(--gold); opacity: .7; }
+.lineage b { color: var(--gold); font-weight: 400; }
+@media (max-width: 820px) { .about { grid-template-columns: 1fr; } .portrait { max-width: 300px; } }
+
+/* ── Quote ── */
+.quote { text-align: center; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,76,.05), transparent 70%); }
+.quote blockquote { margin: 0 auto; max-width: 820px; font: italic 300 clamp(28px, 4.2vw, 44px)/1.3 var(--f-display); text-wrap: balance; }
+.quote blockquote em { font-style: normal; color: var(--gold); }
+
+/* ── Testimonials ── */
+.voices { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 48px); }
+.voice { display: grid; gap: 18px; align-content: start; padding-top: 22px; border-top: 1px solid var(--gold-ln); }
+.voice p { font: italic 400 20px/1.55 var(--f-body); color: var(--text); }
+.voice footer { font: 11px/1.5 var(--f-label); letter-spacing: .18em; text-transform: uppercase; color: var(--text-3); }
+.voice footer b { color: var(--gold); font-weight: 400; display: block; }
+@media (max-width: 820px) { .voices { grid-template-columns: 1fr; } }
+
+/* ── Free guide ── */
+.guide { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: center;
+  background: var(--raised); border: 1px solid var(--gold-ln); padding: clamp(28px, 5vw, 56px); }
+.guide h2 { font-size: clamp(32px, 4.4vw, 46px); }
+.guide-copy { display: grid; gap: 16px; min-width: 0; }
+.guide-copy p { color: var(--text-2); }
+.guide form { display: grid; gap: 12px; min-width: 0; }
+.guide label { font: 11px/1.4 var(--f-label); letter-spacing: .2em; text-transform: uppercase; color: var(--text-3); }
+.guide input {
+  width: 100%; min-height: 52px; padding: 0 16px; font: 18px var(--f-body); color: var(--text);
+  background: var(--bg); border: 1px solid var(--line); border-radius: 0;
+}
+.guide input:focus { outline: none; border-color: var(--gold); }
+.guide .fine { font-size: 14px; color: var(--text-3); }
+.guide .ok { color: var(--gold); font-style: italic; }
+@media (max-width: 820px) { .guide { grid-template-columns: 1fr; } }
+
+/* ── Footer ── */
+.foot { border-top: 1px solid var(--line); padding-block: 56px 40px; }
+.foot-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 32px; }
+.foot p { color: var(--text-3); font-size: 16px; font-style: italic; max-width: 26em; margin-top: 14px; }
+.foot h4 { margin: 0 0 12px; font: 11px/1.4 var(--f-label); letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+.foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.foot ul a { color: var(--text-2); text-decoration: none; font-size: 16px; }
+.foot ul a:hover { color: var(--gold); }
+.foot-base { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+  font: 10px/1.6 var(--f-label); letter-spacing: .18em; color: var(--text-3); text-transform: uppercase; }
+@media (max-width: 820px) { .foot-grid { grid-template-columns: 1fr 1fr; } .foot-grid > :first-child { grid-column: 1 / -1; } }
+
+/* ── Mobile sticky booking bar ── */
+.dock {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: none;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+  background: rgba(10,10,15,.96); border-top: 1px solid var(--gold-ln);
+  transform: translateY(110%); transition: transform .3s ease;
+}
+.dock.show { transform: none; }
+.dock-in { display: flex; gap: 10px; align-items: center; }
+.dock p { flex: 1; min-width: 0; font-size: 15px; line-height: 1.3; color: var(--text-2); }
+.dock p b { display: block; color: var(--text); font: 400 18px/1.2 var(--f-display); }
+.dock .btn { min-height: 46px; padding: 0 20px; }
+@media (max-width: 720px) { .dock { display: block; } body { padding-bottom: 76px; } }
+
+/* ── Mockup annotations (remove for production) ── */
+.mock-toggle {
+  position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 40;
+  font: 600 13px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--note); color: #fff; border: 0; border-radius: 999px; min-height: 42px; padding: 0 18px; cursor: pointer;
+  box-shadow: 0 6px 24px rgba(0,0,0,.4);
+}
+@media (max-width: 720px) { .mock-toggle { bottom: calc(88px + env(safe-area-inset-bottom, 0px)); } }
+.note {
+  display: none; margin: 0 auto 28px; max-width: var(--max);
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--note-bg); border-left: 3px solid var(--note); color: var(--text); padding: 12px 16px;
+}
+.note b { color: #c7b4ef; }
+body.notes .note { display: block; }
+.note-wrap { padding-inline: var(--gutter); }
+.note-wrap .note { margin-block: 16px 0; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .dock { transition: none; } }
+</style>
+</head>
+<body>
+
+<!-- In-app browser banner: rendered by the page itself (no iframe), shown only inside Instagram/Facebook/TikTok -->
+<div class="inapp" id="inapp" hidden>
+  <div class="inapp-in">
+    <p><strong>You're viewing this inside Instagram.</strong> Booking and login work best in your browser.
+      <span id="inapp-hint">Tap <b>•••</b> at the top right, then <b>Open in browser</b>.</span></p>
+    <div class="inapp-actions">
+      <a class="inapp-open" id="inapp-open" href="https://www.shivohampath.com/" hidden>Open in Chrome</a>
+      <button class="inapp-copy" id="inapp-copy" type="button">Copy link</button>
+      <button class="inapp-x" id="inapp-x" type="button" aria-label="Dismiss">×</button>
+    </div>
+  </div>
+</div>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="https://www.shivohampath.com/">SHIVOHAM <b>PATH</b></a>
+    <nav class="nav" aria-label="Main">
+      <a href="https://www.shivohampath.com/readings">Readings</a>
+      <a href="https://www.shivohampath.com/courses">Courses</a>
+      <a href="https://www.shivohampath.com/about">About</a>
+      <a href="https://www.shivohampath.com/blog">Blog</a>
+    </nav>
+    <a class="login" href="https://www.shivohampath.com/account/my-account">Log in</a>
+    <a class="btn btn-solid" href="https://www.shivohampath.com/readings">Book a Reading</a>
+    <details class="menu">
+      <summary aria-label="Menu"><span></span></summary>
+      <div class="menu-panel">
+        <a href="https://www.shivohampath.com/readings">Readings</a>
+        <a href="https://www.shivohampath.com/courses">Courses</a>
+        <a href="https://www.shivohampath.com/about">About Veena</a>
+        <a href="https://www.shivohampath.com/blog">Blog</a>
+        <a href="https://www.shivohampath.com/contact">Contact</a>
+        <div class="menu-sep"></div>
+        <a class="muted" href="https://www.shivohampath.com/account/my-account">Log in / My account</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<div class="note-wrap"><div class="note"><b>Header:</b> 4 links instead of 6+, one gold button. "Log in" is a plain link to the account page, not a popup, so it works inside Instagram. On mobile it's a native menu: no iframe and no script needed.</div></div>
+
+<main>
+
+<section class="hero">
+  <svg class="yantra" viewBox="0 0 700 700" fill="none" stroke="#C9A84C" aria-hidden="true">
+    <circle cx="350" cy="350" r="300" stroke-width=".6"/>
+    <circle cx="350" cy="350" r="232" stroke-width=".6"/>
+    <circle cx="350" cy="350" r="120" stroke-width=".6"/>
+    <polygon points="350,80 600,480 100,480" stroke-width=".7"/>
+    <polygon points="350,620 100,220 600,220" stroke-width=".7"/>
+    <polygon points="350,170 505,440 195,440" stroke-width=".5"/>
+    <polygon points="350,530 195,260 505,260" stroke-width=".5"/>
+    <circle cx="350" cy="350" r="4" fill="#C9A84C" stroke="none"/>
+  </svg>
+  <div class="hero-in">
+    <span class="label">Astrologer · Psychic · Mystic</span>
+    <h1>Your Chart Is<br><em>A Karmic Map</em></h1>
+    <p class="hero-sub">Esoteric astrology for souls who came here with unfinished business. No sugarcoating. Just the truth your chart holds.</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="#begin">Find Your Reading</a>
+      <a class="arrow-link" href="#guide">New here? Start with the free guide ↓</a>
+    </div>
+    <div class="proof" aria-label="Community">
+      <span><b>2.3M</b>monthly reach</span>
+      <span><b>99K+</b>walking the path</span>
+    </div>
+  </div>
+</section>
+
+<div class="note-wrap"><div class="note"><b>Hero:</b> one clear next step. The animated spinning mandala becomes a still Sri-Yantra line drawing (no animation running on phones). Four stats become two. Sized to content instead of 88vh, so on a phone the next section starts above the fold.</div></div>
+
+<section class="section" id="begin">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Where would you like to begin?</span>
+      <h2>Three ways <em>to walk with me</em></h2>
+    </div>
+    <div class="doors">
+      <a class="door primary" href="https://www.shivohampath.com/readings">
+        <svg class="glyph" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><circle cx="18" cy="18" r="16"/><polygon points="18,4 31,26 5,26"/><polygon points="18,32 5,10 31,10"/></svg>
+        <h3>Get a Reading</h3>
+        <p>I read your D1, D9 and D60 to show the karma beneath the patterns you keep repeating.</p>
+        <div class="meta"><span>From ₹1,499</span><span>See readings →</span></div>
+      </a>
+      <a class="door" href="https://www.shivohampath.com/courses">
+        <svg class="glyph" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><path d="M18 6v26M6 10c5 0 9 1 12 4 3-3 7-4 12-4v20c-5 0-9 1-12 4-3-3-7-4-12-4z"/></svg>
+        <h3>Study the Path</h3>
+        <p>Live courses: <i>Foundations of Jyotish</i>, and <i>She Who Becomes Him</i> for women who know Shiv as Beloved.</p>
+        <div class="meta"><span>Live courses</span><span>View courses →</span></div>
+      </a>
+      <a class="door" href="https://www.shivohampath.com/blog">
+        <svg class="glyph" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><path d="M18 4c5 6 5 10 0 14-5-4-5-8 0-14z"/><path d="M8 32h20M11 32c0-6 3-10 7-12 4 2 7 6 7 12"/></svg>
+        <h3>Read for Free</h3>
+        <p>Essays on karma, mythology, Jyotish and Kashmir Shaivism from the archive.</p>
+        <div class="meta"><span>Free</span><span>Open the archive →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="note-wrap"><div class="note"><b>The main user-flow fix:</b> today a visitor scrolls through about 8 sections before choosing. Here every visitor gets three doors right after the hero, ordered by how ready they are: book, learn, or read.</div></div>
+
+<section class="section" id="karmic-knots">
+  <div class="wrap">
+    <div class="sig">
+      <div class="charts" aria-label="Charts read together">
+        <div class="chart-row"><b>D1</b><div><span>RASHI</span><small>This lifetime</small></div></div>
+        <div class="chart-row"><b>D9</b><div><span>NAVAMSHA</span><small>Your soul's dharma</small></div></div>
+        <div class="chart-row"><b>D60</b><div><span>SHASHTIAMSHA</span><small>All lifetimes, all karma</small></div></div>
+      </div>
+      <div class="sig-body">
+        <span class="label">Signature reading · Most booked</span>
+        <h2>Karmic Knots <em>Reading</em></h2>
+        <p>The full soul audit. I read your D1, D9 and D60 together, the complete karmic architecture of your soul across every lifetime it has lived.</p>
+        <ul class="uncovers">
+          <li>The root karma beneath your most persistent life patterns</li>
+          <li>Past-life wounds and soul contracts shaping your present</li>
+          <li>What your soul came into this life specifically to resolve</li>
+        </ul>
+        <div class="price-row">
+          <div class="price">₹6,500<small>60 minutes · Online</small></div>
+          <a class="btn btn-solid" href="https://www.shivohampath.com/readings">Book This Reading</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="others">
+      <h3>Other readings</h3>
+      <ul class="menu-list">
+        <li><a href="https://www.shivohampath.com/readings"><span class="name">Shiva Oracle Reading</span><span class="what">Revelation, not prediction</span><span class="dots"></span><span class="amt">₹1,499</span></a></li>
+        <li><a href="https://www.shivohampath.com/readings"><span class="name">Specific Question</span><span class="what">One focused question, answered</span><span class="dots"></span><span class="amt">₹2,499</span></a></li>
+        <li><a href="https://www.shivohampath.com/readings"><span class="name">Madhurya Bhakta Sessions</span><span class="what">For the path of the Beloved</span><span class="dots"></span><span class="amt">₹6,499</span></a></li>
+        <li><a href="https://www.shivohampath.com/readings"><span class="name">Advanced Moksha Consultation</span><span class="what">Liberation and the 12th house</span><span class="dots"></span><span class="amt">₹8,500</span></a></li>
+        <li><a href="https://www.shivohampath.com/readings"><span class="name">Synastry &amp; Kundali Milan</span><span class="what">Two charts, one karmic story</span><span class="dots"></span><span class="amt">₹9,400</span></a></li>
+      </ul>
+      <a class="arrow-link" href="https://www.shivohampath.com/readings">Compare all readings →</a>
+    </div>
+  </div>
+</section>
+
+<div class="note-wrap"><div class="note"><b>Readings:</b> the signature reading leads, then every other reading is listed as a simple price list instead of six heavy cards. Prices are visible on the homepage, so nobody has to dig for them. (Short descriptions are placeholders. Edit freely.)</div></div>
+
+<section class="section">
+  <div class="wrap about">
+    <div class="portrait" id="portrait">
+      <img src="https://static.wixstatic.com/media/ba8bbb_55ab1a58fb274982af1ca60ae789fd43~mv2.jpeg/v1/fill/w_680,h_906,q_80/portrait.jpeg"
+           alt="Veena Maheshwari" width="340" height="453" loading="lazy" decoding="async"
+           onerror="this.parentNode.classList.add('noimg');this.remove()">
+      <div class="ph">Veena Maheshwari</div>
+    </div>
+    <div class="about-body">
+      <span class="label">The guide</span>
+      <h2>Not your typical <em>astrologer</em></h2>
+      <p>I don't read charts to tell you what you want to hear. I read them to show you what your soul has been carrying, across this lifetime and every one before it.</p>
+      <p>My work comes from years of sadhana in Kashmir Shaivism, Shaktipat initiation, and Jyotish read through the D60.</p>
+      <div class="lineage" aria-label="Lineage">
+        <span>Trika Shaivism</span><i>◆</i><span>Lalleshwari</span><i>◆</i><span>Shaktipat</span><i>◆</i><b>Madhurya Bhakti</b>
+      </div>
+      <a class="arrow-link" href="https://www.shivohampath.com/about" style="justify-self:start">Read my story →</a>
+    </div>
+  </div>
+</section>
+
+<div class="note-wrap"><div class="note"><b>About:</b> the long Shaktipat, Lalleshwari, lineage and story sections stay on the About page. Here they shrink to a single lineage line that hints at the depth and links through. The photo loads lazily at the size it's shown (Wix serves the original file today).</div></div>
+
+<section class="section quote">
+  <div class="wrap">
+    <blockquote>Your patterns are not personality. They are <em>karma asking to be seen.</em></blockquote>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">What people experience</span>
+      <h2>From those who <em>have sat with me</em></h2>
+    </div>
+    <div class="voices">
+      <blockquote class="voice"><p>"The Karmic Knots reading broke open something I had been trying to heal for years with therapy. Veena showed me the root, and it was older than this life."</p><footer><b>Ananya S.</b>Karmic Knots Reading</footer></blockquote>
+      <blockquote class="voice"><p>"I came in skeptical. I left with a completely different understanding of why my life kept repeating the same patterns."</p><footer><b>Rohan M.</b>D60 Reading</footer></blockquote>
+      <blockquote class="voice"><p>"She doesn't just read charts, she reads souls. One session gave me more clarity than years of seeking."</p><footer><b>Priya K.</b>Specific Question</footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<div class="note-wrap"><div class="note"><b>Testimonials:</b> these are still the placeholder quotes from the repo. Swap in real ones before launch.</div></div>
+
+<section class="section" id="guide">
+  <div class="wrap">
+    <div class="guide">
+      <div class="guide-copy">
+        <span class="label">Free guide</span>
+        <h2>Your Chart Is Not <em>a Prediction Grid</em></h2>
+        <p>A short guide on the three karmas (Sanchita, Prarabdha and Kriyamana), why Jyotish was never built to predict, and a chart prompt you can try today.</p>
+      </div>
+      <form id="guide-form" novalidate>
+        <label for="g-name">First name</label>
+        <input id="g-name" name="name" autocomplete="given-name" placeholder="Your first name">
+        <label for="g-email">Email</label>
+        <input id="g-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
+        <button class="btn btn-solid" type="submit">Send Me the Guide</button>
+        <p class="fine" id="g-msg">Arrives in your inbox within a minute. Unsubscribe anytime.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="note-wrap"><div class="note"><b>Email signup:</b> moved out of a footer iframe into the page, offering the free guide you already send from MailerLite. In production this form posts to your existing <code>/api/subscribe</code> endpoint. In this mockup it only shows the confirmation.</div></div>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="https://www.shivohampath.com/">SHIVOHAM <b>PATH</b></a>
+        <p>Esoteric astrology for souls who came here with unfinished business.</p>
+      </div>
+      <div><h4>Work with me</h4><ul>
+        <li><a href="https://www.shivohampath.com/readings">Readings</a></li>
+        <li><a href="https://www.shivohampath.com/courses">Courses</a></li>
+        <li><a href="https://www.shivohampath.com/books">Books &amp; PDFs</a></li>
+      </ul></div>
+      <div><h4>Explore</h4><ul>
+        <li><a href="https://www.shivohampath.com/about">About Veena</a></li>
+        <li><a href="https://www.shivohampath.com/blog">Blog</a></li>
+        <li><a href="https://www.shivohampath.com/contact">Contact</a></li>
+      </ul></div>
+      <div><h4>Follow</h4><ul>
+        <li><a href="https://www.instagram.com/shivohampath" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@shivohampath" rel="noopener">YouTube</a></li>
+        <li><a href="https://www.shivohampath.com/account/my-account">My account</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-base"><span>© 2026 Shivoham Path</span><span><a href="https://www.shivohampath.com/privacy">Privacy</a> · <a href="https://www.shivohampath.com/terms">Terms</a></span></div>
+  </div>
+</footer>
+
+<div class="dock" id="dock" aria-hidden="true">
+  <div class="dock-in">
+    <p><b>Karmic Knots Reading</b>₹6,500 · 60 min online</p>
+    <a class="btn btn-solid" href="https://www.shivohampath.com/readings" tabindex="-1">Book</a>
+  </div>
+</div>
+
+<button class="mock-toggle" id="mock-toggle" type="button" aria-pressed="false">Show what changed</button>
+
+<script>
+(function () {
+  var ua = navigator.userAgent || '';
+  var inApp = /Instagram|FBAN|FBAV|FB_IAB|TikTok|musical_ly|Line\//i.test(ua);
+  var url = 'https://www.shivohampath.com' + location.pathname.replace(/.*\/mockups\/.*/, '/');
+  var bar = document.getElementById('inapp');
+
+  function showBanner() {
+    bar.hidden = false;
+    if (/Android/i.test(ua)) {
+      var open = document.getElementById('inapp-open');
+      open.href = 'intent://' + url.replace(/^https?:\/\//, '') + '#Intent;scheme=https;package=com.android.chrome;end';
+      open.hidden = false;
+      document.getElementById('inapp-hint').textContent = 'Tap below to open it in Chrome.';
+    }
+  }
+  if (inApp) showBanner();
+  document.getElementById('inapp-x').onclick = function () { bar.hidden = true; };
+  document.getElementById('inapp-copy').onclick = function () {
+    var b = this;
+    function done() { b.textContent = 'Copied'; }
+    if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, function () { b.textContent = url; });
+    else b.textContent = url;
+  };
+
+  // Sticky booking bar on phones, once the hero has scrolled away
+  var dock = document.getElementById('dock');
+  var hero = document.querySelector('.hero');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) {
+      var on = !e[0].isIntersecting;
+      dock.classList.toggle('show', on);
+      dock.setAttribute('aria-hidden', on ? 'false' : 'true');
+    }).observe(hero);
+  }
+
+  // Newsletter (mockup: no network call)
+  document.getElementById('guide-form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var email = document.getElementById('g-email');
+    var msg = document.getElementById('g-msg');
+    if (!/^\S+@\S+\.\S+$/.test(email.value)) { msg.textContent = 'Please enter a valid email so the guide can reach you.'; email.focus(); return; }
+    msg.className = 'fine ok';
+    msg.textContent = 'Thank you. The guide is on its way to ' + email.value + '.';
+  });
+
+  // Mockup-only: annotations + Instagram preview
+  var t = document.getElementById('mock-toggle');
+  t.onclick = function () {
+    var on = document.body.classList.toggle('notes');
+    t.setAttribute('aria-pressed', on);
+    t.textContent = on ? 'Hide notes' : 'Show what changed';
+    if (on && bar.hidden) showBanner();
+    if (!on && !inApp) bar.hidden = true;
+  };
+})();
+</script>
+</body>
+</html>

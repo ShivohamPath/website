@@ -43,7 +43,7 @@ brings, not by price:
 | Karmic Knots (signature) | Karmic Knots | 60 min | ₹6,500 |
 | The Spiritual Path | Advanced Moksha Consultation | 90 min | ₹8,500 * |
 | Relationships & Marriage | Synastry & Kundali Milan | 90 min | ₹9,400 |
-| Madhurya Bhakta | Madhurya Bhakta Sessions | 2 hrs | ₹6,499 |
+| Madhurya Bhakta (women only) | Madhurya Bhakta Sessions | 2 hrs | ₹6,499 |
 
 \* Carried over from Advanced Moksha. Review once the new scope is settled.
 
@@ -54,22 +54,21 @@ Not on the public menu: Returning Seeker (existing clients only), Varshaphala
 and Muhurta (still to decide). No copy promises sadhana prescriptions, remedies
 or ritual guidance.
 
-**Open questions for Veena**
-- The current Oracle copy says it is "written specifically for your chart and
-  question". If the Oracle uses the birth chart, the "not an astrology
-  consultation" line needs changing.
-- Madhurya Bhakta is open to anyone in the current copy (not women-only). Kept
-  as is.
-- General readings vs. a karmic/spiritual specialty: the mockup keeps The
-  Specific Question as the general entry point and makes karmic/spiritual work
-  the signature.
+**Decisions (confirmed by Veena)**
+- The Oracle uses Shiva oracle cards only, never the birth chart. Copy says so.
+- Every Jyotish consultation is followed by a written PDF report (summary and
+  reference). Shown under the Jyotish heading.
+- Madhurya Bhakta is strictly for women. Labelled "Women only".
+- Keep a general entry point (The Specific Question) alongside the karmic and
+  spiritual signature work.
 
 ## Before building
 
-- Testimonials are placeholders. Replace them with Trustpilot reviews pasted
-  as plain text (no Trustpilot widget, which would add another slow iFrame).
-  Check the Trustpilot profile and review URLs.
-- The email form only shows a confirmation. In production it should post to
-  `dashboard/api/subscribe.js`.
-- To get the full speed gain in Wix, build these sections with native Wix
-  Studio elements (or at most one embed), not one iFrame per section.
+- Testimonials are three real, verified Trustpilot reviews (Lavanya, Sachin,
+  Anonymous), quoted word for word as plain text, not a Trustpilot widget,
+  which would add another slow iFrame. New reviews come in through
+  Trustpilot's free BCC invitation, sent with each reading report.
+- This file is the design preview only. Do not paste it into Wix. The
+  Wix-ready versions are `wix-studio/embeds/header-v2.html`, `home-v2.html` and
+  `footer-v2.html`. Setup and exact heights are in
+  `wix-studio/HOMEPAGE_V2_BUILD_GUIDE.md`.

@@ -39,7 +39,7 @@ brings, not by price:
 
 | Consultation | Replaces | Length | Price |
 |---|---|---|---|
-| The Specific Question | Specific Question Reading | 30 min | ₹2,499 |
+| The Specific Question | Specific Question Reading | 30 min | ₹3,499 |
 | Karmic Knots (signature) | Karmic Knots | 60 min | ₹6,500 |
 | The Spiritual Path | Advanced Moksha Consultation | 90 min | ₹8,500 * |
 | Relationships & Marriage | Synastry & Kundali Milan | 90 min | ₹9,400 |

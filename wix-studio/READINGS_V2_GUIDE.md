@@ -57,7 +57,15 @@ The 389px breakpoint you added for the homepage applies here too.
 If the bottom ("Not sure which to choose?") is cut off, raise that
 breakpoint by 100px. If there's empty space under it, lower it by 100px.
 
-## Step 4: Publish and check on your phone
+## Step 4: Update the search data (SEO)
+
+Google reads your services and prices from the Readings page's structured
+data. Readings page → **SEO settings** → **Advanced SEO / Structured Data**
+→ replace what's there with the contents of `seo/service-schema.json`. It
+now has the new names and prices. If any booking address changed in Step 1,
+update the matching `"url"` in that file too.
+
+## Step 5: Publish and check on your phone
 
 - [ ] No empty space above the heading or between sections
 - [ ] The two buttons at the top jump to Jyotish and to the Vishwanath Oracle

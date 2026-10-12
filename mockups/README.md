@@ -47,15 +47,15 @@ brings, not by price:
 
 \* Carried over from Advanced Moksha. Review once the new scope is settled.
 
-**Oracle: a different method.** The Shiva Oracle Reading (₹1,499, written PDF)
-gets its own visually separate box.
+**Oracle: a different method.** The Vishwanath Oracle Reading (Veena's own
+44-card deck, written PDF, new price to be set) replaces the Shiva Oracle Reading.
 
 Not on the public menu: Returning Seeker (existing clients only), Varshaphala
 and Muhurta (still to decide). No copy promises sadhana prescriptions, remedies
 or ritual guidance.
 
 **Decisions (confirmed by Veena)**
-- The Oracle uses Shiva oracle cards only, never the birth chart. Copy says so.
+- The Oracle uses the Vishwanath Oracle deck only, never the birth chart.
 - Every Jyotish consultation is followed by a written PDF report (summary and
   reference). Shown under the Jyotish heading.
 - Madhurya Bhakta is strictly for women. Labelled "Women only".

@@ -48,7 +48,7 @@ brings, not by price:
 \* Carried over from Advanced Moksha. Review once the new scope is settled.
 
 **Oracle: a different method.** The Vishwanath Oracle Reading (Veena's own
-44-card deck, written PDF, new price to be set) replaces the Shiva Oracle Reading.
+44-card deck, 5-card written PDF, ₹1,699, one follow-up question by email) replaces the Shiva Oracle Reading.
 
 Not on the public menu: Returning Seeker (existing clients only), Varshaphala
 and Muhurta (still to decide). No copy promises sadhana prescriptions, remedies

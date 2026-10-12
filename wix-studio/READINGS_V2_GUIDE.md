@@ -10,19 +10,6 @@ already added, and **one embed** for the page body.
 
 ---
 
-## Before you paste: two things to fill in
-
-Open `readings-v2.html` in a text editor and search for:
-
-1. **`PRICE_TBD`**: the Vishwanath Oracle Reading price. Replace
-   `₹PRICE_TBD` with the new price, for example `₹2,100`. **Don't publish
-   without this.**
-2. **`CARD_IMAGE`** (optional): the three cards in the fan currently show
-   simple line designs. To show your real cards, upload three card images
-   to Wix Media, copy each image's URL, and replace each `<svg>…</svg>`
-   line under that comment with `<img src="PASTE-URL-HERE" alt="">`.
-   Portrait images (2:3) look best. Or send me the images and I'll do it.
-
 ## Step 1: Rename the booking services (Wix Bookings)
 
 So the booking pages match the new Readings page:
@@ -31,8 +18,9 @@ So the booking pages match the new Readings page:
 |---|---|---|
 | Advanced Moksha Path Consultation | The Spiritual Path | ₹8,500 (unchanged) |
 | Synastry & Kundali Milan | Relationships & Marriage | ₹9,400 (unchanged) |
-| Shiva Oracle Reading (PDF report only) | Vishwanath Oracle Reading | **your new price** |
+| Shiva Oracle Reading (PDF report only) | Vishwanath Oracle Reading | **₹1,699** |
 | Madhurya Bhakta Sessions | Madhurya Bhakta (women only) | ₹6,499 (unchanged) |
+| Specific Question Reading | The Specific Question | **₹3,499** |
 
 Update each description with the text from the Readings page.
 
@@ -61,10 +49,10 @@ The 389px breakpoint you added for the homepage applies here too.
 
 | Breakpoint | Screen widths | Readings body height |
 |---|---|---|
-| Desktop | 1001px and up | **3380px** |
-| Tablet | 751–1000px | **3270px** |
-| Phones | 390–750px | **4310px** |
-| Small phones | 320–389px | **4440px** |
+| Desktop | 1001px and up | **3440px** |
+| Tablet | 751–1000px | **3360px** |
+| Phones | 390–750px | **4410px** |
+| Small phones | 320–389px | **4540px** |
 
 If the bottom ("Not sure which to choose?") is cut off, raise that
 breakpoint by 100px. If there's empty space under it, lower it by 100px.
@@ -74,11 +62,12 @@ breakpoint by 100px. If there's empty space under it, lower it by 100px.
 - [ ] No empty space above the heading or between sections
 - [ ] The two buttons at the top jump to Jyotish and to the Vishwanath Oracle
 - [ ] Every "Book" button opens the right booking page
-- [ ] The Oracle price shows a real price, not PRICE_TBD
+- [ ] The Oracle reading shows ₹1,699
 - [ ] "Ask me first" and "Let me know" open your Contact page
 
-## Homepage follow-up
+## Wix Bookings note for the Oracle reading
 
-The homepage still mentions the "Shiva Oracle Reading" at ₹1,499. Once
-you've set the new price, tell me and I'll update the homepage embed to
-the Vishwanath Oracle to match.
+Your Oracle PDF is sent during the client's booked slot, so keep it as a
+bookable service with time slots. In the service description, mention:
+five-card spread, written as if Vishwanath is speaking to them, sent during
+their slot, and one follow-up question by email.

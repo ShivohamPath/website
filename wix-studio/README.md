@@ -6,6 +6,8 @@ published.
 
 ## Current (use these)
 
+Applying everything in Wix with Claude in Chrome: `CLAUDE_IN_CHROME_TASKS.md`.
+
 | Page / area | File(s) | Guide |
 |---|---|---|
 | Header | Wix's own header (tidied) | `HOMEPAGE_V2_BUILD_GUIDE.md`, Step 1 |

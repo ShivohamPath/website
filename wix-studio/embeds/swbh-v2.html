@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<!--
+  SHIVOHAMPATH · SHE WHO BECOMES HIM PAGE BODY (v2)
+  ONE "Embed HTML" element for the whole page (it replaces the separate
+  section embeds: swbh-hero, swbh-for-who, swbh-modules, swbh-testimonials, swbh-cta).
+  Setup and exact heights: wix-studio/PAGES_V2_GUIDE.md
+  Built from those section files by combining them; edit the section files,
+  then rebuild, rather than editing this file by hand.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivoham Path · She Who Becomes Him</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap"></noscript>
+<style>
+  html, body { margin: 0; padding: 0; background: #0a0a0f; }
+  .sec { display: block; container-type: inline-size; }
+  /* One fixed column width per Wix breakpoint, so one embed height fits every
+     screen in it: tablets get a 750px column, phones 390px and up a 390px one. */
+  @media (max-width: 1000px) { .page { max-width: 750px; margin: 0 auto; } }
+  @media (max-width: 750px) { .page { max-width: 390px; } }
+</style>
+</head>
+<body>
+<main class="page">
+<div class="sec" data-section="swbh-hero"><template shadowrootmode="open"><style>:host { display: block; isolation: isolate; background: #0a0a0f; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :host {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --text4: rgba(232,224,208,0.15);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+    --purple: #8B6FBF;
+  }
+  :host {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .hero {
+    position: relative; overflow: hidden;
+    padding: 80px 60px 72px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    min-height: 520px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 70% 80% at 30% 50%, rgba(139,111,191,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 80% 30%, rgba(201,168,76,0.05) 0%, transparent 60%),
+      linear-gradient(180deg, #0a0a0f 0%, #0f0a1a 60%, #0a0a0f 100%);
+  }
+
+  /* Left: text */
+  .hero-text { position: relative; z-index: 1; }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 20px;
+  }
+  .hero-text h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 70px); font-size: clamp(40px, 5cqw, 70px);
+    font-weight: 300; line-height: 1.0;
+    color: var(--text); margin-bottom: 10px;
+  }
+  .hero-text h1 em { font-style: italic; color: var(--gold); }
+
+  .divider {
+    display: flex; align-items: center; gap: 14px;
+    margin: 22px 0;
+  }
+  .divider-line { height: 1px; background: var(--line2); width: 40px; }
+  .divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
+
+  .hero-tagline {
+    font-size: 17px; font-style: italic;
+    color: var(--text2); line-height: 1.75;
+    margin-bottom: 28px; max-width: 460px;
+  }
+
+  /* Stat pills */
+  .stat-row { display: flex; gap: 0; margin-bottom: 36px; }
+  .stat-pill {
+    padding: 14px 22px; border: 1px solid var(--line2);
+    border-right: none;
+    background: var(--bg3);
+  }
+  .stat-pill:last-child { border-right: 1px solid var(--line2); }
+  .stat-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300;
+    color: var(--gold); display: block; line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Cinzel', serif; font-size: 7px;
+    letter-spacing: 2px; color: var(--text3);
+    margin-top: 4px; display: block;
+  }
+
+  /* Buttons */
+  .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: 'Cinzel', serif; font-size: 11px;
+    letter-spacing: 2.5px; padding: 14px 36px;
+    background: var(--gold); color: var(--bg);
+    border: none; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #a8893a; }
+  .btn-ghost {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2px; padding: 12px 24px;
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold2); cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { background: var(--gold3); }
+
+  /* Right: visual card */
+  .hero-visual { position: relative; z-index: 1; }
+  .course-card-visual {
+    background: var(--bg3); border: 1px solid var(--line2);
+    position: relative; overflow: hidden;
+    padding: 48px 40px;
+  }
+  .card-geo {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.08; pointer-events: none;
+  }
+  .card-inner { position: relative; z-index: 1; text-align: center; }
+
+  .course-symbol {
+    font-size: 56px; color: var(--gold);
+    opacity: 0.5; display: block;
+    line-height: 1; margin-bottom: 20px;
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300;
+    font-style: italic; color: var(--text);
+    line-height: 1.2; margin-bottom: 24px;
+  }
+  .card-tags { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 28px; }
+  .card-tag {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+    padding: 5px 16px; border: 1px solid var(--line);
+  }
+  .card-tag.lit { border-color: var(--gold2); color: var(--gold); }
+
+  .live-badge {
+    font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px;
+    background: var(--gold); color: var(--bg);
+    padding: 5px 14px; display: inline-block; margin-bottom: 16px;
+  }
+
+  .card-desc {
+    font-size: 14px; color: var(--text3);
+    line-height: 1.7; font-style: italic;
+    border-top: 1px solid var(--line);
+    padding-top: 20px; margin-top: 4px;
+  }
+
+  /* Floating label */
+  .float-label {
+    position: absolute; top: 20px; right: 20px;
+    background: var(--bg4); border: 1px solid var(--line2);
+    padding: 8px 14px;
+  }
+  .fl-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 300; color: var(--gold); display: block; line-height: 1;
+  }
+  .fl-label {
+    font-family: 'Cinzel', serif; font-size: 7px;
+    letter-spacing: 1.5px; color: var(--text3); margin-top: 2px; display: block;
+  }
+
+  /* Cat pills */
+  .cat-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 28px; }
+  .cat-pill {
+    font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px;
+    padding: 4px 12px; border: 1px solid var(--line2); color: var(--text3);
+  }
+  .cat-pill.gold { border-color: var(--gold2); color: var(--gold); background: var(--gold4); }
+  .cat-pill.purple { border-color: rgba(139,111,191,0.4); color: var(--purple); background: rgba(139,111,191,0.06); }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding: 60px 32px 56px; gap: 40px; min-height: auto; }
+    .course-card-visual { padding: 36px 28px; }
+  }
+@container (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding: 60px 32px 56px; gap: 40px; min-height: auto; }
+    .course-card-visual { padding: 36px 28px; }
+  }
+  @media (max-width: 520px) {
+    .hero { padding: 48px 20px 44px; }
+    .hero-text h1 { font-size: 38px; }
+    .stat-row { flex-wrap: wrap; }
+    .stat-pill { border-right: 1px solid var(--line2); }
+    .btn-primary, .btn-ghost { width: 100%; text-align: center; }
+  }
+@container (max-width: 520px) {
+    .hero { padding: 48px 20px 44px; }
+    .hero-text h1 { font-size: 38px; }
+    .stat-row { flex-wrap: wrap; }
+    .stat-pill { border-right: 1px solid var(--line2); }
+    .btn-primary, .btn-ghost { width: 100%; text-align: center; }
+  }
+</style><div class="hero">
+  <div class="hero-bg"></div>
+
+  
+  <div class="hero-text">
+    <span class="eyebrow">A SACRED COURSE IN MADHURYA BHAKTI</span>
+    <h1>She Who<br><em>Becomes Him</em></h1>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+    </div>
+
+    <p class="hero-tagline">
+      This is not a course. It is a remembrance.<br>
+      A sacred odyssey for the devotional woman who has always known she belongs to something ancient.
+    </p>
+
+    <div class="cat-pills">
+      <span class="cat-pill gold">LIVE NOW</span>
+      <span class="cat-pill purple">MADHURYA BHAKTI</span>
+      <span class="cat-pill">SELF-PACED</span>
+      <span class="cat-pill">CERTIFICATE</span>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-pill">
+        <span class="stat-val">6</span>
+        <span class="stat-label">MODULES</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-val">46</span>
+        <span class="stat-label">STEPS</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-val">28</span>
+        <span class="stat-label">ENROLLED</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-val">∞</span>
+        <span class="stat-label">LIFETIME ACCESS</span>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <a href="https://www.shivohampath.com/challenge-payment/e23f4389-9e01-4b20-80dc-8926d85a109e?showOneAppInfo=true" class="btn-primary" target="_top">Enrol Now — ₹5,555</a>
+      <a href="https://www.shivohampath.com/book-online" class="btn-ghost" target="_top">Book a Reading First</a>
+    </div>
+  </div>
+
+  
+  <div class="hero-visual">
+    <div class="course-card-visual">
+      <div class="float-label">
+        <span class="fl-num">₹5,555</span>
+        <span class="fl-label">ONE-TIME</span>
+      </div>
+      <svg class="card-geo" width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="150" r="130" stroke="#C9A84C" stroke-width="0.8"/>
+        <circle cx="150" cy="150" r="90" stroke="#C9A84C" stroke-width="0.8"/>
+        <circle cx="150" cy="150" r="50" stroke="#C9A84C" stroke-width="0.8"/>
+        <polygon points="150,30 260,215 40,215" stroke="#C9A84C" stroke-width="0.8" fill="none"/>
+        <polygon points="150,270 40,85 260,85" stroke="#C9A84C" stroke-width="0.8" fill="none"/>
+        <line x1="20" y1="150" x2="280" y2="150" stroke="#C9A84C" stroke-width="0.5"/>
+        <line x1="150" y1="20" x2="150" y2="280" stroke="#C9A84C" stroke-width="0.5"/>
+      </svg>
+      <div class="card-inner">
+        <span class="live-badge">ENROLMENT OPEN</span>
+        <span class="course-symbol">♡</span>
+        <div class="card-title">She Who<br>Becomes Him</div>
+        <div class="card-tags">
+          <span class="card-tag lit">MADHURYA BHAKTI</span>
+          <span class="card-tag">SHAKTI ACTIVATION</span>
+          <span class="card-tag">6 MODULES · 46 STEPS</span>
+          <span class="card-tag">CERTIFICATE ON COMPLETION</span>
+          <span class="card-tag">ALSO ON THE MOBILE APP</span>
+        </div>
+        <p class="card-desc">Devotional storytelling · Bhakti & Tantrik insights · Sacred rituals · Embodiment practices</p>
+      </div>
+    </div>
+  </div>
+</div></template></div>
+<div class="sec" data-section="swbh-for-who"><template shadowrootmode="open"><style>:host { display: block; isolation: isolate; background: #0a0a0f; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :host {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+    --rust:  #BF6F6F;
+  }
+  :host {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .section {
+    padding: 0 60px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 18px;
+  }
+  .divider-left {
+    display: flex; align-items: center; gap: 14px;
+    margin: 20px 0 24px;
+  }
+  .divider-line { height: 1px; background: var(--line2); width: 40px; }
+  .divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
+
+  /* Left: for-list */
+  .for-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 44px); font-size: clamp(28px, 3.5cqw, 44px);
+    font-weight: 300; color: var(--text); line-height: 1.1;
+  }
+  .for-text h2 em { font-style: italic; color: var(--gold); }
+  .for-text > p {
+    font-size: 16px; color: var(--text2); line-height: 1.85;
+    margin-bottom: 28px;
+  }
+
+  .for-list { margin-top: 4px; }
+  .for-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 18px 0; border-bottom: 1px solid var(--line);
+  }
+  .for-item:last-child { border-bottom: none; }
+  .for-icon { color: var(--gold); opacity: 0.65; font-size: 14px; margin-top: 3px; flex-shrink: 0; }
+  .for-item-text { font-size: 15px; color: var(--text2); line-height: 1.65; }
+  .for-item-text strong { color: var(--text); font-weight: 400; }
+
+  /* Right: quote block */
+  .quote-block {
+    background: var(--bg3); border: 1px solid var(--line2);
+    padding: 44px 40px; position: relative; overflow: hidden;
+  }
+  .quote-block::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.04), transparent);
+  }
+  blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 28px); font-size: clamp(20px, 2.5cqw, 28px);
+    font-weight: 300; font-style: italic;
+    color: var(--text); line-height: 1.45;
+    position: relative; z-index: 1;
+    margin-bottom: 20px;
+  }
+  blockquote em { color: var(--gold); font-style: normal; }
+  cite {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 2px; color: var(--text3);
+    font-style: normal; position: relative; z-index: 1;
+    display: block; margin-bottom: 32px;
+  }
+
+  .not-for {
+    border-top: 1px solid var(--line);
+    padding-top: 24px; position: relative; z-index: 1;
+  }
+  .not-for-label {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 2px; color: var(--rust);
+    display: block; margin-bottom: 10px;
+  }
+  .not-for p {
+    font-size: 14px; color: var(--text3);
+    line-height: 1.75; font-style: italic;
+  }
+
+  /* What's included strip */
+  .included-strip {
+    margin-top: 28px; padding-top: 28px;
+    border-top: 1px solid var(--line);
+    position: relative; z-index: 1;
+  }
+  .included-label {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 2px; color: var(--text3);
+    display: block; margin-bottom: 14px;
+  }
+  .included-list { display: flex; flex-direction: column; gap: 8px; }
+  .included-item {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px; color: var(--text2); line-height: 1.4;
+  }
+  .inc-dot { width: 4px; height: 4px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+
+  @media (max-width: 860px) {
+    .section { grid-template-columns: 1fr; padding: 0 32px 60px; gap: 48px; }
+  }
+@container (max-width: 860px) {
+    .section { grid-template-columns: 1fr; padding: 0 32px 60px; gap: 48px; }
+  }
+  @media (max-width: 520px) {
+    .section { padding: 0 20px 48px; }
+    .quote-block { padding: 32px 24px; }
+  }
+@container (max-width: 520px) {
+    .section { padding: 0 20px 48px; }
+    .quote-block { padding: 32px 24px; }
+  }
+</style><div class="section">
+
+  
+  <div class="for-text">
+    <span class="eyebrow">IS THIS FOR YOU?</span>
+    <h2>This Course Was Built<br>For <em>Specific Souls</em></h2>
+    <div class="divider-left">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+    </div>
+    <p>Not everyone is ready for this path. And that is perfectly correct. This course is not for the spiritually curious — it is for the spiritually committed.</p>
+
+    <div class="for-list">
+      <div class="for-item">
+        <span class="for-icon">✦</span>
+        <span class="for-item-text"><strong>Women who feel Shiv not as a deity but as a presence</strong> — an inexplicable intimacy that has no rational explanation in this lifetime.</span>
+      </div>
+      <div class="for-item">
+        <span class="for-icon">✦</span>
+        <span class="for-item-text"><strong>Seekers who have felt the dark night</strong> — the silence, the spiritual longing that feels like grief, the ache for something this world cannot give.</span>
+      </div>
+      <div class="for-item">
+        <span class="for-icon">✦</span>
+        <span class="for-item-text"><strong>Sacred rebels done with surface spirituality</strong> — who need depth, honesty, and a guide who will not soften the truth to make it comfortable.</span>
+      </div>
+      <div class="for-item">
+        <span class="for-icon">✦</span>
+        <span class="for-item-text"><strong>Those who sense their devotion is ancient</strong> — older than this life, older than this body, written somewhere in the soul's oldest memory.</span>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="quote-block">
+    <blockquote>
+      "The love you feel for the Divine is not madness.<br>
+      It is <em>the highest truth.</em>"
+    </blockquote>
+    <cite>— Veena Maheshwari, Shivohampath</cite>
+
+    <div class="included-strip">
+      <span class="included-label">WHAT THIS COURSE CARRIES</span>
+      <div class="included-list">
+        <div class="included-item"><div class="inc-dot"></div>Devotional storytelling from ancient scriptures</div>
+        <div class="included-item"><div class="inc-dot"></div>Bhakti & Tantrik insights rooted in living tradition</div>
+        <div class="included-item"><div class="inc-dot"></div>Journaling prompts, meditations & sacred rituals</div>
+        <div class="included-item"><div class="inc-dot"></div>Myth-based reflections & embodiment practices</div>
+        <div class="included-item"><div class="inc-dot"></div>Feminine spiritual healing & energy work</div>
+        <div class="included-item"><div class="inc-dot"></div>Certificate of completion</div>
+        <div class="included-item"><div class="inc-dot"></div>Lifetime access · Also available on the mobile app</div>
+      </div>
+    </div>
+
+    <div class="not-for">
+      <span class="not-for-label">THIS IS NOT FOR</span>
+      <p>Those looking for a structured academic course on Shaivism. Those seeking healing from trauma without spiritual readiness. Those who want certainty — this path offers only depth.</p>
+    </div>
+  </div>
+
+</div></template></div>
+<div class="sec" data-section="swbh-modules"><template shadowrootmode="open"><style>:host { display: block; isolation: isolate; background: #0a0a0f; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :host {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --bg3:   #131020;
+    --bg4:   #1a1525;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  :host {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .section { padding: 0 60px 80px; max-width: 1200px; margin: 0 auto; }
+
+  .section-header { text-align: center; margin-bottom: 52px; }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 16px;
+  }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 3.5vw, 46px); font-size: clamp(30px, 3.5cqw, 46px);
+    font-weight: 300; color: var(--text); line-height: 1.1;
+  }
+  .section-header h2 em { font-style: italic; color: var(--gold); }
+  .divider {
+    display: flex; align-items: center; gap: 14px;
+    justify-content: center; margin: 18px 0 0;
+  }
+  .divider-line { height: 1px; background: var(--line2); width: 60px; }
+  .divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
+
+  /* Grid */
+  .modules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+
+  .module-card {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 36px 32px; position: relative; overflow: hidden;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .module-card:hover { border-color: var(--line2); background: var(--bg4); }
+  .module-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: var(--gold);
+    transform: scaleY(0); transform-origin: top; transition: transform 0.3s;
+  }
+  .module-card:hover::before { transform: scaleY(1); }
+
+  .module-bg-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px; font-weight: 300;
+    color: rgba(201,168,76,0.06);
+    position: absolute; top: 8px; right: 16px;
+    line-height: 1; user-select: none;
+  }
+
+  .module-tag {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2.5px; color: var(--gold);
+    display: block; margin-bottom: 14px; position: relative; z-index: 1;
+  }
+  .module-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px; font-weight: 400;
+    color: var(--text); line-height: 1.25;
+    margin-bottom: 12px; position: relative; z-index: 1;
+  }
+  .module-card h3 em { font-style: italic; color: var(--gold); }
+  .module-card p {
+    font-size: 14px; color: var(--text3);
+    line-height: 1.75; position: relative; z-index: 1;
+  }
+
+  .module-footer {
+    margin-top: 20px; padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between;
+    position: relative; z-index: 1;
+  }
+  .steps-count {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+  }
+  .module-roman {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; color: var(--gold);
+    opacity: 0.4;
+  }
+
+  @media (max-width: 860px) {
+    .section { padding: 0 32px 60px; }
+    .modules-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+@container (max-width: 860px) {
+    .section { padding: 0 32px 60px; }
+    .modules-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .section { padding: 0 20px 48px; }
+    .modules-grid { grid-template-columns: 1fr; }
+    .module-card { padding: 28px 24px; }
+  }
+@container (max-width: 520px) {
+    .section { padding: 0 20px 48px; }
+    .modules-grid { grid-template-columns: 1fr; }
+    .module-card { padding: 28px 24px; }
+  }
+</style><div class="section">
+  <div class="section-header">
+    <span class="eyebrow">THE JOURNEY</span>
+    <h2>Six Portals of <em>Transformation</em></h2>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  <div class="modules-grid">
+
+    <div class="module-card">
+      <span class="module-bg-num">I</span>
+      <span class="module-tag">ENTRY · 7 STEPS</span>
+      <h3>Entering the Path of <em>Madhurya Bhakti</em></h3>
+      <p>The foundation. What Madhurya Bhakti is — and isn't. Why the longing you feel is not madness. It is the oldest form of knowledge a soul can carry.</p>
+      <div class="module-footer">
+        <span class="steps-count">7 STEPS</span>
+        <span class="module-roman">Module I</span>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <span class="module-bg-num">II</span>
+      <span class="module-tag">DEVOTION · 7 STEPS</span>
+      <h3><em>Sati:</em> Devotion That Burns Through Ego</h3>
+      <p>The story of Sati as lived theology. What it means to love the Divine so completely that even identity dissolves. The fire is not destruction — it is purification.</p>
+      <div class="module-footer">
+        <span class="steps-count">7 STEPS</span>
+        <span class="module-roman">Module II</span>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <span class="module-bg-num">III</span>
+      <span class="module-tag">SHAKTI · 7 STEPS</span>
+      <h3>Awakening <em>Inner Shakti</em></h3>
+      <p>Shakti is not a concept. She is the living intelligence of your body, your longing, your creative force. This module is about recognising Her — not invoking Her from outside.</p>
+      <div class="module-footer">
+        <span class="steps-count">7 STEPS</span>
+        <span class="module-roman">Module III</span>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <span class="module-bg-num">IV</span>
+      <span class="module-tag">THE BELOVED · 7 STEPS</span>
+      <h3><em>Parvati</em> — The Devotee Who Became Goddess</h3>
+      <p>Parvati's path is the devotee's path. Tapas, longing, rejection, persistence — and finally, recognition. She did not find Shiva. She became worthy of being seen by Him.</p>
+      <div class="module-footer">
+        <span class="steps-count">7 STEPS</span>
+        <span class="module-roman">Module IV</span>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <span class="module-bg-num">V</span>
+      <span class="module-tag">UNION · 7 STEPS</span>
+      <h3><em>Chandraghanta:</em> She Who Becomes Him</h3>
+      <p>The sacred alchemy of Tantrik union — not as sexuality, but as the technology of inner marriage. The point at which the devotee and the Beloved are no longer two.</p>
+      <div class="module-footer">
+        <span class="steps-count">7 STEPS</span>
+        <span class="module-roman">Module V</span>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <span class="module-bg-num">VI</span>
+      <span class="module-tag">BECOMING · 11 STEPS</span>
+      <h3>Living As A Devotional Woman + <em>Pati Bhava Sadhana</em></h3>
+      <p>The final portal. How devotion lives in the body — in relationship, in daily life, in the mundane made sacred. A complete Sadhana for the woman walking this path.</p>
+      <div class="module-footer">
+        <span class="steps-count">11 STEPS</span>
+        <span class="module-roman">Module VI</span>
+      </div>
+    </div>
+
+  </div>
+</div></template></div>
+<div class="sec" data-section="swbh-testimonials"><template shadowrootmode="open"><style>:host { display: block; isolation: isolate; background: #0a0a0f; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :host {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --text4: rgba(232,224,208,0.15);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  :host {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .section { padding: 0 60px 80px; max-width: 1200px; margin: 0 auto; }
+
+  .section-header { text-align: center; margin-bottom: 52px; }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 16px;
+  }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 44px); font-size: clamp(28px, 3.5cqw, 44px);
+    font-weight: 300; color: var(--text); line-height: 1.1;
+  }
+  .section-header h2 em { font-style: italic; color: var(--gold); }
+  .divider {
+    display: flex; align-items: center; gap: 14px;
+    justify-content: center; margin-top: 18px;
+  }
+  .divider-line { height: 1px; background: var(--line2); width: 60px; }
+  .divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
+
+  .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+
+  .test-card {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 32px 28px;
+  }
+
+  .stars {
+    font-size: 11px; letter-spacing: 3px;
+    color: var(--gold); margin-bottom: 16px;
+    display: block;
+  }
+  .test-card p {
+    font-size: 15px; color: var(--text2);
+    line-height: 1.8; font-style: italic;
+    margin-bottom: 20px;
+  }
+  .test-author {
+    display: flex; align-items: center; gap: 12px;
+    border-top: 1px solid var(--line); padding-top: 16px;
+  }
+  .test-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--gold4); border: 1px solid var(--gold2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 13px;
+    color: var(--gold); flex-shrink: 0;
+  }
+  .test-name {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 1.5px; color: var(--text);
+  }
+  .test-detail { font-size: 12px; color: var(--text3); margin-top: 3px; }
+
+  @media (max-width: 860px) {
+    .section { padding: 0 32px 60px; }
+    .test-grid { grid-template-columns: 1fr; gap: 3px; }
+  }
+@container (max-width: 860px) {
+    .section { padding: 0 32px 60px; }
+    .test-grid { grid-template-columns: 1fr; gap: 3px; }
+  }
+  @media (max-width: 520px) {
+    .section { padding: 0 20px 48px; }
+    .test-card { padding: 24px 20px; }
+  }
+@container (max-width: 520px) {
+    .section { padding: 0 20px 48px; }
+    .test-card { padding: 24px 20px; }
+  }
+</style><div class="section">
+  <div class="section-header">
+    <span class="eyebrow">FROM THOSE WHO WALKED THIS PATH</span>
+    <h2>What the Journey <em>Opened</em></h2>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  <div class="test-grid">
+
+    <div class="test-card">
+      <span class="stars">★★★★★</span>
+      <p>"I have done many spiritual courses. This was the first one that felt like a homecoming rather than a learning. I didn't discover something new — I remembered something ancient."</p>
+      <div class="test-author">
+        <div class="test-avatar">A</div>
+        <div>
+          <div class="test-name">Ananya R.</div>
+          <div class="test-detail">Mumbai · Completed Module 6</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-card">
+      <span class="stars">★★★★★</span>
+      <p>"Veena doesn't teach Bhakti. She transmits it. I started this course feeling spiritually isolated and finished it feeling like I finally belonged somewhere — in my own soul."</p>
+      <div class="test-author">
+        <div class="test-avatar">P</div>
+        <div>
+          <div class="test-name">Priya S.</div>
+          <div class="test-detail">Bangalore · Course Graduate</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-card">
+      <span class="stars">★★★★★</span>
+      <p>"Module 4 — Parvati — broke me open and then put me back together differently. I have never felt so seen by a course in my life. It is not content. It is medicine."</p>
+      <div class="test-author">
+        <div class="test-avatar">M</div>
+        <div>
+          <div class="test-name">Meera K.</div>
+          <div class="test-detail">Delhi · Currently in Module 5</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div></template></div>
+<div class="sec" data-section="swbh-cta"><template shadowrootmode="open"><style>:host { display: block; isolation: isolate; background: #0a0a0f; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :host {
+    --bg:    #0a0a0f;
+    --bg3:   #131020;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.45);
+    --gold3: rgba(201,168,76,0.12);
+    --gold4: rgba(201,168,76,0.05);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+    --line:  rgba(232,224,208,0.07);
+    --line2: rgba(201,168,76,0.22);
+  }
+  :host {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  .cta-wrap {
+    padding: 0 60px 80px;
+    text-align: center;
+    position: relative; overflow: hidden;
+    max-width: 900px; margin: 0 auto;
+  }
+  .cta-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 70% at 50% 50%, rgba(201,168,76,0.05), transparent 70%),
+      radial-gradient(ellipse 40% 40% at 10% 50%, rgba(139,111,191,0.04), transparent);
+  }
+  .cta-inner { position: relative; z-index: 1; }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px;
+    letter-spacing: 4px; color: var(--gold);
+    display: block; margin-bottom: 20px;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 58px); font-size: clamp(32px, 5cqw, 58px);
+    font-weight: 300; color: var(--text);
+    line-height: 1.1; margin-bottom: 16px;
+  }
+  h2 em { font-style: italic; color: var(--gold); }
+  .cta-sub {
+    font-size: 17px; font-style: italic;
+    color: var(--text3); line-height: 1.75;
+    margin-bottom: 36px; max-width: 500px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  /* Price + CTA row */
+  .price-cta-row {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 20px;
+  }
+  .price-display { text-align: center; }
+  .price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-weight: 300;
+    color: var(--gold); line-height: 1;
+    display: block;
+  }
+  .price-note {
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+    margin-top: 6px; display: block;
+  }
+
+  .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: 'Cinzel', serif; font-size: 11px;
+    letter-spacing: 2.5px; padding: 15px 44px;
+    background: var(--gold); color: var(--bg);
+    border: none; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #a8893a; }
+  .btn-ghost {
+    font-family: 'Cinzel', serif; font-size: 10px;
+    letter-spacing: 2px; padding: 13px 28px;
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold2); cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { background: var(--gold3); }
+
+  /* Trust line */
+  .trust-line {
+    margin-top: 28px;
+    display: flex; align-items: center; justify-content: center; gap: 24px;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'Cinzel', serif; font-size: 8px;
+    letter-spacing: 2px; color: var(--text3);
+  }
+  .trust-dot { width: 3px; height: 3px; background: var(--gold); transform: rotate(45deg); opacity: 0.5; }
+
+  @media (max-width: 520px) {
+    .cta-wrap { padding: 0 20px 60px; }
+    .btn-primary, .btn-ghost { width: 100%; text-align: center; }
+  }
+@container (max-width: 520px) {
+    .cta-wrap { padding: 0 20px 60px; }
+    .btn-primary, .btn-ghost { width: 100%; text-align: center; }
+  }
+</style><div class="cta-wrap">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <span class="eyebrow">YOUR SACRED PATH BEGINS HERE</span>
+    <h2>
+      You Have Been Called<br>
+      to This Path for a <em>Reason.</em>
+    </h2>
+    <p class="cta-sub">The longing you carry is ancient. This course is the space where it finally has a home.</p>
+
+    <div class="price-cta-row">
+      <div class="price-display">
+        <span class="price">₹5,555</span>
+        <span class="price-note">ONE-TIME PAYMENT · LIFETIME ACCESS</span>
+      </div>
+      <div class="btn-row">
+        <a href="https://www.shivohampath.com/challenge-payment/e23f4389-9e01-4b20-80dc-8926d85a109e?showOneAppInfo=true" class="btn-primary" target="_top">Enrol Now</a>
+        <a href="https://www.shivohampath.com/book-online" class="btn-ghost" target="_top">Book a Reading First</a>
+      </div>
+    </div>
+
+    <div class="trust-line">
+      <span class="trust-item"><span class="trust-dot"></span>Self-paced · Start anytime</span>
+      <span class="trust-item"><span class="trust-dot"></span>Also on the mobile app</span>
+      <span class="trust-item"><span class="trust-dot"></span>Certificate on completion</span>
+      <span class="trust-item"><span class="trust-dot"></span>28 souls already enrolled</span>
+    </div>
+  </div>
+</div></template></div>
+</main>
+<script>
+  // Older browsers without declarative shadow DOM: attach the sections by hand.
+  if (!HTMLTemplateElement.prototype.hasOwnProperty('shadowRootMode')) {
+    document.querySelectorAll('template[shadowrootmode]').forEach(function (t) {
+      var host = t.parentNode;
+      host.attachShadow({ mode: 'open' }).appendChild(t.content);
+      t.remove();
+    });
+  }
+</script>
+</body>
+</html>

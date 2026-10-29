@@ -29,40 +29,58 @@ To copy a file: open its GitHub page, click the **Copy raw file** button
 the Wix **Embed HTML → Enter code** box. Several files are large (images are
 built in), so paste rather than type.
 
-## Breakpoints (set up once)
+## Sizes: classic Wix editor (Desktop + Mobile views)
 
-The site needs four breakpoints: Desktop 1001px+, Tablet 751–1000px,
-Phones 390–750px, Small phones 320–389px. If there is no breakpoint at
-389px yet: editor top bar → breakpoints menu → **Manage breakpoints** → add
-**389px**.
+This site uses Wix's **classic editor**, so there are only two views and each
+embed gets one size per view. The page files are built for exactly these
+widths, so these heights fit with no gaps and nothing cut off:
 
-For every embed below: **stretched to 100% width, no side margins**; the
-section holding it has background `#0a0a0f` and **top/bottom padding 0**.
+- **Desktop view:** embed **980px wide**, X = 0 (the full width of the page
+  grid). Don't make it narrower.
+- **Mobile view:** embed **320px wide**, X = 0 (edge to edge). If Wix won't
+  let it go wider than 280px, use the 280px column instead.
+- The strip or section holding each embed: background `#0a0a0f`, no padding,
+  and no other elements above or below it inside that strip.
+
+| Embed | Desktop height | Mobile height (320px wide) | Mobile height (280px wide) |
+|---|---|---|---|
+| Footer (`footer-v2.html`) | 190px | 320px | 340px |
+| Home (`home-v2.html`) | 5960px | 7150px | 7800px |
+| Readings (`readings-v2.html`) | 3280px | 4760px | 5130px |
+| About (`about-v2.html`) | 14810px | 25570px | 28340px |
+| Courses (`courses-v2.html`) | 4090px | 5130px | 5490px |
+| Foundations of Jyotish (`jyotish-v2.html`) | 5450px | 8800px | 9710px |
+| She Who Becomes Him (`swbh-v2.html`) | 3470px | 6730px | 7270px |
+| Karmic Knots (`karmic-knots-v2.html`) | 4750px | 6990px | 7400px |
+
+These replace the four-breakpoint heights in the other guides. After
+publishing, check the live page: if the bottom of an embed is cut off, add
+50px in that view; if there's empty space under it, take 50px off.
 
 ## Step 1 · Header (every page)
 
 Detailed steps: `HOMEPAGE_V2_BUILD_GUIDE.md`, Step 1. In short: menu shows only
 Readings, Courses, About, Blog; delete the embeds `headerLoginEmbed` and
-`mobileNavEmbed` if present; add a text link "Log in" → `/account/my-account`;
-keep the logo and the "Book a Reading" button (→ `/readings`); background
-`#0a0a0f`, sticky.
+`mobileNavEmbed` if present; keep the logo and the "Book a Reading" button
+(→ `/readings`); background `#0a0a0f`, sticky.
+
+**Log in:** if the header already has Wix's own members login bar (showing
+"Log In"), keep it and **don't add a separate "Log in" text link**. Publish
+the menu change as soon as Step 1 is done.
 
 ## Step 2 · Footer (every page)
 
-Veena says this is already done. Just check the footer embed contains
-`embeds/footer-v2.html` and its heights are 300 / 300 / 540 / 540px
-(Desktop / Tablet / Phones / Small phones). The old embed `footerEmbed` should
-be gone.
+Veena already added it, but the file has changed since (the Courses link
+now goes to `/spiritualcourses` and "My account" to `/account-settings`).
+**Re-paste `embeds/footer-v2.html`** into the footer embed and size it from
+the table above. The old embed `footerEmbed` should be gone.
 
 ## Step 3 · Homepage
 
 Veena already pasted `embeds/home-v2.html` and `velo/pages/home.js`, but the
-file has changed since (new Vishwanath Oracle and prices), so **re-paste
-`embeds/home-v2.html`** into the existing embed (ID `homeEmbed`). Heights:
-
-| Desktop | Tablet | Phones | Small phones |
-|---|---|---|---|
-| 6260px | 6020px | 6510px | 6740px |
+file has changed since (new Vishwanath Oracle, prices, Courses link), so
+**re-paste `embeds/home-v2.html`** into the existing embed (ID `homeEmbed`)
+and size it from the table above.
 
 ## Step 4 · Readings page
 
@@ -75,7 +93,7 @@ Follow `READINGS_V2_GUIDE.md`:
    `readings-featured`, `readings-grid`, `readings-how`, `readings-cta`), add
    one Embed HTML with `embeds/readings-v2.html`, ID `readingsEmbed`.
 3. Dev Mode → Readings page code → replace with `velo/pages/readings.js`.
-4. Heights: 3440 / 3360 / 4410 / 4540px.
+4. Size it from the table above.
 5. Readings page → SEO settings → Advanced SEO → Structured data → replace
    with `seo/service-schema.json`.
 
@@ -86,22 +104,24 @@ page, note the order the sections appear in on the live page** and compare
 with the guide's table. If the order differs, stop and tell Veena (the file
 needs rebuilding first).
 
-| Page | File | Desktop | Tablet | Phones | Small phones |
-|---|---|---|---|---|---|
-| About | `embeds/about-v2.html` | 14690 | 17370 | 22190 | 23460 |
-| Courses | `embeds/courses-v2.html` | 4130 | 4130 | 4700 | 4840 |
-| Foundations of Jyotish | `embeds/jyotish-v2.html` | 5410 | 6830 | 7950 | 8310 |
-| She Who Becomes Him | `embeds/swbh-v2.html` | 3440 | 4900 | 6100 | 6340 |
-| Karmic Knots | `embeds/karmic-knots-v2.html` | 4710 | 5310 | 6400 | 6570 |
+| Page | File |
+|---|---|
+| About | `embeds/about-v2.html` |
+| Courses (address `/spiritualcourses`) | `embeds/courses-v2.html` |
+| Foundations of Jyotish | `embeds/jyotish-v2.html` |
+| She Who Becomes Him | `embeds/swbh-v2.html` |
+| Karmic Knots | `embeds/karmic-knots-v2.html` |
+
+Sizes: from the table at the top.
 
 Keep the thin Instagram banner embed (`browserBanner`) at the top of a page if
 it has one.
 
 ## Step 6 · Height check (all rebuilt pages)
 
-After publishing, open each page on the live site at desktop width and at
-phone width. If the bottom of the embed is cut off, raise that breakpoint's
-height by 100px; if there's empty space under it, lower it by 100px.
+After publishing, open each page on the live site on desktop and in mobile
+preview. If the bottom of the embed is cut off, add 50px in that view; if
+there's empty space under it, take 50px off.
 Note any changed heights for Veena.
 
 ## Step 7 · Semrush issues (audit of 29 Oct 2026)
@@ -110,7 +130,8 @@ Open Semrush → Site Audit → shivohampath.com. For each issue, open it to see
 the exact URLs, then fix in Wix as described in `PAGES_V2_GUIDE.md`, Part 2:
 - **Pages that couldn't be crawled / 5XX errors:** if the page no longer
   exists, add a 301 redirect (Wix Settings → SEO → URL Redirect Manager) to
-  the page that replaced it, usually `/readings` or `/courses`. Members and
+  the page that replaced it, usually `/readings` or `/spiritualcourses`
+  (the Courses page; there is no `/courses` page). Members and
   checkout pages need nothing.
 - **Incorrect pages in sitemap.xml:** that page's SEO settings → turn off
   "Let search engines index this page" (for example test pages like "Home

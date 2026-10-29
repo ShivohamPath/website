@@ -1,5 +1,7 @@
 # ShivohamPath · Readings Page v2: Wix Setup
 
+> **Classic Wix editor:** your site uses the classic editor (Desktop and Mobile views only, no breakpoints). Use the sizes in `CLAUDE_IN_CHROME_TASKS.md` instead of the breakpoint heights below.
+
 Same approach as the homepage: Wix's own header, the footer embed you
 already added, and **one embed** for the page body.
 

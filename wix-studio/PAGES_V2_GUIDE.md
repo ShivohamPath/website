@@ -1,5 +1,7 @@
 # ShivohamPath · Remaining Pages v2 + Semrush Fixes
 
+> **Classic Wix editor:** your site uses the classic editor (Desktop and Mobile views only, no breakpoints). Use the sizes in `CLAUDE_IN_CHROME_TASKS.md` instead of the breakpoint heights below.
+
 This covers the five pages that were still built from many separate embeds,
 plus the Wix-side steps for the Semrush Site Audit of 29 October 2026
 (health 74%, 64 errors, 144 warnings).

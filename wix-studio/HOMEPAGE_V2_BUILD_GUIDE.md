@@ -1,5 +1,7 @@
 # ShivohamPath · Homepage v2: Wix Setup
 
+> **Classic Wix editor:** your site uses the classic editor (Desktop and Mobile views only, no breakpoints). Use the sizes in `CLAUDE_IN_CHROME_TASKS.md` instead of the breakpoint heights below.
+
 The new homepage uses **Wix's own header** (tidied up) plus **two embeds**:
 
 | Piece | File | Where it goes in Wix |

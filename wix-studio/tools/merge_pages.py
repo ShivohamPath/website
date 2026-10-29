@@ -105,8 +105,8 @@ def build(slug, title, names):
   html, body {{ margin: 0; padding: 0; background: #0a0a0f; }}
   .sec {{ display: block; container-type: inline-size; }}
   /* One fixed column width per Wix breakpoint, so one embed height fits every
-     screen in it: tablets get a 750px column, phones 390px and up a 390px one. */
-  @media (max-width: 1000px) {{ .page {{ max-width: 750px; margin: 0 auto; }} }}
+     screen in it: screens under 980px get a 750px column, phones 390px and up a 390px one. */
+  @media (max-width: 979px) {{ .page {{ max-width: 750px; margin: 0 auto; }} }}
   @media (max-width: 750px) {{ .page {{ max-width: 390px; }} }}
 </style>
 </head>

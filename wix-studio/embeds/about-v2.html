@@ -1,0 +1,2684 @@
+<!DOCTYPE html>
+<!--
+  SHIVOHAMPATH · ABOUT PAGE BODY (v2)
+  ONE "Embed HTML" element for the whole page (it replaces the separate
+  section embeds: about-hero, story-section, lineage-section, lineage-thread-section, lalleshwari-section, shaktipat-section, offerings-section).
+  Setup and exact heights: wix-studio/PAGES_V2_GUIDE.md
+  Built from those section files by combining them; edit the section files,
+  then rebuild, rather than editing this file by hand.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivoham Path · About</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap"></noscript>
+<style>
+  html, body { margin: 0; padding: 0; background: #0a0a0f; }
+  .sec { display: block; container-type: inline-size; }
+  /* One fixed column width per Wix breakpoint, so one embed height fits every
+     screen in it: screens under 980px get a 750px column, phones 390px and up a 390px one. */
+  @media (max-width: 979px) { .page { max-width: 750px; margin: 0 auto; } }
+  @media (max-width: 750px) { .page { max-width: 390px; } }
+</style>
+</head>
+<body>
+<main class="page">
+<div class="sec" data-section="about-hero"><template shadowrootmode="open"><style>:host { display: block; isolation: isolate; background: #0a0a0f; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :host {
+    --bg:    #0a0a0f;
+    --bg2:   #0f0a1a;
+    --gold:  #C9A84C;
+    --gold2: rgba(201,168,76,0.2);
+    --gold3: rgba(201,168,76,0.12);
+    --text:  #e8e0d0;
+    --text2: rgba(232,224,208,0.65);
+    --text3: rgba(232,224,208,0.35);
+  }
+
+  :host {
+    background: var(--bg2);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+  }
+
+  /* ── HERO SECTION ── */
+  .hero {
+    min-height: 574px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 40px 80px;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg2);
+  }
+
+  /* Subtle radial glow behind content */
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 55% 45% at 50% 40%, rgba(139,111,191,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 35% 35% at 25% 65%, rgba(201,168,76,0.04) 0%, transparent 60%);
+  }
+
+  /* ── MANDALA ── */
+  .mandala {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    width: 600px; height: 600px;
+    opacity: 0.05;
+    z-index: 0;
+    animation: rotateSlow 120s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes rotateSlow {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  /* ── CONTENT ── */
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Eyebrow pill */
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    border: 1px solid var(--gold2);
+    padding: 6px 18px;
+    margin-bottom: 36px;
+  }
+
+  /* H1 */
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 7vw, 72px); font-size: clamp(42px, 7cqw, 72px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    margin-bottom: 0;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  /* Diamond divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 28px auto;
+    width: 220px;
+  }
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--gold2);
+  }
+  .divider-diamond {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  /* Subtitle */
+  .hero-subtitle {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text3);
+    line-height: 1.7;
+    letter-spacing: 0.5px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ── SCROLL INDICATOR ── */
+  .hero-scroll {
+    position: absolute;
+    bottom: 36px; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--text3);
+    z-index: 1;
+  }
+  .hero-scroll-line {
+    width: 1px; height: 44px;
+    background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse { 0%,100%{opacity:0.35} 50%{opacity:1} }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero { padding: 100px 24px 72px; min-height: 533px; }
+    .mandala { width: 380px; height: 380px; }
+    .divider { width: 160px; }
+    .hero-subtitle { font-size: 17px; }
+  }
+@container (max-width: 640px) {
+    .hero { padding: 100px 24px 72px; min-height: 533px; }
+    .mandala { width: 380px; height: 380px; }
+    .divider { width: 160px; }
+    .hero-subtitle { font-size: 17px; }
+  }
+</style><section class="hero">
+
+  
+  <svg class="mandala" viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="350" cy="350" r="320" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="350" cy="350" r="265" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="350" cy="350" r="210" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="350" cy="350" r="155" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="350" cy="350" r="100" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="350" cy="350" r="45"  stroke="#C9A84C" stroke-width="0.5"/>
+    <line x1="30"  y1="350" x2="670" y2="350" stroke="#C9A84C" stroke-width="0.5"/>
+    <line x1="350" y1="30"  x2="350" y2="670" stroke="#C9A84C" stroke-width="0.5"/>
+    <line x1="123" y1="123" x2="577" y2="577" stroke="#C9A84C" stroke-width="0.5"/>
+    <line x1="577" y1="123" x2="123" y2="577" stroke="#C9A84C" stroke-width="0.5"/>
+    <line x1="30"  y1="210" x2="670" y2="490" stroke="#C9A84C" stroke-width="0.3"/>
+    <line x1="30"  y1="490" x2="670" y2="210" stroke="#C9A84C" stroke-width="0.3"/>
+    <line x1="210" y1="30"  x2="490" y2="670" stroke="#C9A84C" stroke-width="0.3"/>
+    <line x1="490" y1="30"  x2="210" y2="670" stroke="#C9A84C" stroke-width="0.3"/>
+    <polygon points="350,68 619,518 81,518"  stroke="#C9A84C" stroke-width="0.4" fill="none"/>
+    <polygon points="350,632 81,182 619,182" stroke="#C9A84C" stroke-width="0.4" fill="none"/>
+    <polygon points="350,140 560,490 140,490" stroke="#C9A84C" stroke-width="0.3" fill="none"/>
+    <polygon points="350,560 140,210 560,210" stroke="#C9A84C" stroke-width="0.3" fill="none"/>
+  </svg>
+
+  
+  <div class="hero-content">
+
+    <span class="hero-tag">About · The Path</span>
+
+    <h1 class="hero-title">
+      Before I Had Words For It,<br>
+      I <em>Loved Him</em>
+    </h1>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+
+    <p class="hero-subtitle">
+      The story of a soul that wandered far — and found its way back
+      through the stars.
+    </p>
+
+  </div>
+
+  
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+
+</section></template></div>
+<div class="sec" data-section="story-section"><template shadowrootmode="open"><style>:host { display: block; isolation: isolate; background: #0a0a0f; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :host {
+    background: #0a0a0f;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section {
+    padding: 80px 40px;
+    font-family: 'EB Garamond', Georgia, serif;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── STORY BLOCK ── */
+  .story {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0 60px;
+    align-items: start;
+  }
+
+  .story + .story {
+    margin-top: 0;
+  }
+
+  /* ── SEPARATOR ── */
+  .separator {
+    height: 1px;
+    background: rgba(232,224,208,0.07);
+    margin: 60px 0;
+  }
+
+  /* ── LEFT COLUMN ── */
+  .story-left {
+    position: relative;
+  }
+
+  .story-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 300;
+    color: rgba(201,168,76,0.08);
+    line-height: 1;
+    display: block;
+    margin-bottom: 8px;
+    user-select: none;
+  }
+
+  .story-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #C9A84C;
+    line-height: 1.6;
+    display: block;
+  }
+
+  /* ── RIGHT COLUMN ── */
+  .story-right {
+    padding-top: 8px;
+  }
+
+  .story-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3vw, 34px); font-size: clamp(26px, 3cqw, 34px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .story-heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .story-body {
+    font-size: 17px;
+    color: rgba(232,224,208,0.65);
+    line-height: 1.85;
+  }
+
+  .story-body p + p {
+    margin-top: 18px;
+  }
+
+  /* Closing gold italic line (story 03 only) */
+  .story-close {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 300;
+    font-style: italic;
+    color: #C9A84C;
+    margin-top: 24px;
+    line-height: 1.5;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .story {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .story-number {
+      font-size: 52px;
+      margin-bottom: 4px;
+    }
+    .story-left {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .story-right {
+      padding-top: 0;
+    }
+    .section {
+      padding: 60px 20px;
+    }
+    .separator {
+      margin: 40px 0;
+    }
+  }
+@container (max-width: 640px) {
+    .story {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .story-number {
+      font-size: 52px;
+      margin-bottom: 4px;
+    }
+    .story-left {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .story-right {
+      padding-top: 0;
+    }
+    .section {
+      padding: 60px 20px;
+    }
+    .separator {
+      margin: 40px 0;
+    }
+  }
+</style><div class="section">
+
+  
+  <div class="story">
+    <div class="story-left">
+      <span class="story-number">01</span>
+      <span class="story-tag">THE<br>SEARCHING</span>
+    </div>
+    <div class="story-right">
+      <h3 class="story-heading">A Soul That Could Not <em>Fit.</em></h3>
+      <div class="story-body">
+        <p>I grew up knowing something was off — not with me, but with the map everyone else was following. The ordinary milestones felt borrowed. The ordinary gods felt distant. But Shiva — even His name carried a pull I could not explain. Not the Shiva of textbooks. The Shiva of silence. Of destruction that loves.</p>
+        <p>I searched everywhere that felt alive: temples, texts, teachers, lineages. I was looking for something I could not name but would absolutely recognise the moment I found it. What I did not know then is that the searching was itself the preparation.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="separator"></div>
+
+  
+  <div class="story">
+    <div class="story-left">
+      <span class="story-number">02</span>
+      <span class="story-tag">THE<br>INITIATION</span>
+    </div>
+    <div class="story-right">
+      <h3 class="story-heading">When the <em>Forgotten River</em> Began Flowing Again.</h3>
+      <div class="story-body">
+        <p>Shaktipat did not arrive gently. It arrived the way a locked door finally gives — all at once, with the weight of everything that had been pressing against it. In that transmission, I did not receive new knowledge. I remembered what I already was. The river had always been there; it had simply been underground.</p>
+        <p>What followed were years of sadhana — not the kind that is scheduled and tidy, but the kind that restructures you from the inside. Kashmiri Shaivism became not a philosophy I studied but a reality I inhabited. Jyotish became a language through which I could read karma the way one reads footprints — backwards and forwards across many lifetimes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="separator"></div>
+
+  
+  <div class="story">
+    <div class="story-left">
+      <span class="story-number">03</span>
+      <span class="story-tag">THE<br>OFFERING</span>
+    </div>
+    <div class="story-right">
+      <h3 class="story-heading">Why <em>Shivoham Path</em> Was Born.</h3>
+      <div class="story-body">
+        <p>I kept meeting the same soul in different bodies. Seekers who had tried every doorway — therapy, religion, self-help — and still felt the ache. Not the ache of something broken, but the ache of something holy that had not yet been met.</p>
+        <p>They did not need more information. They needed someone who could read the karmic architecture beneath their life — and hold the space while they finally recognised themselves in it. That is what a D60 reading does. That is what this path does.</p>
+        <p>Shivoham Path is not a brand. It is a response. Every reading, every course, every word written here carries one intention: to be a clear mirror for souls who are already on their way home — but have forgotten which direction that is.</p>
+        <div class="story-close">Because in the end, we do not find Shiv. He finds us. And when He does, our entire life becomes His path.</div>
+      </div>
+    </div>
+  </div>
+
+</div></template></div>
+<div class="sec" data-section="lineage-section"><template shadowrootmode="open"><style>:host { display: block; isolation: isolate; background: #0a0a0f; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :host {
+    background: #0a0a0f;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section {
+    padding: 80px 40px;
+    font-family: 'EB Garamond', Georgia, serif;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px); font-size: clamp(32px, 4cqw, 52px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+
+  .heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .divider-line {
+    width: 80px;
+    height: 1px;
+    background: rgba(201,168,76,0.2);
+  }
+
+  .divider-diamond {
+    width: 6px;
+    height: 6px;
+    background: #C9A84C;
+    transform: rotate(45deg);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: #131020;
+    border: 1px solid rgba(232,224,208,0.07);
+    padding: 36px 28px;
+    text-align: center;
+    position: relative;
+    transition: border-color 0.3s;
+    cursor: default;
+  }
+
+  .card:hover {
+    border-color: rgba(201,168,76,0.2);
+  }
+
+  /* Gold top line on hover */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 1px;
+    background: #C9A84C;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .card:hover::before {
+    opacity: 1;
+  }
+
+  .card-icon {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 20px;
+    color: #C9A84C;
+    opacity: 0.7;
+    line-height: 1;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #e8e0d0;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .card-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 14px;
+    color: rgba(232,224,208,0.35);
+    line-height: 1.7;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    :host {
+      overflow-x: hidden;
+    }
+
+    .grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+    }
+
+    .section {
+      padding: 60px 16px;
+    }
+  }
+@container (max-width: 768px) {
+    :host {
+      overflow-x: hidden;
+    }
+
+    .grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+    }
+
+    .section {
+      padding: 60px 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 1px;
+    }
+
+    .card {
+      padding: 28px 20px;
+    }
+
+    .card-body {
+      font-size: 13px;
+    }
+  }
+@container (max-width: 480px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 1px;
+    }
+
+    .card {
+      padding: 28px 20px;
+    }
+
+    .card-body {
+      font-size: 13px;
+    }
+  }
+</style><div class="section">
+
+  <div class="header">
+    <span class="eyebrow">THE FOUNDATIONS</span>
+    <h2 class="heading">The <em>Paths</em> That Shaped This Work</h2>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <span class="card-icon">◈</span>
+      <h3 class="card-title">Kashmiri Shaivism</h3>
+      <p class="card-body">The non-dual philosophy of Trika — where Shiva and Shakti are not two but one pulsating recognition.</p>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">&#x1F525;</span>
+      <h3 class="card-title">Shaktipat</h3>
+      <p class="card-body">The direct transmission of awakening energy from Guru to disciple — where Shakti is not taught but ignited.</p>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">✦</span>
+      <h3 class="card-title">Jyotish &amp; D60</h3>
+      <p class="card-body">The ancient science of light. Karmic astrology through the Shashtiamsha — the soul's accumulated record across all lifetimes.</p>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">◯</span>
+      <h3 class="card-title">Madhurya Bhakti</h3>
+      <p class="card-body">The path of the Divine Beloved. Where the boundary between worshipper and worshipped dissolves into love itself.</p>
+    </div>
+
+  </div>
+
+</div></template></div>
+<div class="sec" data-section="lineage-thread-section"><template shadowrootmode="open"><style>:host { display: block; isolation: isolate; background: #0a0a0f; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :host {
+    background: #0a0a0f;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section {
+    padding: 100px 40px 120px;
+    font-family: 'EB Garamond', Georgia, serif;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 46px); font-size: clamp(28px, 4cqw, 46px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.15;
+    margin-bottom: 32px;
+    letter-spacing: 0.02em;
+  }
+
+  .heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .divider-line {
+    width: 80px;
+    height: 1px;
+    background: rgba(201,168,76,0.2);
+  }
+
+  .divider-diamond {
+    width: 6px;
+    height: 6px;
+    background: #C9A84C;
+    transform: rotate(45deg);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  /* ── THREAD / TIMELINE ── */
+  .thread {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── NODE (connector between cards) ── */
+  .node {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    background: rgba(201,168,76,0.5);
+    transform: rotate(45deg);
+    margin: 28px 0;
+    flex-shrink: 0;
+  }
+
+  /* Short gold lines above and below each node */
+  .node::before,
+  .node::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) rotate(-45deg);
+    width: 1px;
+    height: 20px;
+    background: rgba(201,168,76,0.25);
+  }
+
+  .node::before { bottom: 100%; margin-bottom: 4px; }
+  .node::after  { top: 100%;    margin-top: 4px; }
+
+  /* ── CARD ── */
+  .card {
+    position: relative;
+    width: 100%;
+    background: #0f0e1a;
+    border: 1px solid rgba(232,224,208,0.07);
+    padding: 44px 48px;
+    transition: border-color 0.4s;
+  }
+
+  .card:hover {
+    border-color: rgba(201,168,76,0.18);
+  }
+
+  /* Gold top accent line on hover */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 1px;
+    background: #C9A84C;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .card:hover::before {
+    opacity: 1;
+  }
+
+  /* ── CARD: YOU ARE HERE (last card) ── */
+  .card--here {
+    border-color: rgba(201,168,76,0.2);
+    background: rgba(201,168,76,0.03);
+  }
+
+  .card--here::before {
+    opacity: 1;
+    width: 60px;
+  }
+
+  /* ── CARD INTERNALS ── */
+  .card-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .card-era {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(201,168,76,0.4);
+    display: block;
+    margin-bottom: 22px;
+    text-transform: uppercase;
+  }
+
+  .card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 30px); font-size: clamp(22px, 3cqw, 30px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .card-subtitle {
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: rgba(232,224,208,0.35);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .card-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    color: rgba(232,224,208,0.6);
+    line-height: 1.85;
+  }
+
+  .card-body strong {
+    color: rgba(232,224,208,0.85);
+    font-weight: 400;
+  }
+
+  .card-body em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .card-body p + p {
+    margin-top: 16px;
+  }
+
+  /* Lineage chain — styled inline list */
+  .lineage-chain {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(232,224,208,0.07);
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(201,168,76,0.5);
+    line-height: 2.2;
+    text-transform: uppercase;
+  }
+
+  .lineage-chain span {
+    display: inline;
+  }
+
+  .lineage-chain .arrow {
+    color: rgba(201,168,76,0.25);
+    margin: 0 6px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    :host {
+      overflow-x: hidden;
+    }
+
+    .section {
+      padding: 60px 16px 70px;
+    }
+
+    .card {
+      padding: 28px 20px;
+    }
+
+    .card-body {
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    /* Hide the centre vertical line on mobile */
+    .thread::before {
+      display: none;
+    }
+
+    .node {
+      display: none;
+    }
+
+    /* Stack lineage chain vertically instead of wrapping inline */
+    .lineage-chain {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      line-height: 1.8;
+    }
+
+    .lineage-chain .arrow {
+      display: none;
+    }
+
+    .lineage-chain span:not(.arrow) {
+      display: block;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .lineage-chain span:not(.arrow)::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: rgba(201,168,76,0.25);
+    }
+  }
+@container (max-width: 640px) {
+    :host {
+      overflow-x: hidden;
+    }
+
+    .section {
+      padding: 60px 16px 70px;
+    }
+
+    .card {
+      padding: 28px 20px;
+    }
+
+    .card-body {
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    /* Hide the centre vertical line on mobile */
+    .thread::before {
+      display: none;
+    }
+
+    .node {
+      display: none;
+    }
+
+    /* Stack lineage chain vertically instead of wrapping inline */
+    .lineage-chain {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      line-height: 1.8;
+    }
+
+    .lineage-chain .arrow {
+      display: none;
+    }
+
+    .lineage-chain span:not(.arrow) {
+      display: block;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .lineage-chain span:not(.arrow)::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: rgba(201,168,76,0.25);
+    }
+  }
+</style><div class="section">
+
+  
+  <div class="header">
+    <span class="eyebrow">THE UNBROKEN THREAD</span>
+    <h2 class="heading">A Lineage That Runs<br>Through <em>Time</em></h2>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  
+  <div class="thread">
+
+    
+    <div class="card">
+      <span class="card-label">The Root</span>
+      <span class="card-era">Trika Shaivism · Kashmir · c. 850 CE Onwards</span>
+      <h3 class="card-name">Kashmir Shaivism</h3>
+      <p class="card-subtitle">The Non-Dual Tradition of the Trika</p>
+      <div class="card-body">
+        <p>The philosophical and experiential lineage of non-dual Shaivism that emerged in Kashmir — asserting that Shiva is not a distant deity but the very consciousness within which all existence arises and dissolves. Its foundational texts — the <strong>Shiva Sutras</strong>, <strong>Spanda Karikas</strong>, <strong>Pratyabhijnahridayam</strong>, and the <strong>Vijnana Bhairava Tantra</strong> — map the direct path from human limitation to the recognition of one's nature as Shiva itself.</p>
+      </div>
+    </div>
+
+    <div class="node"></div>
+
+    
+    <div class="card">
+      <span class="card-label">The Flame</span>
+      <span class="card-era">14th Century · Kashmir · c. 1320 – 1392</span>
+      <h3 class="card-name">Lalleshwari (Lal Ded)</h3>
+      <p class="card-subtitle">The Only Woman Saint of the Trika Lineage · Wandering Yogini of Kashmir</p>
+      <div class="card-body">
+        <p>Born into a Kashmiri Pandit family, initiated into Shaivism by her guru Siddha Srikantha, Lalleshwari renounced her household life and wandered naked through Kashmir — reciting <em>Vakhs</em>, mystic verses that are among the earliest compositions in the Kashmiri language. She was the only woman in the lineage of Trika Shaivism.</p>
+        <p>Her Vakhs carry no religion, no caste, no separation — only the direct experience of Shiva as the ground of all being. Kashmir has said for centuries: <em>"We know only two words that are meaningful — one is Allah, the other is Lalla."</em></p>
+      </div>
+    </div>
+
+    <div class="node"></div>
+
+    
+    <div class="card">
+      <span class="card-label">The Revival</span>
+      <span class="card-era">19th Century · India · c. 1870 Onwards</span>
+      <h3 class="card-name">Swami Gangadhar Tirth &amp; Swami Narayan Dev Tirth</h3>
+      <p class="card-subtitle">Revivalists of the Shaktipat Transmission</p>
+      <div class="card-body">
+        <p>The science of Shaktipat — the direct transmission of awakening Shakti from Guru to disciple — has existed as an underground current in the Hindu spiritual tradition since ancient times. At the close of the 19th century, <strong>Swami Gangadhar Tirth</strong> brought it back into living form. A deeply reclusive yogi who rarely left his small cottage near Chandan Talab in Jagannathpuri, he initiated only one disciple — a young man from Bengal named Kali Kishore.</p>
+        <p>That disciple, who would come to be known as <strong>Swami Narayan Dev Tirth</strong>, was born in 1870 and initiated in 1889. Where his Guru had given the blessing to almost no one, Swami Narayan Dev Tirth gave it to many — traveling widely, writing, and heralding Shaktipat among the masses. It was he who restored this sacred science to the world.</p>
+      </div>
+    </div>
+
+    <div class="node"></div>
+
+    
+    <div class="card">
+      <span class="card-label">The Transmission</span>
+      <span class="card-era">Contemporary · Siddha Maha Yoga Lineage</span>
+      <h3 class="card-name">Guru Ji Greg Hagi</h3>
+      <p class="card-subtitle">Shaktipat Guru · Seventh in an Unbroken Lineage from Swami Gangadhar Tirth</p>
+      <div class="card-body">
+        <p>From Swami Gangadhar Tirth, the flame of Shaktipat passed without interruption through six masters before reaching Greg Hagi — each holding and transmitting the living Shakti to the next.</p>
+        <p>Greg Hagi spent over 30 years in sincere spiritual search — across physical yoga, shamanism, and many paths — driven by an inexhaustible longing for what he could feel but not yet name. Everything changed when he found his Guru, <strong>Col. T. Sreenivasulu (Swami Sahajananda Tirtha)</strong> — himself a disciple of the great Swami Shivom Tirth — and later received the personal blessing of Swami Sahajananda, a 98-year-old realised being. Initiated as a Shaktipat Guru into the Siddha Maha Yoga tradition, he now transmits this ancient awakening to sincere seekers worldwide.</p>
+      </div>
+      <div class="lineage-chain">
+        <span>Swami Gangadhar Tirth</span>
+        <span class="arrow">→</span>
+        <span>Swami Narayan Dev Tirth</span>
+        <span class="arrow">→</span>
+        <span>Shri Yogananda Maharaj</span>
+        <span class="arrow">→</span>
+        <span>Swami Vishnu Tirth</span>
+        <span class="arrow">→</span>
+        <span>Swami Shivom Tirth</span>
+        <span class="arrow">→</span>
+        <span>Swami Sahajananda Tirth</span>
+        <span class="arrow">→</span>
+        <span style="color: rgba(201,168,76,0.8);">Greg Hagi</span>
+      </div>
+    </div>
+
+    <div class="node"></div>
+
+    
+    <div class="card card--here">
+      <span class="card-label">You Are Here</span>
+      <span class="card-era">May 2024 · Shaktipat Initiation</span>
+      <h3 class="card-name">Veena Maheshwari (Shivohampath)</h3>
+      <p class="card-subtitle">Madhurya Bhakt · Initiated into the Lalleshwari Lineage</p>
+      <div class="card-body">
+        <p>Born a Madhurya Bhakt — one who loves Shiva as Beloved rather than deity — Veena received formal initiation into the Lalleshwari lineage through Shaktipat from Guru Ji Greg Hagi in May 2024.</p>
+        <p>This was not a beginning. It was a recognition — a formalization of what her soul had been carrying lifetimes before this body was born.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div></template></div>
+<div class="sec" data-section="lalleshwari-section"><template shadowrootmode="open"><style>:host { display: block; isolation: isolate; background: #0a0a0f; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :host {
+    background: #0a0a0f;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section {
+    font-family: 'EB Garamond', Georgia, serif;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 40px 120px;
+  }
+
+  /* ── EYEBROW ── */
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: #C9A84C;
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* ── MAIN HEADING ── */
+  .heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 62px); font-size: clamp(36px, 5cqw, 62px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.1;
+    text-align: center;
+    margin-bottom: 12px;
+    letter-spacing: 0.01em;
+  }
+
+  .heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .subheading {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(232,224,208,0.4);
+    text-align: center;
+    margin-bottom: 52px;
+    line-height: 1.5;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+
+  .divider-line {
+    width: 80px;
+    height: 1px;
+    background: rgba(201,168,76,0.2);
+  }
+
+  .divider-diamond {
+    width: 6px;
+    height: 6px;
+    background: #C9A84C;
+    transform: rotate(45deg);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  /* ── IMAGE + INTRO LAYOUT ── */
+  .portrait-block {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 70px;
+    align-items: start;
+    margin-bottom: 80px;
+  }
+
+  /* ── PORTRAIT ── */
+  .portrait-wrap {
+    position: relative;
+  }
+
+  .portrait-wrap img {
+    width: 100%;
+    display: block;
+    filter: sepia(0.3) brightness(0.88) contrast(1.05);
+  }
+
+  /* Subtle gold border frame */
+  .portrait-wrap::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: -12px;
+    bottom: -12px;
+    border: 1px solid rgba(201,168,76,0.2);
+    z-index: -1;
+  }
+
+  .portrait-caption {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: rgba(201,168,76,0.4);
+    text-align: center;
+    margin-top: 16px;
+    text-transform: uppercase;
+  }
+
+  /* ── INTRO TEXT ── */
+  .intro-text {
+    padding-top: 8px;
+  }
+
+  .intro-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .intro-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 2.5vw, 32px); font-size: clamp(24px, 2.5cqw, 32px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.25;
+    margin-bottom: 28px;
+  }
+
+  .intro-heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .intro-body {
+    font-size: 17px;
+    color: rgba(232,224,208,0.62);
+    line-height: 1.85;
+  }
+
+  .intro-body p + p {
+    margin-top: 18px;
+  }
+
+  .intro-body strong {
+    color: rgba(232,224,208,0.85);
+    font-weight: 400;
+  }
+
+  /* ── SECTION SEPARATOR ── */
+  .sep {
+    height: 1px;
+    background: rgba(232,224,208,0.06);
+    margin: 72px 0;
+  }
+
+  /* ── EROTIC LANGUAGE SECTION ── */
+  .language-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-bottom: 80px;
+  }
+
+  .language-text .block-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .language-text .block-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.5vw, 30px); font-size: clamp(22px, 2.5cqw, 30px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.25;
+    margin-bottom: 24px;
+  }
+
+  .language-text .block-heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .language-text .block-body {
+    font-size: 16.5px;
+    color: rgba(232,224,208,0.6);
+    line-height: 1.85;
+  }
+
+  .language-text .block-body p + p {
+    margin-top: 16px;
+  }
+
+  .language-text .block-body strong {
+    color: rgba(232,224,208,0.85);
+    font-weight: 400;
+  }
+
+  /* ── VAKHS COLUMN ── */
+  .vakhs-column {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .vakh {
+    border-left: 1px solid rgba(201,168,76,0.25);
+    padding: 20px 0 20px 28px;
+  }
+
+  .vakh-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(232,224,208,0.78);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .vakh-attribution {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: rgba(201,168,76,0.45);
+    text-transform: uppercase;
+  }
+
+  /* ── FULL-WIDTH PULL QUOTE ── */
+  .pullquote-block {
+    text-align: center;
+    padding: 64px 60px;
+    border: 1px solid rgba(201,168,76,0.12);
+    background: rgba(201,168,76,0.02);
+    margin-bottom: 80px;
+  }
+
+  .pullquote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    font-weight: 300;
+    color: rgba(201,168,76,0.2);
+    line-height: 0.6;
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  .pullquote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.5vw, 30px); font-size: clamp(22px, 2.5cqw, 30px);
+    font-weight: 300;
+    font-style: italic;
+    color: #e8e0d0;
+    line-height: 1.6;
+    max-width: 720px;
+    margin: 0 auto 28px;
+  }
+
+  .pullquote-source {
+    font-family: 'Cinzel', serif;
+    font-size: 8.5px;
+    letter-spacing: 3.5px;
+    color: rgba(201,168,76,0.45);
+    text-transform: uppercase;
+  }
+
+  /* ── PARALLEL POETS ── */
+  .parallel-block {
+    margin-top: 0;
+  }
+
+  .parallel-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    text-align: center;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .parallel-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.5vw, 30px); font-size: clamp(22px, 2.5cqw, 30px);
+    font-weight: 300;
+    color: #e8e0d0;
+    text-align: center;
+    line-height: 1.25;
+    margin-bottom: 36px;
+  }
+
+  .parallel-heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .parallel-body {
+    font-size: 17px;
+    color: rgba(232,224,208,0.6);
+    line-height: 1.85;
+    max-width: 760px;
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+
+  .parallel-body p + p {
+    margin-top: 18px;
+  }
+
+  .parallel-body strong {
+    color: rgba(232,224,208,0.85);
+    font-weight: 400;
+  }
+
+  .poets-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .poet-card {
+    background: #0f0e1a;
+    border: 1px solid rgba(232,224,208,0.07);
+    padding: 32px 28px;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+
+  .poet-card:hover {
+    border-color: rgba(201,168,76,0.18);
+  }
+
+  .poet-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    font-weight: 300;
+    color: #e8e0d0;
+    margin-bottom: 6px;
+  }
+
+  .poet-era {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2.5px;
+    color: rgba(201,168,76,0.4);
+    display: block;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .poet-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 14.5px;
+    color: rgba(232,224,208,0.4);
+    line-height: 1.7;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 840px) {
+    .portrait-block {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .portrait-wrap {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .language-block {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .poets-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pullquote-block {
+      padding: 48px 28px;
+    }
+
+    .section {
+      padding: 70px 20px 80px;
+    }
+  }
+@container (max-width: 840px) {
+    .portrait-block {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .portrait-wrap {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .language-block {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .poets-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pullquote-block {
+      padding: 48px 28px;
+    }
+
+    .section {
+      padding: 70px 20px 80px;
+    }
+  }
+</style><div class="section">
+
+  
+  <span class="eyebrow">The Flame of the Lineage</span>
+  <h2 class="heading">Lalleshwari (Lal Ded)<br><em>Wandering Naked into God</em></h2>
+  <p class="subheading">Kashmir · c. 1320 – 1392 · Trika Shaivism</p>
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  
+  <div class="portrait-block">
+
+    <div class="portrait-wrap">
+      
+      <img
+        src="https://static.wixstatic.com/media/ba8bbb_b50540b5c95e4e908c8696512edc81bb~mv2.jpg"
+        alt="Lalleshwari (Lal Ded) — 14th Century Kashmiri Mystic and Yogini"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      
+      <div style="display:none; width:100%; aspect-ratio:3/4; background:#0f0e1a; border:1px solid rgba(201,168,76,0.15); align-items:center; justify-content:center; flex-direction:column; gap:16px;">
+        <span style="font-size:40px; opacity:0.3;">◈</span>
+        <span style="font-family:'Cinzel',serif; font-size:8px; letter-spacing:3px; color:rgba(201,168,76,0.3); text-transform:uppercase;">Image Placeholder</span>
+      </div>
+      <p class="portrait-caption">Lalleshwari · Yogini of Kashmir · 14th Century</p>
+    </div>
+
+    <div class="intro-text">
+      <span class="intro-label">Madhurya Bhakt · Lover of Shiva</span>
+      <h3 class="intro-heading">She Did Not Worship Shiva.<br>She <em>Loved</em> Him.</h3>
+      <div class="intro-body">
+        <p>Born into a Kashmiri Brahmin family around 1320 CE, Lalleshwari was married at twelve into a household that offered her nothing but neglect and contempt. Her mother-in-law starved her. Her husband ignored her. She bore it quietly — because her heart was already elsewhere. Already with <strong>Shiva</strong>.</p>
+        <p>At twenty-four, she left. She became a disciple of the Shaivite guru <strong>Siddha Srikantha</strong>, renounced the household, and wandered barefoot through Kashmir — and eventually, as her body-consciousness dissolved, naked. In that wandering, she composed her <em>Vakhs</em> — short, incandescent verses in the Kashmiri language that became the first great body of Kashmiri literature.</p>
+        <p>But Lalleshwari was not simply a Shaivite philosopher. She was a <strong>Madhurya Bhakt</strong> — one who does not approach the divine through awe or fear or duty, but through <em>longing</em>. Through the ache of a lover who cannot stop looking for the Beloved. Her Shiva was not doctrine. He was the One she could not stop thinking about. The One she crossed rivers to reach in secret. The One she finally found — not in any temple — but inside herself.</p>
+      </div>
+    </div>
+
+  </div>
+
+  
+  <div class="pullquote-block">
+    <span class="pullquote-mark">"</span>
+    <p class="pullquote-text">Wrapped up in Yourself, You hid from me. All day I looked for You — and when I found You hiding inside me, I ran wild, playing now me, now You.</p>
+    <span class="pullquote-source">Lalleshwari · Vakh · tr. Ranjit Hoskote</span>
+  </div>
+
+  <div class="sep"></div>
+
+  
+  <div class="language-block">
+
+    <div class="language-text">
+      <span class="block-label">The Language of Sacred Longing</span>
+      <h3 class="block-heading">The <em>Erotic</em> Was Never Separate<br>from the Sacred</h3>
+      <div class="block-body">
+        <p>Lalleshwari's Vakhs carry a charge that is impossible to miss — they pulse with desire. The longing in her verses is physical in its intensity, intimate in its address. She searches for Shiva the way a lover searches for someone who has vanished. She speaks of giving her body and soul to Him. She describes finding Him <em>inside</em> her — and running wild.</p>
+        <p>This is not accident. It is the precise language of <strong>Madhurya Bhakti</strong> — the devotional current in which the soul's relationship to the divine is understood as that of a lover to the Beloved. Not devotee to deity. Not seeker to distant God. But <em>one lover to another</em>.</p>
+        <p>Lal Ded's legend even carries an erotic undertone built into the story itself: she would cross the river secretly to worship Shiva at a temple on the far bank — her mother-in-law suspecting her of meeting a lover. She was. The rivers in Kashmiri lore, their shaded banks and tall rushes, are the site of clandestine trysts. The secret lover was Shiva. The tryst was union with the divine.</p>
+        <p>This tradition of <strong>symbolic erotic mysticism</strong> — where bodily desire becomes the vehicle for the soul's deepest movement — runs through the entire geography of Indian sacred poetry. Lalleshwari stands among the greatest in this lineage.</p>
+      </div>
+    </div>
+
+    <div class="vakhs-column">
+
+      <div class="vakh">
+        <p class="vakh-text">"I gave myself to Him, body and soul, became a bell that the clear note of Him rang through. Thoughts fixed on Him, I flew through the sky and unlocked the mysteries of heaven and hell."</p>
+        <span class="vakh-attribution">Lalleshwari · Vakh · tr. Ranjit Hoskote</span>
+      </div>
+
+      <div class="vakh">
+        <p class="vakh-text">"I trapped my breath in the bellows of my throat: a lamp blazed up inside, showed me who I really was. I crossed the darkness holding fast to the lamp, scattering its light-seeds around me as I went."</p>
+        <span class="vakh-attribution">Lalleshwari · Vakh · tr. Ranjit Hoskote</span>
+      </div>
+
+      <div class="vakh">
+        <p class="vakh-text">"Alone, I crossed the Field of Emptiness, dropping my reason and my senses. I stumbled on my own secret there and flowered, a lotus rising from a marsh."</p>
+        <span class="vakh-attribution">Lalleshwari · Vakh · tr. Ranjit Hoskote</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="sep"></div>
+
+  
+  <div class="parallel-block">
+    <span class="parallel-label">The Flame Across Traditions</span>
+    <h3 class="parallel-heading">She Was Not Alone.<br>The <em>Erotic-Mystical Voice</em> Ran Through Many.</h3>
+    <div class="parallel-body">
+      <p>The language Lalleshwari used — of longing, of secret meeting, of surrendering the body to the Beloved — was not unique to her. It was the register of an entire current of sacred poetry across India, Persia, and Anatolia. What these poets shared was the understanding that <strong>desire, when turned toward the divine, does not need to be transcended</strong> — it needs to be <em>deepened</em>. The erotic becomes the most honest map of the soul's movement toward God.</p>
+    </div>
+
+    <div class="poets-grid">
+
+      <div class="poet-card">
+        <h4 class="poet-name">Mirabai</h4>
+        <span class="poet-era">16th Century · Rajasthan</span>
+        <p class="poet-body">Sang her longing for Krishna as an abandoned wife sings for the one who has left — restless, aching, public, unashamed. Her devotion was erotic in its grammar and total in its surrender.</p>
+      </div>
+
+      <div class="poet-card">
+        <h4 class="poet-name">Akkamahadevi</h4>
+        <span class="poet-era">12th Century · Karnataka</span>
+        <p class="poet-body">Like Lalleshwari, she wandered naked. Like Lalleshwari, she claimed Shiva as her only husband. Her Vachanas spoke of nothing but the ache of union with Chennamallikarjuna — Shiva as Beloved.</p>
+      </div>
+
+      <div class="poet-card">
+        <h4 class="poet-name">Rumi</h4>
+        <span class="poet-era">13th Century · Persia / Anatolia</span>
+        <p class="poet-body">His Masnavi and Ghazals burned with longing for the Friend — a word that carries the full weight of the Beloved. In Sufi poetry as in Bhakti, the sacred and the erotic are one flame, not two.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div></template></div>
+<div class="sec" data-section="shaktipat-section"><template shadowrootmode="open"><style>:host { display: block; isolation: isolate; background: #0a0a0f; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :host {
+    background: #0a0a0f;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section {
+    font-family: 'EB Garamond', Georgia, serif;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 40px 120px;
+  }
+
+  /* ── EYEBROW ── */
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: #C9A84C;
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  /* ── MAIN HEADING ── */
+  .heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 62px); font-size: clamp(36px, 5cqw, 62px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.1;
+    text-align: center;
+    margin-bottom: 12px;
+    letter-spacing: 0.01em;
+  }
+
+  .heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .subheading {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(232,224,208,0.4);
+    text-align: center;
+    margin-bottom: 52px;
+    line-height: 1.5;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 72px;
+  }
+
+  .divider-line {
+    width: 80px;
+    height: 1px;
+    background: rgba(201,168,76,0.2);
+  }
+
+  .divider-diamond {
+    width: 6px;
+    height: 6px;
+    background: #C9A84C;
+    transform: rotate(45deg);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  /* ── OPENING BODY ── */
+  .opening {
+    max-width: 740px;
+    margin: 0 auto 80px;
+    text-align: center;
+  }
+
+  .opening p {
+    font-size: 18px;
+    color: rgba(232,224,208,0.62);
+    line-height: 1.9;
+  }
+
+  .opening p + p {
+    margin-top: 22px;
+  }
+
+  .opening strong {
+    color: rgba(232,224,208,0.88);
+    font-weight: 400;
+  }
+
+  /* ── SECTION SEPARATOR ── */
+  .sep {
+    height: 1px;
+    background: rgba(232,224,208,0.06);
+    margin: 72px 0;
+  }
+
+  /* ── WHAT IS SHAKTIPAT ── */
+  .definition-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+    margin-bottom: 80px;
+  }
+
+  .definition-text .block-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .definition-text .block-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 2.5vw, 32px); font-size: clamp(24px, 2.5cqw, 32px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.25;
+    margin-bottom: 28px;
+  }
+
+  .definition-text .block-heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .definition-text .block-body {
+    font-size: 16.5px;
+    color: rgba(232,224,208,0.6);
+    line-height: 1.88;
+  }
+
+  .definition-text .block-body p + p {
+    margin-top: 18px;
+  }
+
+  .definition-text .block-body strong {
+    color: rgba(232,224,208,0.85);
+    font-weight: 400;
+  }
+
+  /* ── SANSKRIT PANEL ── */
+  .sanskrit-panel {
+    background: #0d0c18;
+    border: 1px solid rgba(201,168,76,0.12);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .sanskrit-item {
+    border-bottom: 1px solid rgba(232,224,208,0.05);
+    padding-bottom: 32px;
+  }
+
+  .sanskrit-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .sanskrit-word {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    font-style: italic;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 8px;
+    letter-spacing: 0.03em;
+  }
+
+  .sanskrit-transliteration {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 3.5px;
+    color: rgba(201,168,76,0.4);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .sanskrit-meaning {
+    font-family: 'EB Garamond', serif;
+    font-size: 15.5px;
+    color: rgba(232,224,208,0.5);
+    line-height: 1.75;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pullquote-block {
+    text-align: center;
+    padding: 64px 60px;
+    border: 1px solid rgba(201,168,76,0.12);
+    background: rgba(201,168,76,0.02);
+    margin-bottom: 80px;
+  }
+
+  .pullquote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    font-weight: 300;
+    color: rgba(201,168,76,0.2);
+    line-height: 0.6;
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  .pullquote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.2vw, 28px); font-size: clamp(20px, 2.2cqw, 28px);
+    font-weight: 300;
+    font-style: italic;
+    color: #e8e0d0;
+    line-height: 1.65;
+    max-width: 720px;
+    margin: 0 auto 28px;
+  }
+
+  .pullquote-source {
+    font-family: 'Cinzel', serif;
+    font-size: 8.5px;
+    letter-spacing: 3.5px;
+    color: rgba(201,168,76,0.45);
+    text-transform: uppercase;
+  }
+
+  /* ── THE GURU ── */
+  .guru-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+    margin-bottom: 80px;
+  }
+
+  .guru-block .block-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .guru-block .block-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 2.5vw, 32px); font-size: clamp(24px, 2.5cqw, 32px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.25;
+    margin-bottom: 28px;
+  }
+
+  .guru-block .block-heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .guru-block .block-body {
+    font-size: 16.5px;
+    color: rgba(232,224,208,0.6);
+    line-height: 1.88;
+  }
+
+  .guru-block .block-body p + p {
+    margin-top: 18px;
+  }
+
+  .guru-block .block-body strong {
+    color: rgba(232,224,208,0.85);
+    font-weight: 400;
+  }
+
+  /* ── TRANSMISSION QUOTE STACK ── */
+  .quote-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .quote-card {
+    border-left: 1px solid rgba(201,168,76,0.25);
+    padding: 20px 0 20px 28px;
+  }
+
+  .quote-card-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(232,224,208,0.78);
+    line-height: 1.72;
+    margin-bottom: 14px;
+  }
+
+  .quote-card-attribution {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: rgba(201,168,76,0.45);
+    text-transform: uppercase;
+  }
+
+  /* ── FOUR METHODS ── */
+  .methods-block {
+    margin-bottom: 0;
+  }
+
+  .methods-header {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+
+  .methods-header .block-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .methods-header .block-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 2.5vw, 34px); font-size: clamp(24px, 2.5cqw, 34px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .methods-header .block-heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .methods-header p {
+    font-size: 17px;
+    color: rgba(232,224,208,0.5);
+    line-height: 1.85;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .methods-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .method-card {
+    background: #0f0e1a;
+    border: 1px solid rgba(232,224,208,0.07);
+    padding: 40px 28px;
+    text-align: center;
+    position: relative;
+    transition: border-color 0.3s;
+  }
+
+  .method-card:hover {
+    border-color: rgba(201,168,76,0.2);
+  }
+
+  .method-card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 1px;
+    background: #C9A84C;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .method-card:hover::before {
+    opacity: 1;
+  }
+
+  .method-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: rgba(201,168,76,0.3);
+    display: block;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .method-sanskrit {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    font-style: italic;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .method-name {
+    font-family: 'Cinzel', serif;
+    font-size: 8.5px;
+    letter-spacing: 3px;
+    color: rgba(201,168,76,0.4);
+    display: block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .method-divider {
+    width: 24px;
+    height: 1px;
+    background: rgba(201,168,76,0.2);
+    margin: 0 auto 20px;
+  }
+
+  .method-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #e8e0d0;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .method-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 14.5px;
+    color: rgba(232,224,208,0.38);
+    line-height: 1.72;
+  }
+
+  /* ── EXPERIENCE BLOCK ── */
+  .experience-block {
+    background: #0d0c18;
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 64px 60px;
+    margin-bottom: 80px;
+  }
+
+  .experience-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .experience-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 2.5vw, 34px); font-size: clamp(24px, 2.5cqw, 34px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .experience-heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .experience-item {
+    text-align: center;
+  }
+
+  .experience-icon {
+    font-size: 22px;
+    color: rgba(201,168,76,0.5);
+    display: block;
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+
+  .experience-item-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(232,224,208,0.85);
+    margin-bottom: 10px;
+  }
+
+  .experience-item-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 14.5px;
+    color: rgba(232,224,208,0.38);
+    line-height: 1.7;
+  }
+
+  /* ── CLOSING PULLQUOTE ── */
+  .closing-quote {
+    text-align: center;
+    padding: 72px 60px 0;
+  }
+
+  .closing-quote .pullquote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    font-weight: 300;
+    color: rgba(201,168,76,0.2);
+    line-height: 0.6;
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  .closing-quote .pullquote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.5vw, 32px); font-size: clamp(22px, 2.5cqw, 32px);
+    font-weight: 300;
+    font-style: italic;
+    color: #e8e0d0;
+    line-height: 1.6;
+    max-width: 740px;
+    margin: 0 auto 28px;
+  }
+
+  .closing-quote .pullquote-source {
+    font-family: 'Cinzel', serif;
+    font-size: 8.5px;
+    letter-spacing: 3.5px;
+    color: rgba(201,168,76,0.45);
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .definition-block,
+    .guru-block {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .methods-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .experience-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .pullquote-block,
+    .experience-block {
+      padding: 48px 28px;
+    }
+
+    .closing-quote {
+      padding: 60px 20px 0;
+    }
+
+    .section {
+      padding: 70px 20px 80px;
+    }
+  }
+@container (max-width: 860px) {
+    .definition-block,
+    .guru-block {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .methods-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .experience-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .pullquote-block,
+    .experience-block {
+      padding: 48px 28px;
+    }
+
+    .closing-quote {
+      padding: 60px 20px 0;
+    }
+
+    .section {
+      padding: 70px 20px 80px;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .methods-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+@container (max-width: 540px) {
+    .methods-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style><div class="section">
+
+  
+  <span class="eyebrow">The Initiation</span>
+  <h2 class="heading">Shaktipat<br><em>The Descent of Grace</em></h2>
+  <p class="subheading">śakti · pāta — the falling of power</p>
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  
+  <div class="opening">
+    <p>There is a moment that cannot be manufactured. It does not come through study, through discipline, or through the accumulation of spiritual merit alone. It comes when the Shakti — the divine energy that underlies all of existence — <strong>recognizes itself</strong> in you, and moves.</p>
+    <p>This is Shaktipat. Not a metaphor. Not a ritual. A transmission — real, precise, and utterly unlike anything the ordinary mind expects. In the Trika tradition of Kashmir Shaivism, it is called the <strong>most direct path to liberation</strong>: the moment when the Guru's Shakti touches the dormant Shakti of the disciple, and the sleeping fire wakes.</p>
+  </div>
+
+  <div class="sep"></div>
+
+  
+  <div class="definition-block">
+
+    <div class="definition-text">
+      <span class="block-label">The Meaning</span>
+      <h3 class="block-heading">Shakti Descends.<br>The Seeker <em>Did Not Climb</em> to It.</h3>
+      <div class="block-body">
+        <p>The word itself is precise. <em>Śakti</em> — divine energy, the living power of consciousness. <em>Pāta</em> — a falling, a descent. This is not something the disciple achieves. It is something that <strong>happens to</strong> the disciple. The Shakti falls, as rain falls — without negotiation, without prerequisite merit alone, by the sovereign grace of the divine.</p>
+        <p>In the Shaiva Agamas and in Abhinavagupta's monumental <em>Tantraloka</em>, Shaktipat is classed as the foundational act of initiation — <em>dīkṣā</em>. All other forms of initiation are its outer shell. Shaktipat is the inner fire that makes them real. Without it, ritual is ceremony. With it, ceremony becomes <strong>transformation</strong>.</p>
+        <p>The Shiva Sutras open with the declaration: <em>Caitanyam ātmā</em> — "The self is consciousness." Shaktipat is the lived proof of that statement. In the moment of transmission, the disciple does not merely believe this — they <strong>know it</strong>, in their body and beyond their mind, as the Shakti moves through them like electricity through a wire.</p>
+      </div>
+    </div>
+
+    <div class="sanskrit-panel">
+      <div class="sanskrit-item">
+        <span class="sanskrit-word">Śakti</span>
+        <span class="sanskrit-transliteration">शक्ति · Divine Power</span>
+        <p class="sanskrit-meaning">The living energy of consciousness itself — not separate from Shiva, but Shiva in his dynamic, creative, descending aspect. The universe is Shakti in motion.</p>
+      </div>
+      <div class="sanskrit-item">
+        <span class="sanskrit-word">Pāta</span>
+        <span class="sanskrit-transliteration">पात · Descent · A Falling</span>
+        <p class="sanskrit-meaning">The act of descending — of grace moving downward, from the infinite into the finite, from the Guru into the disciple. Not earned. Given.</p>
+      </div>
+      <div class="sanskrit-item">
+        <span class="sanskrit-word">Dīkṣā</span>
+        <span class="sanskrit-transliteration">दीक्षा · Initiation</span>
+        <p class="sanskrit-meaning">From <em>dī</em> (to give) and <em>kṣā</em> (to dissolve): initiation gives liberation and dissolves the bonds. Shaktipat is its most direct form — initiation not through ritual alone, but through living transmission.</p>
+      </div>
+    </div>
+
+  </div>
+
+  
+  <div class="pullquote-block">
+    <span class="pullquote-mark">"</span>
+    <p class="pullquote-text">The Guru does not give you Shakti. The Guru reveals the Shakti that was already yours — sleeping like fire inside wood, waiting only for the one who knows how to draw it forth.</p>
+    <span class="pullquote-source">Swami Lakshmanjoo · Kashmir Shaivism: The Secret Supreme</span>
+  </div>
+
+  <div class="sep"></div>
+
+  
+  <div class="guru-block">
+
+    <div class="quote-stack">
+      <div class="quote-card">
+        <p class="quote-card-text">"Just as one lamp is lit by another, so too is the Shakti of the disciple kindled by the Shakti of the Guru. The Guru is the lamp already burning."</p>
+        <span class="quote-card-attribution">Kshemaraja · Pratyabhijnahridayam</span>
+      </div>
+      <div class="quote-card">
+        <p class="quote-card-text">"Grace is not withheld by God. It pours continuously, like sunlight. The only question is whether there is an opening in you to receive it — and the Guru creates that opening."</p>
+        <span class="quote-card-attribution">Abhinavagupta · Tantraloka · paraphrase</span>
+      </div>
+      <div class="quote-card">
+        <p class="quote-card-text">"I felt a surge of divine energy unlike anything I had known. I saw a light that had no source. I understood, in that instant, that I had always been what the scriptures described. Always. I had simply not known it."</p>
+        <span class="quote-card-attribution">Swami Muktananda · Play of Consciousness (Chitshakti Vilas)</span>
+      </div>
+    </div>
+
+    <div>
+      <span class="block-label">The Guru as Conduit</span>
+      <h3 class="block-heading">The Guru Does Not<br><em>Own</em> the Shakti</h3>
+      <div class="block-body">
+        <p>This is perhaps the subtlest teaching of Shaktipat: the Guru is not the source. The Guru is a <strong>clear channel</strong> — one whose own egoic contractions have dissolved enough that the infinite Shakti can flow through them without obstruction and into the disciple.</p>
+        <p>Abhinavagupta, the 10th-century master of Kashmir Shaivism whose <em>Tantraloka</em> remains the most comprehensive map of Shaiva tantra ever written, describes this with extraordinary precision: the qualified Guru (<em>śaktipāta-yogya guru</em>) is one who has themselves received the transmission, integrated it, and become transparent to it. They transmit not their own power — but the power they have become empty enough to carry.</p>
+        <p>This is why the relationship between Guru and disciple is unlike all other relationships. It is not teacher and student, not therapist and client, not priest and supplicant. It is a meeting of <strong>two flames</strong> — one already burning, one waiting to be lit. When they come close enough, there is no technique required. The fire simply moves.</p>
+        <p>The <em>Spanda Karikas</em> — the "stanzas on vibration" that map the pulsating awareness at the heart of Shaivism — describe this Spanda, this divine throb, as the very stuff of which Shaktipat is made. In the moment of transmission, the disciple touches Spanda directly: the primal vibration of consciousness that was never absent, only unrecognized.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sep"></div>
+
+  
+  <div class="methods-block">
+
+    <div class="methods-header">
+      <span class="block-label">The Vehicles of Transmission</span>
+      <h3 class="block-heading">Four Ways the <em>Fire Moves</em></h3>
+      <p>The Shaiva Agamas enumerate four classical modes through which Shaktipat can be transmitted. Each is complete in itself. The Guru chooses according to the readiness of the disciple — not by preference, but by perception.</p>
+    </div>
+
+    <div class="methods-grid">
+
+      <div class="method-card">
+        <span class="method-number">I</span>
+        <span class="method-sanskrit">Sparśa</span>
+        <span class="method-name">स्पर्श · Touch</span>
+        <div class="method-divider"></div>
+        <h4 class="method-title">By Sacred Touch</h4>
+        <p class="method-body">The Guru's hand on the disciple's head, back, or chest — the most intimate of transmissions. The body becomes the conductor. Shakti travels through skin and bone into the sleeping center of the disciple's being.</p>
+      </div>
+
+      <div class="method-card">
+        <span class="method-number">II</span>
+        <span class="method-sanskrit">Dṛṣṭi</span>
+        <span class="method-name">दृष्टि · Gaze</span>
+        <div class="method-divider"></div>
+        <h4 class="method-title">By the Guru's Gaze</h4>
+        <p class="method-body">The Guru's eyes meet the disciple's — and something that cannot be named passes between them. The tradition of <em>darshan</em> is rooted here: in the understanding that the enlightened gaze carries its own awakening charge.</p>
+      </div>
+
+      <div class="method-card">
+        <span class="method-number">III</span>
+        <span class="method-sanskrit">Vāk</span>
+        <span class="method-name">वाक् · Word · Mantra</span>
+        <div class="method-divider"></div>
+        <h4 class="method-title">By Mantra or Spoken Word</h4>
+        <p class="method-body">Sound is not merely symbol in the Shaiva view — it is Shakti crystallized into vibration. The Guru's voice, charged with awareness, carries the transmission into the disciple through the ear and the subtle body simultaneously.</p>
+      </div>
+
+      <div class="method-card">
+        <span class="method-number">IV</span>
+        <span class="method-sanskrit">Manas</span>
+        <span class="method-name">मनस् · Mind · Intention</span>
+        <div class="method-divider"></div>
+        <h4 class="method-title">By Pure Intention</h4>
+        <p class="method-body">The subtlest and most powerful form — the Guru's directed sankalpa, their focused intention, transmits the Shakti across any distance. Space is no obstacle to what moves beyond space. This is Shaktipat at its most sovereign.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="sep"></div>
+
+  
+  <div class="experience-block">
+    <span class="experience-label">What Happens Inside</span>
+    <h3 class="experience-heading">The Awakening of <em>Kuṇḍalinī</em></h3>
+
+    <div class="experience-grid">
+
+      <div class="experience-item">
+        <span class="experience-icon">◈</span>
+        <h4 class="experience-item-title">The Body Knows First</h4>
+        <p class="experience-item-body">Heat at the base of the spine. Vibration spreading upward through the chakras. Spontaneous movements — kriyas — that no instruction produced. The body responds before the mind can form a question.</p>
+      </div>
+
+      <div class="experience-item">
+        <span class="experience-icon">✦</span>
+        <h4 class="experience-item-title">Light Without Source</h4>
+        <p class="experience-item-body">Visions of inner light — blue, gold, or white — that seem to have no origin in the outer world. Swami Muktananda described seeing the Blue Pearl: a radiant point of light that he understood to be the seat of the individual soul.</p>
+      </div>
+
+      <div class="experience-item">
+        <span class="experience-icon">◯</span>
+        <h4 class="experience-item-title">Stillness and Bliss</h4>
+        <p class="experience-item-body">A silence that is not absence but fullness. The sensation of having arrived somewhere that was always here. Joy arising without cause. Tears without grief. Recognition without words — <em>pratyabhijñā</em>, the self knowing itself.</p>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <div class="closing-quote">
+    <span class="pullquote-mark">"</span>
+    <p class="pullquote-text">In one instant the Guru's grace can accomplish what a thousand years of practice might only approach. This is not superstition. This is the most precise science the tradition knows.</p>
+    <span class="pullquote-source">Abhinavagupta · Tantraloka · III · paraphrase after Swami Lakshmanjoo</span>
+  </div>
+
+</div></template></div>
+<div class="sec" data-section="offerings-section"><template shadowrootmode="open"><style>:host { display: block; isolation: isolate; background: #0a0a0f; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :host {
+    background: #0a0a0f;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section {
+    padding: 100px 40px;
+    font-family: 'EB Garamond', Georgia, serif;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    margin-bottom: 60px;
+  }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 48px); font-size: clamp(36px, 4cqw, 48px);
+    font-weight: 300;
+    color: #e8e0d0;
+    line-height: 1.1;
+  }
+
+  .heading em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: #131020;
+    border: 1px solid rgba(232,224,208,0.07);
+    padding: 40px 36px;
+    position: relative;
+    transition: background 0.3s, border-color 0.3s;
+    cursor: default;
+    overflow: hidden;
+  }
+
+  .card:hover {
+    background: #1a1525;
+    border-color: rgba(201,168,76,0.2);
+  }
+
+  /* Gold left edge line on hover */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: #C9A84C;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .card:hover::before {
+    opacity: 1;
+  }
+
+  .card-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    color: #C9A84C;
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: #e8e0d0;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .card-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    color: rgba(232,224,208,0.65);
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+
+  .card-link {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: rgba(232,224,208,0.35);
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.25s;
+  }
+
+  .card-link:hover {
+    color: #C9A84C;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    .section {
+      padding: 60px 20px;
+    }
+  }
+@container (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    .section {
+      padding: 60px 20px;
+    }
+  }
+</style><div class="section">
+
+  <div class="header">
+    <span class="eyebrow">THIS IS MY OFFERING</span>
+    <h2 class="heading">How I <em>Walk With You</em></h2>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <span class="card-tag">KARMIC ASTROLOGY</span>
+      <h3 class="card-title">Astrology for the Soul</h3>
+      <p class="card-body">Go beyond predictions. I read the D1, D9, and D60 together — the natal chart, the soul chart, and the dharma chart — to show you the karmic architecture beneath this lifetime.</p>
+      <a class="card-link" href="https://www.shivohampath.com/readings" target="_top">View All Readings →</a>
+    </div>
+
+    <div class="card">
+      <span class="card-tag">COURSE · LIVE JOURNEY</span>
+      <h3 class="card-title">She Who Becomes Him</h3>
+      <p class="card-body">A four-week journey for women who know Shiv as Beloved. Not as concept, but as lived experience — the one who has been the undertow beneath every longing, every love, every loss.</p>
+      <a class="card-link" href="https://www.shivohampath.com/spiritualcourses" target="_top">Enter the Course →</a>
+    </div>
+
+    <div class="card">
+      <span class="card-tag">WRITING &amp; WISDOM</span>
+      <h3 class="card-title">The Blog — From the Archive</h3>
+      <p class="card-body">Essays on karma, mythology, Jyotish, and the esoteric path. Written for souls who sense there is more beneath the surface — and are ready to go there.</p>
+      <a class="card-link" href="https://www.shivohampath.com/blog" target="_top">Read the Archive →</a>
+    </div>
+
+    <div class="card">
+      <span class="card-tag">INNER CIRCLE</span>
+      <h3 class="card-title">Shivohampath Insiders</h3>
+      <p class="card-body">The private space where the real conversations happen. Deeper transmissions, live Q&amp;As, and a community of seekers walking the same fire — together.</p>
+      <a class="card-link" href="https://www.shivohampath.com/insiders" target="_top">Join the Circle →</a>
+    </div>
+
+  </div>
+
+</div></template></div>
+</main>
+<script>
+  // Older browsers without declarative shadow DOM: attach the sections by hand.
+  if (!HTMLTemplateElement.prototype.hasOwnProperty('shadowRootMode')) {
+    document.querySelectorAll('template[shadowrootmode]').forEach(function (t) {
+      var host = t.parentNode;
+      host.attachShadow({ mode: 'open' }).appendChild(t.content);
+      t.remove();
+    });
+  }
+</script>
+</body>
+</html>

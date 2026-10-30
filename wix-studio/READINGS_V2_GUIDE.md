@@ -21,7 +21,7 @@ So the booking pages match the new Readings page:
 | Advanced Moksha Path Consultation | The Spiritual Path | ₹8,500 (unchanged) |
 | Synastry & Kundali Milan | Relationships & Marriage | ₹9,400 (unchanged) |
 | Shiva Oracle Reading (PDF report only) | Vishwanath Oracle Reading | **₹1,699** |
-| Madhurya Bhakta Sessions | Madhurya Bhakta (women only) | ₹6,499 (unchanged) |
+| Madhurya Bhakta Sessions | Madhurya Bhakta (women only) | ₹7,500 (unchanged) |
 | Specific Question Reading | The Specific Question | **₹3,499** |
 
 Update each description with the text from the Readings page.

@@ -43,7 +43,7 @@ brings, not by price:
 | Karmic Knots (signature) | Karmic Knots | 60 min | ₹6,500 |
 | The Spiritual Path | Advanced Moksha Consultation | 90 min | ₹8,500 * |
 | Relationships & Marriage | Synastry & Kundali Milan | 90 min | ₹9,400 |
-| Madhurya Bhakta (women only) | Madhurya Bhakta Sessions | 2 hrs | ₹6,499 |
+| Madhurya Bhakta (women only) | Madhurya Bhakta Sessions | 2 hrs | ₹7,500 |
 
 \* Carried over from Advanced Moksha. Review once the new scope is settled.
 

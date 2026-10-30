@@ -20,7 +20,7 @@ desktop and phone width).
 | About | `embeds/about-v2.html` | about-hero, story-section, lineage-section, lineage-thread-section, lalleshwari-section, shaktipat-section, offerings-section |
 | Courses | `embeds/courses-v2.html` | courses-hero, courses-philosophy, courses-current, courses-coming, courses-sivoham, courses-cta |
 | Foundations of Jyotish | `embeds/jyotish-v2.html` | jyotish-hero, jyotish-what, jyotish-pillars, jyotish-for-who, jyotish-notify |
-| She Who Becomes Him | `embeds/swbh-v2.html` | swbh-hero, swbh-for-who, swbh-modules, swbh-testimonials, swbh-cta |
+| She Who Becomes Him | `embeds/swbh-v2.html` | swbh-hero, swbh-modules, swbh-for-who, swbh-testimonials, swbh-cta |
 | Karmic Knots | `embeds/karmic-knots-v2.html` | karmic-knots-hero, karmic-knots-what, karmic-knots-process, karmic-knots-details, karmic-knots-cta |
 
 > **Check the section order.** The order above is my best reading of your

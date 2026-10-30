@@ -57,6 +57,8 @@ p { margin: 0; }
 .label { font: 11px/1.4 var(--f-label); letter-spacing: .28em; text-transform: uppercase; color: var(--gold); }
 .section { padding-block: clamp(56px, 8vw, 96px); }
 .section + .section { border-top: 1px solid var(--line); }
+/* The footer follows straight after, so the last section needs little space below. */
+main > .section:last-child { padding-bottom: 24px; }
 .sec-head { display: grid; gap: 12px; max-width: 640px; margin-bottom: clamp(28px, 4vw, 44px); }
 .sec-head h2 { font-size: clamp(34px, 4.6vw, 48px); }
 .sec-head p { color: var(--text-2); }

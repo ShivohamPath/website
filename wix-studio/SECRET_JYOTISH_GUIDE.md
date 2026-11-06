@@ -20,7 +20,8 @@ On GitHub, repository `ShivohamPath/website`, branch
 | What | File |
 |---|---|
 | Page body (one embed) | `wix-studio/embeds/secret-jyotish-v2.html` |
-| Search data | `wix-studio/seo/secret-jyotish-course-schema.json` |
+| Search data | `wix-studio/seo/secret-jyotish-course-schema.json` (reference) |
+| Page code (sets the search data) | `wix-studio/velo/pages/secret-jyotish.js` |
 
 File page: `https://github.com/ShivohamPath/website/blob/claude/loving-hamilton-dgcv4q/wix-studio/<path>`.
 Copy with the **Copy raw file** button and paste with Ctrl+V / Cmd+V.
@@ -42,14 +43,18 @@ Copy with the **Copy raw file** button and paste with Ctrl+V / Cmd+V.
    nothing else in it.
 2. Add → Embed Code → **Embed HTML** (Code). Paste the whole of
    `embeds/secret-jyotish-v2.html` and click Update.
-3. Size, Desktop view: **980px wide, X = 0, height 8130px**.
-4. Size, Mobile view: **320px wide, X = 0, height 12350px** (if Wix won't
-   go wider than 280px, use 280px wide and **13150px** high).
+3. Size, Desktop view: **980px wide, X = 0, height 8080px** (used on the live site).
+4. Size, Mobile view: **320px wide, X = 0, height 12250px** (used on the live site).
 5. Make the strip exactly as tall as the embed, so there's no gap above
    the footer.
 
-The page has no page code and no scrolling buttons, so nothing goes in Dev
-Mode.
+## Step 2b · Page code (search data)
+
+Wix's "Structured data markup" box wouldn't save on this page, so the
+search data is set by page code instead. Dev Mode → Pages → **The Secret
+Side of Jyotish** → replace everything in its code file with
+`wix-studio/velo/pages/secret-jyotish.js` → publish. Then skip the
+structured-data part of Step 3.
 
 ## Step 3 · Search settings (SEO)
 

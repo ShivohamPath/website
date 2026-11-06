@@ -13,8 +13,8 @@ FONTS = ('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@
 
 PAGES = {
   'about-v2':        ('About', ['about-hero','story-section','lineage-section','lineage-thread-section','lalleshwari-section','shaktipat-section','offerings-section']),
-  'courses-v2':      ('Courses', ['courses-hero','courses-philosophy','courses-current','courses-coming','courses-sivoham','courses-cta']),
-  'jyotish-v2':      ('Foundations of Jyotish', ['jyotish-hero','jyotish-what','jyotish-pillars','jyotish-for-who','jyotish-notify']),
+  'courses-v2':      ('Courses', ['courses-hero','courses-philosophy','courses-current','courses-coming','courses-secret','courses-sivoham','courses-cta']),
+  'jyotish-v2':      ('Foundations of Jyotish', ['jyotish-hero','jyotish-what','jyotish-pillars','jyotish-for-who','jyotish-notify','jyotish-next']),
   'swbh-v2':         ('She Who Becomes Him', ['swbh-hero','swbh-modules','swbh-for-who','swbh-testimonials','swbh-cta']),
   'karmic-knots-v2': ('Karmic Knots', ['karmic-knots-hero','karmic-knots-what','karmic-knots-process','karmic-knots-details','karmic-knots-cta']),
 }

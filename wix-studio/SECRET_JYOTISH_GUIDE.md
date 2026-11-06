@@ -88,3 +88,20 @@ Tell Veena: the page address, the heights you used, and anything you
 skipped and why. Then ask her where she'd like the page linked from (for
 example the Courses page, the Foundations of Jyotish page, or the menu).
 Claude Code can add a card for it to the Courses page.
+
+## Step 5 · Link the page (Veena chose all three)
+
+1. **Site menu:** Pages & Menu → drag "The Secret Side of Jyotish" under
+   **Courses** as a sub-item (dropdown), so the top menu stays Readings,
+   Courses, About, Blog. If the menu can't show sub-items, place it right
+   after Courses instead. Check the mobile menu shows it too.
+2. **Courses page:** re-paste the latest `embeds/courses-v2.html`. It now has
+   a "The Secret Side of Jyotish" card after She Who Becomes Him. Heights
+   in `CLAUDE_IN_CHROME_TASKS.md` (Courses row).
+3. **Foundations of Jyotish page:** re-paste the latest
+   `embeds/jyotish-v2.html`. It now ends with an "After Foundations" note
+   linking to the new page. Heights in `CLAUDE_IN_CHROME_TASKS.md`
+   (Foundations of Jyotish row).
+
+Each "Read about the course" button should open `/the-secret-side-of-jyotish`
+in the same tab.

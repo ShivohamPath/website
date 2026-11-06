@@ -15,6 +15,7 @@ Applying everything in Wix with Claude in Chrome: `CLAUDE_IN_CHROME_TASKS.md`.
 | Homepage | `embeds/home-v2.html` + `velo/pages/home.js` | `HOMEPAGE_V2_BUILD_GUIDE.md` |
 | Readings | `embeds/readings-v2.html` + `velo/pages/readings.js` | `READINGS_V2_GUIDE.md` |
 | About, Courses, Foundations of Jyotish, She Who Becomes Him, Karmic Knots | `embeds/about-v2.html`, `courses-v2.html`, `jyotish-v2.html`, `swbh-v2.html`, `karmic-knots-v2.html` | `PAGES_V2_GUIDE.md` |
+| The Secret Side of Jyotish (new sales page) | `embeds/secret-jyotish-v2.html` + `seo/secret-jyotish-course-schema.json` | `SECRET_JYOTISH_GUIDE.md` |
 | Instagram banner (top of pages) | `embeds/inapp-browser-banner.html` | `FIXES_DEPLOY_GUIDE.md` |
 | Site code (every page) | `velo/masterPage.js` | `FIXES_DEPLOY_GUIDE.md` |
 | Search data | `seo/organization-person-schema.json` (Home), `seo/service-schema.json` (Readings) | `WEEK1_AUDIT_FIXES_DEPLOY_GUIDE.md`, `READINGS_V2_GUIDE.md` |

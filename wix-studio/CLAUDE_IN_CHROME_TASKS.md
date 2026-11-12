@@ -49,7 +49,7 @@ widths, so these heights fit with no gaps and nothing cut off:
 | Footer (`footer-v2.html`) | 290px ✓ | 550px ✓ | 570px |
 | Home (`home-v2.html`) | 6010px ✓ | 7200px ✓ | 7850px |
 | Readings (`readings-v2.html`) | 3330px | 4880px | 5200px |
-| About (`about-v2.html`) | 16040px | 27250px | 30100px |
+| About (`about-v2.html`) | 16000px | 27200px | 30050px |
 | Courses (`courses-v2.html`) | 6050px ✓ | 7680px ✓ | 8250px |
 | Foundations of Jyotish (`jyotish-v2.html`) | 5860px | 9370px | 10350px |
 | She Who Becomes Him (`swbh-v2.html`) | 3570px ✓ | 6880px ✓ | 7370px |

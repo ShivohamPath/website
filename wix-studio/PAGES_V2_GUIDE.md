@@ -17,7 +17,7 @@ desktop and phone width).
 
 | Page | New file | Replaces these embeds |
 |---|---|---|
-| About | `embeds/about-v2.html` | about-hero, story-section, lineage-section, lineage-thread-section, lalleshwari-section, shaktipat-section, offerings-section |
+| About | `embeds/about-v2.html` | about-hero, about-guide (new: photo and bio), about-quote (new), story-section, lineage-section, lineage-thread-section, lalleshwari-section, shaktipat-section, offerings-section |
 | Courses | `embeds/courses-v2.html` | courses-hero, courses-philosophy, courses-current, courses-coming, courses-secret (new), courses-sivoham, courses-cta |
 | Foundations of Jyotish | `embeds/jyotish-v2.html` | jyotish-hero, jyotish-what, jyotish-pillars, jyotish-for-who, jyotish-notify, jyotish-next (new) |
 | She Who Becomes Him | `embeds/swbh-v2.html` | swbh-hero, swbh-modules, swbh-for-who, swbh-testimonials, swbh-cta |

@@ -69,3 +69,14 @@ https://static.wixstatic.com/media/ba8bbb_f3fb4196c0234bcda9bb830d742665a4~mv2.j
 ```
 
 Alt text: `Veena Maheshwari`
+
+## Formatting on the live page
+
+Colours read from the live page. Gold is `#C9A84C`, cream `#E8D5B0`, body text `#E8E0D0`.
+
+- "THE GUIDE": gold, bold, small capitals size (13px), Cormorant Garamond.
+- Heading: "Not Your / Typical" in the heading style; "Astrologer." gold italic; "Not Your Typical" (third line) cream italic; "Mystic." gold italic. Cormorant Garamond, 81px on desktop.
+- Bio: EB Garamond 16px, body text colour. The words "a living presence" are gold.
+- Quote: cream italic; "Husband, Lover, and Guru." gold italic.
+- "— VEENA MAHESHWARI": gold.
+- Badge "Lineage: Maha Siddha Yoga": gold text in a thin gold-bordered box over the bottom of the photo.

@@ -37,6 +37,14 @@
     .grid > :first-child { grid-column: 1 / -1; }
     .wrap { padding-top: 40px; }
   }
+  /* Wix's classic editor shows this embed 980px wide inside a full-width
+     #0a0a0f strip. Fade the outer edges into that colour so section
+     backgrounds and lines don't end in a hard edge. */
+  @media (min-width: 700px) {
+    body::before, body::after { content: ''; position: fixed; top: 0; bottom: 0; width: 36px; z-index: 2147483647; pointer-events: none; }
+    body::before { left: 0; background: linear-gradient(to right, #0a0a0f, rgba(10,10,15,0)); }
+    body::after { right: 0; background: linear-gradient(to left, #0a0a0f, rgba(10,10,15,0)); }
+  }
 </style>
 </head>
 <body>

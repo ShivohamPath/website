@@ -48,7 +48,7 @@ widths, so these heights fit with no gaps and nothing cut off:
 | Home (`home-v2.html`) | 6010px ✓ | 7200px ✓ | 7850px |
 | Readings (`readings-v2.html`) | 3330px | 4880px | 5200px |
 | About (`about-v2.html`) | 14810px | 25570px | 28340px |
-| Courses (`courses-v2.html`) | 5760px | 7330px | 7870px |
+| Courses (`courses-v2.html`) | 6050px | 7680px | 8250px |
 | Foundations of Jyotish (`jyotish-v2.html`) | 5860px | 9370px | 10350px |
 | She Who Becomes Him (`swbh-v2.html`) | 3570px | 6830px | 7370px |
 | Karmic Knots (`karmic-knots-v2.html`) | 4750px | 6990px | 7400px |

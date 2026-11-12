@@ -105,3 +105,22 @@ Claude Code can add a card for it to the Courses page.
 
 Each "Read about the course" button should open `/the-secret-side-of-jyotish`
 in the same tab.
+
+## Step 6 · Make the page look full-width (Veena's feedback)
+
+The embed is 980px wide; the rest of the screen width is the Wix strip
+and page background. They must be exactly the same colour as the page, or
+the page looks like a box in the middle.
+
+1. The strip/section holding the embed: background colour exactly
+   **`#0a0a0f`**, opacity 100%, no image, no border, and set to full width.
+2. **Page background** (Page settings → Background / Change Page
+   Background): solid colour **`#0a0a0f`**. Do this on The Secret Side of
+   Jyotish page, and on any other page where you see a lighter or
+   different colour beside the 980px content.
+3. Re-paste the latest `embeds/secret-jyotish-v2.html` (its edges now
+   blend into `#0a0a0f`). Heights stay 8080 desktop and 12250 mobile.
+4. The other page files were also updated so their edges blend in
+   (`readings-v2`, `footer-v2`, `about-v2`, `courses-v2`, `jyotish-v2`,
+   `swbh-v2`, `karmic-knots-v2`). Re-paste each one when you next work
+   on that page. Heights are unchanged except Courses (see the task list).

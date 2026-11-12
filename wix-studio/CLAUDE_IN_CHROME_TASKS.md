@@ -52,7 +52,7 @@ widths, so these heights fit with no gaps and nothing cut off:
 | About (`about-v2.html`) | 14810px | 25570px | 28340px |
 | Courses (`courses-v2.html`) | 6050px ✓ | 7680px ✓ | 8250px |
 | Foundations of Jyotish (`jyotish-v2.html`) | 5860px | 9370px | 10350px |
-| She Who Becomes Him (`swbh-v2.html`) | 3570px | 6830px | 7370px |
+| She Who Becomes Him (`swbh-v2.html`) | 3570px ✓ | 6880px ✓ | 7370px |
 | Karmic Knots (`karmic-knots-v2.html`) | 4750px | 6990px | 7400px |
 
 ✓ = checked and used on the live site. The other pages' heights are

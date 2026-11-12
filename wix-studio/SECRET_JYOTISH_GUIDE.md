@@ -44,7 +44,7 @@ Copy with the **Copy raw file** button and paste with Ctrl+V / Cmd+V.
 2. Add → Embed Code → **Embed HTML** (Code). Paste the whole of
    `embeds/secret-jyotish-v2.html` and click Update.
 3. Size, Desktop view: **980px wide, X = 0, height 8080px** (used on the live site).
-4. Size, Mobile view: **320px wide, X = 0, height 12250px** (used on the live site).
+4. Size, Mobile view: **320px wide, X = 0, height 12300px** (used on the live site).
 5. Make the strip exactly as tall as the embed, so there's no gap above
    the footer.
 
@@ -119,7 +119,7 @@ the page looks like a box in the middle.
    Jyotish page, and on any other page where you see a lighter or
    different colour beside the 980px content.
 3. Re-paste the latest `embeds/secret-jyotish-v2.html` (its edges now
-   blend into `#0a0a0f`). Heights stay 8080 desktop and 12250 mobile.
+   blend into `#0a0a0f`). Heights: 8080 desktop and 12300 mobile.
 4. The other page files were also updated so their edges blend in
    (`readings-v2`, `footer-v2`, `about-v2`, `courses-v2`, `jyotish-v2`,
    `swbh-v2`, `karmic-knots-v2`). Re-paste each one when you next work

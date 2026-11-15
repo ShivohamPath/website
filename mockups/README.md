@@ -39,23 +39,23 @@ brings, not by price:
 
 | Consultation | Replaces | Length | Price |
 |---|---|---|---|
-| The Specific Question | Specific Question Reading | 30 min | ₹2,499 |
+| The Specific Question | Specific Question Reading | 30 min | ₹3,499 |
 | Karmic Knots (signature) | Karmic Knots | 60 min | ₹6,500 |
 | The Spiritual Path | Advanced Moksha Consultation | 90 min | ₹8,500 * |
 | Relationships & Marriage | Synastry & Kundali Milan | 90 min | ₹9,400 |
-| Madhurya Bhakta (women only) | Madhurya Bhakta Sessions | 2 hrs | ₹6,499 |
+| Madhurya Bhakta (women only) | Madhurya Bhakta Sessions | 2 hrs | ₹7,500 |
 
 \* Carried over from Advanced Moksha. Review once the new scope is settled.
 
-**Oracle: a different method.** The Shiva Oracle Reading (₹1,499, written PDF)
-gets its own visually separate box.
+**Oracle: a different method.** The Vishwanath Oracle Reading (Veena's own
+44-card deck, 5-card written PDF, ₹1,699, one follow-up question by email) replaces the Shiva Oracle Reading.
 
 Not on the public menu: Returning Seeker (existing clients only), Varshaphala
 and Muhurta (still to decide). No copy promises sadhana prescriptions, remedies
 or ritual guidance.
 
 **Decisions (confirmed by Veena)**
-- The Oracle uses Shiva oracle cards only, never the birth chart. Copy says so.
+- The Oracle uses the Vishwanath Oracle deck only, never the birth chart.
 - Every Jyotish consultation is followed by a written PDF report (summary and
   reference). Shown under the Jyotish heading.
 - Madhurya Bhakta is strictly for women. Labelled "Women only".

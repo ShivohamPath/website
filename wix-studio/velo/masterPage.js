@@ -10,7 +10,7 @@ import { authentication, currentMember } from 'wix-members';
 
 // Where the Wix Members Area "My Account" page lives. If your account
 // page uses a different slug, change it here in ONE place.
-const ACCOUNT_URL = '/account/my-account';
+const ACCOUNT_URL = '/account-settings';
 
 $w.onReady(function () {
 

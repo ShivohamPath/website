@@ -1,5 +1,7 @@
 # ShivohamPath · Homepage v2: Wix Setup
 
+> **Classic Wix editor:** your site uses the classic editor (Desktop and Mobile views only, no breakpoints). Use the sizes in `CLAUDE_IN_CHROME_TASKS.md` instead of the breakpoint heights below.
+
 The new homepage uses **Wix's own header** (tidied up) plus **two embeds**:
 
 | Piece | File | Where it goes in Wix |
@@ -33,10 +35,10 @@ Then set the homepage embed's height on each breakpoint. Width is always
 
 | Breakpoint | Screen widths | Homepage body height | Footer height |
 |---|---|---|---|
-| Desktop | 1001px and up | **6200px** | 300px |
-| Tablet | 751–1000px | **5960px** | 300px |
-| Phones | 390–750px | **6280px** | 540px |
-| Small phones | 320–389px | **6540px** | 540px |
+| Desktop | 1001px and up | **6260px** | 300px |
+| Tablet | 751–1000px | **6020px** | 300px |
+| Phones | 390–750px | **6510px** | 540px |
+| Small phones | 320–389px | **6740px** | 540px |
 
 **Also check the section that holds the embed:** its top and bottom
 padding must be **0**, and its height set to fit the embed. Any padding there
